@@ -1,6 +1,6 @@
 # romangpw
 
-Dzienny skaner swing GPW, publikowany na https://romangpw.pl (GitHub Pages).
+Dzienny skaner swing GPW, publikowany na https://www.romangpw.pl (GitHub Pages; romangpw.pl przekierowuje na www w nazwa.pl).
 
 - `METHOD.md` — instrukcja i metodyka dla codziennego zaplanowanego zadania (7:45, dni robocze, Europe/Warsaw).
 - `reports/YYYY-MM-DD.md` — raporty (archiwum, poprzedni raport służy do rozliczenia).
