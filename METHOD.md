@@ -61,6 +61,16 @@ Raport ma być rzeczowy i skanowalny (tabele, krótkie punkty). Tabele w Markdow
 - Pamiętaj o polskich świętach, gdy GPW jest zamknięta (np. 1 i 6 stycznia, Wielkanoc, 1 i 3 maja, Boże Ciało, 15 sierpnia, 1 i 11 listopada, 24–26 grudnia). Sprawdź dzień sesji: jeśli dziś GPW nie handluje, nie publikuj raportu.
 - Raport przed otwarciem opiera się na zamknięciu poprzedniej sesji (kurs bieżący z godz. 7:45 jest nieaktualny). Napisz to w nagłówku. Nie podawaj kursów „intraday” z rana, jeśli źródło pokazuje wczorajsze dane.
 
+## Minimum jakości przed publikacją (dopisane po teście 4.11)
+
+Pierwszy test pokazał luki. Przed zapisem raportu sprawdź, że:
+
+- **Kontekst globalny jest pobrany**, a nie pominięty: S&P 500, Nasdaq, VIX, rentowność UST 10Y, ropa Brent, miedź LME, USD/PLN i EUR/PLN oraz kalendarz makro (RPP, CPI, Fed/EBC) na najbliższe dni. Jeśli po dwóch próbach z różnych źródeł dana pozycja jest niedostępna, napisz to wprost; nie pomijaj jej po cichu.
+- **Fundamenty TOP 5 są odświeżone** (ostatni raport kwartalny, rewizje, nowe komunikaty ESPI, kalendarium raportów), a nie przeniesione z poprzednich skanów. Jeśli coś przenosisz, oznacz datę pochodzenia.
+- **Daty raportów** TOP 5 i watchlisty są sprawdzone w kalendarium (bankier.pl lub IR spółki); „niezweryfikowane" tylko po faktycznej próbie.
+- **Spójność dat danych**: jeśli któraś spółka ma starszą ostatnią świecę niż reszta (cache), pobierz ją ponownie z innym `?r=`; dopiero potem oznacz jako stare.
+- **Liczba kandydatów**: celuj w 10–15 w tabeli. Mniej jest dopuszczalne tylko przy słabym rynku i musi być uzasadnione w sekcji Reżim.
+
 ## Publikacja (każdego dnia)
 
 1. Dopisz `reports/YYYY-MM-DD.md` (data dzisiejsza, czas Europe/Warsaw). Nie nadpisuj starszych raportów.
