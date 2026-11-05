@@ -1,0 +1,38 @@
+{
+  "tic": "MBR",
+  "announced_current_cycle": "nie",
+  "announcement_note": "Ostatni cykl zamknięty: dywidenda za 2025 (15,23 zł) wypłacona 2026-10-05 (dzień dywidendy 2026-07-30). Rekomendacja zarządu była z 2026-05-15, opinia RN 2026-05-21, WZA 2026-06-29. Rekomendacji/zamiaru za 2026 nie znaleziono.",
+  "history": [
+    {"fy": 2025, "rec_date": "2026-05-15", "rec_dps": 15.23, "agm_date": "2026-06-29", "final_dps": 15.23, "cum_date": "2026-07-28", "pay_date": "2026-10-05", "source": "https://financialreports.eu/companies/mo-bruk-sa/?page=2", "note": "ESPI 2026-05-15 (rekomendacja), RN pozytywna 2026-05-21; dzień dywidendy 2026-07-30; źródło: 3,5 mln zł z zysku 2025 + 49,99 mln zł z kapitału zapasowego (strefainwestorow 2026-06-29)"},
+    {"fy": 2024, "rec_date": null, "rec_dps": null, "agm_date": "2025-06-13", "final_dps": 13.17, "cum_date": "2025-07-28", "pay_date": "2025-10-30", "source": "https://strefainwestorow.pl/notowania/spolki/PLMOBRK00013/dywidendy", "note": "data rekomendacji nie znaleziona w dostępnych źródłach"},
+    {"fy": 2023, "rec_date": null, "rec_dps": null, "agm_date": "2024-06-24", "final_dps": 13.17, "cum_date": "2024-07-26", "pay_date": "2024-10-30", "source": "https://strefainwestorow.pl/notowania/spolki/PLMOBRK00013/dywidendy", "note": "data rekomendacji nie znaleziona"},
+    {"fy": 2020, "rec_date": "2021-05-06", "rec_dps": 20.15, "agm_date": "2021-06-08", "final_dps": 20.15, "cum_date": "2021-06-14", "pay_date": "2021-06-30", "source": "https://www.biznesradar.pl/a/99841,zarzad-mo-bruk-u-rekomenduje-wyplate-70-8-mln-zl-dywidendy", "note": "ESPI 2021-05-06; dane starsze, tylko jako wzorzec terminu"},
+    {"fy": 2019, "rec_date": "2020-06-03", "rec_dps": 10.25, "agm_date": "2020-06-15", "final_dps": 10.25, "cum_date": "2020-06-18", "pay_date": "2020-06-29", "source": "https://www.biznesradar.pl/wiadomosci/MBR,12", "note": "dane starsze"}
+  ],
+  "policy": "Od 2020-09-22: rekomendacja 50-100% zysku netto za rok, pod warunkiem długu netto/EBITDA nie wyższego niż 2,5x (wcześniej min. 33% i limit 3,0x). Źródło: https://www.biznesradar.pl/a/93735,mo-bruk-przeznaczy-na-dywidende-od-50-do-100-zysku",
+  "next_reports": [
+    {"what": "Q3 2026", "date": "2026-11-19", "source": "https://strefainwestorow.pl/dane/raporty/lista-publikacji-raportow-okresowych/all (kalendarium serwisu; raport spółki z terminami nie pobrany)"},
+    {"what": "Raport roczny za 2026", "date": null, "source": "terminarz 2027 nieopublikowany (raport za 2025 wyszedł 2026-04-23)"}
+  ],
+  "expected_rec_window": {"from": "2027-05-05", "to": "2027-05-31", "basis": "jedyne zweryfikowane daty rekomendacji: 2026-05-15 (FY2025, ok. 3 tyg. po raporcie rocznym z 2026-04-23), 2021-05-06, 2020-06-03, 2019-05-14; FY2021-FY2024 niezweryfikowane. dividends.py: 2027-04-20..05-23 - szeroko, zgodne co do maja. Pewność niska-średnia."},
+  "results_note": "FY2025: zysk netto grupy 15,2 mln zł (-78% r/r przez jednorazowy koszt 53,3 mln zł w III kw.), przychody 319,9 mln zł; dług netto/EBITDA 2,13x na koniec 2025 (limit polityki 2,5x). I kw. 2026 zysk netto 15,6 mln zł (poniżej oczekiwanych 16,2), II kw. 26,5 mln zł (powyżej oczekiwań). Dywidenda za 2025 w ~94% sfinansowana z kapitału zapasowego, nie z bieżącego zysku. Źródła: https://www.gpw.pl/pub/pwpa/20260423_noble_securities_mbr_pl_aw.pdf ; https://strefainwestorow.pl/notowania/spolki/PLMOBRK00013/dywidendy ; https://strefainwestorow.pl/wiadomosci/20260629/mo-bruk-wyplaci-1523-zl-dywidendy-na-akcje-opis",
+  "flags": [
+    "Dywidenda za 2025 (15,23 zł) w większości z kapitału zapasowego (49,99 mln z 53,5 mln zł) - zysk bieżący niski, wypłata zależy od woli zarządu i rezerw",
+    "Dług netto/EBITDA 2,13x vs limit 2,5x w polityce; zarząd zapowiada co najmniej jedną akwizycję w 2026 - ryzyko ograniczenia dywidendy",
+    "Okno rekomendacji FY2026 (V 2027) oparte na jednym zweryfikowanym punkcie z ostatnich 5 lat",
+    "Noble Securities obniżył rekomendację do 'akumuluj' (2026-08-31)",
+    "Długi odstęp cum -> wypłata (lipiec -> październik), nietypowy harmonogram"
+  ],
+  "confidence": "średnia",
+  "sources": [
+    "https://financialreports.eu/companies/mo-bruk-sa/?page=2",
+    "https://www.biznesradar.pl/wiadomosci/MBR,3",
+    "https://strefainwestorow.pl/wiadomosci/20260629/mo-bruk-wyplaci-1523-zl-dywidendy-na-akcje-opis",
+    "https://strefainwestorow.pl/notowania/spolki/PLMOBRK00013/dywidendy",
+    "https://www.biznesradar.pl/a/99841,zarzad-mo-bruk-u-rekomenduje-wyplate-70-8-mln-zl-dywidendy",
+    "https://www.biznesradar.pl/wiadomosci/MBR,12",
+    "https://www.biznesradar.pl/a/93735,mo-bruk-przeznaczy-na-dywidende-od-50-do-100-zysku",
+    "https://www.gpw.pl/pub/pwpa/20260423_noble_securities_mbr_pl_aw.pdf",
+    "https://strefainwestorow.pl/dane/raporty/lista-publikacji-raportow-okresowych/all"
+  ]
+}
