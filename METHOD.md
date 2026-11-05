@@ -50,6 +50,8 @@ Sekcje, w tej kolejności:
 
 Raport ma być rzeczowy i skanowalny (tabele, krótkie punkty). Tabele w Markdown (rozszerzenie tables).
 
+**Nie zmieniaj nazw kolumn tabeli rankingu** (`Tic`, `Kurs`, `Fund/30`, `Tech/70`, `Suma`, `Klasa`, `Wejście`, `Stop`, `C1`, `C2`, `R (C1 / C2)`) ani kolejności, bo `build.py` na ich podstawie generuje wykresy (ranking punktowy, mapa ryzyka i zysku, R:R). Liczby zapisuj w formacie `26 220`, `5,40`; strefę wejścia jako `25 500–26 000` albo `>241`; R jako `1,9 / 3,2`. Gdy kolumn brakuje, wykres jest po cichu pomijany.
+
 ## Źródła i techniczne wskazówki (sprawdzone wcześniej)
 
 - Powłoka (shell) zwykle nie ma dostępu do stron poza rejestrami pakietów i GitHubem. Dane pobieraj narzędziem WebFetch (równolegle, w razie potrzeby przez podagentów), zapisuj do CSV `date;open;high;low;close;volume` i liczone wskaźniki wylicz w Pythonie (SMA20/50, EMA20, RSI14 Wildera, MACD 12/26/9, ATR14, hi50, lo20, wolumen 5/20, RS vs WIG).

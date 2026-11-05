@@ -1,0 +1,264 @@
+"""Wykresy SVG budowane z tabeli rankingu w raporcie Markdown.
+
+Bez zależności zewnętrznych. Jeśli tabela ma inny układ albo dane są niepełne,
+funkcje po cichu pomijają wykres (strona i tak się zbuduje).
+
+Tabela rankingu musi mieć kolumny: Tic, Suma i opcjonalnie Fund/30, Klasa, Kurs,
+Wejście, Stop, C1, C2, R (C1 / C2).
+"""
+import html
+import math
+import re
+
+NUM = r"\d[\d  ]*(?:,\d+)?"
+W = 800  # szerokość viewBox
+MINUS = "−"
+
+
+def esc(s):
+    return html.escape(str(s), quote=True)
+
+
+def _f(s):
+    return float(s.replace(" ", "").replace(" ", "").replace(",", "."))
+
+
+def _first(s):
+    m = re.search(NUM, s or "")
+    return _f(m.group(0)) if m else None
+
+
+def _range(s):
+    m = re.search(rf"({NUM})\s*[–—-]\s*({NUM})", s or "")
+    if m:
+        a, b = _f(m.group(1)), _f(m.group(2))
+        return min(a, b), max(a, b)
+    n = _first(s)
+    return (n, n) if n is not None else (None, None)
+
+
+def _cells(line):
+    return [c.strip().replace("**", "").strip() for c in line.strip().strip("|").split("|")]
+
+
+def parse_ranking(md):
+    lines = md.splitlines()
+    for i, ln in enumerate(lines):
+        if ln.lstrip().startswith("|") and "Tic" in ln and "Suma" in ln:
+            head = _cells(ln)
+            rows = []
+            for ln2 in lines[i + 2:]:
+                if not ln2.lstrip().startswith("|"):
+                    break
+                cells = _cells(ln2)
+                if len(cells) == len(head):
+                    rows.append(dict(zip(head, cells)))
+            return head, rows
+    return None, []
+
+
+def _col(head, *names, prefix=False):
+    for h in head:
+        for n in names:
+            if h == n or (prefix and h.startswith(n)):
+                return h
+    return None
+
+
+def build_items(head, rows):
+    c_tic = _col(head, "Tic")
+    c_sum = _col(head, "Suma")
+    c_fund = _col(head, "Fund", prefix=True)
+    c_kl = _col(head, "Klasa", prefix=True)
+    c_price = _col(head, "Kurs", prefix=True)
+    c_in = _col(head, "Wej", prefix=True)
+    c_stop = _col(head, "Stop")
+    c_c1 = _col(head, "C1")
+    c_c2 = _col(head, "C2")
+    c_r = _col(head, "R") or _col(head, "R (", prefix=True)
+    items = []
+    for r in rows:
+        g = lambda c: r.get(c, "") if c else ""
+        lo, hi = _range(g(c_in))
+        rr = re.findall(r"\d+(?:,\d+)?", g(c_r).split("(")[0]) if c_r else []
+        m = re.match(r"\s*([ABC])\b", g(c_kl))
+        items.append({
+            "tic": g(c_tic) or "?",
+            "suma": _first(g(c_sum)),
+            "fund": _first(g(c_fund)),
+            "kl": m.group(1) if m else "",
+            "price": _first(g(c_price)),
+            "lo": lo, "hi": hi,
+            "stop": _first(g(c_stop)),
+            "c1": _first(g(c_c1)),
+            "c2": _first(g(c_c2)),
+            "r1": _f(rr[0]) if len(rr) >= 1 else None,
+            "r2": _f(rr[1]) if len(rr) >= 2 else None,
+        })
+    return items
+
+
+def _pl(v, digits=1, sign=False):
+    s = f"{v:+.{digits}f}" if sign else f"{v:.{digits}f}"
+    return s.replace("-", MINUS).replace(".", ",")
+
+
+def _svg(h, label, body):
+    return (f'<svg viewBox="0 0 {W} {h}" role="img" aria-label="{esc(label)}" '
+            f'xmlns="http://www.w3.org/2000/svg">{body}</svg>')
+
+
+def _legend(items, x, y):
+    out, cx = [], x
+    for color, text, w in items:
+        out.append(f'<rect x="{cx}" y="{y - 9}" width="12" height="12" rx="3" style="fill:{color}"/>')
+        out.append(f'<text class="tick" x="{cx + 18}" y="{y + 1}">{esc(text)}</text>')
+        cx += w
+    return "".join(out)
+
+
+def chart_scores(items):
+    rows = [i for i in items if i["suma"] is not None]
+    if len(rows) < 2:
+        return ""
+    x0, x1, rh, top = 150, W - 70, 30, 52
+    h = top + rh * len(rows) + 8
+    sc = (x1 - x0) / 100
+    p = [_legend([("var(--up)", "Fundamenty (z 30)", 150), ("var(--accent2)", "Technika i reszta", 150)], x0, 14)]
+    for v in (0, 25, 50, 75, 100):
+        x = x0 + v * sc
+        p.append(f'<line class="grid" x1="{x:.1f}" y1="{top - 10}" x2="{x:.1f}" y2="{h - 4}"/>')
+        p.append(f'<text class="tick" x="{x:.1f}" y="{top - 16}" text-anchor="middle">{v}</text>')
+    for n, it in enumerate(rows):
+        y = top + n * rh
+        suma, fund = it["suma"], it["fund"]
+        cls = f' <tspan class="cls">· {it["kl"]}</tspan>' if it["kl"] else ""
+        p.append(f'<text class="lbl" x="{x0 - 10}" y="{y + 17}" text-anchor="end">{esc(it["tic"])}{cls}</text>')
+        if fund is not None and 0 <= fund <= suma:
+            w1, w2 = fund * sc, (suma - fund) * sc
+            tip = f'{it["tic"]}: {suma:g} pkt (fundamenty {fund:g}, reszta {suma - fund:g})'
+            p.append(f'<g><title>{esc(tip)}</title>'
+                     f'<rect x="{x0}" y="{y + 6}" width="{max(w1, 1):.1f}" height="16" rx="3" style="fill:var(--up)"/>'
+                     f'<rect x="{x0 + w1:.1f}" y="{y + 6}" width="{max(w2, 1):.1f}" height="16" rx="3" style="fill:var(--accent2)"/></g>')
+        else:
+            p.append(f'<g><title>{esc(it["tic"])}: {suma:g} pkt</title>'
+                     f'<rect x="{x0}" y="{y + 6}" width="{suma * sc:.1f}" height="16" rx="3" style="fill:var(--accent2)"/></g>')
+        p.append(f'<text class="val" x="{x0 + suma * sc + 8:.1f}" y="{y + 18}">{suma:g}</text>')
+    return _svg(h, "Ranking punktowy kandydatów", "".join(p))
+
+
+def chart_ladder(items, limit=6):
+    ok = []
+    for i in items:
+        if None in (i["price"], i["lo"], i["hi"], i["stop"], i["c1"], i["c2"]):
+            continue
+        if i["price"] > 0 and i["stop"] < i["lo"] <= i["hi"] < i["c1"] < i["c2"]:
+            ok.append(i)
+    ok = ok[:limit]
+    if len(ok) < 2:
+        return ""
+    pct = lambda it, v: (v / it["price"] - 1) * 100
+    pmin = min(min(pct(i, i["stop"]) for i in ok), 0) - 2
+    pmax = max(max(pct(i, i["c2"]) for i in ok), 0) + 2.5
+    x0, x1, top, rh = 110, W - 30, 50, 56
+    h = top + rh * len(ok) + 28
+    X = lambda v: x0 + (v - pmin) / (pmax - pmin) * (x1 - x0)
+    p = [_legend([("var(--down)", "ryzyko do stopu", 140), ("var(--up)", "potencjał do celów", 160),
+                  ("rgba(102,252,241,.35)", "strefa wejścia", 140)], x0, 14)]
+    step = 5 if pmax - pmin > 18 else 2
+    t = math.ceil(pmin / step) * step
+    while t <= pmax:
+        x = X(t)
+        p.append(f'<line class="grid" x1="{x:.1f}" y1="{top - 12}" x2="{x:.1f}" y2="{h - 22}"/>')
+        p.append(f'<text class="tick" x="{x:.1f}" y="{h - 6}" text-anchor="middle">{_pl(t, 0, True) if t else "kurs"}{"%" if t else ""}</text>')
+        t += step
+    p.append(f'<line x1="{X(0):.1f}" y1="{top - 12}" x2="{X(0):.1f}" y2="{h - 22}" style="stroke:var(--strong);stroke-dasharray:4 4;opacity:.6"/>')
+    for n, it in enumerate(ok):
+        cy = top + n * rh + 26
+        ps, pl_, ph, p1, p2 = (pct(it, it[k]) for k in ("stop", "lo", "hi", "c1", "c2"))
+        pm = (pl_ + ph) / 2
+        cls = f' <tspan class="cls">· {it["kl"]}</tspan>' if it["kl"] else ""
+        p.append(f'<text class="lbl" x="{x0 - 12}" y="{cy + 4}" text-anchor="end">{esc(it["tic"])}{cls}</text>')
+        tip = (f'{it["tic"]}: stop {_pl(ps, 1, True)}%, wejście {_pl(pl_, 1, True)}…{_pl(ph, 1, True)}%, '
+               f'cel 1 {_pl(p1, 1, True)}%, cel 2 {_pl(p2, 1, True)}% względem kursu')
+        zw = max(X(ph) - X(pl_), 5)
+        p.append(f'<g><title>{esc(tip)}</title>'
+                 f'<rect x="{X(ps):.1f}" y="{cy - 5}" width="{X(pm) - X(ps):.1f}" height="10" rx="3" style="fill:var(--down);opacity:.85"/>'
+                 f'<rect x="{X(pm):.1f}" y="{cy - 5}" width="{X(p2) - X(pm):.1f}" height="10" rx="3" style="fill:var(--up);opacity:.9"/>'
+                 f'<rect x="{X(pl_):.1f}" y="{cy - 13}" width="{zw:.1f}" height="26" rx="5" style="fill:rgba(102,252,241,.18);stroke:var(--cyan);stroke-width:1.5"/>'
+                 f'<circle cx="{X(p1):.1f}" cy="{cy}" r="5.5" style="fill:#0B0C10;stroke:var(--up);stroke-width:2"/>'
+                 f'<circle cx="{X(p2):.1f}" cy="{cy}" r="5.5" style="fill:var(--up);stroke:#0B0C10;stroke-width:2"/></g>')
+        p.append(f'<text class="neg" x="{X(ps):.1f}" y="{cy - 17}" text-anchor="middle">{_pl(ps, 1, True)}%</text>')
+        p.append(f'<text class="pos" x="{X(p1):.1f}" y="{cy - 17}" text-anchor="middle">{_pl(p1, 1, True)}%</text>')
+        p.append(f'<text class="pos" x="{X(p2):.1f}" y="{cy - 17}" text-anchor="middle">{_pl(p2, 1, True)}%</text>')
+    return _svg(h, "Mapa ryzyka i zysku względem kursu", "".join(p))
+
+
+def chart_rr(items):
+    ok = [i for i in items if i["r1"] is not None and i["r2"] is not None][:12]
+    if len(ok) < 2:
+        return ""
+    x0, x1, top, rh = 110, W - 60, 52, 40
+    h = top + rh * len(ok) + 8
+    rmax = max(4.0, max(i["r2"] for i in ok) + 0.6)
+    X = lambda v: x0 + v / rmax * (x1 - x0)
+    p = [_legend([("var(--accent2)", "R do celu 1", 130), ("var(--up)", "R do celu 2", 130)], x0, 14)]
+    v = 0
+    while v <= rmax:
+        p.append(f'<line class="grid" x1="{X(v):.1f}" y1="{top - 10}" x2="{X(v):.1f}" y2="{h - 4}"/>')
+        p.append(f'<text class="tick" x="{X(v):.1f}" y="{top - 16}" text-anchor="middle">{v:g}</text>')
+        v += 1
+    p.append(f'<line x1="{X(2):.1f}" y1="{top - 10}" x2="{X(2):.1f}" y2="{h - 4}" style="stroke:var(--warn);stroke-dasharray:5 4;stroke-width:1.5"/>')
+    p.append(f'<text class="warn" x="{X(2) + 6:.1f}" y="{top - 16}">min. 1:2</text>')
+    for n, it in enumerate(ok):
+        y = top + n * rh
+        cls = f' <tspan class="cls">· {it["kl"]}</tspan>' if it["kl"] else ""
+        p.append(f'<text class="lbl" x="{x0 - 10}" y="{y + 22}" text-anchor="end">{esc(it["tic"])}{cls}</text>')
+        p.append(f'<g><title>{esc(it["tic"])}: R do celu 1 = {_pl(it["r1"])}, do celu 2 = {_pl(it["r2"])}</title>'
+                 f'<rect x="{x0}" y="{y + 5}" width="{max(X(it["r1"]) - x0, 1):.1f}" height="12" rx="3" style="fill:var(--accent2)"/>'
+                 f'<rect x="{x0}" y="{y + 20}" width="{max(X(it["r2"]) - x0, 1):.1f}" height="12" rx="3" style="fill:var(--up)"/></g>')
+        p.append(f'<text class="val" x="{X(it["r1"]) + 7:.1f}" y="{y + 15}">{_pl(it["r1"])}</text>')
+        p.append(f'<text class="val" x="{X(it["r2"]) + 7:.1f}" y="{y + 30}">{_pl(it["r2"])}</text>')
+    return _svg(h, "Stosunek zysku do ryzyka (R) dla celów 1 i 2", "".join(p))
+
+
+def render_charts(md):
+    """Zwraca HTML sekcji z wykresami albo pusty tekst, gdy nie da się ich zbudować."""
+    try:
+        head, rows = parse_ranking(md)
+        if not head or not rows:
+            return ""
+        items = build_items(head, rows)
+        specs = [
+            ("Ranking punktowy", "Suma punktów z podziałem na fundamenty i resztę oceny (0–100).", chart_scores(items)),
+            ("Mapa ryzyka i zysku", "Stop, strefa wejścia i cele jako odchylenie od ostatniego kursu (pierwsze 6 setupów z kompletem poziomów).", chart_ladder(items)),
+            ("Stosunek zysku do ryzyka", "R do celu 1 i celu 2 liczone od środka strefy wejścia; framework preferuje co najmniej ok. 1:2.", chart_rr(items)),
+        ]
+        cards = [f'<div class="chart-card"><h3>{esc(t)}</h3><p class="sub">{esc(s)}</p>{svg}</div>'
+                 for t, s, svg in specs if svg]
+        if not cards:
+            return ""
+        return '<section class="charts">\n<h2>Wykresy z rankingu</h2>\n' + "\n".join(cards) + "\n</section>"
+    except Exception:
+        return ""
+
+
+def deco_svg():
+    """Dekoracyjne świece i linia trendu do nagłówka (czysto ozdobne)."""
+    closes = [92, 88, 96, 90, 98, 104, 99, 108, 112, 106, 116, 122, 117, 126, 131, 138]
+    y = lambda v: 132 - (v - 80) * 1.5
+    out, prev, pts = [], 90, []
+    for i, c in enumerate(closes):
+        x = 24 + 31 * i
+        hi, lo = max(prev, c) + 5, min(prev, c) - 5
+        col = "#2BFF88" if c >= prev else "#FF5C7A"
+        out.append(f'<line x1="{x + 7}" y1="{y(hi):.1f}" x2="{x + 7}" y2="{y(lo):.1f}" stroke="{col}" stroke-width="1.5"/>')
+        top_, bot = y(max(prev, c)), y(min(prev, c))
+        out.append(f'<rect x="{x}" y="{top_:.1f}" width="14" height="{max(bot - top_, 2):.1f}" rx="2" fill="{col}"/>')
+        pts.append(f"{x + 7},{y(c):.1f}")
+        prev = c
+    return ('<svg class="deco" viewBox="0 0 520 140" preserveAspectRatio="xMaxYMid meet" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">'
+            '<defs><linearGradient id="fadeg" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#000"/><stop offset=".5" stop-color="#fff"/></linearGradient>'
+            '<mask id="fadem"><rect width="520" height="140" fill="url(#fadeg)"/></mask></defs>'
+            '<g mask="url(#fadem)">' + "".join(out) +
+            f'<polyline points="{" ".join(pts)}" fill="none" stroke="#66FCF1" stroke-width="2" opacity=".8"/></g></svg>')
