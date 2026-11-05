@@ -17,28 +17,49 @@ DAYS = ["poniedziałek", "wtorek", "środa", "czwartek", "piątek", "sobota", "n
 DISCLAIMER = "Ćwiczenie przesiewowe według zadanego frameworku, nie porada inwestycyjna."
 
 CSS = """
-:root{--bg:#fff;--fg:#1a1d21;--muted:#5b6470;--line:#d9dee5;--accent:#0b5cad;--head:#f1f4f8;--warn:#fff4e0}
-@media (prefers-color-scheme:dark){:root{--bg:#14171b;--fg:#e6e9ee;--muted:#9aa4b2;--line:#2c333b;--accent:#6db3ff;--head:#1d2228;--warn:#2b2417}}
+:root{
+  --bg:#0B0C10;--panel:#14181F;--panel2:#1F2833;--line:#2A3441;
+  --fg:#C5C6C7;--strong:#F2F4F5;--muted:#8A94A0;
+  --accent:#66FCF1;--accent2:#45A29E;--violet:#9B6BFF;
+  --up:#2BFF88;--down:#FF5C7A;--warn:#FFB347;
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+html{color-scheme:dark}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  background-image:radial-gradient(900px 380px at 85% -120px,rgba(155,107,255,.16),transparent 70%),radial-gradient(800px 360px at 5% -140px,rgba(102,252,241,.12),transparent 70%);
+  background-repeat:no-repeat}
 header,main,footer{max-width:1100px;margin:0 auto;padding:0 16px}
-header{padding-top:20px;padding-bottom:8px;border-bottom:1px solid var(--line)}
-header a.brand{font-weight:700;font-size:18px;color:var(--fg);text-decoration:none}
-nav{margin-top:6px;font-size:14px}
-nav a{color:var(--accent);margin-right:14px;text-decoration:none}
-.banner{background:var(--warn);border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin:16px 0;font-size:14px}
-h1{font-size:26px;line-height:1.25;margin:20px 0 8px}
-h2{font-size:21px;margin:30px 0 8px;padding-top:6px;border-top:1px solid var(--line)}
-h3{font-size:17px;margin:22px 0 6px}
+header{padding-top:22px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+header a.brand{font-weight:800;font-size:19px;letter-spacing:.2px;color:var(--strong);text-decoration:none}
+header a.brand::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--up);box-shadow:0 0 10px var(--up);margin-right:10px;vertical-align:middle}
+nav{margin-top:8px;font-size:14px}
+nav a{color:var(--accent2);margin-right:16px;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent}
+nav a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.banner{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;padding:11px 14px;margin:18px 0;font-size:14px;color:var(--fg)}
+.banner strong{color:var(--strong)}
+h1{font-size:27px;line-height:1.25;margin:22px 0 8px;color:var(--strong);letter-spacing:-.2px}
+h2{font-size:21px;margin:34px 0 10px;padding-top:12px;color:var(--accent);border-top:1px solid var(--line);position:relative}
+h2::before{content:"";position:absolute;top:-1px;left:0;width:56px;height:2px;background:linear-gradient(90deg,var(--accent),var(--violet))}
+h3{font-size:17px;margin:24px 0 6px;color:var(--strong)}
+strong{color:var(--strong)}
 a{color:var(--accent)}
-code{background:var(--head);padding:1px 5px;border-radius:4px;font-size:.92em}
-table{border-collapse:collapse;font-size:13px;margin:12px 0;display:block;overflow-x:auto;max-width:100%}
-th,td{border:1px solid var(--line);padding:5px 8px;text-align:left;white-space:nowrap}
-th{background:var(--head);position:sticky;top:0}
+a:hover{color:#fff}
+code{background:var(--panel2);color:var(--accent);padding:1px 6px;border-radius:4px;font-size:.92em}
+table{border-collapse:separate;border-spacing:0;font-size:13px;margin:14px 0;display:block;overflow-x:auto;max-width:100%;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+th{background:var(--panel2);color:var(--accent);font-weight:600;position:sticky;top:0;text-transform:none}
+tbody tr:hover td{background:rgba(102,252,241,.05)}
+td.up{color:var(--up);font-weight:600}
+td.down{color:var(--down);font-weight:600}
 ul{padding-left:22px}
-li{margin:3px 0}
-footer{color:var(--muted);font-size:13px;padding-top:24px;padding-bottom:40px}
-.list li{margin:8px 0}
+li{margin:4px 0}
+li::marker{color:var(--accent2)}
+hr{border:0;border-top:1px solid var(--line)}
+footer{color:var(--muted);font-size:13px;padding-top:26px;padding-bottom:44px;border-top:1px solid var(--line);margin-top:36px}
+.list li{margin:9px 0}
+::selection{background:var(--violet);color:#fff}
+@media (max-width:600px){body{font-size:15px}h1{font-size:23px}h2{font-size:19px}}
 """
 
 PAGE = """<!doctype html>
@@ -46,6 +67,7 @@ PAGE = """<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0B0C10">
 <title>{title}</title>
 <meta name="description" content="Dzienny skaner swing GPW — raport przed otwarciem sesji.">
 <style>{css}</style>
@@ -77,7 +99,11 @@ def pretty_date(stem):
 
 def render_md(text):
     md = markdown.Markdown(extensions=["tables", "sane_lists", "toc"], extension_configs={"toc": {"toc_depth": "2-3"}})
-    return md.convert(text)
+    out = md.convert(text)
+    # Koloruje komórki z samą zmianą procentową: +x% zielony, −x% czerwony.
+    out = re.sub(r"<td>(\+\s?\d[\d\s,.]*%)</td>", r'<td class="up">\1</td>', out)
+    out = re.sub(r"<td>([\u2212-]\s?\d[\d\s,.]*%)</td>", r'<td class="down">\1</td>', out)
+    return out
 
 
 def page(title, body, base=""):
