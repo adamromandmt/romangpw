@@ -1,0 +1,40 @@
+{
+  "tic": "SNT",
+  "announced_current_cycle": "nie",
+  "announcement_note": "Stan na 2026-11-05: nie znaleziono komunikatu o rekomendacji/zaliczce za rok obrotowy 2025/26 (zakonczony 30.09.2026). Ostatnia rekomendacja to 10,75 zl za FY2025 (rok obr. 1.10.2024-30.09.2025) ogloszona 22.12.2025 (biznesradar 142395; 99,7% zysku jednostkowego), WZA 20.01.2026 uchwalilo kwote zgodnie z rekomendacja. Lista komunikatow SNT na biznesradar.pl do 30.10.2026 (ESPI 45-52/2026) nie zawiera zadnej rekomendacji, zaliczki ani dywidendy; strefainwestorow (dywidendy/synektik-dywidenda-2026) tez nie pokazuje nowej decyzji. Rok obrotowy konczy sie 30 wrzesnia, wiec rekomendacja spodziewana dopiero po raporcie rocznym 22.12.2026. Zaliczek na dywidende spolka historycznie nie wyplacala (brak w danych).",
+  "history": [
+    {"fy": 2025, "rec_date": "2025-12-22", "rec_dps": 10.75, "agm_date": "2026-01-20", "final_dps": 10.75, "cum_date": "2026-01-27", "source": "https://www.biznesradar.pl/a/142395,synektik-chce-wyplacic-akcjonariuszom-niemal-caly-zysk-netto-za-2024-2025", "note": "dzien dywidendy 2026-01-29, wyplata 2026-02-02; uchwala WZA: https://www.bankier.pl/wiadomosc/SYNEKTIK-S-A-Uchwala-w-sprawie-wyplaty-dywidendy-9071112.html; rec_date wg daty artykulu biznesradar 22.12.2025 12:07 (nie sam ESPI)"},
+    {"fy": 2024, "rec_date": null, "rec_dps": null, "agm_date": "2025-01-22", "final_dps": 8.25, "cum_date": "2025-01-24", "source": "https://strefainwestorow.pl/dywidendy/synektik-dywidenda-2025", "note": "daty rekomendacji nie udalo sie potwierdzic (PAP zablokowany); wyplata 2025-01-31, dzien dywidendy 2025-01-28"},
+    {"fy": 2023, "rec_date": "2024-01-19", "rec_dps": 3.03, "agm_date": "2024-02-26", "final_dps": 3.03, "cum_date": "2024-02-29", "source": "https://www.parkiet.com/medycyna-i-zdrowie/art39718991-dywidenda-synektik-spolka-podzieli-sie-rekordowym-zyskiem", "note": "rec_date wg daty publikacji artykulu 19.01.2024 (25,8 mln zl lacznie); wyplata 2024-03-08"},
+    {"fy": 2022, "rec_date": null, "rec_dps": null, "agm_date": "2023-02-21", "final_dps": 0.60, "cum_date": "2023-02-27", "source": "https://strefainwestorow.pl/dywidendy/synektik-dywidenda-2026", "note": "tylko daty z tabeli dywidend"}
+  ],
+  "policy": "Brak formalnie przyjetej polityki dywidendowej (strefainwestorow.pl/dywidendy/synektik-dywidenda-2026); dywidenda wyplacana co roku od 2020, za FY2025 99,7% zysku jednostkowego (10,75 zl). Wiceprezes D. Korecki: podzial spolki (Syn2bio) powinien pozytywnie wplynac na potencjal dywidendowy (https://strefainwestorow.pl/wiadomosci/20260611/synektik-spodziewa-sie-dalszej-poprawy-wynikow-w-ii-polroczu).",
+  "next_reports": [
+    {"what": "Q4 roku obr. 2025/26 (lip-wrz 2026), raport kwartalny skonsolidowany", "date": "2026-11-18", "source": "https://www.biznesradar.pl/a/161773,synektik-sa-48-2026-terminy-publikacji-raportow-okresowych"},
+    {"what": "Raport roczny jednostkowy i skonsolidowany za rok obr. 2025/26", "date": "2026-12-22", "source": "https://www.biznesradar.pl/a/161773,synektik-sa-48-2026-terminy-publikacji-raportow-okresowych"},
+    {"what": "Q1 roku obr. 2026/27 (paz-gru 2026)", "date": "2027-02-24", "source": "https://www.biznesradar.pl/a/161773,synektik-sa-48-2026-terminy-publikacji-raportow-okresowych"}
+  ],
+  "expected_rec_window": {"from": "2026-12-22", "to": "2027-01-15", "basis": "Rekomendacja FY2025 padla 22.12.2025, 3 dni po raporcie rocznym (19.12.2025) i 29 dni przed WZA 20.01.2026; FY2023: rekomendacja 19.01.2024 przed WZA 26.02.2024. Raport roczny FY2025/26 zaplanowany na 22.12.2026, wiec rekomendacja najwczesniej tego dnia. Przy zmianie roku obrotowego na wrzesniowy dane tylko z 2 cykli (2025, 2026-oczekiwany); dywidendy.py daje okno 2026-12-12..2027-01-02 (zaczyna sie przed raportem rocznym)."},
+  "results_note": "Q3 2025/26 (kwi-cze 2026), dzialalnosc kontynuowana: przychody 292,3 mln zl (vs 154,2 rok wczesniej), EBITDA 71,5 mln zl, zysk netto ok. 55,1 mln zl; 9M zysk netto z dz. kontynuowanej ok. 138,0 mln zl (+61% r/r), laczny zysk netto grupy 386,4 mln zl z ksiegowym zyskiem ze spin-offu (https://strefainwestorow.pl/wiadomosci/20260805/synektik-mial-w-iii-kw-715-mln-zl-ebitda-z-dzial-kontynuowanej-zgodnie-z). Zysk jednostkowy FY2025/26 (podstawa dywidendy) nie jest jeszcze znany.",
+  "flags": [
+    "Rok obrotowy konczy sie 30.09; rekomendacja dopiero po raporcie rocznym 22.12.2026, wiec do tego czasu 'nie ogloszono' jest stanem normalnym, nie sygnalem negatywnym",
+    "Podzial: Syn2bio wydzielone (sad zarejestrowal 27.03.2026, debiut ok. 16.04.2026), akcjonariusze dostali akcje Syn2bio; zmienia strukture zysku jednostkowego i potencjalnie kwote dywidendy",
+    "Brak formalnej polityki dywidendowej; wyplata 99,7% zysku jednostkowego za FY2025 moze nie byc powtarzalna",
+    "Kolejne komunikaty o istotnych umowach sprzedazy (ESPI 45-52/2026) - brak sygnalow o zmianie dywidendy",
+    "Dane dividends.py (okno 12.12-02.01) sa zgodne co do rzedu wielkosci, ale zaczynaja sie przed raportem rocznym 22.12"
+  ],
+  "confidence": "wysoka",
+  "sources": [
+    "https://www.biznesradar.pl/a/142395,synektik-chce-wyplacic-akcjonariuszom-niemal-caly-zysk-netto-za-2024-2025",
+    "https://www.bankier.pl/wiadomosc/SYNEKTIK-S-A-Uchwala-w-sprawie-wyplaty-dywidendy-9071112.html",
+    "https://strefainwestorow.pl/dywidendy/synektik-dywidenda-2026",
+    "https://strefainwestorow.pl/dywidendy/synektik-dywidenda-2025",
+    "https://www.biznesradar.pl/a/161773,synektik-sa-48-2026-terminy-publikacji-raportow-okresowych",
+    "https://www.parkiet.com/komunikaty-espi/art43250621-synektik-spolka-akcyjna-terminy-publikacji-raportow-okresowych",
+    "https://www.parkiet.com/medycyna-i-zdrowie/art39718991-dywidenda-synektik-spolka-podzieli-sie-rekordowym-zyskiem",
+    "https://www.biznesradar.pl/wiadomosci/SYNEKTIK",
+    "https://ppcg.com.pl/synektik-akcje/",
+    "https://strefainwestorow.pl/wiadomosci/20260611/synektik-spodziewa-sie-dalszej-poprawy-wynikow-w-ii-polroczu",
+    "https://strefainwestorow.pl/wiadomosci/20260805/synektik-mial-w-iii-kw-715-mln-zl-ebitda-z-dzial-kontynuowanej-zgodnie-z"
+  ]
+}

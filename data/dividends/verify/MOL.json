@@ -1,0 +1,42 @@
+{
+  "tic": "MOL",
+  "announced_current_cycle": "nie",
+  "announcement_note": "Stan na 2026-11-05: brak propozycji Zarzadu MOL ani zamiaru dywidendy za 2026 (wyplacana w 2027). Poprzedni cykl zakonczony: FY2025 - propozycja Zarzadu opublikowana na BET 19.03.2026 (ok. HUF 300 na akcje = 180 podstawowa + ok. 120 nadzwyczajna, lacznie HUF 241,2 mld; strefainwestorow 19.03.2026 17:59), WZA 10.04.2026 uchwalilo HUF 241 196 528 700; kwota na akcje po wylaczeniu akcji wlasnych HUF 317,58, ostatni dzien z prawem 14.09.2026, poczatek wyplaty 25.09.2026 (economx.hu 10.09.2026). Zaliczek MOL nie wyplaca. Uwaga: dane dividends.py/biznesradar dla MOL (cum 2026-07-06, wyplata 2026-10-10, 3,27 zl) NIE zgadzaja sie z oficjalnymi terminami (wyplata miala byc w Q3 2026 - wniosek Komitetu Wykonawczego z 17.04.2026 o przesuniecie z czerwca).",
+  "history": [
+    {"fy": 2025, "rec_date": "2026-03-19", "rec_dps": 300, "agm_date": "2026-04-10", "final_dps": 317.58, "cum_date": "2026-09-14", "currency": "HUF", "source": "https://strefainwestorow.pl/wiadomosci/20260319/mol-chce-wyplacic-lacznie-ok-300-huf-dywidendy-na-akcje", "note": "180 podstawowa + ok. 120 nadzwyczajna; final_dps 317,58 po wylaczeniu akcji wlasnych (https://www.economx.hu/tozsde/mol-osztalek-tozsde/); wyplata od 2026-09-25 (opozniona z czerwca przez presje polityczna - MCC ok. 10% akcji); WZA przyspieszone przed wyborami"},
+    {"fy": 2024, "rec_date": "2025-04-01", "rec_dps": 275, "agm_date": "2025-04-24", "final_dps": 275, "cum_date": "2025-06-03", "currency": "HUF", "source": "https://www.portfolio.hu/en/equity/20250402/hungary-mol-to-pay-huge-dividend-751911", "note": "165 podstawowa + 110 nadzwyczajna, HUF 220,4 mld; Zarzad zdecydowal 1.04.2025; cum_date z dividends.py (wyplata ok. 2025-06-13), nie zweryfikowane oficjalnie"},
+    {"fy": 2023, "rec_date": "2024-03-21", "rec_dps": 250, "agm_date": "2024-04-25", "final_dps": 249.98, "cum_date": "2024-05-23", "currency": "HUF", "source": "https://serbia-energy.eu/hungary-mol-proposes-a-dividend-of-0-63-euros-per-share/", "note": "150 podstawowa + ok. 100 nadzwyczajna, ok. HUF 198 mld; propozycja BoD z 21.03.2024 (dokument bet.hu MOL_BoD_proposaltoAGM_20240321); final 249,98 wg ogloszenia MOL z 22.05.2024; cum_date z dividends.py"},
+    {"fy": 2022, "rec_date": "2023-04-04", "rec_dps": null, "agm_date": "2023-04-27", "final_dps": null, "cum_date": "2023-07-19", "currency": "HUF", "source": "https://bet.hu/newkibdata/128868932/MOL_dividend%20proposal_20230404_eng.pdf", "note": "data wg nazwy dokumentu 'dividend proposal 20230404'; tresci nie odczytano; kwota HUF nie potwierdzona"}
+  ],
+  "policy": "Brak formalnej polityki w odnalezionych zrodlach. Obserwowany wzorzec: dywidenda podstawowa rosnaca o ok. 9-10% rocznie (HUF 150 -> 165 -> 180) plus dywidenda nadzwyczajna (ok. 100 -> 110 -> 120); Zarzad uzasadnia wynikami, bilansem, planami inwestycyjnymi i niepewnoscia rynkowa (https://strefainwestorow.pl/wiadomosci/20260319/mol-chce-wyplacic-lacznie-ok-300-huf-dywidendy-na-akcje). Prezes Hernadi w 2025: brak wyjatkowych przejec zagrazajacych dywidendzie (https://www.portfolio.hu/en/equity/20250424/shareholders-approve-massive-dividend-payout-at-hungarys-mol-756969).",
+  "next_reports": [
+    {"what": "Q3 2026", "date": "2026-11-06", "source": "https://www.marketscreener.com/quote/stock/MOL-MAGYAR-OLAJ-ES-G-ZIPA-37907937/calendar/"},
+    {"what": "Wyniki roczne FY2026 (poprzednio 19.02.2026 za FY2025)", "date": null, "source": "https://www.marketscreener.com/quote/stock/MOL-MAGYAR-OLAJ-ES-G-ZIPA-37907937/calendar/"}
+  ],
+  "expected_rec_window": {"from": "2027-03-15", "to": "2027-04-06", "basis": "Propozycje Zarzadu do WZA: 04.04.2023, 21.03.2024, 01.04.2025, 19.03.2026 (publikowane na BET razem z materialami WZA, ok. 3-4 tygodnie przed WZA 24-27.04; w 2026 WZA 10.04 przyspieszone przed wyborami). Okno dividends.py (25.02-28.03) jest ok. 3 tygodnie za wczesne dla 3 z 4 obserwacji."},
+  "results_note": "FY2025 zysk MOL ok. HUF 261 mld (-11% r/r), wyplata ok. 92% (dailynewshungary.com 12.04.2026); Q2 2026 zysk po opodatkowaniu USD 786 mln, H1 2026 raport 7.08.2026 (https://bet.hu/newkibdata/129513190/MOL_H1_2026_20260807_eng.pdf); wskaznikow zadluzenia i FCF w odczytanym tekscie brak. Silne marze rafineryjne/petrochemiczne w H1 2026; Druzhba wylaczona w Q1 2026 na rekordowo dlugi okres.",
+  "flags": [
+    "Ryzyko polityczne Wegry: nowy rzad (Tisza, P. Magyar) i spor o wyplate dla MCC (ok. 10% akcji MOL); wyplata FY2025 przesunieta z czerwca na Q3 2026 (telex.hu 17.04.2026)",
+    "Znaczna czesc dywidendy to element nadzwyczajny (ok. 120 z ok. 300 HUF) - nie ma gwarancji powtorzenia",
+    "Dailynewshungary.com przypisuje duza czesc zysku 2025 rabatowej rosyjskiej ropie z Druzhby (zrodlo wtorne); Druzhba byla wylaczona w Q1 2026 na rekordowo dlugi okres; zysk 2025 -11% r/r",
+    "Dane dividends.py/biznesradar dla MOL niespojne z oficjalnymi terminami wyplaty (cum 14.09.2026 vs 06.07.2026; wyplata od 25.09 vs 10.10) i podane w PLN - nie uzywac jako zrodla do okien",
+    "Dywidenda w HUF; kwota na akcje liczona po wylaczeniu akcji wlasnych (317,58 vs 300 zapowiedzianych); wyplata dla posiadaczy z GPW przez KDPW moze miec inny termin (niezweryfikowane)",
+    "Wyniki Q3 2026 publikowane 06.11.2026 (jutro wzgledem daty skanu)"
+  ],
+  "confidence": "wysoka",
+  "sources": [
+    "https://strefainwestorow.pl/wiadomosci/20260319/mol-chce-wyplacic-lacznie-ok-300-huf-dywidendy-na-akcje",
+    "https://www.economx.hu/gazdasag/2026/03/20/mol-hernadi-zsolt-osztalekfizetes/",
+    "https://pap-mediaroom.pl/sites/default/files/attachments/202604/DOC.20260410.53963532.zal01_26_MOL_AGM_resolutions_20260410_eng_.pdf",
+    "https://dailynewshungary.com/mol-dividend-usd-753-million-before-elections-2026/",
+    "https://telex.hu/gazdasag/2026/04/17/mol-osztalekfizetes-hernadi-zsolt-magyar-peter-mcc-tozsde",
+    "https://infostart.hu/gazdasag/2026/04/17/a-mol-meghallotta-magar-peter-szavait-ez-lesz-az-osztalekfizetes-menetrendje",
+    "https://www.economx.hu/tozsde/mol-osztalek-tozsde/",
+    "https://www.portfolio.hu/en/equity/20250402/hungary-mol-to-pay-huge-dividend-751911",
+    "https://www.portfolio.hu/en/equity/20250424/shareholders-approve-massive-dividend-payout-at-hungarys-mol-756969",
+    "https://serbia-energy.eu/hungary-mol-proposes-a-dividend-of-0-63-euros-per-share/",
+    "https://bet.hu/newkibdata/129070259/MOL_dividend_per_share_20240522_eng.pdf",
+    "https://www.marketscreener.com/quote/stock/MOL-MAGYAR-OLAJ-ES-G-ZIPA-37907937/calendar/",
+    "https://bet.hu/newkibdata/129513190/MOL_H1_2026_20260807_eng.pdf"
+  ]
+}

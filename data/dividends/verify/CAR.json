@@ -1,0 +1,39 @@
+{
+  "tic": "CAR",
+  "announced_current_cycle": "nie",
+  "announcement_note": "Stan na 2026-11-05: nie znaleziono żadnej rekomendacji, zaliczki ani deklaracji dotyczącej dywidendy za FY2026. Ostatni cykl (FY2025) zamknięty: rekomendacja Zarządu 2026-04-29 (RB 9/2026) 1,42 zł, tego samego dnia pozytywna opinia Rady Nadzorczej, WZA 2026-05-28, dzień ostatni z prawem 2026-06-08, wypłata 2026-06-24. Spółka nie wypłaca zaliczek (w historii nie znaleziono). Nie znalazłem też nowej polityki dywidendowej na lata 2026-2028 (poprzednia 2023-2025 wygasła).",
+  "history": [
+    {"fy": 2020, "rec_date": "2021-04-27", "rec_dps": 1.42, "agm_date": "2021-05-27", "final_dps": 1.42, "cum_date": "2021-06-28", "source": "https://inwestor.intercars.com/en/?p=5042"},
+    {"fy": 2021, "rec_date": "2022-04-29", "rec_dps": 1.42, "agm_date": "2022-05-31", "final_dps": 1.42, "cum_date": "2022-06-28", "source": "https://www.parkiet.com/komunikaty-espi/art36192881-intercars-rekomendacja-rady-nadzorczej-w-sprawie-podzialu-zysku-za-rok-2021"},
+    {"fy": 2022, "rec_date": "2023-05-16", "rec_dps": 0.71, "agm_date": "2023-06-13", "final_dps": 0.71, "cum_date": "2023-06-15", "source": "https://inwestor.intercars.com.pl/en/reports/current-reports/current-report-no-13-2023/?syear=2023"},
+    {"fy": 2023, "rec_date": "2024-04-26", "rec_dps": 0.71, "agm_date": "2024-05-23", "final_dps": 0.71, "cum_date": "2024-06-06", "source": "https://inwestor.intercars.com/en/?p=5298"},
+    {"fy": 2024, "rec_date": "2025-05-05", "rec_dps": 1.42, "agm_date": "2025-06-10", "final_dps": 1.42, "cum_date": "2025-06-12", "source": "https://biznes.pap.pl/wiadomosci/firmy/update-inter-cars-automotive-wants-pay-pln-142-dividend-share-2024"},
+    {"fy": 2025, "rec_date": "2026-04-29", "rec_dps": 1.42, "agm_date": "2026-05-28", "final_dps": 1.42, "cum_date": "2026-06-08", "source": "https://inwestor.intercars.com/en/?p=10732"}
+  ],
+  "policy": "Polityka na lata 2023-2025 (przyjęta uchwałą Zarządu 2024-04-26, RB 8/2024): Zarząd będzie rekomendował dywidendę do 60% skonsolidowanego zysku netto Grupy, z uwzględnieniem planów inwestycyjnych, covenantów i perspektyw; polityka wygasła z FY2025, nowej (2026-2028) nie znaleziono (poprzednie polityki przyjmowano razem z rekomendacją w kwietniu: 2021-04-27, 2024-04-26). Źródło: https://inwestor.intercars.com/en/?p=8083",
+  "next_reports": [
+    {"what": "Q3 2026 (skonsolidowany raport kwartalny)", "date": "2026-11-17", "source": "https://inwestor.intercars.com/wp-content/uploads/2026/01/RB_02_2026_Publicationdatesforperiodicreportsin2026.pdf"},
+    {"what": "Raport roczny za 2026 (kalendarz 2027 jeszcze nieopublikowany; raport roczny za 2025 ukazał się 2026-04-28)", "date": null, "source": "https://inwestor.intercars.com/wp-content/uploads/2026/01/RB_02_2026_Publicationdatesforperiodicreportsin2026.pdf"}
+  ],
+  "expected_rec_window": {"from": "2027-04-26", "to": "2027-05-16", "basis": "Daty rekomendacji Zarządu z lat 2021-2026: 2021-04-27, 2022-04-29, 2023-05-16, 2024-04-26, 2025-05-05, 2026-04-29 - zawsze tuż po (lub w dniu) raportu rocznego, który w 2026 wyszedł 28 kwietnia. Wartość 2023-05-16 to najpóźniejszy przypadek."},
+  "results_note": "FY2025 (wstępne): przychody ok. 21,2 mld zł (+9%), EBITDA ok. 1,42 mld zł (+12%), zysk netto ok. 800 mln zł (+11%), dług netto/EBITDA ok. 2,22 (inwestor.intercars.com/en/?p=10608). H1 2026: przychody 11,41 mld zł (+12,8%), zysk netto jedn. dominującej 490,5 mln zł (+42% r/r) (https://www.biznesradar.pl/a/152296,inter-cars-sa-raport-okresowy-polroczny-za-psr). Dywidenda 1,42 zł = ok. 20,1 mln zł, czyli kilka procent zysku - zdolność do wypłaty ogromna, ograniczeniem jest polityka reinwestowania zysku (capex 2026 wyższy niż 2025).",
+  "flags": [
+    "Polityka dywidendowa 2023-2025 wygasła; brak informacji o nowej - ryzyko zmiany podejścia (dotąd payout kilka proc. zysku, kwota stała 0,71 lub 1,42 zł).",
+    "Wypłata 1,42 zł niezmienna 4 z ostatnich 6 lat (2020, 2021, 2024, 2025); 0,71 zł w 2022-2023; za FY2019 brak dywidendy (rekomendacja 2020-05-06). Dywidenda jest symboliczna względem kursu (stopa ok. 0,2%).",
+    "Wysoka dźwignia (ND/EBITDA ok. 2,2) i podwyższony capex (magazyn pod Poznaniem) - kowenanty uwzględniane w rekomendacji.",
+    "Biznesradar nie podaje dat rekomendacji (premium); daty rekomendacji pochodzą z raportów bieżących spółki / PAP. Artykuł ppcg z datą 2026-06-01 jest datą publikacji strony, nie rekomendacji."
+  ],
+  "confidence": "wysoka",
+  "sources": [
+    "https://inwestor.intercars.com/en/?p=10732",
+    "https://inwestor.intercars.com/en/?p=8083",
+    "https://inwestor.intercars.com/en/?p=5298",
+    "https://inwestor.intercars.com/en/?p=5042",
+    "https://inwestor.intercars.com/en/?p=10608",
+    "https://inwestor.intercars.com/wp-content/uploads/2026/01/RB_02_2026_Publicationdatesforperiodicreportsin2026.pdf",
+    "https://www.biznesradar.pl/a/151639,inter-cars-sa-25-2026-zmiana-terminu-publikacji-raportu-okresowego-za-i-polrocze-2026-roku",
+    "https://www.biznesradar.pl/a/152296,inter-cars-sa-raport-okresowy-polroczny-za-psr",
+    "https://www.biznesradar.pl/dywidenda/CAR",
+    "https://biznes.pap.pl/wiadomosci/firmy/update-inter-cars-automotive-wants-pay-pln-142-dividend-share-2024"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "tic": "WAS",
+  "announced_current_cycle": "nie",
+  "announcement_note": "Stan na 2026-11-05: nie znaleziono wniosku Zarządu ani zamiaru wypłaty za FY2026 (żadnych komunikatów o dywidendzie/zaliczce po uchwale WZA z 2026-05-28). Cykl FY2025 zamknięty: dywidenda 0,10 zł (ostatni dzień z prawem 2026-06-19, wypłata 2026-07-14). Nie udało się ustalić daty ani kwoty rekomendacji Zarządu za FY2025 (strefainwestorow wspomina o dwóch newsach z kwietnia-maja 2026 o planowanych 0,10 zł, ale bez daty). Wasko nie wypłaca zaliczek (nie znaleziono).",
+  "history": [
+    {"fy": 2020, "rec_date": null, "rec_dps": 0.04, "agm_date": "2021-07-05", "final_dps": 0.06, "cum_date": "2021-07-16", "source": "https://www.biznesradar.pl/a/101548,wyzsza-dywidenda-wasko"},
+    {"fy": 2021, "rec_date": null, "rec_dps": null, "agm_date": "2022-06-14", "final_dps": 0.10, "cum_date": "2022-06-28", "source": "https://www.biznesradar.pl/dywidenda/WAS"},
+    {"fy": 2022, "rec_date": null, "rec_dps": null, "agm_date": "2023-05-29", "final_dps": 0.07, "cum_date": "2023-06-14", "source": "https://www.biznesradar.pl/dywidenda/WAS"},
+    {"fy": 2023, "rec_date": null, "rec_dps": null, "agm_date": "2024-06-04", "final_dps": 0.03, "cum_date": "2024-06-19", "source": "https://www.biznesradar.pl/dywidenda/WAS"},
+    {"fy": 2024, "rec_date": "2025-04-28", "rec_dps": 0.02, "agm_date": "2025-05-29", "final_dps": 0.03, "cum_date": "2025-06-18", "source": "https://www.parkiet.com/komunikaty-espi/art42202331-wasko-spolka-akcyjna-wniosek-zarzadu-i-ocena-rady-nadzorczej-wasko-s-a-w-sprawie-podzialu-zysku-netto-za-rok-2024"},
+    {"fy": 2025, "rec_date": null, "rec_dps": null, "agm_date": "2026-05-28", "final_dps": 0.10, "cum_date": "2026-06-19", "source": "https://strefainwestorow.pl/notowania/spolki/PLHOGA000041/dywidendy"}
+  ],
+  "policy": "Nie znaleziono formalnej polityki dywidendowej Wasko (strefainwestorow i biznesradar jej nie podają); spółka płaci co roku od FY2019 (brak wypłat za 2016-2018), a kwota bywa podnoszona przez WZA ponad rekomendację Zarządu (FY2020: 0,04 -> 0,06; FY2024: 0,02 -> 0,03 zł).",
+  "next_reports": [
+    {"what": "Q3 2026 (skonsolidowany raport kwartalny)", "date": "2026-11-13", "source": "https://www.parkiet.com/komunikaty-espi/art43701881-wasko-spolka-akcyjna-terminy-publikacji-raportow-okresowych-w-2026-roku"},
+    {"what": "Raport roczny za 2026 (kalendarz 2027 jeszcze nieopublikowany; raport roczny za 2025 ukazał się 2026-04-30)", "date": null, "source": "https://www.parkiet.com/komunikaty-espi/art43701881-wasko-spolka-akcyjna-terminy-publikacji-raportow-okresowych-w-2026-roku"}
+  ],
+  "expected_rec_window": {"from": "2027-04-24", "to": "2027-05-08", "basis": "Jedyna zweryfikowana data rekomendacji: 2025-04-28 (RB 11/2025, wniosek Zarządu + ocena RN). Raporty roczne Wasko: ok. 2024-04-26, 2025-04-29, 2026-04-30 - wniosek zwykle wychodzi w tym samym tygodniu. Okno szacunkowe, niska pewność (brak dat dla pozostałych lat); okno ze skryptu (2027-03-25..04-15) jest zbyt wczesne wobec tego wzorca."},
+  "results_note": "H1 2026 (publ. 2026-09-11): przychody 309,3 mln zł (+33% r/r), EBIT 27,1 mln zł (4,7 mln rok wcześniej), zysk netto 23,3 mln zł (4,4 mln), CFO +14,2 mln zł (-13,1 mln) (https://www.biznesradar.pl/a/153319,wasko-sa-raport-okresowy-polroczny-za-psr); akcje +18% w dniu publikacji, ponad +70% od początku 2026 (https://www.parkiet.com/technologie/art45135921-wasko-krolem-sesji-rynek-docenia-poprawe-wynikow). 0,10 zł x 91,19 mln akcji = ok. 9,1 mln zł, więc zdolność do wypłaty poprawia się wraz z zyskiem.",
+  "flags": [
+    "Nie ustalono daty/kwoty rekomendacji za FY2025 ani rekomendacji za FY2020-2023 - luki w historii (null).",
+    "WZA kilkakrotnie podnosiło dywidendę ponad rekomendację Zarządu (2021: 0,04->0,06; 2025: 0,02->0,03) - sama rekomendacja nie jest dobrym wskaźnikiem końcowej kwoty.",
+    "Wasko jest spółką zależną/powiązaną z grupą Asseco (wg wyników wyszukiwania komunikaty na inwestor.asseco.com) - nie weryfikowano struktury akcjonariatu; brak informacji o wezwaniu.",
+    "Dane dywidend FY2024 z biznesradar (0,03 zł) potwierdzone w uchwale WZA 2025-05-29 (91 187 500 akcji, 2 735 625 zł)."
+  ],
+  "confidence": "niska",
+  "sources": [
+    "https://www.biznesradar.pl/dywidenda/WAS",
+    "https://strefainwestorow.pl/notowania/spolki/PLHOGA000041/dywidendy",
+    "https://www.parkiet.com/komunikaty-espi/art42202331-wasko-spolka-akcyjna-wniosek-zarzadu-i-ocena-rady-nadzorczej-wasko-s-a-w-sprawie-podzialu-zysku-netto-za-rok-2024",
+    "https://www.parkiet.com/komunikaty-espi/art42409691-wasko-spolka-akcyjna-informacja-o-podjeciu-uchwaly-o-wyplacie-dywidendy",
+    "https://ppcg.com.pl/wasko-wyplaci-003-zl-dywidendy-na-akcje-za-2024-rok/",
+    "https://www.biznesradar.pl/a/101548,wyzsza-dywidenda-wasko",
+    "https://www.parkiet.com/komunikaty-espi/art43701881-wasko-spolka-akcyjna-terminy-publikacji-raportow-okresowych-w-2026-roku",
+    "https://www.biznesradar.pl/a/153319,wasko-sa-raport-okresowy-polroczny-za-psr",
+    "https://www.parkiet.com/technologie/art45135921-wasko-krolem-sesji-rynek-docenia-poprawe-wynikow"
+  ]
+}

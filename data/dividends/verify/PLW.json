@@ -1,0 +1,41 @@
+{
+  "tic": "PLW",
+  "announced_current_cycle": "nie",
+  "announcement_note": "Stan na 2026-11-05: brak rekomendacji/zaliczki za 2026. Ostatnia rekomendacja: 17,39 zl za 2025 (115,9 mln zl), ESPI wieczorem 26.05.2026 (artykuly 26.05 strefainwestorow i 27.05.2026 09:42 inwestycje.pl; tytul ESPI: 'Rekomendacja Zarzadu co do dywidendy za rok 2025 i niepodzielonego zysku za rok 2024', bankier 9139975 - strona nieczytelna), WZA 30.06.2026, dzien dywidendy 07.07.2026, wyplata 17.07.2026. Spolka nie wyplaca zaliczek (biznesradar i ppcg: brak zaliczek/rat); pozycja 'Decyzja o dywidendzie za 2026' na stronach pozostaje pusta.",
+  "history": [
+    {"fy": 2025, "rec_date": "2026-05-26", "rec_dps": 17.39, "agm_date": "2026-06-30", "final_dps": 17.39, "cum_date": "2026-07-03", "source": "https://strefainwestorow.pl/wiadomosci/20260527/playway-chce-wyplacic-1739-zl-dywidendy-na-akcje-za-25", "note": "rec_date z daty artykulu strefainwestorow (26.05.2026); inwestycje.pl 27.05.2026 09:42; dzien dywidendy 2026-07-07, wyplata 2026-07-17; spadek z 22,55 zl (pierwsza obnizka od lat)"},
+    {"fy": 2024, "rec_date": "2025-06-02", "rec_dps": 22.55, "agm_date": "2025-06-30", "final_dps": 22.55, "cum_date": "2025-07-04", "source": "https://www.parkiet.com/komunikaty-espi/art42443631-playway-spolka-akcyjna-rekomendacja-zarzadu-co-do-dywidendy-za-rok-2024", "note": "ESPI 3/2025 z 2.06.2025 20:22; 148,83 mln zl; wyplata 2025-07-15"},
+    {"fy": 2023, "rec_date": "2024-05-23", "rec_dps": 21.82, "agm_date": "2024-06-20", "final_dps": 21.82, "cum_date": "2024-07-01", "source": "https://www.parkiet.com/komunikaty-espi/art40440351-playway-spolka-akcyjna-rekomendacja-zarzadu-co-do-dywidendy-za-rok-2023", "note": "ESPI 3/2024 z 23.05.2024 19:25; 144,0 mln zl; wyplata 2024-07-10"},
+    {"fy": 2022, "rec_date": "2023-05-01", "rec_dps": 19.39, "agm_date": "2023-06-30", "final_dps": 19.39, "cum_date": "2023-08-18", "source": "https://gameindustrylibrary.com/documents/raport-bie-cy-espi-nr-6-2023-rekomendacja-zarz-du-co-do-dywidendy-za-2022-r", "note": "ESPI 6/2023 z 1.05.2023; WZA przesunelo dzien dywidendy na sierpien (22.08.2023), wyplata 2023-08-29"},
+    {"fy": 2021, "rec_date": "2022-05-11", "rec_dps": 19.22, "agm_date": "2022-06-20", "final_dps": 19.22, "cum_date": "2022-06-24", "source": "https://www.parkiet.com/komunikaty-espi/art36275851-playway-s-a-rekomendacja-zarzadu-co-do-dywidendy-za-2021-r", "note": "raport z 11.05.2022 (publikacja 12.05 00:58); wyplata 2022-07-06"}
+  ],
+  "policy": "Zarzad powoluje sie na polityke dywidendowa przyjeta 24.04.2018 (raport biezacy 22/2018; tresc nie zostala odczytana - zrodlo: ESPI 3/2024 https://www.parkiet.com/komunikaty-espi/art40440351-playway-spolka-akcyjna-rekomendacja-zarzadu-co-do-dywidendy-za-rok-2023). Dywidenda wyplacana nieprzerwanie od 2018 (za 2017); bez zaliczek i rat (https://ppcg.com.pl/rekordowa-dywidenda-playway-2255-zl-na-akcje-za-2024-prognoza-dywidendy-za-2025/).",
+  "next_reports": [
+    {"what": "H1 2026 (raport polroczny skonsolidowany)", "date": "2026-09-25", "source": "https://gameindustrylibrary.com/documents/raport-bie-cy-espi-nr-1-2026-terminy-przekazywania-raport-w-okresowych-w-2026-roku"},
+    {"what": "Q3 2026 (raport kwartalny skonsolidowany)", "date": "2026-11-27", "source": "https://gameindustrylibrary.com/documents/raport-bie-cy-espi-nr-1-2026-terminy-przekazywania-raport-w-okresowych-w-2026-roku"},
+    {"what": "Raport roczny za 2026", "date": null, "source": "kalendarz na 2027 jeszcze nieopublikowany (raport za 2025 wyszedl 30.04.2026, Q1 29.05.2026)"}
+  ],
+  "expected_rec_window": {"from": "2027-05-01", "to": "2027-06-02", "basis": "Rekomendacje 2022-2026: 11.05.2022, 01.05.2023, 23.05.2024, 02.06.2025, 26.05.2026 (ok. 4 tyg. po raporcie rocznym 30.04.2026, przed Q1 29.05 i WZA 30.06). Okno z dividends.py (27.04-18.05, est. 11.05) lapie tylko 2 z 5 obserwacji (2022, 2023); typowy termin to druga polowa maja."},
+  "results_note": "Q1 2026: przychody 72,3 mln zl (-1,6% vs konsensus), EBIT 42,3 mln zl, zysk netto 35,6 mln zl (+4,9% vs konsensus; https://strefainwestorow.pl/wiadomosci/20260530/wyniki-playway-w-i-kw-2026-roku-vs-konsensus-pap-tabela). Dane H1 2026 (publikacja 25.09.2026) nie zostaly odczytane. Dywidenda 115,9 mln zl za 2025 wg ppcg.com.pl to ok. 166% skonsolidowanego zysku netto po odpisach, Zysk jednostkowy za 2025 nie zostal odczytany.",
+  "flags": [
+    "Rekomendacja za 2025 (17,39 zl) przerwala serie wzrostow (19,39 -> 21,82 -> 22,55); payout > zysk skonsolidowany netto - powtarzalnosc niepewna",
+    "Zmiana zasad rachunkowosci w 2025 (rekalkulacja danych za 2024)",
+    "Okno dividends.py zbyt wczesne wzgledem historii rekomendacji (3 z 5 ostatnich pozniej niz 18.05)",
+    "Rekomendacja zwykle publikowana po raporcie rocznym i przed Q1 - zalezy od terminu raportu rocznego FY2026 (nieznany)",
+    "Dzien dywidendy w 2023 przesuniety na sierpien - ostatni dzien z prawem moze sie rozjechac z WZA"
+  ],
+  "confidence": "wysoka",
+  "sources": [
+    "https://strefainwestorow.pl/wiadomosci/20260527/playway-chce-wyplacic-1739-zl-dywidendy-na-akcje-za-25",
+    "https://strefainwestorow.pl/dywidendy/playway-dywidenda-2026",
+    "https://inwestycje.pl/gielda/playway-rekomenduje-wyplate-1739-zl-dywidendy-na-akcje-za-2025/",
+    "https://www.parkiet.com/komunikaty-espi/art42443631-playway-spolka-akcyjna-rekomendacja-zarzadu-co-do-dywidendy-za-rok-2024",
+    "https://www.parkiet.com/komunikaty-espi/art40440351-playway-spolka-akcyjna-rekomendacja-zarzadu-co-do-dywidendy-za-rok-2023",
+    "https://gameindustrylibrary.com/documents/raport-bie-cy-espi-nr-6-2023-rekomendacja-zarz-du-co-do-dywidendy-za-2022-r",
+    "https://www.parkiet.com/komunikaty-espi/art36275851-playway-s-a-rekomendacja-zarzadu-co-do-dywidendy-za-2021-r",
+    "https://www.biznesradar.pl/dywidenda/PLW",
+    "https://ppcg.com.pl/rekordowa-dywidenda-playway-2255-zl-na-akcje-za-2024-prognoza-dywidendy-za-2025/",
+    "https://gameindustrylibrary.com/documents/raport-bie-cy-espi-nr-1-2026-terminy-przekazywania-raport-w-okresowych-w-2026-roku",
+    "https://strefainwestorow.pl/wiadomosci/20260530/wyniki-playway-w-i-kw-2026-roku-vs-konsensus-pap-tabela"
+  ]
+}

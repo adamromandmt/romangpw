@@ -1,0 +1,41 @@
+{
+  "tic": "BDX",
+  "announced_current_cycle": "nie",
+  "announcement_note": "Stan na 2026-11-05: nie znaleziono rekomendacji ani zaliczki za FY2026. Ostatni cykl (FY2025) zamknięty: rekomendacja Zarządu 2026-03-26 (32,42 zł, dzień dywidendy 2026-06-03, wypłata 2026-06-10, bez wzmianki o zaliczce), WZA 2026-05-27, ostatni dzień z prawem 2026-06-01. W 2026 nie ma zaliczki (w historii zaliczka tylko za FY2021: zamiar ogłoszony 2021-06-17, wypłata 14,90 zł 2021-10-18). Strategia 2026-2030+ (przyjęta 2026-10-28, RB) zakłada kontynuację polityki dywidendowej z wypłatą do 100% zysku netto, bez konkretnej kwoty.",
+  "history": [
+    {"fy": 2021, "rec_date": "2022-03-24", "rec_dps": 23.47, "agm_date": "2022-05-19", "final_dps": 23.47, "cum_date": "2022-05-27", "source": "https://www.parkiet.com/komunikaty-espi/art35933141-budimex-rekomendacja-wyplaty-dywidendy-za-rok-2021"},
+    {"fy": 2021, "rec_date": "2021-06-17", "rec_dps": null, "agm_date": null, "final_dps": 14.90, "cum_date": "2021-10-07", "source": "https://www.biznesradar.pl/a/101098,budimex-zamierza-wyplacic-zaliczke-na-poczet-dywidendy-za-2021-r"},
+    {"fy": 2022, "rec_date": "2023-03-30", "rec_dps": 17.99, "agm_date": "2023-05-18", "final_dps": 17.99, "cum_date": "2023-05-23", "source": "https://www.parkiet.com/komunikaty-espi/art38234611-budimex-rekomendacja-wyplaty-dywidendy-za-rok-2022"},
+    {"fy": 2023, "rec_date": "2024-04-09", "rec_dps": 35.69, "agm_date": "2024-05-23", "final_dps": 35.69, "cum_date": "2024-05-27", "source": "https://www.parkiet.com/komunikaty-espi/art40133181-budimex-sa-rekomendacja-wyplaty-dywidendy-za-rok-2023"},
+    {"fy": 2024, "rec_date": "2025-04-10", "rec_dps": 25.43, "agm_date": "2025-05-29", "final_dps": 25.43, "cum_date": "2025-06-03", "source": "https://www.parkiet.com/komunikaty-espi/art42105461-budimex-sa-rekomendacja-wyplaty-dywidendy-za-rok-2024"},
+    {"fy": 2025, "rec_date": "2026-03-26", "rec_dps": 32.42, "agm_date": "2026-05-27", "final_dps": 32.42, "cum_date": "2026-06-01", "source": "https://www.parkiet.com/komunikaty-espi/art44041851-budimex-sa-rekomendacja-wyplaty-dywidendy-za-rok-2025"}
+  ],
+  "policy": "Założenia polityki dywidendowej na lata obrotowe 2022-2026: Zarząd dąży do wnioskowania wypłaty 100% zysku netto za dany rok (z wyjątkami: potrzeby inwestycyjne, niski zysk, niepokryte straty, brak gotówki, ryzyko naruszenia kowenantów); źródło: https://budimex.pl/app/uploads/2024/03/Zalozenia_polityki_dywidendowej_Budimex_S.A._na_lata_2022_2026.pdf. Strategia 2026-2030+ z 2026-10-28 zakłada kontynuację i wypłatę do 100% zysku netto (https://www.money.pl/gielda/komunikaty/7344977751839297.html).",
+  "next_reports": [
+    {"what": "Q3 2026 (opublikowany już 2026-10-27, po sesji)", "date": "2026-10-27", "source": "https://budimex.pl/en/current-report/current-report-no-4-2026/"},
+    {"what": "Raport roczny za 2026 (kalendarz 2027 jeszcze nieopublikowany; raport roczny za 2025 ukazał się 2026-03-27)", "date": null, "source": "https://budimex.pl/en/current-report/current-report-no-4-2026/"}
+  ],
+  "expected_rec_window": {"from": "2027-03-24", "to": "2027-04-12", "basis": "Daty rekomendacji Zarządu z lat 2022-2026: 2022-03-24, 2023-03-30, 2024-04-09, 2025-04-10, 2026-03-26 (zwykle w tygodniu publikacji raportu rocznego, który w 2026 wyszedł 2026-03-27)."},
+  "results_note": "Q3 2026 (2026-10-27): przychody 2,83 mld zł, EBIT 206,9 mln zł, zysk netto jedn. dominującej 182,4 mln zł (+7% r/r); 9M 2026 skorygowany zysk netto 432,1 mln zł vs ok. 441 mln zł rok wcześniej; gotówka netto ok. 1,8 mld zł (wobec >2,6 mld zł na koniec 2025); portfel 17,3 mld zł (https://xyz.pl/?p=268436). Zdolność do wypłaty dobra, ale gotówka netto spadła o ok. 0,8 mld zł w 9M.",
+  "flags": [
+    "Polityka 100% zysku formalnie obejmuje lata 2022-2026 - FY2026 jest ostatnim rrokiem; zarząd (28.10.2025 i w strategii 28.10.2026) deklaruje kontynuację, ale nowa formalna polityka nie została opublikowana.",
+    "9M 2026 zysk netto ok. 432 mln zł vs 441 mln zł w 9M 2025; spadek gotówki netto o ok. 0,8 mld zł (kontrakty, inwestycje, możliwe przejęcia/koncesje wg strategii) - ryzyko niższej DPS niż 32,42 zł za FY2025 (wypłata za FY2025 mogła obejmować część kapitałów zapasowych; za FY2023 wprost 162 mln zł z kapitału zapasowego).",
+    "Zaliczka za FY2026 nie została ogłoszona (precedens tylko FY2021, zamiar ogłoszony w czerwcu); w strategii brak wzmianki o zaliczkach.",
+    "Daty WZA z biznesradar (raw_*.csv) - nie weryfikowano każdej z osobna w komunikatach; rekomendacje i terminy 2022-2026 sprawdzone w ESPI/parkiet."
+  ],
+  "confidence": "wysoka",
+  "sources": [
+    "https://www.parkiet.com/komunikaty-espi/art44041851-budimex-sa-rekomendacja-wyplaty-dywidendy-za-rok-2025",
+    "https://www.parkiet.com/komunikaty-espi/art42105461-budimex-sa-rekomendacja-wyplaty-dywidendy-za-rok-2024",
+    "https://www.parkiet.com/komunikaty-espi/art40133181-budimex-sa-rekomendacja-wyplaty-dywidendy-za-rok-2023",
+    "https://www.parkiet.com/komunikaty-espi/art38234611-budimex-rekomendacja-wyplaty-dywidendy-za-rok-2022",
+    "https://www.parkiet.com/komunikaty-espi/art35933141-budimex-rekomendacja-wyplaty-dywidendy-za-rok-2021",
+    "https://www.biznesradar.pl/a/101098,budimex-zamierza-wyplacic-zaliczke-na-poczet-dywidendy-za-2021-r",
+    "https://www.biznesradar.pl/a/108394,zarzad-budimex-proponuje-23-47-zl-dywidendy-na-akcje-ponad-wyplacona-zaliczke",
+    "https://budimex.pl/app/uploads/2024/03/Zalozenia_polityki_dywidendowej_Budimex_S.A._na_lata_2022_2026.pdf",
+    "https://biznes.pap.pl/wiadomosci/firmy/budimex-builders-management-board-wants-extend-current-dividend-policy-beyond-2026",
+    "https://www.money.pl/gielda/komunikaty/7344977751839297.html",
+    "https://xyz.pl/?p=268436",
+    "https://budimex.pl/en/current-report/current-report-no-4-2026/"
+  ]
+}
