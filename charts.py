@@ -6,6 +6,7 @@ funkcje po cichu pomijają wykres (strona i tak się zbuduje).
 Tabela rankingu musi mieć kolumny: Tic, Suma i opcjonalnie Fund/30, Klasa, Kurs,
 Wejście, Stop, C1, C2, R (C1 / C2).
 """
+import datetime as dt
 import html
 import math
 import re
@@ -35,6 +36,14 @@ def _range(s):
         return min(a, b), max(a, b)
     n = _first(s)
     return (n, n) if n is not None else (None, None)
+
+
+def _iso(s):
+    m = re.search(r"\d{4}-\d{2}-\d{2}", s or "")
+    try:
+        return dt.date.fromisoformat(m.group(0)) if m else None
+    except ValueError:
+        return None
 
 
 def _cells(line):
@@ -68,7 +77,9 @@ def _col(head, *names, prefix=False):
 def build_items(head, rows):
     c_tic = _col(head, "Tic")
     c_sum = _col(head, "Suma")
-    c_fund = _col(head, "Fund", prefix=True)
+    c_fund = _col(head, "Fund", "Dyw", prefix=True)
+    c_w0 = _col(head, "Okno od")
+    c_w1 = _col(head, "Okno do")
     c_kl = _col(head, "Klasa", prefix=True)
     c_price = _col(head, "Kurs", prefix=True)
     c_in = _col(head, "Wej", prefix=True)
@@ -92,6 +103,7 @@ def build_items(head, rows):
             "stop": _first(g(c_stop)),
             "c1": _first(g(c_c1)),
             "c2": _first(g(c_c2)),
+            "win0": _iso(g(c_w0)), "win1": _iso(g(c_w1)),
             "r1": _f(rr[0]) if len(rr) >= 1 else None,
             "r2": _f(rr[1]) if len(rr) >= 2 else None,
         })
@@ -117,14 +129,16 @@ def _legend(items, x, y):
     return "".join(out)
 
 
-def chart_scores(items):
+def chart_scores(items, div=False):
     rows = [i for i in items if i["suma"] is not None]
     if len(rows) < 2:
         return ""
     x0, x1, rh, top = 150, W - 70, 30, 52
     h = top + rh * len(rows) + 8
     sc = (x1 - x0) / 100
-    p = [_legend([("var(--up)", "Fundamenty (z 30)", 150), ("var(--accent2)", "Technika i reszta", 150)], x0, 14)]
+    leg = ([("var(--up)", "Dywidenda i timing (z 50)", 200), ("var(--accent2)", "Trend i technika (z 50)", 190)] if div
+           else [("var(--up)", "Fundamenty (z 30)", 150), ("var(--accent2)", "Technika i reszta", 150)])
+    p = [_legend(leg, x0, 14)]
     for v in (0, 25, 50, 75, 100):
         x = x0 + v * sc
         p.append(f'<line class="grid" x1="{x:.1f}" y1="{top - 10}" x2="{x:.1f}" y2="{h - 4}"/>')
@@ -222,15 +236,60 @@ def chart_rr(items):
     return _svg(h, "Stosunek zysku do ryzyka (R) dla celów 1 i 2", "".join(p))
 
 
-def render_charts(md):
+PL_MON = ["sty", "lut", "mar", "kwi", "maj", "cze", "lip", "sie", "wrz", "paź", "lis", "gru"]
+
+
+def chart_calendar(items, ref):
+    """Oś czasu okien oczekiwanego ogłoszenia dywidendy (kolumny Okno od / Okno do)."""
+    rows = [i for i in items if i["win0"] and i["win1"] and i["win0"] <= i["win1"]][:16]
+    if len(rows) < 2 or ref is None:
+        return ""
+    start = ref
+    end = min(max(max(i["win1"] for i in rows), ref + dt.timedelta(days=150)), ref + dt.timedelta(days=420))
+    span = (end - start).days or 1
+    x0, x1, top, rh = 110, W - 40, 56, 30
+    h = top + rh * len(rows) + 12
+    X = lambda d: x0 + (min(max(d, start), end) - start).days / span * (x1 - x0)
+    p = []
+    m = dt.date(start.year, start.month, 1)
+    while m <= end:
+        if m >= start:
+            x = X(m)
+            p.append(f'<line class="grid" x1="{x:.1f}" y1="{top - 12}" x2="{x:.1f}" y2="{h - 6}"/>')
+            lab = PL_MON[m.month - 1] + (f" {m.year % 100}" if m.month == 1 or m == dt.date(start.year, start.month, 1) else "")
+            p.append(f'<text class="tick" x="{x + 3:.1f}" y="{top - 18}">{lab}</text>')
+        m = dt.date(m.year + (m.month == 12), m.month % 12 + 1, 1)
+    p.append(f'<line x1="{X(start):.1f}" y1="{top - 12}" x2="{X(start):.1f}" y2="{h - 6}" style="stroke:var(--strong);stroke-dasharray:4 4;opacity:.7"/>')
+    p.append(f'<text class="warn" x="{X(start) + 4:.1f}" y="{top - 32}">dziś</text>')
+    for n, it in enumerate(rows):
+        y = top + n * rh
+        cls = f' <tspan class="cls">· {it["kl"]}</tspan>' if it["kl"] else ""
+        p.append(f'<text class="lbl" x="{x0 - 12}" y="{y + 19}" text-anchor="end">{esc(it["tic"])}{cls}</text>')
+        xa, xb = X(it["win0"]), X(it["win1"])
+        w = max(xb - xa, 6)
+        op = 0.45 + 0.55 * min(max((it["suma"] or 50) / 100, 0), 1)
+        tip = f'{it["tic"]}: okno ogłoszenia {it["win0"].isoformat()} … {it["win1"].isoformat()}'
+        p.append(f'<g><title>{esc(tip)}</title><rect x="{xa:.1f}" y="{y + 7}" width="{w:.1f}" height="16" rx="4" style="fill:var(--up);opacity:{op:.2f}"/></g>')
+        lab = f'{it["win0"].day}.{it["win0"].month:02d}–{it["win1"].day}.{it["win1"].month:02d}'
+        tx = xb + 8 if xb + 8 < x1 - 70 else xa - 8
+        anchor = "start" if xb + 8 < x1 - 70 else "end"
+        p.append(f'<text class="tick" x="{tx:.1f}" y="{y + 19}" text-anchor="{anchor}">{lab}</text>')
+    return _svg(h, "Okna oczekiwanego ogłoszenia dywidendy", "".join(p))
+
+
+def render_charts(md, ref=None):
     """Zwraca HTML sekcji z wykresami albo pusty tekst, gdy nie da się ich zbudować."""
     try:
         head, rows = parse_ranking(md)
         if not head or not rows:
             return ""
         items = build_items(head, rows)
-        specs = [
-            ("Ranking punktowy", "Suma punktów z podziałem na fundamenty i resztę oceny (0–100).", chart_scores(items)),
+        div = any(h.startswith("Dyw") for h in head)
+        specs = []
+        if div:
+            specs.append(("Kalendarz oczekiwanych ogłoszeń", "Okno, w którym najpewniej pojawi się rekomendacja dywidendy; intensywność koloru rośnie z wynikiem.", chart_calendar(items, ref)))
+        specs += [
+            ("Ranking punktowy", ("Suma punktów: dywidenda i timing oraz trend i technika (0–100)." if div else "Suma punktów z podziałem na fundamenty i resztę oceny (0–100)."), chart_scores(items, div)),
             ("Mapa ryzyka i zysku", "Stop, strefa wejścia i cele jako odchylenie od ostatniego kursu (pierwsze 6 setupów z kompletem poziomów).", chart_ladder(items)),
             ("Stosunek zysku do ryzyka", "R do celu 1 i celu 2 liczone od środka strefy wejścia; framework preferuje co najmniej ok. 1:2.", chart_rr(items)),
         ]

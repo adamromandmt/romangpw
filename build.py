@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Buduje statyczną stronę z raportów Markdown w reports/.
+"""Buduje statyczną stronę z raportów Markdown.
 
-Wynik: index.html (najnowszy raport), reports/<data>.html, archiwum.html.
+Swing: reports/*.md -> index.html, reports/<data>.html, archiwum.html.
+Dywidendy: dywidendy/*.md -> dywidendy.html, dywidendy/<data>.html, dywidendy-archiwum.html.
 Wymaga pakietu `markdown` (pip install markdown).
 """
 import html
@@ -47,6 +48,7 @@ header a.brand::before{content:"";display:inline-block;width:10px;height:10px;bo
 nav{position:relative;margin-top:10px;font-size:14px}
 nav a{color:var(--accent2);margin-right:18px;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent}
 nav a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+nav a.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
 .banner{background:rgba(15,22,20,.85);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;padding:11px 14px;margin:18px 0;font-size:14px;color:var(--fg);backdrop-filter:blur(4px)}
 .banner strong{color:var(--accent)}
 h1{font-size:27px;line-height:1.25;margin:22px 0 8px;color:var(--strong);letter-spacing:-.2px}
@@ -95,26 +97,37 @@ PAGE = """<!doctype html>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0B0C10">
 <title>{title}</title>
-<meta name="description" content="Dzienny skaner swing GPW — raport przed otwarciem sesji.">
+<meta name="description" content="{desc}">
 <style>{css}</style>
 </head>
 <body>
 <header>
 {deco}
-<a class="brand" href="{base}index.html">romangpw.pl · skaner swing GPW</a>
-<nav><a href="{base}index.html">Najnowszy raport</a><a href="{base}archiwum.html">Archiwum</a></nav>
+<a class="brand" href="{base}index.html">romangpw.pl · skaner GPW</a>
+<nav>{nav}</nav>
 </header>
 <main>
 {body}
 </main>
-<footer>{disclaimer}<br>Dane z publicznych źródeł (m.in. biznesradar.pl, bankier.pl), mogą zawierać błędy lub opóźnienia. Raport generowany automatycznie w dni robocze przed otwarciem GPW.</footer>
+<footer>{disclaimer}<br>Dane z publicznych źródeł (m.in. biznesradar.pl, bankier.pl), mogą zawierać błędy lub opóźnienia. Raporty generowane automatycznie.</footer>
 </body>
 </html>
 """
 
 
+DIVS = ROOT / "dywidendy"
+DESC_SWING = "Dzienny skaner swing GPW — raport przed otwarciem sesji."
+DESC_DIV = "Spółki GPW regularnie wypłacające dywidendę, w trendzie wzrostowym, przed spodziewanym ogłoszeniem dywidendy."
+TABS = [("swing", "index.html", "Swing"), ("div", "dywidendy.html", "Dywidendy"),
+        ("arch", "archiwum.html", "Archiwum swing"), ("darch", "dywidendy-archiwum.html", "Archiwum dywidend")]
+
+
+def md_files(folder):
+    return sorted(folder.glob("20??-??-??.md")) if folder.exists() else []
+
+
 def report_files():
-    return sorted(REPORTS.glob("20??-??-??.md"))
+    return md_files(REPORTS)
 
 
 def pretty_date(stem):
@@ -124,13 +137,13 @@ def pretty_date(stem):
     return f"{DAYS[d.weekday()]} {d.day}.{d.month:02d}.{d.year}"
 
 
-def render_md(text):
+def render_md(text, ref=None):
     md = markdown.Markdown(extensions=["tables", "sane_lists", "toc"], extension_configs={"toc": {"toc_depth": "2-3"}})
     out = md.convert(text)
     # Koloruje komórki z samą zmianą procentową: +x% zielony, −x% czerwony.
     out = re.sub(r"<td>(\+\s?\d[\d\s,.]*%)</td>", r'<td class="up">\1</td>', out)
     out = re.sub(r"<td>([\u2212-]\s?\d[\d\s,.]*%)</td>", r'<td class="down">\1</td>', out)
-    charts = render_charts(text)
+    charts = render_charts(text, ref)
     if charts:
         for m in re.finditer(r"<table>.*?</table>", out, flags=re.S):
             if "<th>Suma</th>" in m.group(0):
@@ -139,38 +152,58 @@ def render_md(text):
     return out
 
 
-def page(title, body, base=""):
-    return PAGE.format(title=html.escape(title), css=CSS, base=base, body=body, disclaimer=DISCLAIMER, deco=deco_svg())
+def nav_html(active, base):
+    return "".join(
+        f'<a href="{base}{href}"' + (' class="on"' if key == active else "") + f">{label}</a>"
+        for key, href, label in TABS
+    )
+
+
+def page(title, body, base="", active="swing", desc=DESC_SWING):
+    return PAGE.format(title=html.escape(title), css=CSS, base=base, body=body, disclaimer=DISCLAIMER,
+                       deco=deco_svg(), nav=nav_html(active, base), desc=html.escape(desc))
+
+
+def build_section(files, folder, out_name, arch_name, label, active, arch_active, desc, title_prefix, root_base):
+    """Buduje raporty jednego rodzaju. Zwraca najnowszą datę albo None."""
+    import datetime as dt
+
+    if not files:
+        if out_name != "index.html":
+            body = ('<div class="banner">Pierwszy raport w przygotowaniu. Zakładka pokaże spółki regularnie wypłacające '
+                    'dywidendę, które jeszcze jej nie ogłosiły, z szacowanym oknem ogłoszenia.</div>')
+            (ROOT / out_name).write_text(page(title_prefix, body, active=active, desc=desc), encoding="utf-8")
+        return None
+    sub = folder.name
+    for f in files:
+        stem = f.stem
+        body = (f'<div class="banner">{label} z dnia <strong>{pretty_date(stem)}</strong> · '
+                f'<a href="../{arch_name}">archiwum</a></div>\n' + render_md(f.read_text(encoding="utf-8"), dt.date.fromisoformat(stem)))
+        (folder / f"{stem}.html").write_text(page(f"{title_prefix} {stem}", body, base="../", active=active, desc=desc), encoding="utf-8")
+    latest = files[-1]
+    stem = latest.stem
+    body = (f'<div class="banner">Najnowszy raport: <strong>{pretty_date(stem)}</strong>. '
+            f'<a href="{arch_name}">Poprzednie raporty</a></div>\n'
+            + render_md(latest.read_text(encoding="utf-8"), dt.date.fromisoformat(stem)))
+    (ROOT / out_name).write_text(page(f"{title_prefix} — {stem}", body, active=active, desc=desc), encoding="utf-8")
+    items = "\n".join(
+        f'<li><a href="{sub}/{f.stem}.html">{pretty_date(f.stem)}</a> · <a href="{sub}/{f.name}">.md</a></li>'
+        for f in reversed(files)
+    )
+    arch = f'<h1>Archiwum raportów — {title_prefix.lower()}</h1>\n<ul class="list">\n{items}\n</ul>'
+    (ROOT / arch_name).write_text(page(f"Archiwum — {title_prefix}", arch, active=arch_active, desc=desc), encoding="utf-8")
+    return stem
 
 
 def main():
-    files = report_files()
-    if not files:
+    sw = build_section(report_files(), REPORTS, "index.html", "archiwum.html", "Raport", "swing", "arch",
+                       DESC_SWING, "GPW swing", "")
+    if sw is None:
         print("Brak raportów w reports/", file=sys.stderr)
         return 1
-
-    for f in files:
-        stem = f.stem
-        text = f.read_text(encoding="utf-8")
-        body = f'<div class="banner">Raport z dnia <strong>{pretty_date(stem)}</strong> · <a href="../archiwum.html">archiwum</a></div>\n' + render_md(text)
-        (REPORTS / f"{stem}.html").write_text(page(f"GPW swing {stem}", body, base="../"), encoding="utf-8")
-
-    latest = files[-1]
-    stem = latest.stem
-    body = (
-        f'<div class="banner">Najnowszy raport: <strong>{pretty_date(stem)}</strong>. '
-        'Aktualizacja w dni robocze przed otwarciem GPW. <a href="archiwum.html">Poprzednie raporty</a></div>\n'
-        + render_md(latest.read_text(encoding="utf-8"))
-    )
-    (ROOT / "index.html").write_text(page(f"GPW swing — {stem}", body), encoding="utf-8")
-
-    items = "\n".join(
-        f'<li><a href="reports/{f.stem}.html">{pretty_date(f.stem)}</a> · <a href="reports/{f.name}">.md</a></li>'
-        for f in reversed(files)
-    )
-    arch = f'<h1>Archiwum raportów</h1>\n<ul class="list">\n{items}\n</ul>'
-    (ROOT / "archiwum.html").write_text(page("Archiwum — GPW swing", arch), encoding="utf-8")
-    print(f"Zbudowano {len(files)} raport(ów); najnowszy: {stem}")
+    dv = build_section(md_files(DIVS), DIVS, "dywidendy.html", "dywidendy-archiwum.html", "Raport dywidendowy", "div", "darch",
+                       DESC_DIV, "Dywidendy GPW", "")
+    print(f"Zbudowano: swing {len(report_files())} (najnowszy {sw}); dywidendy {len(md_files(DIVS))}" + (f" (najnowszy {dv})" if dv else ""))
     return 0
 
 

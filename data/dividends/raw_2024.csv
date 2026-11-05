@@ -1,0 +1,199 @@
+ticker,company,fiscal_year,agm_date,last_cum_date,pay_date,dps_pln,status
+SPH,SOPHARMA AD,2023,24 lis 23,06 gru 23,22 sty 24,2.01,wypłacona
+DEL,DELKO,2022,14 gru 23,29 gru 23,17 sty 24,0.90,wypłacona
+MZA,MUZA,2022,08 lis 23,04 sty 24,15 sty 24,1.00,wypłacona
+TXT,TEXT,2023,18 gru 23,04 sty 24,15 sty 24,1.63,wypłacona
+ARH,ARCHICOM,2023,27 lis 23,10 sty 24,19 sty 24,0.46,wypłacona
+ATP,ATLANTA POLAND,2023,19 gru 23,18 sty 24,06 lut 24,0.49,wypłacona
+RBW,RAINBOW TOURS,2023,14 gru 23,22 sty 24,31 sty 24,2.00,wypłacona
+PKO,PKO BP,2023,19 gru 23,23 sty 24,01 lut 24,1.28,wypłacona
+SNT,SYNEKTIK SPOLKA AKCYJNA,2023,26 lut 24,29 lut 24,08 mar 24,3.03,wypłacona
+IFI,IFIRMA SA,2023,19 lut 24,08 mar 24,19 mar 24,0.23,wypłacona
+ABE,AB,2022,06 mar 24,13 mar 24,05 kwi 24,2.00,wypłacona
+INL,INTROL,2023,03 kwi 24,05 kwi 24,11 kwi 24,0.24,wypłacona
+GTN,GETIN HOLDING,2023,04 kwi 24,05 kwi 24,12 kwi 24,0.27,wypłacona
+PHR,PHARMENA,2023,03 kwi 24,08 kwi 24,24 kwi 24,0.85,wypłacona
+ING,ING BANK SLASKI,2023,11 kwi 24,15 kwi 24,06 maj 24,33.35,wypłacona
+STX,STALEXPORT,2023,11 kwi 24,17 kwi 24,26 kwi 24,0.45,wypłacona
+UCG,UNICREDIT,2023,05 lut 24,18 kwi 24,24 kwi 24,7.78,wypłacona
+LPP,LPP,2023,31 sty 24,19 kwi 24,30 kwi 24,285.00,wypłacona
+BNP,BNP PARIBAS BANK POLSKA,2023,16 kwi 24,19 kwi 24,10 maj 24,3.41,wypłacona
+PEO,PEKAO,2023,17 kwi 24,22 kwi 24,10 maj 24,19.20,wypłacona
+SAN,BANCO SANTANDER,2023,22 mar 24,26 kwi 24,02 maj 24,0.41,wypłacona
+NWA,NWAIDM,2023,24 kwi 24,29 kwi 24,07 maj 24,3.00,wypłacona
+MUR,MURAPOL,2023,30 kwi 24,30 kwi 24,08 maj 24,1.97,wypłacona
+MVP,MARVIPOL DEVELOPMENT,2023,24 kwi 24,30 kwi 24,13 maj 24,1.06,wypłacona
+ALR,ALIOR BANK,2023,26 kwi 24,08 maj 24,24 maj 24,4.42,wypłacona
+KRU,KRUK,2023,10 maj 24,13 maj 24,20 maj 24,18.00,wypłacona
+MNC,MENNICA,2023,07 maj 24,13 maj 24,24 maj 24,1.25,wypłacona
+SKA,SNIEZKA,2023,26 kwi 24,13 maj 24,29 maj 24,3.17,wypłacona
+EBP,ERSTE BANK POLSKA,2023,18 kwi 24,14 maj 24,23 maj 24,44.63,wypłacona
+OND,ONDE,2023,14 maj 24,16 maj 24,28 maj 24,0.31,wypłacona
+SEK,SEKO,2023,08 maj 24,16 maj 24,24 maj 24,1.00,wypłacona
+OTS,OT LOGISTICS,2023,15 maj 24,17 maj 24,24 maj 24,2.86,wypłacona
+ERB,ERBUD,2023,16 maj 24,20 maj 24,04 cze 24,1.68,wypłacona
+DIG,DIGITAL NETWORK,2023,16 maj 24,20 maj 24,27 maj 24,4.10,wypłacona
+IPE,IPOPEMA,2023,16 maj 24,21 maj 24,29 maj 24,0.30,wypłacona
+BRS,BORYSZEW,2023,20 maj 24,23 maj 24,04 cze 24,0.44,wypłacona
+ACG,AC SA,2023,16 maj 24,23 maj 24,04 cze 24,3.00,wypłacona
+PCR,PCC ROKITA,2023,20 maj 24,23 maj 24,29 maj 24,6.70,wypłacona
+PCX,PCC EXOL,2023,20 maj 24,23 maj 24,29 maj 24,0.07,wypłacona
+MOL,MOL NYRT.,2023,25 kwi 24,23 maj 24,05 cze 24,2.30,wypłacona
+IMS,IMS,2023,23 maj 24,24 maj 24,31 maj 24,0.28,wypłacona
+BDX,BUDIMEX,2023,23 maj 24,27 maj 24,06 cze 24,35.69,wypłacona
+EDI,ED INVEST,2023,23 maj 24,27 maj 24,03 cze 24,0.27,wypłacona
+VRC,VERCOM,2023,16 maj 24,27 maj 24,31 maj 24,1.60,wypłacona
+ULM,ULMA SA,2023,21 maj 24,27 maj 24,12 cze 24,2.30,wypłacona
+KMP,KOMPAP,2023,23 maj 24,28 maj 24,20 cze 24,1.05,wypłacona
+MEX,MEX POLSKA,2023,14 maj 24,29 maj 24,14 cze 24,0.27,wypłacona
+ATG,ATM GRUPA SA,2023,24 maj 24,29 maj 24,07 cze 24,0.18,wypłacona
+ODL,ODLEWNIE,2023,15 maj 24,29 maj 24,14 cze 24,0.50,wypłacona
+XTB,XTB,2023,23 maj 24,29 maj 24,20 cze 24,5.02,wypłacona
+INL,INTROL,2023,27 maj 24,29 maj 24,05 cze 24,0.24,wypłacona
+APR,AUTO PARTNER,2023,24 maj 24,30 maj 24,18 cze 24,0.15,wypłacona
+RPC,ROPCZYCE,2023,08 maj 24,31 maj 24,10 cze 24,1.00,wypłacona
+ETL,EUROTEL,2023,21 maj 24,03 cze 24,12 cze 24,4.00,wypłacona
+SEL,SELENA FM SA,2023,23 maj 24,04 cze 24,30 cze 24,1.50,wypłacona
+JWW,JWW INVEST,2023,28 maj 24,05 cze 24,21 cze 24,0.19,wypłacona
+CAR,INTER CARS,2023,23 maj 24,06 cze 24,19 cze 24,0.71,wypłacona
+IFI,IFIRMA SA,2024,13 maj 24,06 cze 24,17 cze 24,0.20,wypłacona
+DGA,DGA,2023,27 maj 24,10 cze 24,19 cze 24,0.30,wypłacona
+ATC,ARCTIC PAPER,2023,29 maj 24,10 cze 24,18 cze 24,1.00,wypłacona
+NEU,NEUCA,2023,16 maj 24,11 cze 24,25 cze 24,14.50,wypłacona
+ASE,ASSECO SOUTH,2023,07 maj 24,11 cze 24,20 cze 24,1.65,wypłacona
+DVL,DEVELIA,2023,16 maj 24,13 cze 24,05 lip 24,0.25,wypłacona
+DVL,DEVELIA,2023,16 maj 24,13 cze 24,06 wrz 24,0.25,wypłacona
+ASB,ASBISC,2023,08 maj 24,13 cze 24,27 cze 24,1.19,wypłacona
+SWG,SECO WARWICK,2023,13 cze 24,14 cze 24,28 cze 24,1.00,wypłacona
+AMC,AMICA,2023,11 cze 24,14 cze 24,25 cze 24,2.50,wypłacona
+OPN,OPONEO.PL,2023,13 cze 24,17 cze 24,24 cze 24,5.00,wypłacona
+WWL,WAWEL,2023,30 kwi 24,18 cze 24,03 lip 24,35.00,wypłacona
+ACP,ASSECO POLAND,2023,12 cze 24,19 cze 24,28 cze 24,3.66,wypłacona
+CDR,CD PROJEKT RED,2023,14 cze 24,19 cze 24,27 cze 24,1.00,wypłacona
+CLD,CLOUD TECHNOLOGIES,2023,10 cze 24,19 cze 24,28 cze 24,1.25,wypłacona
+MGT,MANGATA HOLDING SA,2023,11 cze 24,19 cze 24,28 cze 24,6.75,wypłacona
+WAS,WASKO,2023,04 cze 24,19 cze 24,09 lip 24,0.03,wypłacona
+GPP,GRUPA PRACUJ,2023,18 cze 24,20 cze 24,05 lip 24,2.00,wypłacona
+NWG,NEWAG,2023,17 cze 24,20 cze 24,16 sie 24,0.96,wypłacona
+CBF,CYBER_FOLKS,2023,27 maj 24,20 cze 24,26 cze 24,1.50,wypłacona
+CRJ,CREEPY JAR,2023,14 cze 24,20 cze 24,01 lip 24,13.11,wypłacona
+TAR,TARCZYNSKI,2023,17 cze 24,20 cze 24,27 cze 24,2.90,wypłacona
+TLX,TALEX,2023,05 cze 24,20 cze 24,02 lip 24,0.90,wypłacona
+QNT,QUANTUM,2023,19 cze 24,21 cze 24,25 lip 24,1.77,wypłacona
+FAB,FABRITY,2023,20 cze 24,21 cze 24,28 cze 24,3.25,wypłacona
+AST,ASTARTA HOLDING,2023,04 cze 24,21 cze 24,03 lip 24,2.15,wypłacona
+ATD,ATENDE,2023,14 cze 24,24 cze 24,03 lip 24,0.14,wypłacona
+CTS,CITY SERVICE SE,2023,20 cze 24,24 cze 24,04 lip 24,0.25,wypłacona
+RBW,RAINBOW TOURS,2023,18 cze 24,24 cze 24,03 lip 24,3.50,wypłacona
+UNT,UNIMOT,2023,17 cze 24,24 cze 24,10 lip 24,4.00,wypłacona
+OPL,ORANGE POLSKA,2023,19 kwi 24,24 cze 24,10 lip 24,0.48,wypłacona
+DOM,DOM DEVELOPMENT,2023,19 cze 24,24 cze 24,04 lip 24,6.50,wypłacona
+CEZ,CEZ A.S.,2023,24 cze 24,25 cze 24,01 sie 24,8.99,wypłacona
+MRB,MIRBUD,2023,21 cze 24,25 cze 24,07 sie 24,0.21,wypłacona
+ZMT,ZAMET,2023,21 cze 24,25 cze 24,02 lip 24,0.39,wypłacona
+1AT,ATAL,2023,20 cze 24,25 cze 24,03 lip 24,6.00,wypłacona
+BHW,HANDLOWY,2023,19 cze 24,25 cze 24,04 lip 24,11.15,wypłacona
+PBX,PEKABEX,2023,25 cze 24,26 cze 24,31 lip 24,0.41,wypłacona
+CLN,CELON PHARMA,2023,21 cze 24,26 cze 24,04 lip 24,0.08,wypłacona
+KGH,KGHM POLSKA MIEDZ SA,2023,07 cze 24,26 cze 24,16 lip 24,1.50,wypłacona
+PAT,PATENTUS,2023,20 cze 24,27 cze 24,12 lip 24,0.50,wypłacona
+OBL,ORZEL BIALY,2023,20 cze 24,27 cze 24,30 wrz 24,1.00,wypłacona
+YAN,YANOSIK,2023,20 cze 24,27 cze 24,05 lip 24,2.00,wypłacona
+VIN,VINDEXUS,2023,21 cze 24,28 cze 24,11 lip 24,0.40,wypłacona
+DMG,DR. MIELE COSMED,2023,25 cze 24,01 lip 24,18 lip 24,0.03,wypłacona
+MAK,MAKARONY,2023,24 cze 24,01 lip 24,12 lip 24,0.75,wypłacona
+PLW,PLAYWAY,2023,20 cze 24,01 lip 24,10 lip 24,21.82,wypłacona
+DMG,DR. MIELE COSMED,2023,25 cze 24,01 lip 24,19 wrz 24,0.06,wypłacona
+LWB,BOGDANKA,2023,28 cze 24,02 lip 24,19 lip 24,2.50,wypłacona
+APT,APATOR,2023,26 cze 24,02 lip 24,11 lip 24,0.30,wypłacona
+IZS,IZOSTAL SA,2023,24 kwi 24,02 lip 24,18 lip 24,0.09,wypłacona
+EAH,ESOTIQ & HENDERSON,2023,28 cze 24,03 lip 24,15 sie 24,3.00,wypłacona
+LEN,LENA LIGHTING SA,2023,12 cze 24,03 lip 24,19 lip 24,0.20,wypłacona
+BBT,BOOMBIT,2023,24 cze 24,03 lip 24,24 lip 24,0.18,wypłacona
+ABS,ASSECO BUSINESS,2023,27 cze 24,03 lip 24,16 lip 24,2.60,wypłacona
+DCR,DECORA,2023,12 cze 24,03 lip 24,12 lip 24,3.00,wypłacona
+BBT,BOOMBIT,2023,24 cze 24,03 lip 24,30 lip 24,0.17,wypłacona
+KGL,KGL S.A.,2023,25 cze 24,04 lip 24,18 lip 24,0.50,wypłacona
+PAS,PASSUS SPOLKA AKCYJNA,2023,20 cze 24,04 lip 24,17 lip 24,2.92,wypłacona
+GOP,GAMES OPERATORS,2023,27 cze 24,04 lip 24,19 lip 24,0.21,wypłacona
+PTW,POLSKIE TOWARZYSTWO WSPIERANIA PRZEDSIEBIORCZOSCI,2023,28 cze 24,04 lip 24,16 lip 24,4.69,wypłacona
+CSR,CASPAR ASSET MANAGEMENT,2023,27 cze 24,05 lip 24,22 lip 24,0.21,wypłacona
+BOW,BOWIM,2023,20 cze 24,08 lip 24,21 lip 24,0.10,wypłacona
+APN,APLISENS,2023,11 cze 24,08 lip 24,07 sie 24,1.00,wypłacona
+ARH,ARCHICOM,2023,18 cze 24,09 lip 24,25 lip 24,0.64,wypłacona
+SPH,SOPHARMA AD,2023,28 cze 24,10 lip 24,26 sie 24,0.20,wypłacona
+IZO,IZOLACJA JAROCIN,2023,10 cze 24,11 lip 24,10 paź 24,0.10,wypłacona
+BCS,BIG CHEESE STUDIO,2023,28 cze 24,11 lip 24,22 lip 24,1.45,wypłacona
+RMK,REMAK-ENERGOMONTAZ,2023,18 cze 24,16 lip 24,31 lip 24,0.30,wypłacona
+WPL,WIRTUALNA POLSKA HOLDING,2023,21 cze 24,18 lip 24,26 lip 24,2.00,wypłacona
+TXT,TEXT,2023,28 cze 24,19 lip 24,30 lip 24,1.59,wypłacona
+KRK,KRKA,2023,11 lip 24,22 lip 24,25 lip 24,32.19,wypłacona
+GPW,GPW,2023,27 cze 24,22 lip 24,07 sie 24,3.00,wypłacona
+INP,INPRO SA,2023,20 cze 24,23 lip 24,08 sie 24,0.25,wypłacona
+SON,SONEL,2023,20 cze 24,23 lip 24,20 sie 24,0.70,wypłacona
+MXC,MAXCOM,2023,26 cze 24,23 lip 24,12 sie 24,1.00,wypłacona
+NVT,NOVITA,2023,26 cze 24,24 lip 24,07 sie 24,9.20,wypłacona
+WTN,WITTCHEN,2023,22 maj 24,26 lip 24,12 sie 24,3.57,wypłacona
+MBR,MO-BRUK SA,2023,24 cze 24,26 lip 24,30 paź 24,13.17,wypłacona
+RND,RENDER CUBE,2023,25 cze 24,29 lip 24,07 sie 24,5.60,wypłacona
+NVG,NOVAVIS GROUP,2023,28 cze 24,29 lip 24,05 sie 24,0.06,wypłacona
+DEK,DEKPOL,2023,28 cze 24,30 lip 24,31 paź 24,2.39,wypłacona
+TOR,TORPOL,2023,24 cze 24,30 lip 24,30 sie 24,2.11,wypłacona
+PKO,PKO BP,2023,28 cze 24,06 sie 24,22 sie 24,2.59,wypłacona
+ATP,ATLANTA POLAND,2023,05 sie 24,08 sie 24,19 sie 24,1.00,wypłacona
+ELT,ELEKTROTIM,2023,25 cze 24,08 sie 24,04 wrz 24,2.50,wypłacona
+INK,INSTAL KRAKOW,2023,21 cze 24,12 sie 24,20 wrz 24,2.50,wypłacona
+ENT,ENTER AIR,2023,25 cze 24,12 sie 24,28 sie 24,4.40,wypłacona
+LKD,LOKUM DEWELOPER,2023,26 cze 24,12 sie 24,22 sie 24,2.40,wypłacona
+RWL,RAWLPLUG,2023,20 cze 24,12 sie 24,29 sie 24,0.40,wypłacona
+TRN,TRANS POLONIA,2023,24 cze 24,14 sie 24,30 sie 24,0.11,wypłacona
+ULG,ULTIMATE GAMES,2023,11 cze 24,16 sie 24,30 sie 24,0.50,wypłacona
+STF,STALPROFIL,2023,23 maj 24,19 sie 24,11 wrz 24,0.30,wypłacona
+KTY,KETY,2023,29 maj 24,19 sie 24,04 wrz 24,18.90,wypłacona
+KTY,KETY,2023,29 maj 24,19 sie 24,06 lis 24,36.51,wypłacona
+KPL,KINO POLSKA TV,2023,28 cze 24,21 sie 24,30 sie 24,0.63,wypłacona
+EUR,EUROCASH,2023,24 cze 24,21 sie 24,22 lis 24,0.72,wypłacona
+TXT,TEXT,2023,22 sie 24,27 sie 24,05 wrz 24,2.76,wypłacona
+GTC,GTC,2023,26 cze 24,28 sie 24,27 wrz 24,0.22,wypłacona
+IFI,IFIRMA SA,2024,13 sie 24,03 wrz 24,12 wrz 24,0.30,wypłacona
+BCM,BETACOM,2023,29 sie 24,04 wrz 24,20 wrz 24,0.30,wypłacona
+EFK,EFEKT,2023,06 wrz 24,05 wrz 24,23 wrz 24,0.10,wypłacona
+NVA,PA NOVA,2023,12 cze 24,05 wrz 24,06 gru 24,0.70,wypłacona
+ATR,ATREM,2023,10 cze 24,06 wrz 24,20 wrz 24,0.49,wypłacona
+FRO,FERRO,2023,18 cze 24,10 wrz 24,10 paź 24,3.16,wypłacona
+ZUE,ZUE SA,2023,07 cze 24,10 wrz 24,27 wrz 24,0.21,wypłacona
+BFT,BENEFIT SYSTEMS,2023,28 cze 24,13 wrz 24,27 wrz 24,67.50,wypłacona
+BFT,BENEFIT SYSTEMS,2023,28 cze 24,13 wrz 24,25 lis 24,67.50,wypłacona
+PZU,PZU,2023,18 cze 24,13 wrz 24,08 paź 24,4.34,wypłacona
+VOT,VOTUM,2023,20 cze 24,16 wrz 24,16 paź 24,1.21,wypłacona
+VOT,VOTUM,2023,20 cze 24,16 wrz 24,17 gru 24,1.21,wypłacona
+PJP,PJP MAKRUM,2023,19 cze 24,17 wrz 24,03 paź 24,1.40,wypłacona
+DBC,DEBICA,2023,27 cze 24,18 wrz 24,18 gru 24,10.30,wypłacona
+VRG,VRG,2023,26 cze 24,18 wrz 24,16 gru 24,0.09,wypłacona
+HDR,HYDROTOR,2023,29 cze 24,18 wrz 24,04 paź 24,0.30,wypłacona
+PKN,ORLEN,2023,25 cze 24,18 wrz 24,20 gru 24,4.15,wypłacona
+VOX,VOXEL,2023,28 cze 24,18 wrz 24,06 gru 24,2.78,wypłacona
+SNK,SANOK RUBBER COMPANY,2023,25 cze 24,20 wrz 24,08 paź 24,1.20,wypłacona
+NTT,NTT SYSTEM,2023,27 cze 24,23 wrz 24,27 wrz 24,0.15,wypłacona
+WIK,WIKANA,2023,26 cze 24,24 wrz 24,15 paź 24,0.40,wypłacona
+MCR,MCR,2023,24 wrz 24,03 paź 24,11 paź 24,0.77,wypłacona
+LPP,LPP,2023,12 lip 24,09 paź 24,30 paź 24,325.00,wypłacona
+AMB,AMBRA,2023,17 paź 24,28 paź 24,13 lis 24,1.10,wypłacona
+SAN,BANCO SANTANDER,2024,24 wrz 24,29 paź 24,01 lis 24,0.43,wypłacona
+ARH,ARCHICOM,2024,30 wrz 24,29 paź 24,07 lis 24,1.41,wypłacona
+MUR,MURAPOL,2024,01 paź 24,04 lis 24,12 lis 24,2.94,wypłacona
+VOT,VOTUM,2024,08 paź 24,06 lis 24,15 lis 24,0.41,wypłacona
+SPH,SOPHARMA AD,2024,25 paź 24,06 lis 24,23 gru 24,0.16,wypłacona
+UCG,UNICREDIT,2024,06 lis 24,15 lis 24,20 lis 24,4.02,wypłacona
+FAB,FABRITY,2024,25 wrz 24,21 lis 24,28 lis 24,1.30,wypłacona
+ASB,ASBISC,2024,06 lis 24,21 lis 24,05 gru 24,0.83,wypłacona
+RBW,RAINBOW TOURS,2024,15 paź 24,26 lis 24,05 gru 24,3.33,wypłacona
+DIG,DIGITAL NETWORK,2024,24 paź 24,26 lis 24,05 gru 24,2.41,wypłacona
+IMS,IMS,2024,23 paź 24,29 lis 24,06 gru 24,0.16,wypłacona
+EDI,ED INVEST,2023,27 lis 24,29 lis 24,16 gru 24,0.73,wypłacona
+ATG,ATM GRUPA SA,2024,21 paź 24,02 gru 24,11 gru 24,0.08,wypłacona
+IFI,IFIRMA SA,2024,12 lis 24,03 gru 24,12 gru 24,0.30,wypłacona
+APT,APATOR,2024,30 paź 24,04 gru 24,12 gru 24,0.30,wypłacona
+DOM,DOM DEVELOPMENT,2024,08 paź 24,10 gru 24,18 gru 24,6.00,wypłacona
+NVT,NOVITA,2023,10 gru 24,13 gru 24,27 gru 24,3.20,wypłacona
+EAT,AMREST HOLDINGS,2024,11 gru 24,18 gru 24,23 gru 24,0.30,wypłacona

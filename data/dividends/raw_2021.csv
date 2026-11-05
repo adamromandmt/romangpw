@@ -1,0 +1,177 @@
+ticker,company,fiscal_year,agm_date,last_cum_date,pay_date,dps_pln,status
+CPS,CYFROWY POLSAT,2019,23 lip 20,13 paź 20,11 sty 21,0.65,wypłacona
+ABE,AB,2019,22 gru 20,28 gru 20,12 sty 21,0.44,wypłacona
+QNT,QUANTUM,2019,28 gru 20,28 gru 20,08 sty 21,1.35,wypłacona
+TXT,TEXT,2020,01 gru 20,29 gru 20,11 sty 21,0.89,wypłacona
+KER,KERNEL HOLDING,2020,11 gru 20,04 sty 21,14 sty 21,1.58,wypłacona
+SNT,SYNEKTIK SPOLKA AKCYJNA,2020,11 lut 21,16 lut 21,26 lut 21,0.45,wypłacona
+IFI,IFIRMA SA,2020,10 lut 21,02 mar 21,11 mar 21,0.05,wypłacona
+ATP,ATLANTA POLAND,2020,16 gru 20,05 mar 21,29 mar 21,0.28,wypłacona
+NWA,NWAIDM,2020,31 mar 21,06 kwi 21,15 kwi 21,2.00,wypłacona
+WWL,WAWEL,2020,30 mar 21,06 kwi 21,16 kwi 21,25.00,wypłacona
+STX,STALEXPORT,2020,31 mar 21,07 kwi 21,20 kwi 21,0.64,wypłacona
+OPM,OPTEAM SA,2020,07 kwi 21,15 kwi 21,27 kwi 21,12.00,wypłacona
+UCG,UNICREDIT,2020,15 kwi 21,16 kwi 21,21 kwi 21,0.55,wypłacona
+XTB,XTB,2020,12 kwi 21,19 kwi 21,30 kwi 21,1.79,wypłacona
+UNF,UNFOLD.VC ASI,2020,20 kwi 21,26 kwi 21,07 maj 21,0.07,wypłacona
+SAN,BANCO SANTANDER,2020,27 paź 20,29 kwi 21,04 maj 21,0.13,wypłacona
+RPC,ROPCZYCE,2020,28 kwi 21,29 kwi 21,11 maj 21,1.60,wypłacona
+PCR,PCC ROKITA,2020,27 kwi 21,04 maj 21,14 maj 21,3.67,wypłacona
+PCX,PCC EXOL,2020,27 kwi 21,04 maj 21,14 maj 21,0.17,wypłacona
+NEU,NEUCA,2020,27 kwi 21,07 maj 21,25 maj 21,10.00,wypłacona
+IRL,AB INTER RAO LIETUVA,2020,29 kwi 21,11 maj 21,25 maj 21,2.52,wypłacona
+GIF,GAMING FACTORY S.A.,2020,05 maj 21,12 maj 21,24 maj 21,0.27,wypłacona
+ULM,ULMA SA,2020,06 maj 21,12 maj 21,28 maj 21,7.62,wypłacona
+SKA,SNIEZKA,2020,29 kwi 21,13 maj 21,31 maj 21,3.60,wypłacona
+ASB,ASBISC,2020,05 maj 21,13 maj 21,27 maj 21,0.75,wypłacona
+EDI,ED INVEST,2020,26 kwi 21,14 maj 21,15 cze 21,0.31,wypłacona
+IFI,IFIRMA SA,2021,28 kwi 21,19 maj 21,28 maj 21,0.07,wypłacona
+IMC,IMC,2021,20 maj 21,25 maj 21,03 cze 21,2.80,wypłacona
+ATD,ATENDE,2020,19 maj 21,25 maj 21,08 cze 21,1.00,wypłacona
+KTY,KETY,2020,12 maj 21,27 maj 21,18 cze 21,13.37,wypłacona
+KTY,KETY,2020,12 maj 21,27 maj 21,31 sie 21,31.20,wypłacona
+BMX,BIOMAXIMA,2020,24 maj 21,27 maj 21,15 cze 21,0.25,wypłacona
+CDR,CD PROJEKT RED,2020,25 maj 21,28 maj 21,07 cze 21,5.00,wypłacona
+ACG,AC SA,2020,19 maj 21,28 maj 21,14 cze 21,2.20,wypłacona
+BDX,BUDIMEX,2020,20 maj 21,28 maj 21,18 cze 21,16.70,wypłacona
+ETL,EUROTEL,2020,20 maj 21,31 maj 21,10 cze 21,6.20,wypłacona
+UNT,UNIMOT,2020,20 maj 21,01 cze 21,25 cze 21,1.97,wypłacona
+ACP,ASSECO POLAND,2020,20 maj 21,01 cze 21,18 cze 21,3.11,wypłacona
+BOW,BOWIM,2020,31 maj 21,02 cze 21,22 cze 21,0.12,wypłacona
+TAR,TARCZYNSKI,2020,31 maj 21,02 cze 21,14 cze 21,1.50,wypłacona
+ATG,ATM GRUPA SA,2020,01 cze 21,02 cze 21,15 cze 21,0.15,wypłacona
+APR,AUTO PARTNER,2020,27 maj 21,02 cze 21,15 cze 21,0.10,wypłacona
+AST,ASTARTA HOLDING,2020,31 maj 21,04 cze 21,23 cze 21,2.24,wypłacona
+CTS,CITY SERVICE SE,2020,02 cze 21,07 cze 21,16 cze 21,1.92,wypłacona
+MFO,MFO,2020,27 maj 21,08 cze 21,24 cze 21,1.00,wypłacona
+ULG,ULTIMATE GAMES,2020,31 maj 21,08 cze 21,21 cze 21,2.00,wypłacona
+MVP,MARVIPOL DEVELOPMENT,2020,01 cze 21,08 cze 21,18 cze 21,0.95,wypłacona
+DCR,DECORA,2020,01 cze 21,09 cze 21,18 cze 21,2.00,wypłacona
+LEN,LENA LIGHTING SA,2020,28 maj 21,10 cze 21,25 cze 21,0.30,wypłacona
+SON,SONEL,2020,08 cze 21,10 cze 21,13 lip 21,1.00,wypłacona
+CBF,CYBER_FOLKS,2020,09 cze 21,10 cze 21,21 cze 21,0.57,wypłacona
+MGT,MANGATA HOLDING SA,2020,08 cze 21,14 cze 21,23 cze 21,4.50,wypłacona
+EUR,EUROCASH,2020,27 kwi 21,14 cze 21,07 lip 21,0.48,wypłacona
+MBR,MO-BRUK SA,2020,08 cze 21,14 cze 21,30 cze 21,20.15,wypłacona
+INL,INTROL,2020,01 cze 21,15 cze 21,02 lip 21,0.46,wypłacona
+MXC,MAXCOM,2020,10 cze 21,15 cze 21,07 lip 21,1.00,wypłacona
+MNC,MENNICA,2020,10 cze 21,16 cze 21,31 sie 21,0.40,wypłacona
+MNC,MENNICA,2020,10 cze 21,16 cze 21,24 cze 21,0.30,wypłacona
+ABS,ASSECO BUSINESS,2020,09 cze 21,16 cze 21,29 cze 21,2.00,wypłacona
+DOM,DOM DEVELOPMENT,2020,27 maj 21,17 cze 21,28 cze 21,10.00,wypłacona
+KGH,KGHM POLSKA MIEDZ SA,2020,07 cze 21,17 cze 21,29 cze 21,1.50,wypłacona
+WPL,WIRTUALNA POLSKA HOLDING,2020,15 cze 21,18 cze 21,29 cze 21,1.55,wypłacona
+KMP,KOMPAP,2020,16 cze 21,18 cze 21,09 lip 21,0.50,wypłacona
+AMC,AMICA,2020,15 cze 21,18 cze 21,29 cze 21,6.00,wypłacona
+FAB,FABRITY,2020,15 cze 21,18 cze 21,29 cze 21,1.05,wypłacona
+PLW,PLAYWAY,2020,15 cze 21,21 cze 21,30 cze 21,12.74,wypłacona
+FTE,FORTE,2020,16 cze 21,21 cze 21,05 lip 21,4.00,wypłacona
+TLX,TALEX,2020,25 maj 21,22 cze 21,02 lip 21,0.40,wypłacona
+TLX,TALEX,2020,25 maj 21,22 cze 21,03 lis 21,0.30,wypłacona
+ASE,ASSECO SOUTH,2020,10 cze 21,22 cze 21,07 lip 21,1.00,wypłacona
+KRU,KRUK,2020,16 cze 21,22 cze 21,02 lip 21,11.00,wypłacona
+KGL,KGL S.A.,2020,08 cze 21,23 cze 21,16 lip 21,0.35,wypłacona
+SNX,SUNEX,2020,27 maj 21,24 cze 21,06 lip 21,0.04,wypłacona
+MSP,MOSTOSTAL PLOCK,2020,21 cze 21,24 cze 21,22 lip 21,0.50,wypłacona
+IPE,IPOPEMA,2020,21 cze 21,28 cze 21,08 lip 21,0.37,wypłacona
+PCF,PCF GROUP,2020,22 cze 21,28 cze 21,08 lip 21,0.19,wypłacona
+DMG,DR. MIELE COSMED,2020,23 cze 21,28 cze 21,07 lip 21,0.06,wypłacona
+CAR,INTER CARS,2020,27 maj 21,28 cze 21,14 lip 21,1.42,wypłacona
+TOR,TORPOL,2020,11 cze 21,28 cze 21,30 lip 21,1.53,wypłacona
+ODL,ODLEWNIE,2020,21 cze 21,28 cze 21,15 lip 21,0.25,wypłacona
+CSR,CASPAR ASSET MANAGEMENT,2020,21 cze 21,29 cze 21,12 lip 21,8.79,wypłacona
+LTX,LENTEX,2020,27 maj 21,29 cze 21,23 lip 21,0.30,wypłacona
+UNI,UNIBEP SA,2020,17 cze 21,29 cze 21,12 lip 21,0.30,wypłacona
+SWG,SECO WARWICK,2020,10 cze 21,29 cze 21,15 lip 21,0.55,wypłacona
+ATC,ARCTIC PAPER,2020,22 cze 21,29 cze 21,14 lip 21,0.30,wypłacona
+MRB,MIRBUD,2020,24 cze 21,29 cze 21,16 sie 21,0.08,wypłacona
+CEZ,CEZ A.S.,2020,28 cze 21,30 cze 21,02 sie 21,9.21,wypłacona
+INC,INC S.A.,2020,23 cze 21,30 cze 21,12 lip 21,0.12,wypłacona
+STP,STALPRODUKT,2020,22 cze 21,30 cze 21,14 lip 21,6.00,wypłacona
+TEN,TEN SQUARE GAMES,2020,23 cze 21,01 lip 21,19 lip 21,10.00,wypłacona
+LPP,LPP,2020,29 cze 21,02 lip 21,20 lip 21,225.00,wypłacona
+LPP,LPP,2020,29 cze 21,02 lip 21,06 paź 21,225.00,wypłacona
+DVL,DEVELIA,2020,30 cze 21,02 lip 21,13 lip 21,0.17,wypłacona
+SNK,SANOK RUBBER COMPANY,2020,28 cze 21,02 lip 21,20 lip 21,1.00,wypłacona
+IMS,IMS,2020,29 cze 21,02 lip 21,20 lip 21,0.10,wypłacona
+SIM,SIMFABRIC,2020,28 cze 21,02 lip 21,27 lip 21,0.24,wypłacona
+NVT,NOVITA,2020,29 cze 21,05 lip 21,14 lip 21,12.00,wypłacona
+1AT,ATAL,2020,30 cze 21,05 lip 21,15 lip 21,3.03,wypłacona
+XPL,XPLUS,2020,29 cze 21,06 lip 21,19 lip 21,0.10,wypłacona
+EFK,EFEKT,2020,29 cze 21,06 lip 21,22 lip 21,0.05,wypłacona
+INK,INSTAL KRAKOW,2020,18 cze 21,06 lip 21,20 lip 21,2.00,wypłacona
+PAS,PASSUS SPOLKA AKCYJNA,2020,27 maj 21,06 lip 21,15 lip 21,0.07,wypłacona
+RWL,RAWLPLUG,2020,21 cze 21,06 lip 21,29 lip 21,0.38,wypłacona
+MDI,MDI ENERGIA,2020,30 cze 21,07 lip 21,29 lip 21,0.05,wypłacona
+ARH,ARCHICOM,2020,24 cze 21,08 lip 21,27 lip 21,1.18,wypłacona
+VIN,VINDEXUS,2020,30 cze 21,08 lip 21,21 lip 21,0.10,wypłacona
+ALL,AILLERON,2020,23 cze 21,08 lip 21,30 lip 21,0.32,wypłacona
+OPN,OPONEO.PL,2020,30 cze 21,12 lip 21,20 lip 21,1.00,wypłacona
+MAK,MAKARONY,2020,07 lip 21,13 lip 21,30 wrz 21,0.30,wypłacona
+CLN,CELON PHARMA,2020,29 cze 21,13 lip 21,05 sie 21,0.07,wypłacona
+DEL,DELKO,2020,24 cze 21,13 lip 21,29 lip 21,0.65,wypłacona
+PBX,PEKABEX,2020,29 cze 21,14 lip 21,30 lip 21,0.41,wypłacona
+WIK,WIKANA,2020,30 cze 21,14 lip 21,30 lip 21,0.15,wypłacona
+TXT,TEXT,2020,25 cze 21,16 lip 21,27 lip 21,0.89,wypłacona
+MEG,MEGARON,2020,28 cze 21,16 lip 21,03 sie 21,0.37,wypłacona
+WAS,WASKO,2020,05 lip 21,16 lip 21,30 lip 21,0.06,wypłacona
+KRK,KRKA,2020,08 lip 21,19 lip 21,22 lip 21,22.95,wypłacona
+IZS,IZOSTAL SA,2020,29 kwi 21,20 lip 21,10 sie 21,0.12,wypłacona
+PKN,ORLEN,2020,27 maj 21,20 lip 21,05 sie 21,3.50,wypłacona
+GPW,GPW,2020,21 cze 21,21 lip 21,05 sie 21,2.50,wypłacona
+ECH,ECHO INVESTMENT,2020,28 cze 21,22 lip 21,05 sie 21,0.25,wypłacona
+INP,INPRO SA,2020,28 cze 21,22 lip 21,09 sie 21,0.50,wypłacona
+TOA,TOYA SPOLKA AKCYJNA,2020,29 cze 21,23 lip 21,13 sie 21,0.29,wypłacona
+APN,APLISENS,2020,29 cze 21,27 lip 21,12 sie 21,0.45,wypłacona
+VOX,VOXEL,2020,29 cze 21,29 lip 21,10 sie 21,2.00,wypłacona
+BIP,BIO PLANET,2020,22 cze 21,04 sie 21,20 sie 21,0.75,wypłacona
+APT,APATOR,2020,29 cze 21,05 sie 21,23 sie 21,0.75,wypłacona
+SEK,SEKO,2020,30 lip 21,06 sie 21,18 sie 21,0.34,wypłacona
+MOL,MOL NYRT.,2020,15 kwi 21,09 sie 21,18 sie 21,1.22,wypłacona
+CMP,COMP,2020,30 cze 21,12 sie 21,31 sie 21,3.00,wypłacona
+TRN,TRANS POLONIA,2020,10 cze 21,12 sie 21,26 sie 21,0.27,wypłacona
+PHN,POLSKI HOLDING NIERUCHOMOSCI,2020,29 cze 21,13 sie 21,31 sie 21,0.35,wypłacona
+ENP,ENERGOAPARATURA,2020,30 cze 21,18 sie 21,18 lis 21,0.04,wypłacona
+STF,STALPROFIL,2020,26 maj 21,20 sie 21,14 wrz 21,0.16,wypłacona
+HDR,HYDROTOR,2020,26 cze 21,23 sie 21,08 wrz 21,2.00,wypłacona
+TXT,TEXT,2020,18 sie 21,23 sie 21,01 wrz 21,1.91,wypłacona
+IFI,IFIRMA SA,2021,04 sie 21,24 sie 21,02 wrz 21,0.10,wypłacona
+QNT,QUANTUM,2020,23 cze 21,27 sie 21,08 wrz 21,3.17,wypłacona
+FRO,FERRO,2020,23 cze 21,07 wrz 21,22 wrz 21,2.20,wypłacona
+PEO,PEKAO,2020,11 cze 21,08 wrz 21,29 wrz 21,3.21,wypłacona
+CPS,CYFROWY POLSAT,2020,24 cze 21,13 wrz 21,28 wrz 21,0.40,wypłacona
+CPS,CYFROWY POLSAT,2020,24 cze 21,13 wrz 21,10 gru 21,0.80,wypłacona
+NWG,NEWAG,2020,28 cze 21,13 wrz 21,29 paź 21,1.50,wypłacona
+PZU,PZU,2020,16 cze 21,13 wrz 21,06 paź 21,3.50,wypłacona
+BHW,HANDLOWY,2020,17 cze 21,13 wrz 21,22 wrz 21,1.20,wypłacona
+GOP,GAMES OPERATORS,2020,16 cze 21,14 wrz 21,07 paź 21,0.34,wypłacona
+MCI,MCI CAPITAL ASI,2020,17 cze 21,15 wrz 21,24 wrz 21,0.54,wypłacona
+DBC,DEBICA,2020,23 cze 21,16 wrz 21,17 gru 21,3.72,wypłacona
+KVT,KRYNICA VITAMIN,2021,30 sie 21,17 wrz 21,28 wrz 21,1.47,wypłacona
+VOT,VOTUM,2020,21 cze 21,17 wrz 21,15 gru 21,0.35,wypłacona
+MCR,MCR,2020,13 wrz 21,20 wrz 21,30 wrz 21,0.57,wypłacona
+MZA,MUZA,2020,26 cze 21,22 wrz 21,08 paź 21,0.65,wypłacona
+WLT,WIELTON,2020,24 cze 21,22 wrz 21,05 paź 21,0.17,wypłacona
+WLT,WIELTON,2020,24 cze 21,22 wrz 21,22 gru 21,0.16,wypłacona
+NTT,NTT SYSTEM,2020,29 cze 21,24 wrz 21,19 paź 21,0.15,wypłacona
+LKD,LOKUM DEWELOPER,2020,29 cze 21,24 wrz 21,15 gru 21,0.50,wypłacona
+PJP,PJP MAKRUM,2020,28 cze 21,24 wrz 21,12 paź 21,0.34,wypłacona
+AAT,ALTA,2020,30 cze 21,28 wrz 21,20 paź 21,0.25,wypłacona
+COG,COGNOR HOLDING,2020,30 cze 21,28 wrz 21,11 paź 21,0.15,wypłacona
+EBP,ERSTE BANK POLSKA,2021,01 wrz 21,06 paź 21,15 paź 21,2.16,wypłacona
+BDX,BUDIMEX,2021,03 wrz 21,07 paź 21,18 paź 21,14.90,wypłacona
+PRI,NPL NOVA,2020,18 sie 21,15 paź 21,15 lis 21,1.77,wypłacona
+CPI,CPI EUROPE,2020,19 paź 21,20 paź 21,25 paź 21,3.43,wypłacona
+GRN,GRODNO,2020,25 paź 21,28 paź 21,10 lis 21,0.21,wypłacona
+SAN,BANCO SANTANDER,2021,28 wrz 21,28 paź 21,02 lis 21,0.22,wypłacona
+AMB,AMBRA,2020,26 paź 21,29 paź 21,10 lis 21,0.95,wypłacona
+BBT,BOOMBIT,2021,27 wrz 21,29 paź 21,10 lis 21,0.24,wypłacona
+ASB,ASBISC,2021,03 lis 21,16 lis 21,02 gru 21,0.79,wypłacona
+ARH,ARCHICOM,2021,08 paź 21,17 lis 21,26 lis 21,1.24,wypłacona
+IFI,IFIRMA SA,2021,28 paź 21,17 lis 21,26 lis 21,0.17,wypłacona
+IMC,IMC,2021,16 lis 21,19 lis 21,30 lis 21,0.75,wypłacona
+CDL,CDRL,2020,25 lis 21,30 lis 21,09 gru 21,2.00,wypłacona
+ING,ING BANK SLASKI,2020,29 lis 21,02 gru 21,10 gru 21,5.10,wypłacona
+ABE,AB,2020,30 lis 21,06 gru 21,22 gru 21,1.00,wypłacona
+NVT,NOVITA,2020,07 gru 21,10 gru 21,21 gru 21,9.20,wypłacona
+ECH,ECHO INVESTMENT,2021,18 lis 21,17 gru 21,28 gru 21,0.22,wypłacona
