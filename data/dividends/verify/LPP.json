@@ -1,0 +1,41 @@
+{
+  "tic": "LPP",
+  "announced_current_cycle": "nie",
+  "announcement_note": "Cykl za rok obrotowy 2025/26 (01.02.2025-31.01.2026; w dividends.py fy=2025) jest zamkniety: zaliczka 400 zl wyplacona 2026-04-30, doplata 500 zl (lacznie 900 zl) - dzien dywidendy 2026-10-09, wyplata 2026-10-30. Dla biezacego cyklu (rok obrotowy 2026/27, konczy sie 2027-01-31) nie znaleziono zadnego komunikatu o zaliczce ani zamiarze/rekomendacji. Lista raportow biezacych na lpp.com siega 2026-09-30 (CR 20/2026) i nie zawiera takiego komunikatu; komunikatow po 2026-09-30 nie udalo sie przejrzec. UWAGA: dane z biznesradaru dla LPP sa mylace - 'next_agm 2027-01-30' i rec_est 2027-01-05 powstaly z daty OGLOSZENIA ZALICZKI (2026-01-30), a nie z WZA; WZA bylo 2026-07-10.",
+  "history": [
+    {"fy": 2025, "rec_date": "2026-01-30", "rec_dps": 800.0, "agm_date": "2026-07-10", "final_dps": 900.0, "cum_date": "2026-10-07", "pay_date": "2026-10-30", "advance_dps": 400.0, "formal_rec_date": "2026-06-10", "source": "https://www.lpp.com/wp-content/uploads/2026/06/RB-12-2026-Informacja-na-temat-wniosku-Zarzadu-dotyczacego-dywidendy.pdf", "note": "rec_date = pierwsza publiczna zapowiedz (2026-01-30: zaliczka 400 zl, dywidenda lacznie co najmniej 800 zl - ISBnews/inwestycje.pl); 2026-03-25: zarzad rozwaza 900 zl (biznesradar); 2026-06-10: formalny wniosek 900 zl, RB 12/2026; WZA 2026-07-10 (RB 16/2026), dzien dywidendy 2026-10-09; zaliczka 400 zl: dzien prawa 2026-04-23, wyplata 2026-04-30; final_dps = laczna kwota 900 zl (doplata 500 zl)"},
+    {"fy": 2024, "rec_date": "2025-01-31", "rec_dps": 660.0, "agm_date": "2025-07-11", "final_dps": 660.0, "cum_date": "2025-10-08", "pay_date": "2025-10-31", "advance_dps": 330.0, "formal_rec_date": null, "source": "https://www.lpp.com/en/reports/cr-03-2025-information-on-advance-dividend-payments/", "note": "CR 03/2025 z 2025-01-31: zaliczka 330 zl (dzien prawa 2025-04-23, wyplata 2025-04-30) i zamiar rekomendacji co najmniej 660 zl, wyplata 2025-10-31; data formalnego wniosku zarzadu (czerwiec?) nie ustalona; WZA 2025-07-11 wg biznesradaru/xyz.pl"},
+    {"fy": 2023, "rec_date": "2024-01-31", "rec_dps": 570.0, "agm_date": "2024-07-12", "final_dps": 610.0, "cum_date": "2024-10-09", "pay_date": "2024-10-30", "advance_dps": 285.0, "formal_rec_date": "2024-03-26", "source": "https://www.lpp.com/wp-content/uploads/2024/01/RB-03-2024-Informacja-na-temat-zaliczki-na-poczet-dywidendy-31-01-2024.pdf", "note": "RB 03/2024 z 2024-01-31: zaliczka 285 zl (wyplata 2024-04-30) i zamiar rekomendacji co najmniej 570 zl; RB 08/2024 z 2024-03-26: wniosek 610 zl lacznie, dzien dywidendy 2024-10-11, wyplata 2024-10-30; https://www.lpp.com/wp-content/uploads/2024/03/RB-08-2024-Informacja-na-temat-wniosku-Zarzadu-dotyczacego-dywidendy-i-planowanej-wyplaty-zaliczki-na-poczet-dywidendy_2024.03.26.pdf"},
+    {"fy": 2022, "rec_date": null, "rec_dps": null, "agm_date": "2023-06-30", "final_dps": 430.0, "cum_date": "2023-07-06", "pay_date": "2023-10-10", "advance_dps": null, "formal_rec_date": null, "source": "https://www.biznesradar.pl/dywidenda/LPP", "note": "bez zaliczki; dane tylko z biznesradaru (stary harmonogram, nie wzorzec)"}
+  ],
+  "policy": "Polityka dywidendowa LPP na lata 2027-2029 (czerwiec 2026; dotyczy lat obrotowych od 01.02.2026): rekomendacja co najmniej 50% zysku netto Spolki za poprzedni rok, laczna wyplata nie wiecej niz 70% skonsolidowanego zysku netto Grupy (z mozliwoscia odstepstw przy silnym FCF); zaliczka: zarzad analizuje ja w II polowie roku obrotowego, po zgodzie Rady Nadzorczej, do 60% przewidywanej dywidendy rocznej, wyplata preferowana w kwietniu-maju; dywidenda koncowa preferowana w pazdzierniku-listopadzie. Zrodlo: https://www.lpp.com/wp-content/uploads/2026/06/Polityka-dywidendowa-Spolki-LPP-SA-na-lata-2027-2029.pdf",
+  "next_reports": [
+    {"what": "Rozszerzony skonsolidowany raport za III kwartal 2026 (sierpien-pazdziernik 2026)", "date": "2026-12-03", "source": "https://www.parkiet.com/komunikaty-espi/art43645591-lpp-sa-terminy-publikacji-raportow-okresowych-w-2026-roku"},
+    {"what": "Raport roczny za rok obrotowy 2026/27 (w nomenklaturze LPP 'za 2026')", "date": null, "source": "terminarz 2027 nieopublikowany (kalendarz na 2026 wyszedl 2026-01-15; raport za FY2025/26 byl 2026-03-26)"}
+  ],
+  "expected_rec_window": {"from": "2027-01-27", "to": "2027-02-02", "basis": "pierwsza zapowiedz (zaliczka + minimalna dywidenda) padala 2024-01-31, 2025-01-31, 2026-01-30, czyli na koniec roku obrotowego (31 stycznia; w 2027 to niedziela, wiec prawdopodobnie 29.01 lub 01.02); formalny wniosek zarzadu pozniej: 2024-03-26 (610 zl), 2026-03-25/2026-06-10 (900 zl). Okno z dividends.py (2026-12-22..2027-01-12) jest za wczesne. Zaliczka wymaga zgody RN."},
+  "results_note": "I kw. 2026 (luty-kwiecien 2026): zysk netto 475 mln zl, EBITDA 1,28 mld zl, sprzedaz +10,5% r/r (parkiet/biznesradar 2026-06-11); II kw. (maj-lipiec 2026): zysk netto 768 mln zl (+48% r/r), EBITDA 1,7 mld zl, przychody 6,6 mld zl (strefainwestorow 2026-09-18); cel sprzedazy 2026 ok. 26-27 mld zl, capex 2,5 mld zl, dlug netto/EBITDA ok. 1,0 (strefainwestorow 2026-09-17) - zdolnosc do wyplaty bardzo dobra. Zrodla: https://strefainwestorow.pl/wiadomosci/20260918/wyrazne-przyspieszenie-dynamiki-przychodow-lpp ; https://strefainwestorow.pl/wiadomosci/20260917/grupa-lpp-spodziewa-sie-w-26-marzy-brutto-na-poziomie-ok-565-57-proc",
+  "flags": [
+    "Dividends.py zle odczytal cykl LPP (data ogloszenia zaliczki potraktowana jako WZA); realne okno pierwszej zapowiedzi to ok. 2027-01-27..02-02, nie poczatek stycznia",
+    "Pierwsza zapowiedz jest dwuskladnikowa: zaliczka (zgoda RN) + zamiar minimalnej dywidendy rocznej; formalny wniosek zarzadu dopiero w marcu/czerwcu",
+    "Wyplata za FY2025/26 = 100% jednostkowego zysku + 55,7 mln zl z kapitalu zapasowego; nowa polityka (50% zysku jednostkowego, cap 70% skonsolidowanego) pozwala na nizszy payout w FY2026/27 (wniosek wlasny z tekstu polityki)",
+    "Pewnosc co do braku zapowiedzi ograniczona: nie przejrzano komunikatow LPP po 2026-09-30"
+  ],
+  "confidence": "średnia",
+  "sources": [
+    "https://www.lpp.com/wp-content/uploads/2026/06/RB-12-2026-Informacja-na-temat-wniosku-Zarzadu-dotyczacego-dywidendy.pdf",
+    "https://www.parkiet.com/komunikaty-espi/art44805771-lpp-sa-informacja-na-temat-dywidendy",
+    "https://inwestycje.pl/gielda/lpp-wyplaci-400-zl-na-akcje-zaliczki-rozwaza-lacznie-min-800-zl-dywidendy-za-2025-2026/",
+    "https://www.biznesradar.pl/a/145063,lpp-podwyzsza-rekomendacje-dywidendy-za-2025-2026-do-900-zl-na-akcje",
+    "https://strefainwestorow.pl/wiadomosci/20260610/lpp-rekomenduje-wyplate-dywidendy-w-lacznej-kwocie-900-zl-na-akcje",
+    "https://www.lpp.com/en/reports/cr-03-2025-information-on-advance-dividend-payments/",
+    "https://www.lpp.com/wp-content/uploads/2024/01/RB-03-2024-Informacja-na-temat-zaliczki-na-poczet-dywidendy-31-01-2024.pdf",
+    "https://www.lpp.com/wp-content/uploads/2024/03/RB-08-2024-Informacja-na-temat-wniosku-Zarzadu-dotyczacego-dywidendy-i-planowanej-wyplaty-zaliczki-na-poczet-dywidendy_2024.03.26.pdf",
+    "https://www.lpp.com/wp-content/uploads/2026/06/Polityka-dywidendowa-Spolki-LPP-SA-na-lata-2027-2029.pdf",
+    "https://www.parkiet.com/komunikaty-espi/art43645591-lpp-sa-terminy-publikacji-raportow-okresowych-w-2026-roku",
+    "https://www.lpp.com/en/reports/",
+    "https://www.biznesradar.pl/dywidenda/LPP",
+    "https://strefainwestorow.pl/wiadomosci/20260918/wyrazne-przyspieszenie-dynamiki-przychodow-lpp",
+    "https://strefainwestorow.pl/wiadomosci/20260917/grupa-lpp-spodziewa-sie-w-26-marzy-brutto-na-poziomie-ok-565-57-proc"
+  ]
+}
