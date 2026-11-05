@@ -1,0 +1,42 @@
+{
+  "tic": "BHW",
+  "announced_current_cycle": "nie",
+  "announcement_note": "Stan na 2026-11-05: nie znaleziono zamiaru wypłaty zaliczki ani rekomendacji za FY2026 (wyszukiwania nie zwróciły żadnego komunikatu po RB 21/2026). Precedens zaliczki: za FY2025 zamiar ogłoszony 2025-09-09 (3,44 zł, ostatni dzień z prawem 2025-10-17, dzień prawa 2025-10-21, wypłata 2025-10-28, z kapitału rezerwowego z zysku 2019 r.), więc brak podobnego komunikatu we wrześniu-październiku 2026 jest informatywny, ale nie rozstrzygający (nie otwarto strony IR citihandlowy.pl - zablokowana). Cykl FY2025 zamknięty: rekomendacja Zarządu 2026-05-18 (po zgodzie KNF z 2026-05-18, RB 20/2026) 9,80 zł, opinia RN 2026-05-20, WZA 2026-06-17, dzień dywidendy 2026-06-25, wypłata 2026-06-30. Łącznie za FY2025 13,24 zł (3,44 + 9,80).",
+  "history": [
+    {"fy": 2021, "rec_date": "2022-03-15", "rec_dps": 5.47, "agm_date": "2022-06-23", "final_dps": 5.47, "cum_date": "2022-06-29", "source": "https://www.parkiet.com/komunikaty-espi/art35870301-handlowy-informacja-o-proponowanym-podziale-zysku-netto-za-2021-rok"},
+    {"fy": 2022, "rec_date": "2023-03-20", "rec_dps": 9.00, "agm_date": "2023-04-26", "final_dps": 9.00, "cum_date": "2023-05-04", "source": "https://forsal.pl/finanse/gielda/artykuly/8684188,bank-handlowy-zarekomendowal-wyplate-9-zl-dywidendy-na-akcje-za-2022-r.html"},
+    {"fy": 2023, "rec_date": "2024-05-08", "rec_dps": null, "agm_date": "2024-06-19", "final_dps": 11.15, "cum_date": "2024-06-25", "source": "https://forsal.pl/finanse/gielda/artykuly/9503083,bank-handlowy-rekomenduje-przeznaczenie-145-mld-zl-na-dywidende-za-20.html"},
+    {"fy": 2024, "rec_date": "2025-05-19", "rec_dps": 10.29, "agm_date": "2025-06-27", "final_dps": 10.29, "cum_date": "2025-07-03", "source": "https://www.citibank.pl/poland/files/raport-biezacy-nr10-2025.pdf"},
+    {"fy": 2025, "rec_date": "2025-09-09", "rec_dps": 3.44, "agm_date": null, "final_dps": 3.44, "cum_date": "2025-10-17", "source": "https://strefainwestorow.pl/wiadomosci/20250909/bank-handlowy-chce-wyplacic-344-zl-brutto-na-akcje-zaliczki-na-poczet-dywidendy"},
+    {"fy": 2025, "rec_date": "2026-05-18", "rec_dps": 9.80, "agm_date": "2026-06-17", "final_dps": 9.80, "cum_date": "2026-06-23", "source": "https://www.citibank.pl/poland/files/raport-biezacy-nr20-2026.pdf"}
+  ],
+  "policy": "Polityka dywidendowa na lata 2025-2027 (zatwierdzona przez RN, publikacja 2026-03-24): zamiar wypłaty co najmniej 75% zysku netto za poprzedni rok, z uwzględnieniem indywidualnych zaleceń KNF i nadwyżki kapitału ponad wymogi; Zarząd może wypłacać zaliczkę na poczet dywidendy (https://strefainwestorow.pl/wiadomosci/20260324/rn-banku-handlowego-zatwierdzila-polityke-dywidendowa-banku-na-25-27).",
+  "next_reports": [
+    {"what": "Q3 2026 (skonsolidowany raport kwartalny) - dzisiaj, wyników nie sprawdzono", "date": "2026-11-05", "source": "https://www.citibank.pl/poland/files/raport-biezacy-nr1-2026.pdf"},
+    {"what": "Raport roczny za 2026 (kalendarz 2027 jeszcze nieopublikowany; raport roczny za 2025 ukazał się 2026-03-17)", "date": null, "source": "https://www.citibank.pl/poland/files/raport-biezacy-nr1-2026.pdf"}
+  ],
+  "expected_rec_window": {"from": "2027-05-05", "to": "2027-05-20", "basis": "Ostatnie trzy lata rekomendacja pojawiała się po decyzji KNF: 2024-05-08, 2025-05-19, 2026-05-18; wcześniej 2022-03-15 i 2023-03-20 (przed zmianą trybu KNF). Możliwa też zaliczka za FY2026 (precedens ogłoszenia 2025-09-09) - w 2026 jej nie znaleziono. Okno ze skryptu (2027-04-11..05-08) wypada nieco wcześniej."},
+  "results_note": "H1 2026 (2026-08-27): zysk netto przypisany akcjonariuszom 706,4 mln zł (+18% r/r), ale z działalności kontynuowanej 668,0 mln zł wobec 874,2 mln zł; Q2 320,8 mln zł, ROE 21%, TCR 25,8% (https://bank.pl/citi-handlowy-z-zyskiem-netto-wyzszym-o-18-w-pierwszym-polroczu-26-r-r/). FY2025 zysk netto 1 667,4 mln zł; wypłata łącznie 13,24 zł (ok. 1,73 mld zł, czyli >100% zysku dzięki kapitałowi dywidendowemu z 2019 r.). Kapitałowo bank bardzo mocny.",
+  "flags": [
+    "Każda wypłata wymaga zgody KNF (za FY2025 limit 1 728,7 mln zł, zgoda 2026-05-18) - termin i kwota rekomendacji zależą od decyzji nadzoru; rekomendacja Zarządu wychodzi w dniu zgody KNF.",
+    "Wypłata za FY2025 (13,24 zł) była rekordowa i częściowo sfinansowana z kapitału dywidendowego z niepodzielonego zysku 2019 (28,7 mln zł + zaliczka 448,6 mln zł z tego kapitału); ten bufor został wyczerpany - za FY2026 nie ma gwarancji podobnie wysokiej kwoty.",
+    "Wyłączenie z działalności kontynuowanej (Citi sprzedaje biznes detaliczny w Polsce; wyniki z działalności kontynuowanej w H1 2026 spadły o ok. 24% r/r): wpływ na bazę dywidendy i uwolniony kapitał nie został zweryfikowany w źródłach.",
+    "Polityka 2025-2027 dopuszcza zaliczki; w 2025 ogłoszono ją 9 września - brak podobnego komunikatu we wrześniu-listopadzie 2026 w znalezionych źródłach.",
+    "RB 9/2026 (citibankonline.pl) przekierowuje - nie odczytano; Wyniki Q3 2026 publikowane dzisiaj (2026-11-05) - niezweryfikowane."
+  ],
+  "confidence": "średnia",
+  "sources": [
+    "https://www.citibank.pl/poland/files/raport-biezacy-nr20-2026.pdf",
+    "https://www.citibank.pl/poland/files/raport-biezacy-nr21-2026.pdf",
+    "https://www.citibank.pl/poland/files/raport-biezacy-nr10-2025.pdf",
+    "https://www.citibank.pl/poland/files/raport-biezacy-nr1-2026.pdf",
+    "https://strefainwestorow.pl/wiadomosci/20250909/bank-handlowy-chce-wyplacic-344-zl-brutto-na-akcje-zaliczki-na-poczet-dywidendy",
+    "https://strefainwestorow.pl/dywidendy/bank-handlowy-dywidenda-2026",
+    "https://strefainwestorow.pl/wiadomosci/20260324/rn-banku-handlowego-zatwierdzila-polityke-dywidendowa-banku-na-25-27",
+    "https://inwestycje.pl/gielda/citi-handlowy-rekomenduje-lacznie-98-zl-dywidendy-na-akcje/",
+    "https://www.parkiet.com/komunikaty-espi/art35870301-handlowy-informacja-o-proponowanym-podziale-zysku-netto-za-2021-rok",
+    "https://forsal.pl/finanse/gielda/artykuly/8684188,bank-handlowy-zarekomendowal-wyplate-9-zl-dywidendy-na-akcje-za-2022-r.html",
+    "https://forsal.pl/finanse/gielda/artykuly/9503083,bank-handlowy-rekomenduje-przeznaczenie-145-mld-zl-na-dywidende-za-20.html",
+    "https://bank.pl/citi-handlowy-z-zyskiem-netto-wyzszym-o-18-w-pierwszym-polroczu-26-r-r/"
+  ]
+}

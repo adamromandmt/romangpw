@@ -18,7 +18,7 @@
   "expected_rec_window": {"from": "2027-03-24", "to": "2027-04-12", "basis": "Daty rekomendacji Zarządu z lat 2022-2026: 2022-03-24, 2023-03-30, 2024-04-09, 2025-04-10, 2026-03-26 (zwykle w tygodniu publikacji raportu rocznego, który w 2026 wyszedł 2026-03-27)."},
   "results_note": "Q3 2026 (2026-10-27): przychody 2,83 mld zł, EBIT 206,9 mln zł, zysk netto jedn. dominującej 182,4 mln zł (+7% r/r); 9M 2026 skorygowany zysk netto 432,1 mln zł vs ok. 441 mln zł rok wcześniej; gotówka netto ok. 1,8 mld zł (wobec >2,6 mld zł na koniec 2025); portfel 17,3 mld zł (https://xyz.pl/?p=268436). Zdolność do wypłaty dobra, ale gotówka netto spadła o ok. 0,8 mld zł w 9M.",
   "flags": [
-    "Polityka 100% zysku formalnie obejmuje lata 2022-2026 - FY2026 jest ostatnim rrokiem; zarząd (28.10.2025 i w strategii 28.10.2026) deklaruje kontynuację, ale nowa formalna polityka nie została opublikowana.",
+    "Polityka 100% zysku formalnie obejmuje lata 2022-2026 - FY2026 jest ostatnim rokiem; zarząd (28.10.2025 i w strategii 28.10.2026) deklaruje kontynuację, ale nowa formalna polityka nie została opublikowana.",
     "9M 2026 zysk netto ok. 432 mln zł vs 441 mln zł w 9M 2025; spadek gotówki netto o ok. 0,8 mld zł (kontrakty, inwestycje, możliwe przejęcia/koncesje wg strategii) - ryzyko niższej DPS niż 32,42 zł za FY2025 (wypłata za FY2025 mogła obejmować część kapitałów zapasowych; za FY2023 wprost 162 mln zł z kapitału zapasowego).",
     "Zaliczka za FY2026 nie została ogłoszona (precedens tylko FY2021, zamiar ogłoszony w czerwcu); w strategii brak wzmianki o zaliczkach.",
     "Daty WZA z biznesradar (raw_*.csv) - nie weryfikowano każdej z osobna w komunikatach; rekomendacje i terminy 2022-2026 sprawdzone w ESPI/parkiet."
