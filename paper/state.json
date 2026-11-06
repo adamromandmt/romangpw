@@ -1,0 +1,102 @@
+{
+ "config": {
+  "start_capital": 100000.0,
+  "risk_pct": 1.0,
+  "max_pos_pct": 20.0,
+  "max_open": 8,
+  "fee_pct": 0.2,
+  "max_hold_days": 30,
+  "order_days": 6,
+  "min_score": 60,
+  "min_r1": 1.0,
+  "min_r2": 2.0,
+  "classes": [
+   "A",
+   "B"
+  ],
+  "max_new_per_day": 3,
+  "skip_earnings_days": 7,
+  "partial_frac": 0.5
+ },
+ "start_date": "2026-11-06",
+ "cash": 100000.0,
+ "processed_through": "2026-11-06",
+ "orders": [
+  {
+   "id": 1,
+   "tic": "MBK",
+   "name": "mBank",
+   "shares": 9,
+   "limit": 1575.0,
+   "zone_lo": 1525.0,
+   "stop": 1470.0,
+   "c1": 1700.0,
+   "c2": 1800.0,
+   "score": 69.0,
+   "cls": "B",
+   "report": "2026-11-06",
+   "valid_from": "2026-11-09",
+   "expires": "2026-11-15",
+   "checked_through": null
+  },
+  {
+   "id": 2,
+   "tic": "BFT",
+   "name": "Benefit Systems",
+   "shares": 3,
+   "limit": 5800.0,
+   "zone_lo": 5700.0,
+   "stop": 5520.0,
+   "c1": 6050.0,
+   "c2": 6350.0,
+   "score": 63.0,
+   "cls": "B",
+   "report": "2026-11-06",
+   "valid_from": "2026-11-09",
+   "expires": "2026-11-15",
+   "checked_through": null
+  },
+  {
+   "id": 3,
+   "tic": "CDR",
+   "name": "CD Projekt",
+   "shares": 68,
+   "limit": 262.0,
+   "zone_lo": 258.0,
+   "stop": 248.5,
+   "c1": 272.9,
+   "c2": 285.0,
+   "score": 62.0,
+   "cls": "B",
+   "report": "2026-11-06",
+   "valid_from": "2026-11-09",
+   "expires": "2026-11-15",
+   "checked_through": null
+  }
+ ],
+ "positions": [],
+ "closed": [],
+ "equity": [
+  {
+   "date": "2026-11-06",
+   "equity": 100000.0,
+   "cash": 100000.0,
+   "invested": 0
+  }
+ ],
+ "log": [
+  {
+   "date": "2026-11-06",
+   "text": "Zlecenie kupna MBK: 9 szt., limit 1575, stop 1470, C1 1700, C2 1800 (suma 69, klasa B)"
+  },
+  {
+   "date": "2026-11-06",
+   "text": "Zlecenie kupna BFT: 3 szt., limit 5800, stop 5520, C1 6050, C2 6350 (suma 63, klasa B)"
+  },
+  {
+   "date": "2026-11-06",
+   "text": "Zlecenie kupna CDR: 68 szt., limit 262, stop 248.5, C1 272.9, C2 285 (suma 62, klasa B)"
+  }
+ ],
+ "next_id": 4
+}

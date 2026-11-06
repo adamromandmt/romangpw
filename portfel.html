@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0B0C10">
+<title>Portfel wirtualny</title>
+<meta name="description" content="Wirtualny portfel: symulowane kupno i sprzedaż spółek z rankingu swing według celów i stopów.">
+<style>
+:root{
+  --bg:#0B0C10;--panel:#0F1614;--panel2:#15221E;--line:#1F3330;
+  --fg:#C5CFCB;--strong:#F2F7F5;--muted:#86948E;
+  --accent:#2BFF88;--accent2:#45A29E;--cyan:#66FCF1;--violet:#9B6BFF;
+  --up:#2BFF88;--down:#FF5C7A;--warn:#FFB347;
+}
+*{box-sizing:border-box}
+html{color-scheme:dark}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:
+    radial-gradient(900px 520px at 6% -6%,rgba(43,255,136,.22),transparent 65%),
+    radial-gradient(820px 480px at 96% 0%,rgba(69,162,158,.20),transparent 65%),
+    radial-gradient(760px 520px at 58% 108%,rgba(43,255,136,.10),transparent 65%),
+    radial-gradient(520px 380px at 100% 70%,rgba(155,107,255,.10),transparent 65%)}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:linear-gradient(rgba(43,255,136,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(43,255,136,.055) 1px,transparent 1px);
+  background-size:46px 46px;
+  -webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 0%,transparent 75%);
+  mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 0%,transparent 75%)}
+header,main,footer{max-width:1100px;margin:0 auto;padding:0 16px}
+header{position:relative;padding-top:24px;padding-bottom:14px;min-height:100px;border-bottom:1px solid var(--line)}
+header .deco{position:absolute;right:0;top:0;height:100%;width:60%;max-width:520px;opacity:.6;pointer-events:none}
+header a.brand{position:relative;font-weight:800;font-size:20px;letter-spacing:.2px;color:var(--strong);text-decoration:none}
+header a.brand::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--up);box-shadow:0 0 12px var(--up),0 0 26px rgba(43,255,136,.55);margin-right:11px;vertical-align:middle}
+nav{position:relative;margin-top:10px;font-size:14px}
+nav a{color:var(--accent2);margin-right:18px;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent}
+nav a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+nav a.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+.banner{background:rgba(15,22,20,.85);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;padding:11px 14px;margin:18px 0;font-size:14px;color:var(--fg);backdrop-filter:blur(4px)}
+.banner strong{color:var(--accent)}
+h1{font-size:27px;line-height:1.25;margin:22px 0 8px;color:var(--strong);letter-spacing:-.2px}
+h2{font-size:21px;margin:36px 0 10px;padding-top:12px;color:var(--accent);border-top:1px solid var(--line);position:relative;text-shadow:0 0 22px rgba(43,255,136,.35)}
+h2::before{content:"";position:absolute;top:-1px;left:0;width:64px;height:2px;background:linear-gradient(90deg,var(--accent),var(--cyan));box-shadow:0 0 10px rgba(43,255,136,.6)}
+h3{font-size:17px;margin:24px 0 6px;color:var(--strong)}
+strong{color:var(--strong)}
+a{color:var(--cyan)}
+a:hover{color:#fff}
+code{background:var(--panel2);color:var(--accent);padding:1px 6px;border-radius:4px;font-size:.92em}
+table{border-collapse:separate;border-spacing:0;font-size:13px;margin:14px 0;display:block;overflow-x:auto;max-width:100%;border:1px solid var(--line);border-radius:10px;background:rgba(15,22,20,.9)}
+th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+th{background:var(--panel2);color:var(--accent);font-weight:600;position:sticky;top:0}
+tbody tr:hover td{background:rgba(43,255,136,.06)}
+td.up{color:var(--up);font-weight:600}
+td.down{color:var(--down);font-weight:600}
+ul{padding-left:22px}
+li{margin:4px 0}
+li::marker{color:var(--accent)}
+hr{border:0;border-top:1px solid var(--line)}
+.charts h2{margin-top:30px}
+.chart-card{background:rgba(15,22,20,.9);border:1px solid var(--line);border-radius:12px;padding:14px 14px 10px;margin:16px 0;overflow-x:auto;box-shadow:0 0 0 1px rgba(43,255,136,.04),0 12px 30px rgba(0,0,0,.35)}
+.chart-card h3{margin:0 0 2px;color:var(--strong)}
+.chart-card .sub{margin:0 0 8px;color:var(--muted);font-size:13px}
+.chart-card svg{display:block;width:100%;min-width:680px;height:auto}
+.chart-card svg text{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.chart-card svg .lbl{fill:var(--strong);font-size:13px;font-weight:700}
+.chart-card svg .cls{fill:var(--muted);font-weight:600}
+.chart-card svg .tick{fill:var(--muted);font-size:11.5px}
+.chart-card svg .val{fill:var(--strong);font-size:12.5px;font-weight:700;paint-order:stroke;stroke:#0F1614;stroke-width:3.5px;stroke-linejoin:round}
+.chart-card svg .pos{fill:var(--up);font-size:11.5px;font-weight:700}
+.chart-card svg .neg{fill:var(--down);font-size:11.5px;font-weight:700}
+.chart-card svg .warn{fill:var(--warn);font-size:11.5px;font-weight:700}
+.chart-card svg .grid{stroke:var(--line);stroke-width:1}
+footer{color:var(--muted);font-size:13px;padding-top:26px;padding-bottom:44px;border-top:1px solid var(--line);margin-top:36px}
+.list li{margin:9px 0}
+::selection{background:var(--accent);color:#04120a}
+@media (max-width:700px){header .deco{display:none}body{font-size:15px}h1{font-size:23px}h2{font-size:19px}}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:16px 0}
+.card{background:rgba(15,22,20,.9);border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:0 0 0 1px rgba(43,255,136,.04),0 10px 24px rgba(0,0,0,.3)}
+.card .k{color:var(--muted);font-size:12px;letter-spacing:.03em;text-transform:uppercase}
+.card .v{color:var(--strong);font-size:22px;font-weight:700;margin-top:2px}
+.card .v.up{color:var(--up)}.card .v.down{color:var(--down)}
+.card .s{color:var(--muted);font-size:12px}
+.rules li{margin:4px 0}
+.chart-card svg .eq{fill:none;stroke:var(--up);stroke-width:2.4;stroke-linejoin:round}
+.chart-card svg .base{stroke:var(--warn);stroke-dasharray:5 4;stroke-width:1.3}
+</style>
+</head>
+<body>
+<header>
+<svg class="deco" viewBox="0 0 520 140" preserveAspectRatio="xMaxYMid meet" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="fadeg" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#000"/><stop offset=".5" stop-color="#fff"/></linearGradient><mask id="fadem"><rect width="520" height="140" fill="url(#fadeg)"/></mask></defs><g mask="url(#fadem)"><line x1="31" y1="106.5" x2="31" y2="124.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="24" y="114.0" width="14" height="3.0" rx="2" fill="#2BFF88"/><line x1="62" y1="106.5" x2="62" y2="127.5" stroke="#FF5C7A" stroke-width="1.5"/><rect x="55" y="114.0" width="14" height="6.0" rx="2" fill="#FF5C7A"/><line x1="93" y1="100.5" x2="93" y2="127.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="86" y="108.0" width="14" height="12.0" rx="2" fill="#2BFF88"/><line x1="124" y1="100.5" x2="124" y2="124.5" stroke="#FF5C7A" stroke-width="1.5"/><rect x="117" y="108.0" width="14" height="9.0" rx="2" fill="#FF5C7A"/><line x1="155" y1="97.5" x2="155" y2="124.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="148" y="105.0" width="14" height="12.0" rx="2" fill="#2BFF88"/><line x1="186" y1="88.5" x2="186" y2="112.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="179" y="96.0" width="14" height="9.0" rx="2" fill="#2BFF88"/><line x1="217" y1="88.5" x2="217" y2="111.0" stroke="#FF5C7A" stroke-width="1.5"/><rect x="210" y="96.0" width="14" height="7.5" rx="2" fill="#FF5C7A"/><line x1="248" y1="82.5" x2="248" y2="111.0" stroke="#2BFF88" stroke-width="1.5"/><rect x="241" y="90.0" width="14" height="13.5" rx="2" fill="#2BFF88"/><line x1="279" y1="76.5" x2="279" y2="97.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="272" y="84.0" width="14" height="6.0" rx="2" fill="#2BFF88"/><line x1="310" y1="76.5" x2="310" y2="100.5" stroke="#FF5C7A" stroke-width="1.5"/><rect x="303" y="84.0" width="14" height="9.0" rx="2" fill="#FF5C7A"/><line x1="341" y1="70.5" x2="341" y2="100.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="334" y="78.0" width="14" height="15.0" rx="2" fill="#2BFF88"/><line x1="372" y1="61.5" x2="372" y2="85.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="365" y="69.0" width="14" height="9.0" rx="2" fill="#2BFF88"/><line x1="403" y1="61.5" x2="403" y2="84.0" stroke="#FF5C7A" stroke-width="1.5"/><rect x="396" y="69.0" width="14" height="7.5" rx="2" fill="#FF5C7A"/><line x1="434" y1="55.5" x2="434" y2="84.0" stroke="#2BFF88" stroke-width="1.5"/><rect x="427" y="63.0" width="14" height="13.5" rx="2" fill="#2BFF88"/><line x1="465" y1="48.0" x2="465" y2="70.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="458" y="55.5" width="14" height="7.5" rx="2" fill="#2BFF88"/><line x1="496" y1="37.5" x2="496" y2="63.0" stroke="#2BFF88" stroke-width="1.5"/><rect x="489" y="45.0" width="14" height="10.5" rx="2" fill="#2BFF88"/><polyline points="31,114.0 62,120.0 93,108.0 124,117.0 155,105.0 186,96.0 217,103.5 248,90.0 279,84.0 310,93.0 341,78.0 372,69.0 403,76.5 434,63.0 465,55.5 496,45.0" fill="none" stroke="#66FCF1" stroke-width="2" opacity=".8"/></g></svg>
+<a class="brand" href="index.html">romangpw.pl · skaner GPW</a>
+<nav><a href="index.html">Swing</a><a href="dywidendy.html">Dywidendy</a><a href="portfel.html" class="on">Portfel</a><a href="metodologia-swing.html">Swing Metodologia</a><a href="archiwum.html">Archiwum swing</a><a href="dywidendy-archiwum.html">Archiwum dywidend</a></nav>
+</header>
+<main>
+<h1>Portfel wirtualny</h1>
+<div class="banner">Stan na <strong>6.11.2026</strong> (zamknięcie sesji). Symulacja na podstawie rankingu skanera swing, <strong>nie porada inwestycyjna</strong>.</div>
+<div class="cards"><div class="card"><div class="k">Wartość portfela</div><div class="v ">100 000 PLN</div><div class="s">start 100 000 PLN</div></div><div class="card"><div class="k">Wynik</div><div class="v ">+0,00%</div><div class="s">+0 PLN</div></div><div class="card"><div class="k">Gotówka</div><div class="v ">100 000 PLN</div><div class="s">w pozycjach 0 PLN</div></div><div class="card"><div class="k">Otwarte pozycje</div><div class="v ">0</div><div class="s">zleceń oczekujących: 3</div></div><div class="card"><div class="k">Zamknięte transakcje</div><div class="v ">0</div><div class="s">jeszcze brak</div></div><div class="card"><div class="k">Trafność</div><div class="v ">—</div><div class="s">udział zyskownych</div></div><div class="card"><div class="k">Średnie R</div><div class="v ">—</div><div class="s">wynik w jednostkach ryzyka</div></div><div class="card"><div class="k">Maks. obsunięcie</div><div class="v ">0,00%</div><div class="s">od szczytu kapitału</div></div></div>
+<div class="chart-card"><h3>Krzywa kapitału</h3><p class="sub">Pojawi się po kilku sesjach, gdy portfel zacznie handlować.</p></div>
+<h2>Otwarte pozycje</h2>
+<p class="muted">Brak otwartych pozycji.</p>
+<h2>Zlecenia oczekujące</h2>
+<table><thead><tr><th>Tic</th><th>Spółka</th><th>Szt.</th><th>Limit kupna</th><th>Stop</th><th>C1</th><th>C2</th><th>Ważne</th><th>Klasa · suma</th><th>Wartość PLN</th></tr></thead><tbody><tr><td><strong>MBK</strong></td><td>mBank</td><td>9</td><td>1 575</td><td>1 470</td><td>1 700</td><td>1 800</td><td>9.11–15.11</td><td>B · 69</td><td>14 175</td></tr><tr><td><strong>BFT</strong></td><td>Benefit Systems</td><td>3</td><td>5 800</td><td>5 520</td><td>6 050</td><td>6 350</td><td>9.11–15.11</td><td>B · 63</td><td>17 400</td></tr><tr><td><strong>CDR</strong></td><td>CD Projekt</td><td>68</td><td>262,00</td><td>248,50</td><td>272,90</td><td>285,00</td><td>9.11–15.11</td><td>B · 62</td><td>17 816</td></tr></tbody></table>
+<h2>Zamknięte transakcje</h2>
+<p class="muted">Jeszcze nie zamknięto żadnej transakcji.</p>
+<h2>Dziennik</h2>
+<ul class="list"><li><strong>6.11</strong> Zlecenie kupna CDR: 68 szt., limit 262, stop 248.5, C1 272.9, C2 285 (suma 62, klasa B)</li><li><strong>6.11</strong> Zlecenie kupna BFT: 3 szt., limit 5800, stop 5520, C1 6050, C2 6350 (suma 63, klasa B)</li><li><strong>6.11</strong> Zlecenie kupna MBK: 9 szt., limit 1575, stop 1470, C1 1700, C2 1800 (suma 69, klasa B)</li></ul>
+<h2>Zasady symulacji</h2>
+<ul class="rules">
+<li><strong>Kapitał:</strong> 100 000 PLN wirtualnych od 6.11.2026. To symulacja, żadne prawdziwe zlecenia nie są składane.</li>
+<li><strong>Skąd pozycje:</strong> z tabeli rankingu codziennego raportu swing. Bierzemy klasy A i B z sumą co najmniej 60, R do celu 1 co najmniej 1 i do celu 2 co najmniej 2, bez raportu kwartalnego w ciągu 7 dni, maks. 3 nowe zlecenia dziennie i 8 pozycji naraz.</li>
+<li><strong>Wejście:</strong> zlecenie z limitem na górnej granicy strefy wejścia, ważne 5 sesji. Realizuje się po niższej z cen: otwarcie lub limit, jeśli kurs zszedł do limitu. Gdy sesja otwiera się poniżej stopu, zlecenie jest anulowane.</li>
+<li><strong>Wielkość pozycji:</strong> ryzyko 1% wartości portfela na transakcję (odległość wejścia od stopu), pozycja nie większa niż 20% portfela. Drogie akcje (np. LPP przy 27 000 zł za sztukę) mogą się nie zmieścić.</li>
+<li><strong>Wyjścia:</strong> stop (przy luce po cenie otwarcia), cel 1 (sprzedaż połowy, stop przesuwany na cenę wejścia), cel 2 (reszta), albo po 30 dniach po zamknięciu sesji.</li>
+<li><strong>Świece dzienne:</strong> gdy jedna świeca dotyka i stopu, i celu, liczymy stop (założenie pesymistyczne). W dniu wejścia sprawdzamy tylko stop.</li>
+<li><strong>Koszty:</strong> 0,2% od każdej transakcji. Podatek od zysków kapitałowych (19%) nie jest uwzględniony.</li>
+</ul>
+</main>
+<footer>Ćwiczenie przesiewowe według zadanego frameworku, nie porada inwestycyjna.<br>Dane z publicznych źródeł (m.in. biznesradar.pl, bankier.pl), mogą zawierać błędy lub opóźnienia. Raporty generowane automatycznie.</footer>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "dee8fe193ffe4484bef9d4691b8d77d2"}'></script>
+</body>
+</html>

@@ -14,3 +14,6 @@ Dzienny skaner swing GPW, publikowany na https://www.romangpw.pl (GitHub Pages; 
 - `METHOD-DYWIDENDY.md` — instrukcja dla cyklicznego skanera „dywidenda przed ogłoszeniem".
 - `dywidendy/YYYY-MM-DD.md` — raporty; `dividends.py` (historia i kotwice sezonowe), `trendscan.py` (trend, płynność), `divrank.py` (punktacja i poziomy).
 - `data/dividends/` — historia dywidend (raw_*.csv), `verify/*.json` (weryfikacja ESPI), `judgement.json` (oceny), `data/quotes/` — notowania.
+
+## Zakładka Portfel
+- `paper.py` — silnik wirtualnego portfela (zlecenia z rankingu swing, stopy i cele), `portfel.py` — render strony, `paper/state.json` — stan, `paper/quotes/` — notowania pozycji. Opis kroków dziennych w `METHOD.md` (sekcja „Portfel wirtualny").

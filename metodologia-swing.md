@@ -68,6 +68,9 @@ Sprawdza, co się stało z poprzednimi propozycjami: czy strefa wejścia został
 ### 15. Publikuje raport
 Powstaje plik raportu, strona jest generowana i trafia na romangpw.pl. Raport ma stałą kolejność sekcji: reżim rynkowy, ranking (10–15 spółek), TOP 3, szczegółowa analiza TOP 5, watchlista na 1–3 tygodnie, odrzucone, rozliczenie, metoda i zastrzeżenia.
 
+### 16. Prowadzi wirtualny portfel
+Dodatkowo każdego dnia monitor „handluje" na papierze. Zakładka **Portfel** pokazuje wirtualne 100 000 zł, z którego codziennie składane są zlecenia kupna na najlepsze spółki z rankingu (klasa A lub B, odpowiednio wysoka suma punktów i sensowny stosunek zysku do ryzyka, bez raportu kwartalnego w ciągu tygodnia). Zlecenie czeka na cenę z dolnej części strefy wejścia przez 5 sesji. Po wejściu pozycja jest zamykana, gdy kurs dotknie stopu, albo sprzedawana w dwóch częściach przy celu 1 i celu 2 (po celu 1 stop przesuwa się na cenę wejścia), a po 30 dniach zamykana jest tak czy inaczej. Ryzykujemy 1% wartości portfela na jedną transakcję, a od każdej transakcji odliczamy 0,2% kosztów. **Po co:** żeby uczciwie sprawdzić, czy zasady skanera przynoszą wynik. Raport mówi, co wybrać; portfel pokazuje, co z tych wyborów faktycznie wyszło. To symulacja i nie jest to porada inwestycyjna.
+
 ## Jak czytać raport
 
 - **Kurs** — ostatnie zamknięcie; przy datach w nawiasach (np. „3.11") dane są starsze niż reszta.
