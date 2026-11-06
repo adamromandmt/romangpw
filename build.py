@@ -110,6 +110,7 @@ PAGE = """<!doctype html>
 {body}
 </main>
 <footer>{disclaimer}<br>Dane z publicznych źródeł (m.in. biznesradar.pl, bankier.pl), mogą zawierać błędy lub opóźnienia. Raporty generowane automatycznie.</footer>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{{"token": "dee8fe193ffe4484bef9d4691b8d77d2"}}'></script>
 </body>
 </html>
 """
