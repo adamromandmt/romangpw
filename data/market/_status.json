@@ -1,5 +1,5 @@
 {
- "run_utc": "2026-11-06T18:52:09Z",
+ "run_utc": "2026-11-06T18:57:44Z",
  "probe": {
   "eodhd": {
    "ok": false,
@@ -14,14 +14,418 @@
   "stooq.com": {
    "ok": false,
    "error": "brak nagłówka CSV: <!DOCTYPE html><html><head><meta charset=\"utf-8\"><meta name=\"robots\" content=\"no",
-   "sec": 0.8
+   "sec": 0.5
   },
   "biznesradar": {
-   "ok": false,
-   "error": "biznesradar: brak poprawnych wierszy",
-   "sec": 1.1
+   "ok": true,
+   "last": "2026-11-05",
+   "rows": 50,
+   "sec": 1.2
   }
  },
- "ok": 0,
- "note": "żadne źródło nie przeszło próby na PKO"
+ "disabled_sources": {
+  "eodhd": "pominięty (brak klucza)",
+  "stooq.pl": "nie przeszło próby: brak nagłówka CSV: <!DOCTYPE html><html><head><meta charset=\"utf-8\"><meta name=\"robots\" content=\"no",
+  "stooq.com": "nie przeszło próby: brak nagłówka CSV: <!DOCTYPE html><html><head><meta charset=\"utf-8\"><meta name=\"robots\" content=\"no"
+ },
+ "latest_session": "2026-11-05",
+ "ok": 103,
+ "failed": {
+  "CBF": [
+   "biznesradar: HTTP Error 404: Not Found"
+  ],
+  "CCC": [
+   "biznesradar: HTTP Error 404: Not Found"
+  ],
+  "CIE": [
+   "biznesradar: HTTP Error 404: Not Found"
+  ],
+  "LVC": [
+   "biznesradar: HTTP Error 404: Not Found"
+  ],
+  "OPN": [
+   "biznesradar: The read operation timed out"
+  ],
+  "PCR": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "PEO": [
+   "biznesradar: <urlopen error _ssl.c:994: The handshake operation timed out>"
+  ],
+  "PEP": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "PGE": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "PJP": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "PKN": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "PKO": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "PLW": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "PTW": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "PXM": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "PZU": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "QNT": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "RBW": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "RPC": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "SAN": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "SEK": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "SEL": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "SGN": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "SKA": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "SKH": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "SLV": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "SNK": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "SNT": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "SON": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "SPH": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "SPL": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "SPR": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "STF": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "STP": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "SWG": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "TAR": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "TEN": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "TOR": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "TPE": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "TRN": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "TXT": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "UCG": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "ULG": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "UNI": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "UNT": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "VIN": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "VOT": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "VOX": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "VRC": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "VRG": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "WAS": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "WPL": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "WWL": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "XPL": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "XTB": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "YAN": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "ZEP": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "WIG": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "WIG20": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "MWIG40": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "SWIG80": [
+   "biznesradar: <urlopen error timed out>"
+  ]
+ },
+ "behind_latest_session": [
+  "MLP"
+ ],
+ "sources": {
+  "11B": "biznesradar",
+  "1AT": "biznesradar",
+  "ABE": "biznesradar",
+  "ABS": "biznesradar",
+  "ACP": "biznesradar",
+  "ALE": "biznesradar",
+  "ALR": "biznesradar",
+  "AMB": "biznesradar",
+  "AMC": "biznesradar",
+  "APN": "biznesradar",
+  "APR": "biznesradar",
+  "APT": "biznesradar",
+  "ARH": "biznesradar",
+  "ASB": "biznesradar",
+  "ASE": "biznesradar",
+  "AST": "biznesradar",
+  "ATG": "biznesradar",
+  "ATP": "biznesradar",
+  "ATR": "biznesradar",
+  "ATT": "biznesradar",
+  "BCM": "biznesradar",
+  "BDX": "biznesradar",
+  "BFT": "biznesradar",
+  "BHW": "biznesradar",
+  "BIO": "biznesradar",
+  "BNP": "biznesradar",
+  "BOS": "biznesradar",
+  "CAR": "biznesradar",
+  "CDR": "biznesradar",
+  "CEZ": "biznesradar",
+  "CLD": "biznesradar",
+  "CPS": "biznesradar",
+  "CRJ": "biznesradar",
+  "CSR": "biznesradar",
+  "DBC": "biznesradar",
+  "DCR": "biznesradar",
+  "DEL": "biznesradar",
+  "DGA": "biznesradar",
+  "DIG": "biznesradar",
+  "DNP": "biznesradar",
+  "DOM": "biznesradar",
+  "DVL": "biznesradar",
+  "EAH": "biznesradar",
+  "EBP": "biznesradar",
+  "ECH": "biznesradar",
+  "EDI": "biznesradar",
+  "ELT": "biznesradar",
+  "ENA": "biznesradar",
+  "ENT": "biznesradar",
+  "EUR": "biznesradar",
+  "FAB": "biznesradar",
+  "FRO": "biznesradar",
+  "FTE": "biznesradar",
+  "GOP": "biznesradar",
+  "GPP": "biznesradar",
+  "GPW": "biznesradar",
+  "GRX": "biznesradar",
+  "HUG": "biznesradar",
+  "IFI": "biznesradar",
+  "IMS": "biznesradar",
+  "ING": "biznesradar",
+  "INK": "biznesradar",
+  "INL": "biznesradar",
+  "INP": "biznesradar",
+  "IPE": "biznesradar",
+  "IZS": "biznesradar",
+  "JSW": "biznesradar",
+  "JWW": "biznesradar",
+  "KGH": "biznesradar",
+  "KMP": "biznesradar",
+  "KPL": "biznesradar",
+  "KRK": "biznesradar",
+  "KRU": "biznesradar",
+  "KTY": "biznesradar",
+  "KVT": "biznesradar",
+  "LBW": "biznesradar",
+  "LEN": "biznesradar",
+  "LKD": "biznesradar",
+  "LPP": "biznesradar",
+  "MAB": "biznesradar",
+  "MAK": "biznesradar",
+  "MBK": "biznesradar",
+  "MBR": "biznesradar",
+  "MDG": "biznesradar",
+  "MEX": "biznesradar",
+  "MGT": "biznesradar",
+  "MIL": "biznesradar",
+  "MLG": "biznesradar",
+  "MLP": "biznesradar",
+  "MNC": "biznesradar",
+  "MOL": "biznesradar",
+  "MRB": "biznesradar",
+  "MVP": "biznesradar",
+  "NEU": "biznesradar",
+  "NTT": "biznesradar",
+  "NVA": "biznesradar",
+  "NVT": "biznesradar",
+  "NWA": "biznesradar",
+  "NWG": "biznesradar",
+  "ODL": "biznesradar",
+  "OND": "biznesradar",
+  "OPL": "biznesradar",
+  "PCO": "biznesradar"
+ },
+ "last_date": {
+  "11B": "2026-11-05",
+  "1AT": "2026-11-05",
+  "ABE": "2026-11-05",
+  "ABS": "2026-11-05",
+  "ACP": "2026-11-05",
+  "ALE": "2026-11-05",
+  "ALR": "2026-11-05",
+  "AMB": "2026-11-05",
+  "AMC": "2026-11-05",
+  "APN": "2026-11-05",
+  "APR": "2026-11-05",
+  "APT": "2026-11-05",
+  "ARH": "2026-11-05",
+  "ASB": "2026-11-05",
+  "ASE": "2026-11-05",
+  "AST": "2026-11-05",
+  "ATG": "2026-11-05",
+  "ATP": "2026-11-05",
+  "ATR": "2026-11-05",
+  "ATT": "2026-11-05",
+  "BCM": "2026-11-05",
+  "BDX": "2026-11-05",
+  "BFT": "2026-11-05",
+  "BHW": "2026-11-05",
+  "BIO": "2026-11-05",
+  "BNP": "2026-11-05",
+  "BOS": "2026-11-05",
+  "CAR": "2026-11-05",
+  "CDR": "2026-11-05",
+  "CEZ": "2026-11-05",
+  "CLD": "2026-11-05",
+  "CPS": "2026-11-05",
+  "CRJ": "2026-11-05",
+  "CSR": "2026-11-05",
+  "DBC": "2026-11-05",
+  "DCR": "2026-11-05",
+  "DEL": "2026-11-05",
+  "DGA": "2026-11-05",
+  "DIG": "2026-11-05",
+  "DNP": "2026-11-05",
+  "DOM": "2026-11-05",
+  "DVL": "2026-11-05",
+  "EAH": "2026-11-05",
+  "EBP": "2026-11-05",
+  "ECH": "2026-11-05",
+  "EDI": "2026-11-05",
+  "ELT": "2026-11-05",
+  "ENA": "2026-11-05",
+  "ENT": "2026-11-05",
+  "EUR": "2026-11-05",
+  "FAB": "2026-11-05",
+  "FRO": "2026-11-05",
+  "FTE": "2026-11-05",
+  "GOP": "2026-11-05",
+  "GPP": "2026-11-05",
+  "GPW": "2026-11-05",
+  "GRX": "2026-11-05",
+  "HUG": "2026-11-05",
+  "IFI": "2026-11-05",
+  "IMS": "2026-11-05",
+  "ING": "2026-11-05",
+  "INK": "2026-11-05",
+  "INL": "2026-11-05",
+  "INP": "2026-11-05",
+  "IPE": "2026-11-05",
+  "IZS": "2026-11-05",
+  "JSW": "2026-11-05",
+  "JWW": "2026-11-05",
+  "KGH": "2026-11-05",
+  "KMP": "2026-11-05",
+  "KPL": "2026-11-05",
+  "KRK": "2026-11-05",
+  "KRU": "2026-11-05",
+  "KTY": "2026-11-05",
+  "KVT": "2026-11-05",
+  "LBW": "2026-11-05",
+  "LEN": "2026-11-05",
+  "LKD": "2026-11-05",
+  "LPP": "2026-11-05",
+  "MAB": "2026-11-05",
+  "MAK": "2026-11-05",
+  "MBK": "2026-11-05",
+  "MBR": "2026-11-05",
+  "MDG": "2026-11-05",
+  "MEX": "2026-11-05",
+  "MGT": "2026-11-05",
+  "MIL": "2026-11-05",
+  "MLG": "2026-11-05",
+  "MLP": "2026-11-04",
+  "MNC": "2026-11-05",
+  "MOL": "2026-11-05",
+  "MRB": "2026-11-05",
+  "MVP": "2026-11-05",
+  "NEU": "2026-11-05",
+  "NTT": "2026-11-05",
+  "NVA": "2026-11-05",
+  "NVT": "2026-11-05",
+  "NWA": "2026-11-05",
+  "NWG": "2026-11-05",
+  "ODL": "2026-11-05",
+  "OND": "2026-11-05",
+  "OPL": "2026-11-05",
+  "PCO": "2026-11-05"
+ }
 }
