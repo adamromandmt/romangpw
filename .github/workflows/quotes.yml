@@ -17,7 +17,7 @@ concurrency:
 jobs:
   fetch:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -30,9 +30,10 @@ jobs:
           STOOQ_APIKEY: ${{ secrets.STOOQ_APIKEY }}
         run: |
           set +e
-          python3 fetch_quotes.py | tee fetch.log
+          timeout 900 python3 -u fetch_quotes.py --budget 720 | tee fetch.log
           echo "code=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
       - name: Commit
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

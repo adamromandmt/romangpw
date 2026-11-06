@@ -21,6 +21,7 @@ import json
 import os
 import re
 import sys
+import threading
 import time
 import urllib.error
 import urllib.request
@@ -33,7 +34,7 @@ UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chr
 DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 
-def http(url, timeout=25):
+def http(url, timeout=10):
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept-Language": "pl,en;q=0.8"})
     with urllib.request.urlopen(req, timeout=timeout) as r:
         return r.read().decode("utf-8", "replace")
@@ -148,15 +149,60 @@ def save(path, rows, history):
     return rows
 
 
+DISABLED = {}          # źródło -> powód wyłączenia (próba startowa albo za dużo kolejnych błędów)
+STREAK = {}            # źródło -> liczba kolejnych błędów bez żadnego sukcesu
+GOOD = set()           # źródła, które choć raz zadziałały
+LOCK = threading.Lock()
+DEADLINE = [None]
+MAX_FAIL_STREAK = 8
+
+
+def note(name, ok, err=""):
+    with LOCK:
+        if ok:
+            GOOD.add(name)
+            STREAK[name] = 0
+            return
+        STREAK[name] = STREAK.get(name, 0) + 1
+        if name not in GOOD and STREAK[name] >= MAX_FAIL_STREAK and name not in DISABLED:
+            DISABLED[name] = f"{MAX_FAIL_STREAK} błędów z rzędu, ostatni: {err[:100]}"
+            print(f"!! źródło {name} wyłączone: {DISABLED[name]}", flush=True)
+
+
+def probe():
+    """Szybka próba każdego źródła na PKO (z miarą czasu). Wyłącza źródła, które nie działają. Zwraca słownik z wynikami."""
+    out = {}
+    for name, fn in SOURCES:
+        t0 = time.time()
+        try:
+            rows = fn("PKO", "stock", {"br": "PKO"})
+            out[name] = {"ok": True, "last": rows[-1]["date"], "rows": len(rows), "sec": round(time.time() - t0, 1)}
+            GOOD.add(name)
+        except Exception as e:  # noqa: BLE001
+            out[name] = {"ok": False, "error": str(e)[:160], "sec": round(time.time() - t0, 1)}
+            if "pominięty" in str(e):
+                DISABLED[name] = "pominięty (brak klucza)"
+            else:
+                DISABLED[name] = "nie przeszło próby: " + str(e)[:100]
+        print(f"próba {name}: {out[name]}", flush=True)
+    return out
+
+
 def fetch_one(job):
     sym, kind, entry, history = job
     errs = []
+    if DEADLINE[0] and time.time() > DEADLINE[0]:
+        return sym, None, ["przekroczony budżet czasu"]
     for name, fn in SOURCES:
+        if name in DISABLED:
+            continue
         try:
             rows = fn(sym, kind, entry)
         except Exception as e:  # noqa: BLE001 — każdy błąd źródła tylko przechodzi do następnego
             errs.append(f"{name}: {str(e)[:90]}")
+            note(name, False, str(e))
             continue
+        note(name, True)
         fname = ("_" + sym) if kind == "index" else sym
         path = OUT / f"{fname}.csv"
         merged = load(path)
@@ -172,7 +218,16 @@ def main(argv):
     history = int(argv[argv.index("--history") + 1]) if "--history" in argv else 500
     workers = int(argv[argv.index("--workers") + 1]) if "--workers" in argv else 4
     only = set(argv[argv.index("--only") + 1].upper().split(",")) if "--only" in argv else None
+    budget = int(argv[argv.index("--budget") + 1]) if "--budget" in argv else 600
     OUT.mkdir(parents=True, exist_ok=True)
+    probes = probe()
+    if all(n in DISABLED for n, _ in SOURCES):
+        status = {"run_utc": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "probe": probes, "ok": 0,
+                  "note": "żadne źródło nie przeszło próby na PKO"}
+        (OUT / "_status.json").write_text(json.dumps(status, ensure_ascii=False, indent=1), encoding="utf-8")
+        print("Żadne źródło nie działa — koniec.", flush=True)
+        return 1
+    DEADLINE[0] = time.time() + budget
     jobs = []
     for t in uni["stocks"]:
         if only and t not in only:
@@ -186,7 +241,9 @@ def main(argv):
 
     def run(job):
         time.sleep(0.25)
-        return fetch_one(job)
+        res = fetch_one(job)
+        print(f"{'OK ' if res[1] else 'ERR'} {res[0]} {res[1]['source'] + ' ' + res[1]['last'] if res[1] else '; '.join(res[2])[:150]}", flush=True)
+        return res
 
     with ThreadPoolExecutor(max_workers=workers) as ex:
         for sym, res, errs in ex.map(run, jobs):
@@ -196,7 +253,8 @@ def main(argv):
                 failed[sym] = errs
     last = max((v["last"] for v in ok.values()), default=None)
     stale = sorted(s for s, v in ok.items() if last and v["last"] < last)
-    status = {"run_utc": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "latest_session": last,
+    status = {"run_utc": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "probe": probes,
+              "disabled_sources": DISABLED, "latest_session": last,
               "ok": len(ok), "failed": failed, "behind_latest_session": stale,
               "sources": {s: v["source"] for s, v in sorted(ok.items())},
               "last_date": {s: v["last"] for s, v in sorted(ok.items())}}
