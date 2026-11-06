@@ -40,11 +40,26 @@ RAW = {}  # ostatnia odpowiedź na wątek (tylko do diagnostyki w logu)
 
 
 def http(url, timeout=10):
-    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept-Language": "pl,en;q=0.8"})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        text = r.read().decode("utf-8", "replace")
-    RAW[threading.get_ident()] = (url, text)
-    return text
+    """GET z jedną ponowną próbą przy timeoucie/błędzie sieci/429 (404 i inne błędy HTTP zwracamy od razu)."""
+    last = None
+    for attempt in (1, 2):
+        req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept-Language": "pl,en;q=0.8"})
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                text = r.read().decode("utf-8", "replace")
+            RAW[threading.get_ident()] = (url, text)
+            return text
+        except urllib.error.HTTPError as e:
+            if e.code != 429 or attempt == 2:
+                raise
+            last = e
+            time.sleep(6)
+        except (urllib.error.URLError, TimeoutError, OSError) as e:
+            last = e
+            if attempt == 2:
+                raise
+            time.sleep(3)
+    raise last
 
 
 def iso_date(s):
@@ -265,7 +280,7 @@ def fetch_one(job):
 def main(argv):
     uni = json.loads((ROOT / "data" / "universe.json").read_text(encoding="utf-8"))
     history = int(argv[argv.index("--history") + 1]) if "--history" in argv else 500
-    workers = int(argv[argv.index("--workers") + 1]) if "--workers" in argv else 4
+    workers = int(argv[argv.index("--workers") + 1]) if "--workers" in argv else 2
     only = set(argv[argv.index("--only") + 1].upper().split(",")) if "--only" in argv else None
     budget = int(argv[argv.index("--budget") + 1]) if "--budget" in argv else 600
     OUT.mkdir(parents=True, exist_ok=True)
@@ -289,7 +304,7 @@ def main(argv):
     ok, failed, t0 = {}, {}, time.time()
 
     def run(job):
-        time.sleep(0.25)
+        time.sleep(0.5)
         res = fetch_one(job)
         print(f"{'OK ' if res[1] else 'ERR'} {res[0]} {res[1]['source'] + ' ' + res[1]['last'] if res[1] else '; '.join(res[2])[:150]}", flush=True)
         return res
