@@ -15,6 +15,7 @@ Użycie: python3 fetch_quotes.py [--only TIC,TIC] [--history 500] [--workers 4]
 Kod wyjścia: 0 gdy pobrano >= 50% symboli, 1 w przeciwnym razie (workflow i tak commituje to, co jest).
 """
 import csv
+import html
 import datetime as dt
 import io
 import json
@@ -45,8 +46,17 @@ def http(url, timeout=10):
     return text
 
 
+def iso_date(s):
+    """Przyjmuje 2026-11-05 albo 05.11.2026 (biznesradar); zwraca ISO albo None."""
+    s = html.unescape(re.sub(r"<[^>]+>", "", s)).strip()
+    if DATE.match(s):
+        return s
+    m = re.match(r"^(\d{1,2})[.\-/](\d{1,2})[.\-/](\d{4})$", s)
+    return f"{m.group(3)}-{int(m.group(2)):02d}-{int(m.group(1)):02d}" if m else None
+
+
 def num(s):
-    s = re.sub(r"<[^>]+>", "", s).replace("\xa0", "").replace(" ", "").replace(" ", "").strip()
+    s = html.unescape(re.sub(r"<[^>]+>", "", s)).replace("\xa0", "").replace(" ", "").replace(" ", "").strip()
     s = s.replace(",", ".")
     return float(s)
 
@@ -116,8 +126,8 @@ def src_biznesradar(sym, kind, entry):
         cells = re.findall(r"<t[dh][^>]*>(.*?)</t[dh]>", tr, flags=re.S)
         if not cells:
             continue
-        d = re.sub(r"<[^>]+>", "", cells[0]).strip()
-        if not DATE.match(d):
+        d = iso_date(cells[0])
+        if not d:
             continue
         try:
             n = [num(c) for c in cells[1:6]]
