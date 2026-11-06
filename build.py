@@ -57,6 +57,10 @@ nav a.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
 .lang a,.lang span{padding:4px 12px;text-decoration:none;color:var(--muted)}
 .lang a:hover{color:var(--accent)}
 .lang .cur{background:var(--accent);color:#04120a}
+.subtabs{display:inline-flex;margin:18px 0 0;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:rgba(15,22,20,.85);font-size:13px;font-weight:600}
+.subtabs a,.subtabs span{padding:6px 18px;text-decoration:none;color:var(--accent2)}
+.subtabs a:hover{color:var(--accent)}
+.subtabs .cur{background:var(--accent);color:#04120a}
 .banner{background:rgba(15,22,20,.85);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;padding:11px 14px;margin:18px 0;font-size:14px;color:var(--fg);backdrop-filter:blur(4px)}
 .banner strong{color:var(--accent)}
 h1{font-size:27px;line-height:1.25;margin:22px 0 8px;color:var(--strong);letter-spacing:-.2px}
@@ -150,8 +154,9 @@ UI = {
         "brand": "romangpw.pl · skaner GPW",
         "disclaimer": "Ćwiczenie przesiewowe według zadanego frameworku, nie porada inwestycyjna.",
         "footer": "Dane z publicznych źródeł (m.in. biznesradar.pl, bankier.pl), mogą zawierać błędy lub opóźnienia. Raporty generowane automatycznie.",
-        "tabs": {"swing": "Swing", "div": "Dywidendy", "port": "Portfel {n}", "meth": "Swing Metodologia",
-                 "arch": "Archiwum swing", "darch": "Archiwum dywidend"},
+        "tabs": {"swing": "Swing Raport", "div": "Dywidendy", "port": "Portfel {n}", "meth": "Swing Metodologia",
+                 "arch": "Archiwum"},
+        "sub": {"arch": "Swing", "darch": "Dywidendy"},
         "desc_swing": "Dzienny skaner swing GPW — raport przed otwarciem sesji.",
         "desc_div": "Spółki GPW regularnie wypłacające dywidendę, w trendzie wzrostowym, przed spodziewanym ogłoszeniem dywidendy.",
         "desc_port": "Portfel Swing: wirtualny sprawdzian prognoz ze skanera swing (kupno i sprzedaż według celów i stopów).",
@@ -171,8 +176,9 @@ UI = {
         "brand": "romangpw.pl · WSE scanner",
         "disclaimer": "Screening exercise under the given framework, not investment advice.",
         "footer": "Data from public sources (incl. biznesradar.pl, bankier.pl) may contain errors or delays. Reports are generated automatically. Polish is the original language of the reports.",
-        "tabs": {"swing": "Swing", "div": "Dividends", "port": "{n} Portfolio", "meth": "Swing Methodology",
-                 "arch": "Swing archive", "darch": "Dividend archive"},
+        "tabs": {"swing": "Swing Report", "div": "Dividends", "port": "{n} Portfolio", "meth": "Swing Methodology",
+                 "arch": "Archive"},
+        "sub": {"arch": "Swing", "darch": "Dividends"},
         "desc_swing": "Daily swing-trading scanner for the Warsaw Stock Exchange (GPW) — a report before the open.",
         "desc_div": "GPW stocks that pay regular dividends, are in an uptrend and have not yet announced the dividend.",
         "desc_port": "Swing Portfolio: a virtual check of the swing scanner's forecasts (buying and selling at targets and stops).",
@@ -232,9 +238,9 @@ def render_md(text, ref=None, lang="pl", chart_text=None):
 
 def tabs_for(lang, ports):
     u = UI[lang]["tabs"]
-    tabs = [("swing", u["swing"]), ("div", u["div"])]
+    tabs = [("swing", u["swing"])]
     tabs += [(f"port-{k}", u["port"].format(n=k.capitalize())) for k in ports]
-    tabs += [("meth", u["meth"]), ("arch", u["arch"]), ("darch", u["darch"])]
+    tabs += [("meth", u["meth"]), ("div", u["div"]), ("arch", u["arch"])]
     return tabs
 
 
@@ -251,7 +257,7 @@ PORTS = []  # uzupełniane w main()
 
 def nav_html(active, lang, base):
     return "".join(
-        f'<a href="{base}{fname(key, lang)}"' + (' class="on"' if key == active else "") + f">{html.escape(label)}</a>"
+        f'<a href="{base}{fname(key, lang)}"' + (' class="on"' if key == active or (key == "arch" and active == "darch") else "") + f">{html.escape(label)}</a>"
         for key, label in tabs_for(lang, PORTS)
     )
 
@@ -274,6 +280,15 @@ def page(title, body, lang="pl", active="swing", desc="", sub=False, counter=Non
     return PAGE.format(title=html.escape(title), css=CSS, base=base, body=body, disclaimer=u["disclaimer"], footer=u["footer"],
                        deco=deco_svg(), nav=nav_html(active, lang, base), desc=html.escape(desc), lang=lang,
                        langsw=f'<div class="lang" role="group" aria-label="Language">{sw}</div>', brand=u["brand"], alt=alt)
+
+
+def subtabs(lang, active):
+    """Podzakładki archiwum (Swing / Dywidendy) — dwie strony, wspólna zakładka „Archiwum"."""
+    sub = UI[lang]["sub"]
+    links = "".join(
+        (f'<span class="cur">{html.escape(label)}</span>' if key == active else f'<a href="{fname(key, lang)}">{html.escape(label)}</a>')
+        for key, label in sub.items())
+    return f'<div class="subtabs" role="group">{links}</div>\n'
 
 
 def md_text(lang, folder_pl, stem, kind):
@@ -336,7 +351,7 @@ def build_section(lang, kind):
             mdlink = f'../{MD_SRC["en"][0 if kind == "swing" else 1].name}/{f.name}' if ok else f'../{sub_pl}/{f.name}'
             tag = "" if ok else " (PL)"
         items.append(f'<li><a href="{sub}/{f.stem}.html">{pretty_date(f.stem, lang)}</a>{tag} · <a href="{mdlink}">.md</a></li>')
-    arch = f'<h1>{u["arch_h1"].format(t=title_prefix.lower() if lang == "pl" else title_prefix)}</h1>\n<ul class="list">\n' + "\n".join(items) + "\n</ul>"
+    arch = subtabs(lang, akey) + f'<h1>{u["arch_h1"].format(t=title_prefix)}</h1>\n<ul class="list">\n' + "\n".join(items) + "\n</ul>"
     (out_root / arch_name).write_text(
         page(u["arch_title"].format(t=title_prefix), arch, lang, akey, desc, counter=(fname(akey, "pl"), fname(akey, "en"))), encoding="utf-8")
     return stem
