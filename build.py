@@ -46,8 +46,11 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 header,main,footer{max-width:1100px;margin:0 auto;padding:0 16px}
 header{position:relative;padding-top:24px;padding-bottom:14px;min-height:100px;border-bottom:1px solid var(--line)}
 header .deco{position:absolute;right:0;top:0;height:100%;width:60%;max-width:520px;opacity:.6;pointer-events:none}
-header a.brand{position:relative;font-weight:800;font-size:20px;letter-spacing:.2px;color:var(--strong);text-decoration:none}
-header a.brand::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--up);box-shadow:0 0 12px var(--up),0 0 26px rgba(43,255,136,.55);margin-right:11px;vertical-align:middle}
+header a.brand{position:relative;display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:var(--strong)}
+header a.brand .logo{width:46px;height:46px;flex:none;filter:drop-shadow(0 0 14px rgba(124,240,176,.28))}
+header a.brand .wm{font-size:26px;font-weight:800;letter-spacing:-.4px;line-height:1}
+header a.brand .wm b{font-weight:800;background:linear-gradient(90deg,#8DF2B8,#4FA7AB);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+header a.brand:hover .wm{opacity:.92}
 nav{position:relative;margin-top:10px;font-size:14px}
 nav a{color:var(--accent2);margin-right:18px;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent}
 nav a:hover{color:var(--accent);border-bottom-color:var(--accent)}
@@ -110,6 +113,7 @@ PAGE = """<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0B0C10">
+<link rel="icon" type="image/svg+xml" href="{root}favicon.svg">
 <title>{title}</title>
 <meta name="description" content="{desc}">
 {alt}
@@ -119,7 +123,7 @@ PAGE = """<!doctype html>
 <header>
 {deco}
 <div class="topbar">{langsw}</div>
-<a class="brand" href="{base}index.html">{brand}</a>
+<a class="brand" href="{base}index.html" aria-label="{brand}" title="romangpw.pl">{logo}</a>
 <nav>{nav}</nav>
 </header>
 <main>
@@ -136,6 +140,19 @@ DIVS = ROOT / "dywidendy"
 REPORTS_EN = ROOT / "reports-en"
 DIVS_EN = ROOT / "dywidendy-en"
 LANGS = ("pl", "en")
+
+# Logo: znak (trend ze swingową korektą) w ramce z gradientem jasna zieleń -> złamany morski błękit + napis Roman GPW.
+MARK = (
+    '<defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8DF2B8"/>'
+    '<stop offset="1" stop-color="#4FA7AB"/></linearGradient></defs>'
+    '<rect x="1.5" y="1.5" width="45" height="45" rx="13" fill="#0F1614" stroke="url(#lg)" stroke-width="2"/>'
+    '<polyline points="10,34 18,24 24,29 37,13" fill="none" stroke="url(#lg)" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>'
+    '<circle cx="37" cy="13" r="3.6" fill="#8DF2B8"/>'
+)
+LOGO = (f'<svg class="logo" viewBox="0 0 48 48" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">{MARK}</svg>'
+        '<span class="wm">Roman <b>GPW</b></span>')
+FAVICON = f'<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">{MARK}</svg>'
+
 
 # Nazwy plików stron: klucz -> (polska, angielska). Polska wersja leży w korzeniu, angielska w en/.
 FILES = {
@@ -279,7 +296,7 @@ def page(title, body, lang="pl", active="swing", desc="", sub=False, counter=Non
            if counter else "")
     return PAGE.format(title=html.escape(title), css=CSS, base=base, body=body, disclaimer=u["disclaimer"], footer=u["footer"],
                        deco=deco_svg(), nav=nav_html(active, lang, base), desc=html.escape(desc), lang=lang,
-                       langsw=f'<div class="lang" role="group" aria-label="Language">{sw}</div>', brand=u["brand"], alt=alt)
+                       langsw=f'<div class="lang" role="group" aria-label="Language">{sw}</div>', brand=u["brand"], logo=LOGO, root=root, alt=alt)
 
 
 def subtabs(lang, active):
@@ -363,6 +380,11 @@ def main():
     if not report_files():
         print("Brak raportów w reports/", file=sys.stderr)
         return 1
+    (ROOT / "favicon.svg").write_text(FAVICON, encoding="utf-8")
+    (ROOT / "logo.svg").write_text(
+        '<svg viewBox="0 0 250 48" xmlns="http://www.w3.org/2000/svg">' + MARK +
+        '<text x="60" y="34" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="28" font-weight="800" fill="#F2F7F5">Roman '
+        '<tspan fill="url(#lg)">GPW</tspan></text></svg>', encoding="utf-8")
     PORTS[:] = [ps.parent.name for ps in sorted((ROOT / "paper").glob("*/state.json"))]
     msg = []
     for lang in LANGS:
