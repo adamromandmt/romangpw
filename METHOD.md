@@ -73,19 +73,19 @@ Pierwszy test pokazał luki. Przed zapisem raportu sprawdź, że:
 - **Spójność dat danych**: jeśli któraś spółka ma starszą ostatnią świecę niż reszta (cache), pobierz ją ponownie z innym `?r=`; dopiero potem oznacz jako stare.
 - **Liczba kandydatów**: celuj w 10–15 w tabeli. Mniej jest dopuszczalne tylko przy słabym rynku i musi być uzasadnione w sekcji Reżim.
 
-## Portfel wirtualny (codziennie, zakładka „Portfel")
+## Portfel Swing (codziennie, zakładka „Portfel Swing")
 
-Portfel wirtualny (kapitał 100 000 PLN, pozycja do 5 000 PLN, stan w `paper/state.json`, zasady w `paper.py` i na stronie „Portfel") kupuje i sprzedaje spółki z rankingu Twojego raportu według jego stopów i celów. To symulacja; nie składaj żadnych prawdziwych zleceń. Wykonaj te kroki **zawsze, gdy generujesz raport dzienny**, w tej kolejności:
+Portfel Swing (wirtualny sprawdzian prognoz: kapitał 100 000 PLN, pozycja do 5 000 PLN, stan w `paper/swing/state.json`, zasady w `paper.py` i na stronie „Portfel Swing") kupuje i sprzedaje spółki z rankingu Twojego raportu według jego stopów i celów. To symulacja; nie składaj żadnych prawdziwych zleceń. Wykonaj te kroki **zawsze, gdy generujesz raport dzienny**, w tej kolejności:
 
-1. **Najpierw rozlicz wczorajszą sesję (przed pisaniem nowego raportu).** Wypisz tickery z `paper/state.json` (`positions` i `orders`). Dla każdego pobierz z biznesradaru ostatnie ok. 10–15 sesji i zapisz do `paper/quotes/<TIC>.csv` (nagłówek `date,open,high,low,close,volume`, rosnąco; aliasy symboli jak w sekcji Źródła; `?r=<losowa>` omija cache). Nie nadpisuj świec pustymi danymi. Potem `python3 paper.py update --asof <data ostatniej zakończonej sesji>` i `python3 paper.py mark --asof <ta sama data>`. Komunikaty „UWAGA: brak notowań" (brak pliku) wpisz w sekcji zastrzeżeń raportu.
+1. **Najpierw rozlicz wczorajszą sesję (przed pisaniem nowego raportu).** Wypisz tickery z `paper/swing/state.json` (`positions` i `orders`). Dla każdego pobierz z biznesradaru ostatnie ok. 10–15 sesji i zapisz do `paper/swing/quotes/<TIC>.csv` (nagłówek `date,open,high,low,close,volume`, rosnąco; aliasy symboli jak w sekcji Źródła; `?r=<losowa>` omija cache). Nie nadpisuj świec pustymi danymi. Potem `python3 paper.py update --asof <data ostatniej zakończonej sesji>` i `python3 paper.py mark --asof <ta sama data>`. Komunikaty „UWAGA: brak notowań" (brak pliku) wpisz w sekcji zastrzeżeń raportu.
 2. **Po zapisaniu raportu** uruchom `python3 paper.py signal reports/RRRR-MM-DD.md`. Skrypt czyta tabelę rankingu (dlatego nazw kolumn nie wolno zmieniać), wybiera klasy A/B z sumą ≥ 60, R do C1 ≥ 1 i do C2 ≥ 2, bez raportu kwartalnego w ciągu 7 dni, i tworzy zlecenia kupna z limitem na górnej granicy strefy wejścia. Dla czytelności strefy wejścia podawaj w formacie `od–do`, a w kolumnie „Raport" datę dd.mm (np. `12.11 (6 dni)`); strefę „>241" (wejście na wybiciu) skrypt pomija.
 3. W raporcie nie omawiaj portfela. Jeśli w danym dniu wydarzyło się coś ważnego (zrealizowane wejście albo wyjście), dopisz jedną linię na końcu sekcji „Rozliczenie poprzedniego skanu".
-4. Zasad portfela (kapitał, limit 5 000 PLN na pozycję, koszty, kolejność stop/cel w świecy) nie zmieniaj w trakcie serii; zmiana wymaga decyzji właściciela i aktualizacji `paper.py`, strony „Portfel" i `metodologia-swing.md`.
+4. Zasad portfela (kapitał, limit 5 000 PLN na pozycję, koszty, kolejność stop/cel w świecy) nie zmieniaj w trakcie serii; zmiana wymaga decyzji właściciela i aktualizacji `paper.py`. Portfel nie jest częścią metodologii: strona „Swing Metodologia" opisuje wyłącznie mechanizm wyszukiwania akcji, więc jej z tego powodu nie zmieniaj. Kolejne strategie dostaną własne katalogi `paper/<nazwa>/` i własne zakładki „Portfel <nazwa>" oraz „<Nazwa> Metodologia".
 
 ## Publikacja (każdego dnia)
 
 1. Dopisz `reports/YYYY-MM-DD.md` (data dzisiejsza, czas Europe/Warsaw). Nie nadpisuj starszych raportów.
-2. `pip install --break-system-packages markdown` (jeśli brak), potem `python3 build.py`. Skrypt generuje `index.html` (najnowszy raport), `reports/YYYY-MM-DD.html`, `archiwum.html` oraz `portfel.html` (ze stanu `paper/state.json`).
+2. `pip install --break-system-packages markdown` (jeśli brak), potem `python3 build.py`. Skrypt generuje `index.html` (najnowszy raport), `reports/YYYY-MM-DD.html`, `archiwum.html` oraz `portfel-swing.html` (ze stanu `paper/swing/state.json`).
 3. Sprawdź, że `index.html` zawiera tabelę rankingu i nagłówek z dzisiejszą datą.
 4. `git add -A && git commit -m "Raport GPW YYYY-MM-DD" && git push origin main`. Treść commita kończy się trailerami wymaganymi w sesji (Co-Authored-By i Claude-Session), jeśli zostały podane w systemie.
 5. Jeśli push się nie uda, nie próbuj obejść; zakończ wynikiem z opisem błędu.

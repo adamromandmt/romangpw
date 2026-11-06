@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Portfel wirtualny (paper trading) oparty na rankingu codziennego skanera swing.
+"""Portfel wirtualny (paper trading) strategii swing: sprawdza, jak wypadły prognozy z rankingu codziennego skanera.
 
 Zasady (parametry w paper/state.json -> "config"):
   * kapitał startowy 100 000 PLN; pojedyncza pozycja za co najwyżej 5 000 PLN (liczba sztuk = 5 000 / limit,
@@ -15,6 +15,7 @@ Zasady (parametry w paper/state.json -> "config"):
     jeśli świeca dotyka i stopu, i celu, liczy się stop; w dniu wejścia sprawdzany jest tylko stop.
 
 Użycie:
+    (opcja --strategy NAZWA, domyślnie swing: stan w paper/<NAZWA>/)
     python3 paper.py init
     python3 paper.py update --asof YYYY-MM-DD          # przetwarza paper/quotes/<TIC>.csv do podanej sesji
     python3 paper.py signal reports/RRRR-MM-DD.md [--valid-from YYYY-MM-DD]
@@ -33,9 +34,17 @@ from pathlib import Path
 from charts import build_items, parse_ranking
 
 ROOT = Path(__file__).resolve().parent
-PAPER = ROOT / "paper"
+STRATEGY = "swing"  # kolejne strategie dostają własny katalog paper/<nazwa>/ (state.json, quotes/)
+PAPER = ROOT / "paper" / STRATEGY
 STATE = PAPER / "state.json"
 QUOTES = PAPER / "quotes"
+
+
+def use_strategy(name):
+    """Przełącza ścieżki stanu i notowań na paper/<name>/."""
+    global STRATEGY, PAPER, STATE, QUOTES
+    STRATEGY, PAPER = name, ROOT / "paper" / name
+    STATE, QUOTES = PAPER / "state.json", PAPER / "quotes"
 
 DEFAULT_CFG = {
     "start_capital": 100000.0, "position_value": 5000.0, "max_open": 20, "fee_pct": 0.2,
@@ -326,6 +335,8 @@ def stats(st):
 def main(argv):
     cmd = argv[1] if len(argv) > 1 else "show"
     arg = lambda k: argv[argv.index(k) + 1] if k in argv else None
+    if arg("--strategy"):
+        use_strategy(arg("--strategy"))
     st = load()
     if cmd == "init":
         if STATE.exists():

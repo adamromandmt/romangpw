@@ -122,9 +122,9 @@ PAGE = """<!doctype html>
 DIVS = ROOT / "dywidendy"
 DESC_SWING = "Dzienny skaner swing GPW — raport przed otwarciem sesji."
 DESC_DIV = "Spółki GPW regularnie wypłacające dywidendę, w trendzie wzrostowym, przed spodziewanym ogłoszeniem dywidendy."
-DESC_PORT = "Wirtualny portfel: symulowane kupno i sprzedaż spółek z rankingu swing według celów i stopów."
+DESC_PORT = "Portfel Swing: wirtualny sprawdzian prognoz ze skanera swing (kupno i sprzedaż według celów i stopów)."
 TABS = [("swing", "index.html", "Swing"), ("div", "dywidendy.html", "Dywidendy"),
-        ("port", "portfel.html", "Portfel"),
+        ("port-swing", "portfel-swing.html", "Portfel Swing"),
         ("meth", "metodologia-swing.html", "Swing Metodologia"),
         ("arch", "archiwum.html", "Archiwum swing"), ("darch", "dywidendy-archiwum.html", "Archiwum dywidend")]
 
@@ -210,13 +210,15 @@ def main():
         return 1
     dv = build_section(md_files(DIVS), DIVS, "dywidendy.html", "dywidendy-archiwum.html", "Raport dywidendowy", "div", "darch",
                        DESC_DIV, "Dywidendy GPW", "")
-    ps = ROOT / "paper" / "state.json"
-    if ps.exists():
-        import json
+    # Portfele wirtualne: każda strategia ma paper/<nazwa>/state.json i stronę portfel-<nazwa>.html
+    # (zakładka w TABS: klucz "port-<nazwa>"). Na razie tylko swing.
+    import json
 
-        (ROOT / "portfel.html").write_text(
-            page("Portfel wirtualny", portfel.render(json.loads(ps.read_text(encoding="utf-8"))), active="port", desc=DESC_PORT),
-            encoding="utf-8")
+    for ps in sorted((ROOT / "paper").glob("*/state.json")):
+        key = ps.parent.name
+        (ROOT / f"portfel-{key}.html").write_text(
+            page(f"Portfel {key.capitalize()}", portfel.render(json.loads(ps.read_text(encoding="utf-8")), key.capitalize()),
+                 active=f"port-{key}", desc=DESC_PORT), encoding="utf-8")
     mp = ROOT / "metodologia-swing.md"
     if mp.exists():
         mbody = markdown.Markdown(extensions=["tables", "sane_lists"]).convert(mp.read_text(encoding="utf-8"))

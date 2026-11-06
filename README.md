@@ -15,5 +15,5 @@ Dzienny skaner swing GPW, publikowany na https://www.romangpw.pl (GitHub Pages; 
 - `dywidendy/YYYY-MM-DD.md` — raporty; `dividends.py` (historia i kotwice sezonowe), `trendscan.py` (trend, płynność), `divrank.py` (punktacja i poziomy).
 - `data/dividends/` — historia dywidend (raw_*.csv), `verify/*.json` (weryfikacja ESPI), `judgement.json` (oceny), `data/quotes/` — notowania.
 
-## Zakładka Portfel
-- `paper.py` — silnik wirtualnego portfela (zlecenia z rankingu swing, stopy i cele), `portfel.py` — render strony, `paper/state.json` — stan, `paper/quotes/` — notowania pozycji. Opis kroków dziennych w `METHOD.md` (sekcja „Portfel wirtualny").
+## Zakładka Portfel Swing
+- `paper.py` — silnik wirtualnego portfela (sprawdzian prognoz ze skanera swing: stopy i cele), `portfel.py` — render strony, `paper/swing/state.json` — stan, `paper/swing/quotes/` — notowania pozycji. Kolejne strategie: `paper/<nazwa>/`. Opis kroków dziennych w `METHOD.md` (sekcja „Portfel wirtualny").

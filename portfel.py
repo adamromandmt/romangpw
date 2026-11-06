@@ -1,4 +1,4 @@
-"""Strona „Portfel" (wirtualny portfel) generowana ze stanu paper/state.json. Bez JS, wykres to inline SVG."""
+"""Strona „Portfel <strategia>" (wirtualny portfel) generowana ze stanu paper/<strategia>/state.json. Bez JS, wykres to inline SVG."""
 import datetime as dt
 import html
 
@@ -96,7 +96,7 @@ def equity_chart(st):
     return f'<div class="chart-card"><h3>Krzywa kapitału</h3><p class="sub">Wartość portfela (gotówka plus pozycje po cenach zamknięcia) w PLN.</p>{svg}</div>'
 
 
-def render(st):
+def render(st, name="Swing"):
     cfg, s = st["config"], stats(st)
     eq = equity(st)
     ret = (eq / cfg["start_capital"] - 1) * 100
@@ -141,7 +141,7 @@ def render(st):
     rules = f"""
 <ul class="rules">
 <li><strong>Kapitał:</strong> {n0(cfg['start_capital'])} PLN wirtualnych od {dshort(st['start_date'])}.{st['start_date'][:4]}. To symulacja, żadne prawdziwe zlecenia nie są składane.</li>
-<li><strong>Skąd pozycje:</strong> z tabeli rankingu codziennego raportu swing. Bierzemy klasy A i B z sumą co najmniej {cfg['min_score']}, R do celu 1 co najmniej {cfg['min_r1']:g} i do celu 2 co najmniej {cfg['min_r2']:g}, bez raportu kwartalnego w ciągu {cfg['skip_earnings_days']} dni, maks. {cfg['max_new_per_day']} nowych zleceń dziennie.</li>
+<li><strong>Skąd pozycje:</strong> z tabeli rankingu codziennego raportu ({esc(name.lower())}). Bierzemy klasy A i B z sumą co najmniej {cfg['min_score']}, R do celu 1 co najmniej {cfg['min_r1']:g} i do celu 2 co najmniej {cfg['min_r2']:g}, bez raportu kwartalnego w ciągu {cfg['skip_earnings_days']} dni, maks. {cfg['max_new_per_day']} nowych zleceń dziennie.</li>
 <li><strong>Wejście:</strong> zlecenie z limitem na górnej granicy strefy wejścia, ważne 5 sesji. Realizuje się po niższej z cen: otwarcie lub limit, jeśli kurs zszedł do limitu. Gdy sesja otwiera się poniżej stopu, zlecenie jest anulowane.</li>
 <li><strong>Wielkość pozycji:</strong> jedna pozycja kosztuje najwyżej {n0(cfg['position_value'])} PLN (pełne akcje). Akcje droższe niż {n0(cfg['position_value'])} PLN za sztukę (np. LPP) są pomijane. Zysk ze sprzedaży wraca do gotówki, strata po stopie ją pomniejsza. Gdy cała gotówka jest zaangażowana w pozycje i zlecenia, nowe zlecenia czekają, aż któraś pozycja zostanie zamknięta (cel albo stop).</li>
 <li><strong>Wyjścia:</strong> stop (przy luce po cenie otwarcia), cel 1 (sprzedaż połowy, stop przesuwany na cenę wejścia), cel 2 (reszta), albo po {cfg['max_hold_days']} dniach po zamknięciu sesji.</li>
@@ -149,8 +149,8 @@ def render(st):
 <li><strong>Koszty:</strong> {str(cfg['fee_pct']).replace('.', ',')}% od każdej transakcji. Podatek od zysków kapitałowych (19%) nie jest uwzględniony.</li>
 </ul>"""
     body = (
-        f'<h1>Portfel wirtualny</h1>\n<div class="banner">Stan na <strong>{dshort(asof)}.{asof[:4]}</strong> (zamknięcie sesji). '
-        f'Symulacja na podstawie rankingu skanera swing, <strong>nie porada inwestycyjna</strong>.</div>\n'
+        f'<h1>Portfel {esc(name)}</h1>\n<div class="banner">Stan na <strong>{dshort(asof)}.{asof[:4]}</strong> (zamknięcie sesji). '
+        f'Sprawdzian prognoz: czy spółki z rankingu skanera ({esc(name.lower())}) rzeczywiście osiągnęłyby cel przed stopem. Wirtualny kapitał, <strong>nie porada inwestycyjna</strong>.</div>\n'
         f'<div class="cards">{cards}</div>\n{equity_chart(st)}\n'
         f'<h2>Otwarte pozycje</h2>\n'
         + table(["Tic", "Spółka", "Szt.", "Wejście", "Data", "Kurs", "Wynik %", "Wynik PLN", "Stop", "C1", "C2", "Dni", "Status"], pos_rows, "Brak otwartych pozycji.")
