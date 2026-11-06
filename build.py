@@ -64,6 +64,11 @@ nav a.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
 .subtabs a,.subtabs span{padding:6px 18px;text-decoration:none;color:var(--accent2)}
 .subtabs a:hover{color:var(--accent)}
 .subtabs .cur{background:var(--accent);color:#04120a}
+.news-item{background:rgba(15,22,20,.9);border:1px solid var(--line);border-radius:12px;padding:4px 18px 14px;margin:16px 0;box-shadow:0 0 0 1px rgba(43,255,136,.04),0 10px 24px rgba(0,0,0,.28)}
+.news-item h3{margin:14px 0 8px;font-size:18px;line-height:1.35;color:var(--strong)}
+.news-item p{margin:8px 0}
+.news-item p em{color:var(--muted);font-size:13px}
+.news>h2:first-child{margin-top:8px}
 .banner{background:rgba(15,22,20,.85);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;padding:11px 14px;margin:18px 0;font-size:14px;color:var(--fg);backdrop-filter:blur(4px)}
 .banner strong{color:var(--accent)}
 h1{font-size:27px;line-height:1.25;margin:22px 0 8px;color:var(--strong);letter-spacing:-.2px}
@@ -139,6 +144,8 @@ PAGE = """<!doctype html>
 DIVS = ROOT / "dywidendy"
 REPORTS_EN = ROOT / "reports-en"
 DIVS_EN = ROOT / "dywidendy-en"
+NEWS = ROOT / "newsy"
+NEWS_EN = ROOT / "newsy-en"
 LANGS = ("pl", "en")
 
 # Logo: znak (trend ze swingową korektą) w ramce z gradientem jasna zieleń -> złamany morski błękit + napis Roman GPW.
@@ -156,6 +163,7 @@ FAVICON = f'<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">{MARK}</
 
 # Nazwy plików stron: klucz -> (polska, angielska). Polska wersja leży w korzeniu, angielska w en/.
 FILES = {
+    "news": ("newsy.html", "news.html"),
     "swing": ("index.html", "index.html"),
     "div": ("dywidendy.html", "dividends.html"),
     "meth": ("metodologia-swing.html", "methodology-swing.html"),
@@ -171,10 +179,13 @@ UI = {
         "brand": "romangpw.pl · skaner GPW",
         "disclaimer": "Ćwiczenie przesiewowe według zadanego frameworku, nie porada inwestycyjna.",
         "footer": "Dane z publicznych źródeł (m.in. biznesradar.pl, bankier.pl), mogą zawierać błędy lub opóźnienia. Raporty generowane automatycznie.",
-        "tabs": {"swing": "Swing Raport", "div": "Dywidendy", "port": "Portfel {n}", "meth": "Swing Metodologia",
+        "tabs": {"news": "Newsy dnia", "swing": "Swing Raport", "div": "Dywidendy", "port": "Portfel {n}", "meth": "Swing Metodologia",
                  "arch": "Archiwum"},
         "sub": {"arch": "Swing", "darch": "Dywidendy"},
         "desc_swing": "Dzienny skaner swing GPW — raport przed otwarciem sesji.",
+        "desc_news": "Newsy dnia GPW: najważniejsze komunikaty spółek i wydarzenia rynkowe, bez emocji, ze źródłami.",
+        "news_title": "Newsy dnia", "news_label": "Wydanie", "news_prev": "Wcześniejsze wydania", "news_latest": "Najnowsze wydanie",
+        "news_empty": "Pierwsze wydanie w przygotowaniu. Zakładka pokazuje tylko istotne informacje; w dni bez ważnych wiadomości nie powstaje nowe wydanie.",
         "desc_div": "Spółki GPW regularnie wypłacające dywidendę, w trendzie wzrostowym, przed spodziewanym ogłoszeniem dywidendy.",
         "desc_port": "Portfel Swing: wirtualny sprawdzian prognoz ze skanera swing (kupno i sprzedaż według celów i stopów).",
         "desc_meth": "Prosty opis, jak działa dzienny skaner swing GPW: kroki i powody.",
@@ -193,10 +204,13 @@ UI = {
         "brand": "romangpw.pl · WSE scanner",
         "disclaimer": "Screening exercise under the given framework, not investment advice.",
         "footer": "Data from public sources (incl. biznesradar.pl, bankier.pl) may contain errors or delays. Reports are generated automatically. Polish is the original language of the reports.",
-        "tabs": {"swing": "Swing Report", "div": "Dividends", "port": "{n} Portfolio", "meth": "Swing Methodology",
+        "tabs": {"news": "News of the day", "swing": "Swing Report", "div": "Dividends", "port": "{n} Portfolio", "meth": "Swing Methodology",
                  "arch": "Archive"},
         "sub": {"arch": "Swing", "darch": "Dividends"},
         "desc_swing": "Daily swing-trading scanner for the Warsaw Stock Exchange (GPW) — a report before the open.",
+        "desc_news": "News of the day for the Warsaw Stock Exchange (GPW): the most important company announcements and market events, without emotion, with sources.",
+        "news_title": "News of the day", "news_label": "Issue", "news_prev": "Earlier issues", "news_latest": "Latest issue",
+        "news_empty": "The first issue is in preparation. This tab shows only significant information; on days without important news no new issue is published.",
         "desc_div": "GPW stocks that pay regular dividends, are in an uptrend and have not yet announced the dividend.",
         "desc_port": "Swing Portfolio: a virtual check of the swing scanner's forecasts (buying and selling at targets and stops).",
         "desc_meth": "A plain-language description of how the daily GPW swing scanner works: the steps and the reasons.",
@@ -255,7 +269,7 @@ def render_md(text, ref=None, lang="pl", chart_text=None):
 
 def tabs_for(lang, ports):
     u = UI[lang]["tabs"]
-    tabs = [("swing", u["swing"])]
+    tabs = [("news", u["news"]), ("swing", u["swing"])]
     tabs += [(f"port-{k}", u["port"].format(n=k.capitalize())) for k in ports]
     tabs += [("meth", u["meth"]), ("div", u["div"]), ("arch", u["arch"])]
     return tabs
@@ -313,10 +327,59 @@ def md_text(lang, folder_pl, stem, kind):
     pl = (folder_pl / f"{stem}.md").read_text(encoding="utf-8")
     if lang == "pl":
         return pl, pl, True
-    src = MD_SRC["en"][0 if kind == "swing" else 1] / f"{stem}.md"
+    src = (NEWS_EN if kind == "news" else MD_SRC["en"][0 if kind == "swing" else 1]) / f"{stem}.md"
     if src.exists():
         return src.read_text(encoding="utf-8"), pl, True
     return pl, pl, False
+
+
+def cardify(out):
+    """Owija każdą pozycję newsów (od <h3> do następnego nagłówka) w <article class="news-item">."""
+    parts = re.split(r"(?=<h[23][ >])", out)
+    return "".join(f'<article class="news-item">{p}</article>' if p.startswith("<h3") else p for p in parts)
+
+
+def build_news(lang):
+    """Zakładka Newsy dnia: newsy/RRRR-MM-DD.md -> newsy.html (najnowsze wydanie + lista wcześniejszych) i newsy/<data>.html."""
+    import datetime as dt
+
+    u = UI[lang]
+    out_root = ROOT if lang == "pl" else ROOT / "en"
+    out_root.mkdir(exist_ok=True)
+    files = md_files(NEWS)
+    sub = "newsy" if lang == "pl" else "news"
+    out_name = fname("news", lang)
+    counter = (fname("news", "pl"), fname("news", "en"))
+    desc = u["desc_news"]
+    if not files:
+        (out_root / out_name).write_text(page(u["news_title"], f'<div class="banner">{u["news_empty"]}</div>', lang, "news", desc, counter=counter), encoding="utf-8")
+        return None
+    (out_root / sub).mkdir(exist_ok=True)
+    md = lambda t: cardify(markdown.Markdown(extensions=["sane_lists"]).convert(t))
+    note = lambda ok: "" if ok else f'<div class="banner">{u["untranslated"]}</div>\n'
+
+    def issue(f):
+        text, _, ok = md_text(lang, NEWS, f.stem, "news")
+        return md(text), ok
+
+    for f in files:
+        body, ok = issue(f)
+        banner = f'<div class="banner">{u["news_label"]} <strong>{pretty_date(f.stem, lang)}</strong> · <a href="../{out_name}">{u["news_latest"]}</a></div>\n'
+        (out_root / sub / f"{f.stem}.html").write_text(
+            page(f"{u['news_title']} {f.stem}", banner + note(ok) + '<div class="news">' + body + "</div>", lang, "news", desc, sub=True,
+                 counter=(f"newsy/{f.stem}.html", f"news/{f.stem}.html")), encoding="utf-8")
+    latest = files[-1]
+    body, ok = issue(latest)
+    older = [f for f in reversed(files[:-1])]
+    prev = ""
+    if older:
+        items = "\n".join(f'<li><a href="{sub}/{f.stem}.html">{pretty_date(f.stem, lang)}</a></li>' for f in older)
+        prev = f'\n<h2>{u["news_prev"]}</h2>\n<ul class="list">\n{items}\n</ul>'
+    banner = f'<div class="banner">{u["news_latest"]}: <strong>{pretty_date(latest.stem, lang)}</strong></div>\n'
+    (out_root / out_name).write_text(
+        page(f"{u['news_title']} — {latest.stem}", banner + note(ok) + '<div class="news">' + body + "</div>" + prev, lang, "news", desc, counter=counter),
+        encoding="utf-8")
+    return latest.stem
 
 
 def build_section(lang, kind):
@@ -390,6 +453,7 @@ def main():
     for lang in LANGS:
         u = UI[lang]
         out_root = ROOT if lang == "pl" else ROOT / "en"
+        nw = build_news(lang)
         sw = build_section(lang, "swing")
         dv = build_section(lang, "div")
         # Portfele wirtualne: każda strategia ma paper/<nazwa>/state.json i stronę portfel-<nazwa>.html (EN: en/portfolio-<nazwa>.html).
@@ -408,7 +472,7 @@ def main():
             mbody = banner + markdown.Markdown(extensions=["tables", "sane_lists"]).convert(mp.read_text(encoding="utf-8"))
             (out_root / fname("meth", lang)).write_text(
                 page(u["title_meth"], mbody, lang, "meth", u["desc_meth"], counter=(fname("meth", "pl"), fname("meth", "en"))), encoding="utf-8")
-        msg.append(f"{lang}: swing {len(report_files())} (najnowszy {sw})" + (f", dywidendy {len(md_files(DIVS))} (najnowszy {dv})" if dv else ""))
+        msg.append(f"{lang}: newsy {len(md_files(NEWS))} (najnowszy {nw}); swing {len(report_files())} (najnowszy {sw})" + (f", dywidendy {len(md_files(DIVS))} (najnowszy {dv})" if dv else ""))
     print("Zbudowano: " + "; ".join(msg))
     return 0
 

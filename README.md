@@ -11,6 +11,10 @@ Dzienny skaner swing GPW, publikowany na https://www.romangpw.pl (GitHub Pages; 
 
 Ćwiczenie przesiewowe według zadanego frameworku, nie porada inwestycyjna.
 
+## Zakładka Newsy dnia
+- `NEWS-METHOD.md` — kryteria wyboru newsów (ocena istotności, język bez emocji, format); `newsy/sources.json` — źródła, progi i lista osób (edytowalne bez zmian w kodzie).
+- `newsy/RRRR-MM-DD.md` (PL) i `newsy-en/` (EN) — wydania; w dni bez istotnych wiadomości wydanie nie powstaje. Strony: `newsy.html`, `en/news.html`.
+
 ## Zakładka Dywidendy
 - `METHOD-DYWIDENDY.md` — instrukcja skanera „dywidenda przed ogłoszeniem"; uruchamiany tylko na wyraźną prośbę (bez zadania cyklicznego).
 - `dywidendy/YYYY-MM-DD.md` — raporty; `dividends.py` (historia i kotwice sezonowe), `trendscan.py` (trend, płynność), `divrank.py` (punktacja i poziomy).

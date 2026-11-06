@@ -97,6 +97,10 @@ Portfel Swing (wirtualny sprawdzian prognoz: kapitał 100 000 PLN, pozycja do 5 
 5. `git add -A && git commit -m "Raport GPW YYYY-MM-DD" && git push origin main`. Treść commita kończy się trailerami wymaganymi w sesji (Co-Authored-By i Claude-Session), jeśli zostały podane w systemie.
 6. Jeśli push się nie uda, nie próbuj obejść; zakończ wynikiem z opisem błędu.
 
+## Newsy dnia (po opublikowaniu raportu swing)
+
+Po tym, jak raport swing jest już opublikowany (push zakończony), wykonaj osobny krok „Newsy dnia" według `NEWS-METHOD.md` (kryteria, język bez emocji, format) i `newsy/sources.json` (źródła, progi). Zakładka nie ma stałego terminu wydań: **jeżeli żadna wiadomość nie przekracza progu `min_score`, nie twórz pliku ani commita** i napisz o tym w podsumowaniu. Gdy są istotne wiadomości: zapisz `newsy/RRRR-MM-DD.md`, przetłumacz na `newsy-en/RRRR-MM-DD.md`, `python3 build.py`, sprawdź `newsy.html` i `en/news.html`, osobny commit „Newsy dnia RRRR-MM-DD" i push (po `git pull --rebase origin main`). Błąd lub brak źródeł w tym kroku nie może blokować ani cofać raportu swing.
+
 ## Strona „Swing Metodologia" (utrzymywanie)
 
 Plik `metodologia-swing.md` (generowany przez `build.py` do `metodologia-swing.html`, zakładka „Swing Metodologia") opisuje prostym językiem dla początkujących, jak działa skaner: kroki i powody. **Za każdym razem, gdy zmieniasz sposób przygotowywania porannego raportu** (źródła, kroki, kryteria, punktację, klasy A/B/C, format raportu, reguły publikacji), zaktualizuj w tym samym commicie także `metodologia-swing.md` oraz jej angielską wersję `metodologia-swing.en.md` (strona `en/methodology-swing.html`), tak by wszystkie opisy były spójne.
