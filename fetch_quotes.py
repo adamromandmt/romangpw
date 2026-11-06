@@ -34,10 +34,15 @@ UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chr
 DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 
+RAW = {}  # ostatnia odpowiedź na wątek (tylko do diagnostyki w logu)
+
+
 def http(url, timeout=10):
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept-Language": "pl,en;q=0.8"})
     with urllib.request.urlopen(req, timeout=timeout) as r:
-        return r.read().decode("utf-8", "replace")
+        text = r.read().decode("utf-8", "replace")
+    RAW[threading.get_ident()] = (url, text)
+    return text
 
 
 def num(s):
@@ -180,6 +185,13 @@ def probe():
             GOOD.add(name)
         except Exception as e:  # noqa: BLE001
             out[name] = {"ok": False, "error": str(e)[:160], "sec": round(time.time() - t0, 1)}
+            raw = RAW.get(threading.get_ident())
+            if raw:  # diagnostyka tylko do logu Actions (nic nie trafia do repozytorium)
+                url, text = raw
+                title = re.search(r"<title[^>]*>(.*?)</title>", text, flags=re.S | re.I)
+                visible = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", re.sub(r"<script.*?</script>|<style.*?</style>", "", text, flags=re.S)))
+                print(f"  diagnostyka {name}: {url} długość={len(text)} tytuł={title.group(1).strip()[:80] if title else None!r} "
+                      f"<table>={text.count('<table')} <tr>={text.count('<tr')} tekst={visible.strip()[:300]!r}", flush=True)
             if "pominięty" in str(e):
                 DISABLED[name] = "pominięty (brak klucza)"
             else:
