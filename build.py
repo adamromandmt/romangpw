@@ -135,7 +135,7 @@ PAGE = """<!doctype html>
 {body}
 </main>
 <footer>{disclaimer}<br>{footer}</footer>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{{"token": "dee8fe193ffe4484bef9d4691b8d77d2"}}'></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{{"token": "1968667fc753428b8344b96f81a99adb"}}'></script>
 </body>
 </html>
 """
