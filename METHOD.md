@@ -1,6 +1,6 @@
 # METHOD — dzienny skaner swing GPW
 
-Ten plik jest instrukcją dla codziennego zaplanowanego zadania. Zadanie startuje w dni robocze o 7:45 (Europe/Warsaw), ma przygotować raport przed otwarciem GPW i opublikować go w tym repo (GitHub Pages, romangpw.pl). Raport jest po polsku.
+Ten plik jest instrukcją dla codziennego zaplanowanego zadania. Zadanie startuje w dni robocze ok. 4:00 (Europe/Warsaw, 3:53), ma przygotować raport przed otwarciem GPW i opublikować go w tym repo (GitHub Pages, romangpw.pl). Raport jest po polsku.
 
 ## Rola i cel
 
@@ -51,6 +51,12 @@ Sekcje, w tej kolejności:
 Raport ma być rzeczowy i skanowalny (tabele, krótkie punkty). Tabele w Markdown (rozszerzenie tables).
 
 **Nie zmieniaj nazw kolumn tabeli rankingu** (`Tic`, `Kurs`, `Fund/30`, `Tech/70`, `Suma`, `Klasa`, `Wejście`, `Stop`, `C1`, `C2`, `R (C1 / C2)`) ani kolejności, bo `build.py` na ich podstawie generuje wykresy (ranking punktowy, mapa ryzyka i zysku, R:R). Liczby zapisuj w formacie `26 220`, `5,40`; strefę wejścia jako `25 500–26 000` albo `>241`; R jako `1,9 / 3,2`. Gdy kolumn brakuje, wykres jest po cichu pomijany.
+
+## Notowania z repozytorium (najpierw tu)
+
+Workflow GitHub Actions `.github/workflows/quotes.yml` (codziennie ok. 2:15–3:15 czasu warszawskiego) uruchamia `fetch_quotes.py`, który pobiera dzienne OHLCV spółek i indeksów **tylko z GPW** (lista w `data/universe.json`) z kilku źródeł (EODHD jeśli jest klucz, stooq.pl, stooq.com, biznesradar) do `data/market/<TIC>.csv` (indeksy: `_WIG.csv`, `_WIG20.csv`, `_MWIG40.csv`, `_SWIG80.csv`; ok. 500 sesji) i commituje je do repo. Podsumowanie przebiegu jest w `data/market/_status.json` (źródło, ostatnia data i błędy dla każdego symbolu).
+
+Przed skanem: (1) `git pull`, odczytaj `data/market/_status.json` i sprawdź `run_utc` oraz `latest_session` — dane są użyteczne, jeśli `latest_session` to ostatnia zakończona sesja GPW. (2) Dla symboli z tego pliku licz wskaźniki w Pythonie bezpośrednio z CSV (pełna historia, także SMA100/200 i 52-tyg. szczyt — nie trzeba już ich pomijać, o ile `rows` ≥ 200). (3) WebFetch z biznesradaru używaj tylko dla luk: symboli spoza `data/market`, symboli z `failed` lub `behind_latest_session`, oraz do kursów bieżących i wiadomości. Jeśli plik statusu jest stary (> 1 dzień roboczy) albo go nie ma, wróć do pobierania przez WebFetch jak niżej i odnotuj to w sekcji „Metoda i zastrzeżenia". (4) Do portfela wirtualnego: dla tickerów z `positions`/`orders` skopiuj ostatnie sesje z `data/market/<TIC>.csv` do `paper/swing/quotes/<TIC>.csv` zamiast pobierać je ręcznie.
 
 ## Źródła i techniczne wskazówki (sprawdzone wcześniej)
 
