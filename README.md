@@ -5,7 +5,8 @@ Dzienny skaner swing GPW, publikowany na https://www.gpwradar.pl (GitHub Pages; 
 - `METHOD.md` — instrukcja i metodyka dla codziennego zaplanowanego zadania (ok. 4:00, dni robocze, Europe/Warsaw).
 - `metodologia-swing.md` — strona „Swing Metodologia" (opis metody dla początkujących; aktualizuj razem z `METHOD.md`).
 - `reports/YYYY-MM-DD.md` — raporty (archiwum, poprzedni raport służy do rozliczenia).
-- `build.py` — generuje `index.html`, `archiwum.html` i `reports/*.html` z Markdown (`pip install markdown`).
+- `build.py` — generuje strony HTML (raporty, archiwa, newsy, portfel, metodologię) z Markdown (`pip install markdown`) oraz `sitemap.xml`, `robots.txt`, `manifest.webmanifest` i `404.html`; wykresy SVG (także wersje kompaktowe na telefon) liczy `charts.py`.
+- `tools/make_assets.py` — jednorazowo generuje obrazy z logo: `favicon-32.png`, `favicon.ico`, `apple-touch-icon.png`, `icon-192/512.png`, `icon-maskable-512.png` oraz `og-pl.png` / `og-en.png` (podgląd linku). Uruchamiać ręcznie po zmianie logo (`pip install playwright pillow`).
 - Wersja angielska: strony w `en/` (przełącznik PL/EN w lewym górnym rogu, domyślnie polski). Źródła tłumaczeń: `reports-en/`, `dywidendy-en/`, `metodologia-swing.en.md`; wykresy zawsze z polskich raportów. Brak tłumaczenia = polski tekst z informacją na stronie EN.
 - `CNAME` — domena własna dla GitHub Pages.
 

@@ -154,30 +154,43 @@ def _pl(v, digits=1, sign=False):
     return s if LANG == "en" else s.replace(".", ",")
 
 
-def _svg(h, label, body):
-    return (f'<svg viewBox="0 0 {W} {h}" role="img" aria-label="{esc(label)}" '
+WC = 400  # szerokość viewBox wariantu kompaktowego (telefon)
+
+
+def _svg(h, label, body, w=None, cls=""):
+    c = f' class="{cls}"' if cls else ""
+    return (f'<svg{c} viewBox="0 0 {w or W} {h}" role="img" aria-label="{esc(label)}" '
             f'xmlns="http://www.w3.org/2000/svg">{body}</svg>')
 
 
-def _legend(items, x, y):
-    out, cx = [], x
+def _legend(items, x, y, maxw=None):
+    """Legenda w jednym rzędzie (szerokości z krotek). Przy maxw zawija do kolejnych rzędów (szerokość tekstu szacowana).
+    Zwraca (svg, liczba rzędów)."""
+    out, cx, cy, rows = [], x, y, 1
     for color, text, w in items:
-        out.append(f'<rect x="{cx}" y="{y - 9}" width="12" height="12" rx="3" style="fill:{color}"/>')
-        out.append(f'<text class="tick" x="{cx + 18}" y="{y + 1}">{esc(text)}</text>')
+        if maxw is not None:
+            w = 18 + len(text) * 7.0 + 16
+            if cx > x and cx + w - 16 > maxw:
+                cx, cy, rows = x, cy + 18, rows + 1
+        out.append(f'<rect x="{cx:g}" y="{cy - 9}" width="12" height="12" rx="3" style="fill:{color}"/>')
+        out.append(f'<text class="tick" x="{cx + 18:g}" y="{cy + 1}">{esc(text)}</text>')
         cx += w
-    return "".join(out)
+    return "".join(out), rows
 
 
-def chart_scores(items, div=False):
+def chart_scores(items, div=False, c=False):
     rows = [i for i in items if i["suma"] is not None]
     if len(rows) < 2:
         return ""
-    x0, x1, rh, top = 150, W - 70, 30, 52
-    h = top + rh * len(rows) + 8
+    w = WC if c else W
+    x0, x1, rh = (76, w - 34, 30) if c else (150, w - 70, 30)
     sc = (x1 - x0) / 100
     leg = ([("var(--up)", T("Dywidenda i timing (z 50)"), 220), ("var(--accent2)", T("Trend i technika (z 50)"), 210)] if div
            else [("var(--up)", T("Fundamenty (z 30)"), 160), ("var(--accent2)", T("Technika i reszta"), 170)])
-    p = [_legend(leg, x0, 14)]
+    lg, nrows = _legend(leg, 10 if c else x0, 14, maxw=w - 10 if c else None)
+    top = 52 + (nrows - 1) * 18
+    h = top + rh * len(rows) + 8
+    p = [lg]
     for v in (0, 25, 50, 75, 100):
         x = x0 + v * sc
         p.append(f'<line class="grid" x1="{x:.1f}" y1="{top - 10}" x2="{x:.1f}" y2="{h - 4}"/>')
@@ -197,10 +210,10 @@ def chart_scores(items, div=False):
             p.append(f'<g><title>{esc(it["tic"])}: {suma:g} {T("pkt")}</title>'
                      f'<rect x="{x0}" y="{y + 6}" width="{suma * sc:.1f}" height="16" rx="3" style="fill:var(--accent2)"/></g>')
         p.append(f'<text class="val" x="{x0 + suma * sc + 8:.1f}" y="{y + 18}">{suma:g}</text>')
-    return _svg(h, T("Ranking punktowy kandydatów"), "".join(p))
+    return _svg(h, T("Ranking punktowy kandydatów"), "".join(p), w, "c" if c else "")
 
 
-def chart_ladder(items, limit=6):
+def chart_ladder(items, limit=6, c=False):
     ok = []
     for i in items:
         if None in (i["price"], i["lo"], i["hi"], i["stop"], i["c1"], i["c2"]):
@@ -210,14 +223,17 @@ def chart_ladder(items, limit=6):
     ok = ok[:limit]
     if len(ok) < 2:
         return ""
+    w = WC if c else W
     pct = lambda it, v: (v / it["price"] - 1) * 100
     pmin = min(min(pct(i, i["stop"]) for i in ok), 0) - 2
     pmax = max(max(pct(i, i["c2"]) for i in ok), 0) + 2.5
-    x0, x1, top, rh = 110, W - 30, 50, 56
+    x0, x1, rh = (80, w - 22, 56) if c else (110, w - 30, 56)
+    lg, nrows = _legend([("var(--down)", T("ryzyko do stopu"), 150), ("var(--up)", T("potencjał do celów"), 170),
+                         ("rgba(102,252,241,.35)", T("strefa wejścia"), 140)], 10 if c else x0, 14, maxw=w - 10 if c else None)
+    top = 50 + (nrows - 1) * 18
     h = top + rh * len(ok) + 28
     X = lambda v: x0 + (v - pmin) / (pmax - pmin) * (x1 - x0)
-    p = [_legend([("var(--down)", T("ryzyko do stopu"), 150), ("var(--up)", T("potencjał do celów"), 170),
-                  ("rgba(102,252,241,.35)", T("strefa wejścia"), 140)], x0, 14)]
+    p = [lg]
     step = 5 if pmax - pmin > 18 else 2
     t = math.ceil(pmin / step) * step
     while t <= pmax:
@@ -242,20 +258,28 @@ def chart_ladder(items, limit=6):
                  f'<circle cx="{X(p1):.1f}" cy="{cy}" r="5.5" style="fill:#0B0C10;stroke:var(--up);stroke-width:2"/>'
                  f'<circle cx="{X(p2):.1f}" cy="{cy}" r="5.5" style="fill:var(--up);stroke:#0B0C10;stroke-width:2"/></g>')
         p.append(f'<text class="neg" x="{X(ps):.1f}" y="{cy - 17}" text-anchor="middle">{_pl(ps, 1, True)}%</text>')
-        p.append(f'<text class="pos" x="{X(p1):.1f}" y="{cy - 17}" text-anchor="middle">{_pl(p1, 1, True)}%</text>')
-        p.append(f'<text class="pos" x="{X(p2):.1f}" y="{cy - 17}" text-anchor="middle">{_pl(p2, 1, True)}%</text>')
-    return _svg(h, T("Mapa ryzyka i zysku względem kursu"), "".join(p))
+        # Na wąskim wykresie etykiety obu celów mogą na siebie wchodzić: rozsuwamy je na boki.
+        close = c and abs(X(p2) - X(p1)) < 40
+        a1, a2 = ("end", "start") if close else ("middle", "middle")
+        d1, d2 = (4, -4) if close else (0, 0)
+        p.append(f'<text class="pos" x="{X(p1) + d1:.1f}" y="{cy - 17}" text-anchor="{a1}">{_pl(p1, 1, True)}%</text>')
+        p.append(f'<text class="pos" x="{X(p2) + d2:.1f}" y="{cy - 17}" text-anchor="{a2}">{_pl(p2, 1, True)}%</text>')
+    return _svg(h, T("Mapa ryzyka i zysku względem kursu"), "".join(p), w, "c" if c else "")
 
 
-def chart_rr(items):
+def chart_rr(items, c=False):
     ok = [i for i in items if i["r1"] is not None and i["r2"] is not None][:12]
     if len(ok) < 2:
         return ""
-    x0, x1, top, rh = 110, W - 60, 52, 40
+    w = WC if c else W
+    x0, x1, rh = (80, w - 44, 40) if c else (110, w - 60, 40)
+    lg, nrows = _legend([("var(--accent2)", T("R do celu 1"), 140), ("var(--up)", T("R do celu 2"), 140)],
+                        10 if c else x0, 14, maxw=w - 10 if c else None)
+    top = 52 + (nrows - 1) * 18
     h = top + rh * len(ok) + 8
     rmax = max(4.0, max(i["r2"] for i in ok) + 0.6)
     X = lambda v: x0 + v / rmax * (x1 - x0)
-    p = [_legend([("var(--accent2)", T("R do celu 1"), 140), ("var(--up)", T("R do celu 2"), 140)], x0, 14)]
+    p = [lg]
     v = 0
     while v <= rmax:
         p.append(f'<line class="grid" x1="{X(v):.1f}" y1="{top - 10}" x2="{X(v):.1f}" y2="{h - 4}"/>')
@@ -272,7 +296,7 @@ def chart_rr(items):
                  f'<rect x="{x0}" y="{y + 20}" width="{max(X(it["r2"]) - x0, 1):.1f}" height="12" rx="3" style="fill:var(--up)"/></g>')
         p.append(f'<text class="val" x="{X(it["r1"]) + 7:.1f}" y="{y + 15}">{_pl(it["r1"])}</text>')
         p.append(f'<text class="val" x="{X(it["r2"]) + 7:.1f}" y="{y + 30}">{_pl(it["r2"])}</text>')
-    return _svg(h, T("Stosunek zysku do ryzyka (R) dla celów 1 i 2"), "".join(p))
+    return _svg(h, T("Stosunek zysku do ryzyka (R) dla celów 1 i 2"), "".join(p), w, "c" if c else "")
 
 
 PL_MON = ["sty", "lut", "mar", "kwi", "maj", "cze", "lip", "sie", "wrz", "paź", "lis", "gru"]
@@ -287,25 +311,31 @@ def dm(d):
     return f"{d.day} {EN_MON[d.month - 1]}" if LANG == "en" else f"{d.day}.{d.month:02d}"
 
 
-def chart_calendar(items, ref):
+def chart_calendar(items, ref, c=False):
     """Oś czasu okien oczekiwanego ogłoszenia dywidendy (kolumny Okno od / Okno do)."""
     rows = [i for i in items if i["win0"] and i["win1"] and i["win0"] <= i["win1"]][:16]
     if len(rows) < 2 or ref is None:
         return ""
+    w = WC if c else W
     start = ref
     end = min(max(max(i["win1"] for i in rows), ref + dt.timedelta(days=150)), ref + dt.timedelta(days=420))
     span = (end - start).days or 1
-    x0, x1, top, rh = 110, W - 40, 56, 30
+    x0, x1, top, rh = (80, w - 12, 56, 30) if c else (110, w - 40, 56, 30)
     h = top + rh * len(rows) + 12
     X = lambda d: x0 + (min(max(d, start), end) - start).days / span * (x1 - x0)
+    # Na wąskim wykresie podpisujemy co kilka miesięcy, żeby etykiety nie wchodziły na siebie.
+    stride = max(1, math.ceil(34 / ((x1 - x0) * 30.44 / span))) if c else 1
     p = []
     m = dt.date(start.year, start.month, 1)
+    k = 0
     while m <= end:
         if m >= start:
             x = X(m)
             p.append(f'<line class="grid" x1="{x:.1f}" y1="{top - 12}" x2="{x:.1f}" y2="{h - 6}"/>')
-            lab = mon(m.month - 1) + ((f" '{m.year % 100}" if LANG == "en" else f" {m.year % 100}") if m.month == 1 or m == dt.date(start.year, start.month, 1) else "")
-            p.append(f'<text class="tick" x="{x + 3:.1f}" y="{top - 18}">{lab}</text>')
+            if k % stride == 0:
+                lab = mon(m.month - 1) + ((f" '{m.year % 100}" if LANG == "en" else f" {m.year % 100}") if m.month == 1 or m == dt.date(start.year, start.month, 1) else "")
+                p.append(f'<text class="tick" x="{x + 3:.1f}" y="{top - 18}">{lab}</text>')
+            k += 1
         m = dt.date(m.year + (m.month == 12), m.month % 12 + 1, 1)
     p.append(f'<line x1="{X(start):.1f}" y1="{top - 12}" x2="{X(start):.1f}" y2="{h - 6}" style="stroke:var(--strong);stroke-dasharray:4 4;opacity:.7"/>')
     p.append(f'<text class="warn" x="{X(start) + 4:.1f}" y="{top - 32}">{T("dziś")}</text>')
@@ -314,19 +344,29 @@ def chart_calendar(items, ref):
         cls = f' <tspan class="cls">· {it["kl"]}</tspan>' if it["kl"] else ""
         p.append(f'<text class="lbl" x="{x0 - 12}" y="{y + 19}" text-anchor="end">{esc(it["tic"])}{cls}</text>')
         xa, xb = X(it["win0"]), X(it["win1"])
-        w = max(xb - xa, 6)
+        bw = max(xb - xa, 6)
         op = 0.45 + 0.55 * min(max((it["suma"] or 50) / 100, 0), 1)
         tip = f'{it["tic"]}: {T("okno ogłoszenia")} {it["win0"].isoformat()} … {it["win1"].isoformat()}'
-        p.append(f'<g><title>{esc(tip)}</title><rect x="{xa:.1f}" y="{y + 7}" width="{w:.1f}" height="16" rx="4" style="fill:var(--up);opacity:{op:.2f}"/></g>')
+        p.append(f'<g><title>{esc(tip)}</title><rect x="{xa:.1f}" y="{y + 7}" width="{bw:.1f}" height="16" rx="4" style="fill:var(--up);opacity:{op:.2f}"/></g>')
         lab = f'{dm(it["win0"])}–{dm(it["win1"])}'
-        tx = xb + 8 if xb + 8 < x1 - 70 else xa - 8
-        anchor = "start" if xb + 8 < x1 - 70 else "end"
-        p.append(f'<text class="tick" x="{tx:.1f}" y="{y + 19}" text-anchor="{anchor}">{lab}</text>')
-    return _svg(h, T("Okna oczekiwanego ogłoszenia dywidendy"), "".join(p))
+        if c:
+            est = len(lab) * 7.0
+            if xb + 8 + est <= w - 4:
+                tx, anchor, kls = xb + 8, "start", "tick"
+            elif xa - 8 - est >= x0:
+                tx, anchor, kls = xa - 8, "end", "tick"
+            else:  # okno rozciąga się na prawie całą oś: podpis w środku paska
+                tx, anchor, kls = (xa + xb) / 2, "middle", "val"
+        else:
+            tx = xb + 8 if xb + 8 < x1 - 70 else xa - 8
+            anchor, kls = ("start" if xb + 8 < x1 - 70 else "end"), "tick"
+        p.append(f'<text class="{kls}" x="{tx:.1f}" y="{y + 19}" text-anchor="{anchor}">{lab}</text>')
+    return _svg(h, T("Okna oczekiwanego ogłoszenia dywidendy"), "".join(p), w, "c" if c else "")
 
 
 def render_charts(md, ref=None):
-    """Zwraca HTML sekcji z wykresami albo pusty tekst, gdy nie da się ich zbudować."""
+    """Zwraca HTML sekcji z wykresami albo pusty tekst, gdy nie da się ich zbudować.
+    Każdy wykres powstaje w dwóch wariantach: szerokim (komputer) i kompaktowym (telefon); CSS pokazuje jeden z nich."""
     try:
         head, rows = parse_ranking(md)
         if not head or not rows:
@@ -335,17 +375,21 @@ def render_charts(md, ref=None):
         div = any(h.startswith(("Dyw", "Div")) for h in head)
         specs = []
         if div:
-            specs.append((T("Kalendarz oczekiwanych ogłoszeń"), T("Okno, w którym najpewniej pojawi się rekomendacja dywidendy; intensywność koloru rośnie z wynikiem."), chart_calendar(items, ref)))
+            specs.append((T("Kalendarz oczekiwanych ogłoszeń"), T("Okno, w którym najpewniej pojawi się rekomendacja dywidendy; intensywność koloru rośnie z wynikiem."), lambda c: chart_calendar(items, ref, c)))
         specs += [
-            (T("Ranking punktowy"), T("Suma punktów: dywidenda i timing oraz trend i technika (0–100)." if div else "Suma punktów z podziałem na fundamenty i resztę oceny (0–100)."), chart_scores(items, div)),
-            (T("Mapa ryzyka i zysku"), T("Stop, strefa wejścia i cele jako odchylenie od ostatniego kursu (pierwsze 6 setupów z kompletem poziomów)."), chart_ladder(items)),
-            (T("Stosunek zysku do ryzyka"), T("R do celu 1 i celu 2 liczone od środka strefy wejścia; framework preferuje co najmniej ok. 1:2."), chart_rr(items)),
+            (T("Ranking punktowy"), T("Suma punktów: dywidenda i timing oraz trend i technika (0–100)." if div else "Suma punktów z podziałem na fundamenty i resztę oceny (0–100)."), lambda c: chart_scores(items, div, c)),
+            (T("Mapa ryzyka i zysku"), T("Stop, strefa wejścia i cele jako odchylenie od ostatniego kursu (pierwsze 6 setupów z kompletem poziomów)."), lambda c: chart_ladder(items, 6, c)),
+            (T("Stosunek zysku do ryzyka"), T("R do celu 1 i celu 2 liczone od środka strefy wejścia; framework preferuje co najmniej ok. 1:2."), lambda c: chart_rr(items, c)),
         ]
-        cards = [f'<div class="chart-card"><h3>{esc(t)}</h3><p class="sub">{esc(s)}</p>{svg}</div>'
-                 for t, s, svg in specs if svg]
+        cards = []
+        for t, sub, build in specs:
+            wide, compact = build(False), build(True)
+            if wide:
+                cards.append(f'<div class="chart-card"><h3>{esc(t)}</h3><p class="sub">{esc(sub)}</p>'
+                             f'<div class="cv-d">{wide}</div><div class="cv-c">{compact}</div></div>')
         if not cards:
             return ""
-        return '<section class="charts">\n<h2>' + esc(T("Wykresy z rankingu")) + '</h2>\n' + "\n".join(cards) + "\n</section>"
+        return '<section class="charts">\n<h2 id="charts">' + esc(T("Wykresy z rankingu")) + '</h2>\n' + "\n".join(cards) + "\n</section>"
     except Exception:
         return ""
 

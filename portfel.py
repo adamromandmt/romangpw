@@ -2,7 +2,7 @@
 import datetime as dt
 import html
 
-from charts import W, _svg, esc
+from charts import W, WC, _svg, esc
 from paper import equity, stats
 
 CSS_EXTRA = """
@@ -135,9 +135,9 @@ def td(txt, c=""):
 def equity_chart(st):
     pts = st["equity"]
     start = st["config"]["start_capital"]
+    title, sub = T("Krzywa kapitału"), T("Wartość portfela (gotówka plus pozycje po cenach zamknięcia) w PLN.")
     if len(pts) < 2:
-        return f'<div class="chart-card"><h3>{T("Krzywa kapitału")}</h3><p class="sub">{T("Pojawi się po kilku sesjach, gdy portfel zacznie handlować.")}</p></div>'
-    x0, x1, top, bot, h = 70, W - 40, 20, 220, 260
+        return f'<div class="chart-card"><h2 class="ch">{title}</h2><p class="sub">{T("Pojawi się po kilku sesjach, gdy portfel zacznie handlować.")}</p></div>'
     ds = [dt.date.fromisoformat(p["date"]) for p in pts]
     d0, d1 = ds[0], ds[-1]
     span = max((d1 - d0).days, 1)
@@ -145,29 +145,36 @@ def equity_chart(st):
     lo, hi = min(vals), max(vals)
     pad = max((hi - lo) * 0.15, start * 0.002)
     lo, hi = lo - pad, hi + pad
-    X = lambda d: x0 + (d - d0).days / span * (x1 - x0)
-    Y = lambda v: bot - (v - lo) / (hi - lo) * (bot - top)
-    p = []
-    for k in range(5):
-        v = lo + (hi - lo) * k / 4
-        p.append(f'<line class="grid" x1="{x0}" y1="{Y(v):.1f}" x2="{x1}" y2="{Y(v):.1f}"/>')
-        p.append(f'<text class="tick" x="{x0 - 8}" y="{Y(v) + 4:.1f}" text-anchor="end">{n0(v)}</text>')
-    p.append(f'<line class="base" x1="{x0}" y1="{Y(start):.1f}" x2="{x1}" y2="{Y(start):.1f}"/>')
-    p.append(f'<text class="warn" x="{x1}" y="{Y(start) - 5:.1f}" text-anchor="end">{T("kapitał startowy")} {n0(start)}</text>')
-    path = " ".join(f"{X(d):.1f},{Y(pt['equity']):.1f}" for d, pt in zip(ds, pts))
-    area = f"{X(ds[0]):.1f},{bot} {path} {X(ds[-1]):.1f},{bot}"
-    p.append('<defs><linearGradient id="eqg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2BFF88" stop-opacity=".28"/>'
-             '<stop offset="1" stop-color="#2BFF88" stop-opacity="0"/></linearGradient></defs>')
-    p.append(f'<polygon points="{area}" style="fill:url(#eqg)"/>')
-    p.append(f'<polyline class="eq" points="{path}"/>')
-    for d, pt in zip(ds, pts):
-        p.append(f'<circle cx="{X(d):.1f}" cy="{Y(pt["equity"]):.1f}" r="3" style="fill:var(--up)"><title>{dshort(pt["date"])}: {n0(pt["equity"])} PLN</title></circle>')
-    p.append(f'<text class="val" x="{X(ds[-1]):.1f}" y="{Y(pts[-1]["equity"]) - 10:.1f}" text-anchor="end">{n0(pts[-1]["equity"])}</text>')
-    step = max(1, len(pts) // 6)
-    for i in range(0, len(pts), step):
-        p.append(f'<text class="tick" x="{X(ds[i]):.1f}" y="{bot + 20}" text-anchor="middle">{dshort(pts[i]["date"])}</text>')
-    svg = _svg(h, T("Krzywa kapitału wirtualnego portfela"), "".join(p))
-    return f'<div class="chart-card"><h3>{T("Krzywa kapitału")}</h3><p class="sub">{T("Wartość portfela (gotówka plus pozycje po cenach zamknięcia) w PLN.")}</p>{svg}</div>'
+
+    def draw(c):
+        w = WC if c else W
+        x0, x1, top, bot, h = (66, w - 16, 20, 200, 240) if c else (70, w - 40, 20, 220, 260)
+        X = lambda d: x0 + (d - d0).days / span * (x1 - x0)
+        Y = lambda v: bot - (v - lo) / (hi - lo) * (bot - top)
+        p = []
+        for k in range(5):
+            v = lo + (hi - lo) * k / 4
+            p.append(f'<line class="grid" x1="{x0}" y1="{Y(v):.1f}" x2="{x1}" y2="{Y(v):.1f}"/>')
+            p.append(f'<text class="tick" x="{x0 - 8}" y="{Y(v) + 4:.1f}" text-anchor="end">{n0(v)}</text>')
+        p.append(f'<line class="base" x1="{x0}" y1="{Y(start):.1f}" x2="{x1}" y2="{Y(start):.1f}"/>')
+        p.append(f'<text class="warn" x="{x1}" y="{Y(start) - 5:.1f}" text-anchor="end">{T("kapitał startowy")} {n0(start)}</text>')
+        path = " ".join(f"{X(d):.1f},{Y(pt['equity']):.1f}" for d, pt in zip(ds, pts))
+        area = f"{X(ds[0]):.1f},{bot} {path} {X(ds[-1]):.1f},{bot}"
+        gid = "eqgc" if c else "eqg"
+        p.append(f'<defs><linearGradient id="{gid}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2BFF88" stop-opacity=".28"/>'
+                 '<stop offset="1" stop-color="#2BFF88" stop-opacity="0"/></linearGradient></defs>')
+        p.append(f'<polygon points="{area}" style="fill:url(#{gid})"/>')
+        p.append(f'<polyline class="eq" points="{path}"/>')
+        for d, pt in zip(ds, pts):
+            p.append(f'<circle cx="{X(d):.1f}" cy="{Y(pt["equity"]):.1f}" r="3" style="fill:var(--up)"><title>{dshort(pt["date"])}: {n0(pt["equity"])} PLN</title></circle>')
+        p.append(f'<text class="val" x="{X(ds[-1]):.1f}" y="{Y(pts[-1]["equity"]) - 10:.1f}" text-anchor="end">{n0(pts[-1]["equity"])}</text>')
+        step = max(1, len(pts) // (4 if c else 6))
+        for i in range(0, len(pts), step):
+            p.append(f'<text class="tick" x="{X(ds[i]):.1f}" y="{bot + 20}" text-anchor="middle">{dshort(pts[i]["date"])}</text>')
+        return _svg(h, T("Krzywa kapitału wirtualnego portfela"), "".join(p), w, "c" if c else "")
+
+    return (f'<div class="chart-card"><h2 class="ch">{title}</h2><p class="sub">{sub}</p>'
+            f'<div class="cv-d">{draw(False)}</div><div class="cv-c">{draw(True)}</div></div>')
 
 
 def render(st, name="Swing", lang="pl"):
