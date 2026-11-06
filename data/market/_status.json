@@ -1,5 +1,5 @@
 {
- "run_utc": "2026-11-06T18:48:13Z",
+ "run_utc": "2026-11-06T18:52:09Z",
  "probe": {
   "eodhd": {
    "ok": false,
@@ -14,12 +14,12 @@
   "stooq.com": {
    "ok": false,
    "error": "brak nagłówka CSV: <!DOCTYPE html><html><head><meta charset=\"utf-8\"><meta name=\"robots\" content=\"no",
-   "sec": 0.6
+   "sec": 0.8
   },
   "biznesradar": {
    "ok": false,
    "error": "biznesradar: brak poprawnych wierszy",
-   "sec": 1.2
+   "sec": 1.1
   }
  },
  "ok": 0,
