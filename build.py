@@ -120,6 +120,7 @@ DIVS = ROOT / "dywidendy"
 DESC_SWING = "Dzienny skaner swing GPW — raport przed otwarciem sesji."
 DESC_DIV = "Spółki GPW regularnie wypłacające dywidendę, w trendzie wzrostowym, przed spodziewanym ogłoszeniem dywidendy."
 TABS = [("swing", "index.html", "Swing"), ("div", "dywidendy.html", "Dywidendy"),
+        ("meth", "metodologia-swing.html", "Swing Metodologia"),
         ("arch", "archiwum.html", "Archiwum swing"), ("darch", "dywidendy-archiwum.html", "Archiwum dywidend")]
 
 
@@ -204,6 +205,12 @@ def main():
         return 1
     dv = build_section(md_files(DIVS), DIVS, "dywidendy.html", "dywidendy-archiwum.html", "Raport dywidendowy", "div", "darch",
                        DESC_DIV, "Dywidendy GPW", "")
+    mp = ROOT / "metodologia-swing.md"
+    if mp.exists():
+        mbody = markdown.Markdown(extensions=["tables", "sane_lists"]).convert(mp.read_text(encoding="utf-8"))
+        (ROOT / "metodologia-swing.html").write_text(
+            page("Swing Metodologia — jak działa monitor", mbody, active="meth",
+                 desc="Prosty opis, jak działa dzienny skaner swing GPW: kroki i powody."), encoding="utf-8")
     print(f"Zbudowano: swing {len(report_files())} (najnowszy {sw}); dywidendy {len(md_files(DIVS))}" + (f" (najnowszy {dv})" if dv else ""))
     return 0
 

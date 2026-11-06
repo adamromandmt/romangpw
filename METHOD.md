@@ -80,3 +80,7 @@ Pierwszy test pokazał luki. Przed zapisem raportu sprawdź, że:
 3. Sprawdź, że `index.html` zawiera tabelę rankingu i nagłówek z dzisiejszą datą.
 4. `git add -A && git commit -m "Raport GPW YYYY-MM-DD" && git push origin main`. Treść commita kończy się trailerami wymaganymi w sesji (Co-Authored-By i Claude-Session), jeśli zostały podane w systemie.
 5. Jeśli push się nie uda, nie próbuj obejść; zakończ wynikiem z opisem błędu.
+
+## Strona „Swing Metodologia" (utrzymywanie)
+
+Plik `metodologia-swing.md` (generowany przez `build.py` do `metodologia-swing.html`, zakładka „Swing Metodologia") opisuje prostym językiem dla początkujących, jak działa skaner: kroki i powody. **Za każdym razem, gdy zmieniasz sposób przygotowywania porannego raportu** (źródła, kroki, kryteria, punktację, klasy A/B/C, format raportu, reguły publikacji), zaktualizuj w tym samym commicie także `metodologia-swing.md`, tak by oba opisy były spójne.
