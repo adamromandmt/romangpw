@@ -2,8 +2,10 @@
 """Portfel wirtualny (paper trading) oparty na rankingu codziennego skanera swing.
 
 Zasady (parametry w paper/state.json -> "config"):
-  * kapitał startowy 100 000 PLN; ryzyko 1% kapitału na pozycję (wielkość = ryzyko / (wejście − stop)),
-    pozycja nie większa niż 20% kapitału, maks. 8 pozycji i zleceń naraz; koszt 0,2% od każdej transakcji;
+  * kapitał startowy 100 000 PLN; pojedyncza pozycja za co najwyżej 5 000 PLN (liczba sztuk = 5 000 / limit,
+    w dół do pełnych akcji; akcja droższa niż 5 000 PLN jest pomijana); zyski wracają do gotówki, straty
+    po stopie ją pomniejszają; gdy cała gotówka jest zaangażowana (pozycje i zlecenia), nowych zleceń
+    nie ma do czasu zamknięcia którejś pozycji; koszt 0,2% od każdej transakcji;
   * sygnał: pozycja z tabeli rankingu raportu o klasie A lub B, Suma >= 60, R do C1 >= 1,0 i do C2 >= 2,0,
     bez wyników kwartalnych w ciągu 7 dni; maks. 3 nowe zlecenia dziennie (najwyższa Suma);
   * zlecenie: kup z limitem na górnej granicy strefy wejścia, ważne 5 sesji; wypełnia się po
@@ -36,9 +38,9 @@ STATE = PAPER / "state.json"
 QUOTES = PAPER / "quotes"
 
 DEFAULT_CFG = {
-    "start_capital": 100000.0, "risk_pct": 1.0, "max_pos_pct": 20.0, "max_open": 8, "fee_pct": 0.2,
+    "start_capital": 100000.0, "position_value": 5000.0, "max_open": 20, "fee_pct": 0.2,
     "max_hold_days": 30, "order_days": 6, "min_score": 60, "min_r1": 1.0, "min_r2": 2.0,
-    "classes": ["A", "B"], "max_new_per_day": 3, "skip_earnings_days": 7, "partial_frac": 0.5,
+    "classes": ["A", "B"], "max_new_per_day": 5, "skip_earnings_days": 7, "partial_frac": 0.5,
 }
 
 
@@ -157,15 +159,15 @@ def signal(st, report_path, valid_from=None):
             notes.append(f"pominięto {it['tic']}: limit {cfg['max_open']} pozycji")
             continue
         limit, stop = it["hi"], it["stop"]
-        eq = equity(st)
-        risk = cfg["risk_pct"] / 100 * eq
-        per_share = limit * (1 + fee(st)) - stop * (1 - fee(st))
-        n = math.floor(risk / per_share) if per_share > 0 else 0
-        n = min(n, math.floor(cfg["max_pos_pct"] / 100 * eq / (limit * (1 + fee(st)))))
-        avail = st["cash"] - reserved(st)
-        n = min(n, math.floor(avail / (limit * (1 + fee(st)))))
+        unit = limit * (1 + fee(st))
+        n = math.floor(cfg["position_value"] / unit)
         if n < 1:
-            notes.append(f"pominięto {it['tic']}: za mało środków lub zbyt szeroki stop")
+            notes.append(f"pominięto {it['tic']}: cena akcji {limit:g} przekracza limit {cfg['position_value']:g} PLN na pozycję")
+            continue
+        avail = st["cash"] - reserved(st)
+        n = min(n, math.floor(avail / unit))
+        if n < 1:
+            notes.append(f"pominięto {it['tic']}: cała gotówka zaangażowana, czekamy na zamknięcie pozycji")
             continue
         spolka = row.get("Spółka", it["tic"])
         order = {"id": st["next_id"], "tic": it["tic"], "name": spolka, "shares": n, "limit": limit, "zone_lo": it["lo"],

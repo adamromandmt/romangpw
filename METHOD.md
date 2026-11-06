@@ -75,12 +75,12 @@ Pierwszy test pokazał luki. Przed zapisem raportu sprawdź, że:
 
 ## Portfel wirtualny (codziennie, zakładka „Portfel")
 
-Portfel wirtualny (kapitał 100 000 PLN, stan w `paper/state.json`, zasady w `paper.py` i na stronie „Portfel") kupuje i sprzedaje spółki z rankingu Twojego raportu według jego stopów i celów. To symulacja; nie składaj żadnych prawdziwych zleceń. Wykonaj te kroki **zawsze, gdy generujesz raport dzienny**, w tej kolejności:
+Portfel wirtualny (kapitał 100 000 PLN, pozycja do 5 000 PLN, stan w `paper/state.json`, zasady w `paper.py` i na stronie „Portfel") kupuje i sprzedaje spółki z rankingu Twojego raportu według jego stopów i celów. To symulacja; nie składaj żadnych prawdziwych zleceń. Wykonaj te kroki **zawsze, gdy generujesz raport dzienny**, w tej kolejności:
 
 1. **Najpierw rozlicz wczorajszą sesję (przed pisaniem nowego raportu).** Wypisz tickery z `paper/state.json` (`positions` i `orders`). Dla każdego pobierz z biznesradaru ostatnie ok. 10–15 sesji i zapisz do `paper/quotes/<TIC>.csv` (nagłówek `date,open,high,low,close,volume`, rosnąco; aliasy symboli jak w sekcji Źródła; `?r=<losowa>` omija cache). Nie nadpisuj świec pustymi danymi. Potem `python3 paper.py update --asof <data ostatniej zakończonej sesji>` i `python3 paper.py mark --asof <ta sama data>`. Komunikaty „UWAGA: brak notowań" (brak pliku) wpisz w sekcji zastrzeżeń raportu.
 2. **Po zapisaniu raportu** uruchom `python3 paper.py signal reports/RRRR-MM-DD.md`. Skrypt czyta tabelę rankingu (dlatego nazw kolumn nie wolno zmieniać), wybiera klasy A/B z sumą ≥ 60, R do C1 ≥ 1 i do C2 ≥ 2, bez raportu kwartalnego w ciągu 7 dni, i tworzy zlecenia kupna z limitem na górnej granicy strefy wejścia. Dla czytelności strefy wejścia podawaj w formacie `od–do`, a w kolumnie „Raport" datę dd.mm (np. `12.11 (6 dni)`); strefę „>241" (wejście na wybiciu) skrypt pomija.
 3. W raporcie nie omawiaj portfela. Jeśli w danym dniu wydarzyło się coś ważnego (zrealizowane wejście albo wyjście), dopisz jedną linię na końcu sekcji „Rozliczenie poprzedniego skanu".
-4. Zasad portfela (kapitał, ryzyko 1%, koszty, kolejność stop/cel w świecy) nie zmieniaj w trakcie serii; zmiana wymaga decyzji właściciela i aktualizacji `paper.py`, strony „Portfel" i `metodologia-swing.md`.
+4. Zasad portfela (kapitał, limit 5 000 PLN na pozycję, koszty, kolejność stop/cel w świecy) nie zmieniaj w trakcie serii; zmiana wymaga decyzji właściciela i aktualizacji `paper.py`, strony „Portfel" i `metodologia-swing.md`.
 
 ## Publikacja (każdego dnia)
 
