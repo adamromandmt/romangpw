@@ -128,7 +128,7 @@ PAGE = """<!doctype html>
 <header>
 {deco}
 <div class="topbar">{langsw}</div>
-<a class="brand" href="{base}index.html" aria-label="{brand}" title="romangpw.pl">{logo}</a>
+<a class="brand" href="{base}index.html" aria-label="{brand}" title="GPW Radar">{logo}</a>
 <nav>{nav}</nav>
 </header>
 <main>
@@ -148,16 +148,20 @@ NEWS = ROOT / "newsy"
 NEWS_EN = ROOT / "newsy-en"
 LANGS = ("pl", "en")
 
-# Logo: znak (trend ze swingową korektą) w ramce z gradientem jasna zieleń -> złamany morski błękit + napis Roman GPW.
+# Logo: znak radaru (pierścienie, wskazówka skanu i „odbicie" kursu) w ramce z gradientem jasna zieleń -> złamany morski błękit + napis GPW Radar.
 MARK = (
     '<defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8DF2B8"/>'
     '<stop offset="1" stop-color="#4FA7AB"/></linearGradient></defs>'
     '<rect x="1.5" y="1.5" width="45" height="45" rx="13" fill="#0F1614" stroke="url(#lg)" stroke-width="2"/>'
-    '<polyline points="10,34 18,24 24,29 37,13" fill="none" stroke="url(#lg)" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>'
-    '<circle cx="37" cy="13" r="3.6" fill="#8DF2B8"/>'
+    '<circle cx="24" cy="25" r="14" fill="none" stroke="url(#lg)" stroke-width="2.2" opacity=".55"/>'
+    '<circle cx="24" cy="25" r="7.5" fill="none" stroke="url(#lg)" stroke-width="2.2" opacity=".8"/>'
+    '<path d="M24 25 L24 11 A14 14 0 0 1 36.1 18 Z" fill="url(#lg)" opacity=".32"/>'
+    '<line x1="24" y1="25" x2="36.1" y2="18" stroke="url(#lg)" stroke-width="3" stroke-linecap="round"/>'
+    '<circle cx="24" cy="25" r="2.6" fill="#8DF2B8"/>'
+    '<circle cx="19" cy="15.5" r="2.8" fill="#8DF2B8"/>'
 )
 LOGO = (f'<svg class="logo" viewBox="0 0 48 48" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">{MARK}</svg>'
-        '<span class="wm">Roman <b>GPW</b></span>')
+        '<span class="wm">GPW <b>Radar</b></span>')
 FAVICON = f'<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">{MARK}</svg>'
 
 
@@ -176,7 +180,7 @@ MD_SRC = {"pl": (REPORTS, DIVS), "en": (REPORTS_EN, DIVS_EN)}
 
 UI = {
     "pl": {
-        "brand": "romangpw.pl · skaner GPW",
+        "brand": "GPW Radar — skaner GPW",
         "disclaimer": "Ćwiczenie przesiewowe według zadanego frameworku, nie porada inwestycyjna.",
         "footer": "Dane z publicznych źródeł (m.in. biznesradar.pl, bankier.pl), mogą zawierać błędy lub opóźnienia. Raporty generowane automatycznie.",
         "tabs": {"news": "Newsy dnia", "swing": "Swing Raport", "div": "Dywidendy", "port": "Portfel {n}", "meth": "Swing Metodologia",
@@ -201,7 +205,7 @@ UI = {
         "built": "Zbudowano",
     },
     "en": {
-        "brand": "romangpw.pl · WSE scanner",
+        "brand": "GPW Radar — WSE scanner",
         "disclaimer": "Screening exercise under the given framework, not investment advice.",
         "footer": "Data from public sources (incl. biznesradar.pl, bankier.pl) may contain errors or delays. Reports are generated automatically. Polish is the original language of the reports.",
         "tabs": {"news": "News of the day", "swing": "Swing Report", "div": "Dividends", "port": "{n} Portfolio", "meth": "Swing Methodology",
@@ -446,8 +450,8 @@ def main():
     (ROOT / "favicon.svg").write_text(FAVICON, encoding="utf-8")
     (ROOT / "logo.svg").write_text(
         '<svg viewBox="0 0 250 48" xmlns="http://www.w3.org/2000/svg">' + MARK +
-        '<text x="60" y="34" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="28" font-weight="800" fill="#F2F7F5">Roman '
-        '<tspan fill="url(#lg)">GPW</tspan></text></svg>', encoding="utf-8")
+        '<text x="60" y="34" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="28" font-weight="800" fill="#F2F7F5">GPW '
+        '<tspan fill="url(#lg)">Radar</tspan></text></svg>', encoding="utf-8")
     PORTS[:] = [ps.parent.name for ps in sorted((ROOT / "paper").glob("*/state.json"))]
     msg = []
     for lang in LANGS:

@@ -1,6 +1,6 @@
-# romangpw
+# GPW Radar
 
-Dzienny skaner swing GPW, publikowany na https://www.romangpw.pl (GitHub Pages; romangpw.pl przekierowuje na www w nazwa.pl).
+Dzienny skaner swing GPW, publikowany na https://www.gpwradar.pl (GitHub Pages; gpwradar.pl przekierowuje na www w nazwa.pl; dawny adres romangpw.pl przekierowuje na nowy).
 
 - `METHOD.md` — instrukcja i metodyka dla codziennego zaplanowanego zadania (ok. 4:00, dni robocze, Europe/Warsaw).
 - `metodologia-swing.md` — strona „Swing Metodologia" (opis metody dla początkujących; aktualizuj razem z `METHOD.md`).

@@ -1,6 +1,6 @@
 # METHOD-DYWIDENDY — skaner „dywidenda przed ogłoszeniem" (GPW)
 
-**Raport dywidendowy uruchamiaj tylko na wyraźną prośbę użytkownika — nie ma dla niego zadania cyklicznego.** Instrukcja do ręcznego uruchomienia, która aktualizuje zakładkę **Dywidendy** na romangpw.pl. Raport jest po polsku, plik `dywidendy/YYYY-MM-DD.md`. Zadanie działa niezależnie od codziennego skanera swing (`METHOD.md`) — nie zmieniaj plików `reports/`.
+**Raport dywidendowy uruchamiaj tylko na wyraźną prośbę użytkownika — nie ma dla niego zadania cyklicznego.** Instrukcja do ręcznego uruchomienia, która aktualizuje zakładkę **Dywidendy** na gpwradar.pl. Raport jest po polsku, plik `dywidendy/YYYY-MM-DD.md`. Zadanie działa niezależnie od codziennego skanera swing (`METHOD.md`) — nie zmieniaj plików `reports/`.
 
 ## Cel
 

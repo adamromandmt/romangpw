@@ -1,6 +1,6 @@
 # METHOD — dzienny skaner swing GPW
 
-Ten plik jest instrukcją dla codziennego zaplanowanego zadania. Zadanie startuje w dni robocze ok. 4:00 (Europe/Warsaw, 3:53), ma przygotować raport przed otwarciem GPW i opublikować go w tym repo (GitHub Pages, romangpw.pl). Raport jest po polsku.
+Ten plik jest instrukcją dla codziennego zaplanowanego zadania. Zadanie startuje w dni robocze ok. 4:00 (Europe/Warsaw, 3:53), ma przygotować raport przed otwarciem GPW i opublikować go w tym repo (GitHub Pages, gpwradar.pl). Raport jest po polsku.
 
 ## Rola i cel
 

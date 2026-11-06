@@ -66,7 +66,7 @@ Companies in a long decline, after a trend breakdown, without a correction (too 
 It checks what happened to the previous suggestions: whether the entry zone was touched, whether the trigger fired, whether the price reached the target or the stop. **Why:** an honest review shows what really works.
 
 ### 15. Publishes the report
-A report file is created, the page is generated and goes to romangpw.pl. The report has a fixed order of sections: market regime, ranking (10–15 companies), TOP 3, detailed analysis of the TOP 5, watchlist for 1–3 weeks, rejected, review, method and disclaimers.
+A report file is created, the page is generated and goes to gpwradar.pl. The report has a fixed order of sections: market regime, ranking (10–15 companies), TOP 3, detailed analysis of the TOP 5, watchlist for 1–3 weeks, rejected, review, method and disclaimers.
 
 ## How to read the report
 
