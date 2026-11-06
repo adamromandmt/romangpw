@@ -178,19 +178,23 @@
  "indices": {
   "WIG": {
    "stooq": "wig",
-   "br": "WIG"
+   "br": "WIG",
+   "yahoo": "WIG.WA"
   },
   "WIG20": {
    "stooq": "wig20",
-   "br": "WIG20"
+   "br": "WIG20",
+   "yahoo": "WIG20.WA"
   },
   "MWIG40": {
    "stooq": "mwig40",
-   "br": "MWIG40"
+   "br": "MWIG40",
+   "yahoo": "MWIG40.WA"
   },
   "SWIG80": {
    "stooq": "swig80",
-   "br": "SWIG80"
+   "br": "SWIG80",
+   "yahoo": "SWIG80.WA"
   }
  }
 }

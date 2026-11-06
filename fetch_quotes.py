@@ -25,6 +25,7 @@ import sys
 import threading
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
@@ -143,7 +144,33 @@ def src_biznesradar(sym, kind, entry):
     return sorted(rows, key=lambda x: x["date"])
 
 
-SOURCES = [("eodhd", src_eodhd), ("stooq.pl", src_stooq("stooq.pl")), ("stooq.com", src_stooq("stooq.com")), ("biznesradar", src_biznesradar)]
+def src_yahoo(sym, kind, entry):
+    """Yahoo Finance (nieoficjalne API wykresów): GPW ma końcówkę .WA; ok. 2 lat historii. Używane, gdy biznesradar zawiedzie."""
+    ysym = entry["yahoo"] if kind == "index" else f"{sym}.WA"
+    text = http(f"https://query1.finance.yahoo.com/v8/finance/chart/{urllib.parse.quote(ysym)}?range=2y&interval=1d&events=history")
+    res = json.loads(text)["chart"]["result"][0]
+    off = res.get("meta", {}).get("gmtoffset", 3600)
+    q = res["indicators"]["quote"][0]
+    rows = []
+    for i, ts in enumerate(res.get("timestamp") or []):
+        try:
+            d = (dt.datetime.fromtimestamp(ts + off, dt.timezone.utc)).date().isoformat()
+            vals = [q[k][i] for k in ("open", "high", "low", "close")]
+            if any(v is None for v in vals):
+                continue
+            row = {"date": d, "open": vals[0], "high": vals[1], "low": vals[2], "close": vals[3], "volume": float(q["volume"][i] or 0)}
+        except (KeyError, IndexError, TypeError, ValueError):
+            continue
+        if sane(row):
+            rows.append(row)
+    if not rows:
+        raise ValueError("yahoo: brak poprawnych wierszy")
+    return sorted(rows, key=lambda x: x["date"])
+
+
+# Kolejność: pierwsze źródło, które zadziała, wygrywa. Stooq blokuje serwery chmurowe (JS), więc jest na końcu i samo się wyłącza.
+SOURCES = [("eodhd", src_eodhd), ("biznesradar", src_biznesradar), ("yahoo", src_yahoo),
+           ("stooq.pl", src_stooq("stooq.pl")), ("stooq.com", src_stooq("stooq.com"))]
 
 
 def load(path):
