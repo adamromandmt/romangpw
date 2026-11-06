@@ -1,6 +1,6 @@
 # METHOD-DYWIDENDY — skaner „dywidenda przed ogłoszeniem" (GPW)
 
-Instrukcja dla cyklicznego zadania, które aktualizuje zakładkę **Dywidendy** na romangpw.pl. Raport jest po polsku, plik `dywidendy/YYYY-MM-DD.md`. Zadanie działa niezależnie od codziennego skanera swing (`METHOD.md`) — nie zmieniaj plików `reports/`.
+**Raport dywidendowy uruchamiaj tylko na wyraźną prośbę użytkownika — nie ma dla niego zadania cyklicznego.** Instrukcja do ręcznego uruchomienia, która aktualizuje zakładkę **Dywidendy** na romangpw.pl. Raport jest po polsku, plik `dywidendy/YYYY-MM-DD.md`. Zadanie działa niezależnie od codziennego skanera swing (`METHOD.md`) — nie zmieniaj plików `reports/`.
 
 ## Cel
 
@@ -54,10 +54,10 @@ Nagłówek: `# GPW dywidendy — <dzień tygodnia> <D miesiąc RRRR>`, linia o d
 2. `pip install --break-system-packages markdown` (jeśli brak), `python3 build.py` → `dywidendy.html`, `dywidendy-archiwum.html`, `dywidendy/YYYY-MM-DD.html`.
 3. Przetłumacz raport na angielski do `dywidendy-en/YYYY-MM-DD.md` (ta sama struktura i liczba wierszy; nagłówki rankingu: `# | Tic | Company | Sector | Price | Trend | From high | RSI | Years paid | Last DPS | Expected DPS | Window from | Window to | Days to window | Div/50 | Tech/50 | Total | Class | Entry | Stop | T1 | T2 | R (T1 / T2) | Earnings`; daty ISO w kolumnach okna bez zmian; liczby w formacie angielskim; ostatnia linia `Screening exercise under the given framework, not investment advice.`), potem `python3 build.py`. Wykresy powstają z polskiego raportu. Bez tłumaczenia strona `en/dividends.html` pokaże polski tekst z informacją.
 4. Sprawdź, że `dywidendy.html` i `en/dividends.html` zawierają tabelę rankingu.
-5. `git pull --rebase origin main`, potem `git add -A && git commit -m "Dywidendy GPW YYYY-MM-DD" && git push origin main` (trailery jak w sesji). Zadanie swing pushuje o 7:15 — nie uruchamiaj publikacji w tym samym czasie; przy konflikcie push `git pull --rebase` i ponów raz.
+5. `git pull --rebase origin main`, potem `git add -A && git commit -m "Dywidendy GPW YYYY-MM-DD" && git push origin main` (trailery jak w sesji). Zadanie swing pushuje ok. 4:00 w dni robocze — nie uruchamiaj publikacji w tym samym czasie; przy konflikcie push `git pull --rebase` i ponów raz.
 6. Jeśli push się nie uda, nie obchodź błędu; zakończ z opisem.
 
-## Procedura cotygodniowa (zadanie cykliczne, poniedziałek rano)
+## Procedura aktualizacji (na wyraźną prośbę użytkownika; wcześniej planowana jako cotygodniowa)
 
 Pełny przesiew 118 spółek już wykonano (5.11.2026). Co tydzień aktualizujesz tylko to, co mogło się zmienić; pełny przesiew powtarzaj w pierwszym przebiegu każdego kwartału (styczeń, kwiecień, lipiec, październik).
 
