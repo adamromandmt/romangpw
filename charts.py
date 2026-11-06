@@ -15,6 +15,44 @@ NUM = r"\d[\d  ]*(?:,\d+)?"
 W = 800  # szerokość viewBox
 MINUS = "−"
 
+# Język etykiet wykresów: "pl" (domyślnie) albo "en". Liczby w tabeli wejściowej są zawsze w formacie polskim
+# (wykresy budujemy z polskiego Markdownu), zmienia się tylko tekst i format liczb na wykresie.
+LANG = "pl"
+EN = {
+    "Dywidenda i timing (z 50)": "Dividend and timing (of 50)",
+    "Trend i technika (z 50)": "Trend and technicals (of 50)",
+    "Fundamenty (z 30)": "Fundamentals (of 30)",
+    "Technika i reszta": "Technicals and the rest",
+    "pkt": "pts", "fundamenty": "fundamentals", "reszta": "rest",
+    "Ranking punktowy kandydatów": "Candidate score ranking",
+    "ryzyko do stopu": "risk to stop", "potencjał do celów": "upside to targets", "strefa wejścia": "entry zone",
+    "kurs": "price", "wejście": "entry", "cel 1": "target 1", "cel 2": "target 2",
+    "względem kursu": "relative to price",
+    "Mapa ryzyka i zysku względem kursu": "Risk and reward map relative to price",
+    "R do celu 1": "R to target 1", "R do celu 2": "R to target 2", "do celu 2": "to target 2",
+    "min. 1:2": "min. 1:2",
+    "Stosunek zysku do ryzyka (R) dla celów 1 i 2": "Reward-to-risk (R) for targets 1 and 2",
+    "dziś": "today", "okno ogłoszenia": "announcement window",
+    "Okna oczekiwanego ogłoszenia dywidendy": "Expected dividend announcement windows",
+    "Wykresy z rankingu": "Charts from the ranking",
+    "Kalendarz oczekiwanych ogłoszeń": "Calendar of expected announcements",
+    "Okno, w którym najpewniej pojawi się rekomendacja dywidendy; intensywność koloru rośnie z wynikiem.":
+        "The window in which a dividend recommendation is most likely to appear; colour intensity grows with the score.",
+    "Ranking punktowy": "Score ranking",
+    "Suma punktów: dywidenda i timing oraz trend i technika (0–100).": "Total points: dividend and timing plus trend and technicals (0–100).",
+    "Suma punktów z podziałem na fundamenty i resztę oceny (0–100).": "Total points split into fundamentals and the rest of the score (0–100).",
+    "Mapa ryzyka i zysku": "Risk and reward map",
+    "Stop, strefa wejścia i cele jako odchylenie od ostatniego kursu (pierwsze 6 setupów z kompletem poziomów).":
+        "Stop, entry zone and targets as a deviation from the last price (first 6 setups with a full set of levels).",
+    "Stosunek zysku do ryzyka": "Reward-to-risk",
+    "R do celu 1 i celu 2 liczone od środka strefy wejścia; framework preferuje co najmniej ok. 1:2.":
+        "R to target 1 and target 2 measured from the middle of the entry zone; the framework prefers at least about 1:2.",
+}
+
+
+def T(k):
+    return EN.get(k, k) if LANG == "en" else k
+
 
 def esc(s):
     return html.escape(str(s), quote=True)
@@ -53,7 +91,7 @@ def _cells(line):
 def parse_ranking(md):
     lines = md.splitlines()
     for i, ln in enumerate(lines):
-        if ln.lstrip().startswith("|") and "Tic" in ln and "Suma" in ln:
+        if ln.lstrip().startswith("|") and "Tic" in ln and ("Suma" in ln or "Total" in ln):
             head = _cells(ln)
             rows = []
             for ln2 in lines[i + 2:]:
@@ -76,16 +114,16 @@ def _col(head, *names, prefix=False):
 
 def build_items(head, rows):
     c_tic = _col(head, "Tic")
-    c_sum = _col(head, "Suma")
-    c_fund = _col(head, "Fund", "Dyw", prefix=True)
-    c_w0 = _col(head, "Okno od")
-    c_w1 = _col(head, "Okno do")
-    c_kl = _col(head, "Klasa", prefix=True)
-    c_price = _col(head, "Kurs", prefix=True)
-    c_in = _col(head, "Wej", prefix=True)
+    c_sum = _col(head, "Suma", "Total")
+    c_fund = _col(head, "Fund", "Dyw", "Div", prefix=True)
+    c_w0 = _col(head, "Okno od", "Window from")
+    c_w1 = _col(head, "Okno do", "Window to")
+    c_kl = _col(head, "Klasa", "Class", prefix=True)
+    c_price = _col(head, "Kurs", "Price", prefix=True)
+    c_in = _col(head, "Wej", "Entry", prefix=True)
     c_stop = _col(head, "Stop")
-    c_c1 = _col(head, "C1")
-    c_c2 = _col(head, "C2")
+    c_c1 = _col(head, "C1", "T1")
+    c_c2 = _col(head, "C2", "T2")
     c_r = _col(head, "R") or _col(head, "R (", prefix=True)
     items = []
     for r in rows:
@@ -112,7 +150,8 @@ def build_items(head, rows):
 
 def _pl(v, digits=1, sign=False):
     s = f"{v:+.{digits}f}" if sign else f"{v:.{digits}f}"
-    return s.replace("-", MINUS).replace(".", ",")
+    s = s.replace("-", MINUS)
+    return s if LANG == "en" else s.replace(".", ",")
 
 
 def _svg(h, label, body):
@@ -136,8 +175,8 @@ def chart_scores(items, div=False):
     x0, x1, rh, top = 150, W - 70, 30, 52
     h = top + rh * len(rows) + 8
     sc = (x1 - x0) / 100
-    leg = ([("var(--up)", "Dywidenda i timing (z 50)", 200), ("var(--accent2)", "Trend i technika (z 50)", 190)] if div
-           else [("var(--up)", "Fundamenty (z 30)", 150), ("var(--accent2)", "Technika i reszta", 150)])
+    leg = ([("var(--up)", T("Dywidenda i timing (z 50)"), 220), ("var(--accent2)", T("Trend i technika (z 50)"), 210)] if div
+           else [("var(--up)", T("Fundamenty (z 30)"), 160), ("var(--accent2)", T("Technika i reszta"), 170)])
     p = [_legend(leg, x0, 14)]
     for v in (0, 25, 50, 75, 100):
         x = x0 + v * sc
@@ -150,15 +189,15 @@ def chart_scores(items, div=False):
         p.append(f'<text class="lbl" x="{x0 - 10}" y="{y + 17}" text-anchor="end">{esc(it["tic"])}{cls}</text>')
         if fund is not None and 0 <= fund <= suma:
             w1, w2 = fund * sc, (suma - fund) * sc
-            tip = f'{it["tic"]}: {suma:g} pkt (fundamenty {fund:g}, reszta {suma - fund:g})'
+            tip = f'{it["tic"]}: {suma:g} {T("pkt")} ({T("fundamenty")} {fund:g}, {T("reszta")} {suma - fund:g})'
             p.append(f'<g><title>{esc(tip)}</title>'
                      f'<rect x="{x0}" y="{y + 6}" width="{max(w1, 1):.1f}" height="16" rx="3" style="fill:var(--up)"/>'
                      f'<rect x="{x0 + w1:.1f}" y="{y + 6}" width="{max(w2, 1):.1f}" height="16" rx="3" style="fill:var(--accent2)"/></g>')
         else:
-            p.append(f'<g><title>{esc(it["tic"])}: {suma:g} pkt</title>'
+            p.append(f'<g><title>{esc(it["tic"])}: {suma:g} {T("pkt")}</title>'
                      f'<rect x="{x0}" y="{y + 6}" width="{suma * sc:.1f}" height="16" rx="3" style="fill:var(--accent2)"/></g>')
         p.append(f'<text class="val" x="{x0 + suma * sc + 8:.1f}" y="{y + 18}">{suma:g}</text>')
-    return _svg(h, "Ranking punktowy kandydatów", "".join(p))
+    return _svg(h, T("Ranking punktowy kandydatów"), "".join(p))
 
 
 def chart_ladder(items, limit=6):
@@ -177,14 +216,14 @@ def chart_ladder(items, limit=6):
     x0, x1, top, rh = 110, W - 30, 50, 56
     h = top + rh * len(ok) + 28
     X = lambda v: x0 + (v - pmin) / (pmax - pmin) * (x1 - x0)
-    p = [_legend([("var(--down)", "ryzyko do stopu", 140), ("var(--up)", "potencjał do celów", 160),
-                  ("rgba(102,252,241,.35)", "strefa wejścia", 140)], x0, 14)]
+    p = [_legend([("var(--down)", T("ryzyko do stopu"), 150), ("var(--up)", T("potencjał do celów"), 170),
+                  ("rgba(102,252,241,.35)", T("strefa wejścia"), 140)], x0, 14)]
     step = 5 if pmax - pmin > 18 else 2
     t = math.ceil(pmin / step) * step
     while t <= pmax:
         x = X(t)
         p.append(f'<line class="grid" x1="{x:.1f}" y1="{top - 12}" x2="{x:.1f}" y2="{h - 22}"/>')
-        p.append(f'<text class="tick" x="{x:.1f}" y="{h - 6}" text-anchor="middle">{_pl(t, 0, True) if t else "kurs"}{"%" if t else ""}</text>')
+        p.append(f'<text class="tick" x="{x:.1f}" y="{h - 6}" text-anchor="middle">{_pl(t, 0, True) if t else T("kurs")}{"%" if t else ""}</text>')
         t += step
     p.append(f'<line x1="{X(0):.1f}" y1="{top - 12}" x2="{X(0):.1f}" y2="{h - 22}" style="stroke:var(--strong);stroke-dasharray:4 4;opacity:.6"/>')
     for n, it in enumerate(ok):
@@ -193,8 +232,8 @@ def chart_ladder(items, limit=6):
         pm = (pl_ + ph) / 2
         cls = f' <tspan class="cls">· {it["kl"]}</tspan>' if it["kl"] else ""
         p.append(f'<text class="lbl" x="{x0 - 12}" y="{cy + 4}" text-anchor="end">{esc(it["tic"])}{cls}</text>')
-        tip = (f'{it["tic"]}: stop {_pl(ps, 1, True)}%, wejście {_pl(pl_, 1, True)}…{_pl(ph, 1, True)}%, '
-               f'cel 1 {_pl(p1, 1, True)}%, cel 2 {_pl(p2, 1, True)}% względem kursu')
+        tip = (f'{it["tic"]}: stop {_pl(ps, 1, True)}%, {T("wejście")} {_pl(pl_, 1, True)}…{_pl(ph, 1, True)}%, '
+               f'{T("cel 1")} {_pl(p1, 1, True)}%, {T("cel 2")} {_pl(p2, 1, True)}% {T("względem kursu")}')
         zw = max(X(ph) - X(pl_), 5)
         p.append(f'<g><title>{esc(tip)}</title>'
                  f'<rect x="{X(ps):.1f}" y="{cy - 5}" width="{X(pm) - X(ps):.1f}" height="10" rx="3" style="fill:var(--down);opacity:.85"/>'
@@ -205,7 +244,7 @@ def chart_ladder(items, limit=6):
         p.append(f'<text class="neg" x="{X(ps):.1f}" y="{cy - 17}" text-anchor="middle">{_pl(ps, 1, True)}%</text>')
         p.append(f'<text class="pos" x="{X(p1):.1f}" y="{cy - 17}" text-anchor="middle">{_pl(p1, 1, True)}%</text>')
         p.append(f'<text class="pos" x="{X(p2):.1f}" y="{cy - 17}" text-anchor="middle">{_pl(p2, 1, True)}%</text>')
-    return _svg(h, "Mapa ryzyka i zysku względem kursu", "".join(p))
+    return _svg(h, T("Mapa ryzyka i zysku względem kursu"), "".join(p))
 
 
 def chart_rr(items):
@@ -216,27 +255,36 @@ def chart_rr(items):
     h = top + rh * len(ok) + 8
     rmax = max(4.0, max(i["r2"] for i in ok) + 0.6)
     X = lambda v: x0 + v / rmax * (x1 - x0)
-    p = [_legend([("var(--accent2)", "R do celu 1", 130), ("var(--up)", "R do celu 2", 130)], x0, 14)]
+    p = [_legend([("var(--accent2)", T("R do celu 1"), 140), ("var(--up)", T("R do celu 2"), 140)], x0, 14)]
     v = 0
     while v <= rmax:
         p.append(f'<line class="grid" x1="{X(v):.1f}" y1="{top - 10}" x2="{X(v):.1f}" y2="{h - 4}"/>')
         p.append(f'<text class="tick" x="{X(v):.1f}" y="{top - 16}" text-anchor="middle">{v:g}</text>')
         v += 1
     p.append(f'<line x1="{X(2):.1f}" y1="{top - 10}" x2="{X(2):.1f}" y2="{h - 4}" style="stroke:var(--warn);stroke-dasharray:5 4;stroke-width:1.5"/>')
-    p.append(f'<text class="warn" x="{X(2) + 6:.1f}" y="{top - 16}">min. 1:2</text>')
+    p.append(f'<text class="warn" x="{X(2) + 6:.1f}" y="{top - 16}">{T("min. 1:2")}</text>')
     for n, it in enumerate(ok):
         y = top + n * rh
         cls = f' <tspan class="cls">· {it["kl"]}</tspan>' if it["kl"] else ""
         p.append(f'<text class="lbl" x="{x0 - 10}" y="{y + 22}" text-anchor="end">{esc(it["tic"])}{cls}</text>')
-        p.append(f'<g><title>{esc(it["tic"])}: R do celu 1 = {_pl(it["r1"])}, do celu 2 = {_pl(it["r2"])}</title>'
+        p.append(f'<g><title>{esc(it["tic"])}: {T("R do celu 1")} = {_pl(it["r1"])}, {T("do celu 2")} = {_pl(it["r2"])}</title>'
                  f'<rect x="{x0}" y="{y + 5}" width="{max(X(it["r1"]) - x0, 1):.1f}" height="12" rx="3" style="fill:var(--accent2)"/>'
                  f'<rect x="{x0}" y="{y + 20}" width="{max(X(it["r2"]) - x0, 1):.1f}" height="12" rx="3" style="fill:var(--up)"/></g>')
         p.append(f'<text class="val" x="{X(it["r1"]) + 7:.1f}" y="{y + 15}">{_pl(it["r1"])}</text>')
         p.append(f'<text class="val" x="{X(it["r2"]) + 7:.1f}" y="{y + 30}">{_pl(it["r2"])}</text>')
-    return _svg(h, "Stosunek zysku do ryzyka (R) dla celów 1 i 2", "".join(p))
+    return _svg(h, T("Stosunek zysku do ryzyka (R) dla celów 1 i 2"), "".join(p))
 
 
 PL_MON = ["sty", "lut", "mar", "kwi", "maj", "cze", "lip", "sie", "wrz", "paź", "lis", "gru"]
+EN_MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+
+def mon(i):
+    return (EN_MON if LANG == "en" else PL_MON)[i]
+
+
+def dm(d):
+    return f"{d.day} {EN_MON[d.month - 1]}" if LANG == "en" else f"{d.day}.{d.month:02d}"
 
 
 def chart_calendar(items, ref):
@@ -256,11 +304,11 @@ def chart_calendar(items, ref):
         if m >= start:
             x = X(m)
             p.append(f'<line class="grid" x1="{x:.1f}" y1="{top - 12}" x2="{x:.1f}" y2="{h - 6}"/>')
-            lab = PL_MON[m.month - 1] + (f" {m.year % 100}" if m.month == 1 or m == dt.date(start.year, start.month, 1) else "")
+            lab = mon(m.month - 1) + ((f" '{m.year % 100}" if LANG == "en" else f" {m.year % 100}") if m.month == 1 or m == dt.date(start.year, start.month, 1) else "")
             p.append(f'<text class="tick" x="{x + 3:.1f}" y="{top - 18}">{lab}</text>')
         m = dt.date(m.year + (m.month == 12), m.month % 12 + 1, 1)
     p.append(f'<line x1="{X(start):.1f}" y1="{top - 12}" x2="{X(start):.1f}" y2="{h - 6}" style="stroke:var(--strong);stroke-dasharray:4 4;opacity:.7"/>')
-    p.append(f'<text class="warn" x="{X(start) + 4:.1f}" y="{top - 32}">dziś</text>')
+    p.append(f'<text class="warn" x="{X(start) + 4:.1f}" y="{top - 32}">{T("dziś")}</text>')
     for n, it in enumerate(rows):
         y = top + n * rh
         cls = f' <tspan class="cls">· {it["kl"]}</tspan>' if it["kl"] else ""
@@ -268,13 +316,13 @@ def chart_calendar(items, ref):
         xa, xb = X(it["win0"]), X(it["win1"])
         w = max(xb - xa, 6)
         op = 0.45 + 0.55 * min(max((it["suma"] or 50) / 100, 0), 1)
-        tip = f'{it["tic"]}: okno ogłoszenia {it["win0"].isoformat()} … {it["win1"].isoformat()}'
+        tip = f'{it["tic"]}: {T("okno ogłoszenia")} {it["win0"].isoformat()} … {it["win1"].isoformat()}'
         p.append(f'<g><title>{esc(tip)}</title><rect x="{xa:.1f}" y="{y + 7}" width="{w:.1f}" height="16" rx="4" style="fill:var(--up);opacity:{op:.2f}"/></g>')
-        lab = f'{it["win0"].day}.{it["win0"].month:02d}–{it["win1"].day}.{it["win1"].month:02d}'
+        lab = f'{dm(it["win0"])}–{dm(it["win1"])}'
         tx = xb + 8 if xb + 8 < x1 - 70 else xa - 8
         anchor = "start" if xb + 8 < x1 - 70 else "end"
         p.append(f'<text class="tick" x="{tx:.1f}" y="{y + 19}" text-anchor="{anchor}">{lab}</text>')
-    return _svg(h, "Okna oczekiwanego ogłoszenia dywidendy", "".join(p))
+    return _svg(h, T("Okna oczekiwanego ogłoszenia dywidendy"), "".join(p))
 
 
 def render_charts(md, ref=None):
@@ -284,20 +332,20 @@ def render_charts(md, ref=None):
         if not head or not rows:
             return ""
         items = build_items(head, rows)
-        div = any(h.startswith("Dyw") for h in head)
+        div = any(h.startswith(("Dyw", "Div")) for h in head)
         specs = []
         if div:
-            specs.append(("Kalendarz oczekiwanych ogłoszeń", "Okno, w którym najpewniej pojawi się rekomendacja dywidendy; intensywność koloru rośnie z wynikiem.", chart_calendar(items, ref)))
+            specs.append((T("Kalendarz oczekiwanych ogłoszeń"), T("Okno, w którym najpewniej pojawi się rekomendacja dywidendy; intensywność koloru rośnie z wynikiem."), chart_calendar(items, ref)))
         specs += [
-            ("Ranking punktowy", ("Suma punktów: dywidenda i timing oraz trend i technika (0–100)." if div else "Suma punktów z podziałem na fundamenty i resztę oceny (0–100)."), chart_scores(items, div)),
-            ("Mapa ryzyka i zysku", "Stop, strefa wejścia i cele jako odchylenie od ostatniego kursu (pierwsze 6 setupów z kompletem poziomów).", chart_ladder(items)),
-            ("Stosunek zysku do ryzyka", "R do celu 1 i celu 2 liczone od środka strefy wejścia; framework preferuje co najmniej ok. 1:2.", chart_rr(items)),
+            (T("Ranking punktowy"), T("Suma punktów: dywidenda i timing oraz trend i technika (0–100)." if div else "Suma punktów z podziałem na fundamenty i resztę oceny (0–100)."), chart_scores(items, div)),
+            (T("Mapa ryzyka i zysku"), T("Stop, strefa wejścia i cele jako odchylenie od ostatniego kursu (pierwsze 6 setupów z kompletem poziomów)."), chart_ladder(items)),
+            (T("Stosunek zysku do ryzyka"), T("R do celu 1 i celu 2 liczone od środka strefy wejścia; framework preferuje co najmniej ok. 1:2."), chart_rr(items)),
         ]
         cards = [f'<div class="chart-card"><h3>{esc(t)}</h3><p class="sub">{esc(s)}</p>{svg}</div>'
                  for t, s, svg in specs if svg]
         if not cards:
             return ""
-        return '<section class="charts">\n<h2>Wykresy z rankingu</h2>\n' + "\n".join(cards) + "\n</section>"
+        return '<section class="charts">\n<h2>' + esc(T("Wykresy z rankingu")) + '</h2>\n' + "\n".join(cards) + "\n</section>"
     except Exception:
         return ""
 

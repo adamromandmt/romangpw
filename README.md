@@ -6,6 +6,7 @@ Dzienny skaner swing GPW, publikowany na https://www.romangpw.pl (GitHub Pages; 
 - `metodologia-swing.md` — strona „Swing Metodologia" (opis metody dla początkujących; aktualizuj razem z `METHOD.md`).
 - `reports/YYYY-MM-DD.md` — raporty (archiwum, poprzedni raport służy do rozliczenia).
 - `build.py` — generuje `index.html`, `archiwum.html` i `reports/*.html` z Markdown (`pip install markdown`).
+- Wersja angielska: strony w `en/` (przełącznik PL/EN w lewym górnym rogu, domyślnie polski). Źródła tłumaczeń: `reports-en/`, `dywidendy-en/`, `metodologia-swing.en.md`; wykresy zawsze z polskich raportów. Brak tłumaczenia = polski tekst z informacją na stronie EN.
 - `CNAME` — domena własna dla GitHub Pages.
 
 Ćwiczenie przesiewowe według zadanego frameworku, nie porada inwestycyjna.

@@ -12,13 +12,15 @@ from pathlib import Path
 
 import markdown
 
+import charts
 from charts import deco_svg, render_charts
 import portfel
 
 ROOT = Path(__file__).resolve().parent
 REPORTS = ROOT / "reports"
 DAYS = ["poniedziałek", "wtorek", "środa", "czwartek", "piątek", "sobota", "niedziela"]
-DISCLAIMER = "Ćwiczenie przesiewowe według zadanego frameworku, nie porada inwestycyjna."
+DAYS_EN = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+MONTHS_EN = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
 CSS = """
 :root{
@@ -50,6 +52,11 @@ nav{position:relative;margin-top:10px;font-size:14px}
 nav a{color:var(--accent2);margin-right:18px;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent}
 nav a:hover{color:var(--accent);border-bottom-color:var(--accent)}
 nav a.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+.topbar{position:relative;display:flex;align-items:center;margin:-6px 0 12px}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:rgba(15,22,20,.85);font-size:12px;font-weight:700;letter-spacing:.06em}
+.lang a,.lang span{padding:4px 12px;text-decoration:none;color:var(--muted)}
+.lang a:hover{color:var(--accent)}
+.lang .cur{background:var(--accent);color:#04120a}
 .banner{background:rgba(15,22,20,.85);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;padding:11px 14px;margin:18px 0;font-size:14px;color:var(--fg);backdrop-filter:blur(4px)}
 .banner strong{color:var(--accent)}
 h1{font-size:27px;line-height:1.25;margin:22px 0 8px;color:var(--strong);letter-spacing:-.2px}
@@ -94,25 +101,27 @@ footer{color:var(--muted);font-size:13px;padding-top:26px;padding-bottom:44px;bo
 CSS += portfel.CSS_EXTRA
 
 PAGE = """<!doctype html>
-<html lang="pl">
+<html lang="{lang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0B0C10">
 <title>{title}</title>
 <meta name="description" content="{desc}">
+{alt}
 <style>{css}</style>
 </head>
 <body>
 <header>
 {deco}
-<a class="brand" href="{base}index.html">romangpw.pl · skaner GPW</a>
+<div class="topbar">{langsw}</div>
+<a class="brand" href="{base}index.html">{brand}</a>
 <nav>{nav}</nav>
 </header>
 <main>
 {body}
 </main>
-<footer>{disclaimer}<br>Dane z publicznych źródeł (m.in. biznesradar.pl, bankier.pl), mogą zawierać błędy lub opóźnienia. Raporty generowane automatycznie.</footer>
+<footer>{disclaimer}<br>{footer}</footer>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{{"token": "dee8fe193ffe4484bef9d4691b8d77d2"}}'></script>
 </body>
 </html>
@@ -120,13 +129,68 @@ PAGE = """<!doctype html>
 
 
 DIVS = ROOT / "dywidendy"
-DESC_SWING = "Dzienny skaner swing GPW — raport przed otwarciem sesji."
-DESC_DIV = "Spółki GPW regularnie wypłacające dywidendę, w trendzie wzrostowym, przed spodziewanym ogłoszeniem dywidendy."
-DESC_PORT = "Portfel Swing: wirtualny sprawdzian prognoz ze skanera swing (kupno i sprzedaż według celów i stopów)."
-TABS = [("swing", "index.html", "Swing"), ("div", "dywidendy.html", "Dywidendy"),
-        ("port-swing", "portfel-swing.html", "Portfel Swing"),
-        ("meth", "metodologia-swing.html", "Swing Metodologia"),
-        ("arch", "archiwum.html", "Archiwum swing"), ("darch", "dywidendy-archiwum.html", "Archiwum dywidend")]
+REPORTS_EN = ROOT / "reports-en"
+DIVS_EN = ROOT / "dywidendy-en"
+LANGS = ("pl", "en")
+
+# Nazwy plików stron: klucz -> (polska, angielska). Polska wersja leży w korzeniu, angielska w en/.
+FILES = {
+    "swing": ("index.html", "index.html"),
+    "div": ("dywidendy.html", "dividends.html"),
+    "meth": ("metodologia-swing.html", "methodology-swing.html"),
+    "arch": ("archiwum.html", "archive.html"),
+    "darch": ("dywidendy-archiwum.html", "dividends-archive.html"),
+}
+# Podkatalogi z raportami dziennymi: (swing, dywidendy)
+SUBDIRS = {"pl": ("reports", "dywidendy"), "en": ("reports", "dividends")}
+MD_SRC = {"pl": (REPORTS, DIVS), "en": (REPORTS_EN, DIVS_EN)}
+
+UI = {
+    "pl": {
+        "brand": "romangpw.pl · skaner GPW",
+        "disclaimer": "Ćwiczenie przesiewowe według zadanego frameworku, nie porada inwestycyjna.",
+        "footer": "Dane z publicznych źródeł (m.in. biznesradar.pl, bankier.pl), mogą zawierać błędy lub opóźnienia. Raporty generowane automatycznie.",
+        "tabs": {"swing": "Swing", "div": "Dywidendy", "port": "Portfel {n}", "meth": "Swing Metodologia",
+                 "arch": "Archiwum swing", "darch": "Archiwum dywidend"},
+        "desc_swing": "Dzienny skaner swing GPW — raport przed otwarciem sesji.",
+        "desc_div": "Spółki GPW regularnie wypłacające dywidendę, w trendzie wzrostowym, przed spodziewanym ogłoszeniem dywidendy.",
+        "desc_port": "Portfel Swing: wirtualny sprawdzian prognoz ze skanera swing (kupno i sprzedaż według celów i stopów).",
+        "desc_meth": "Prosty opis, jak działa dzienny skaner swing GPW: kroki i powody.",
+        "title_meth": "Swing Metodologia — jak działa monitor",
+        "swing_title": "GPW swing", "div_title": "Dywidendy GPW",
+        "swing_label": "Raport", "div_label": "Raport dywidendowy",
+        "of_day": "z dnia", "archive": "archiwum", "latest": "Najnowszy raport", "prev": "Poprzednie raporty",
+        "arch_h1": "Archiwum raportów — {t}", "arch_title": "Archiwum — {t}",
+        "placeholder": "Pierwszy raport w przygotowaniu. Zakładka pokaże spółki regularnie wypłacające dywidendę, "
+                       "które jeszcze jej nie ogłosiły, z szacowanym oknem ogłoszenia.",
+        "untranslated": "",
+        "port_title": "Portfel {n}",
+        "built": "Zbudowano",
+    },
+    "en": {
+        "brand": "romangpw.pl · WSE scanner",
+        "disclaimer": "Screening exercise under the given framework, not investment advice.",
+        "footer": "Data from public sources (incl. biznesradar.pl, bankier.pl) may contain errors or delays. Reports are generated automatically. Polish is the original language of the reports.",
+        "tabs": {"swing": "Swing", "div": "Dividends", "port": "{n} Portfolio", "meth": "Swing Methodology",
+                 "arch": "Swing archive", "darch": "Dividend archive"},
+        "desc_swing": "Daily swing-trading scanner for the Warsaw Stock Exchange (GPW) — a report before the open.",
+        "desc_div": "GPW stocks that pay regular dividends, are in an uptrend and have not yet announced the dividend.",
+        "desc_port": "Swing Portfolio: a virtual check of the swing scanner's forecasts (buying and selling at targets and stops).",
+        "desc_meth": "A plain-language description of how the daily GPW swing scanner works: the steps and the reasons.",
+        "title_meth": "Swing Methodology — how the monitor works",
+        "swing_title": "GPW swing", "div_title": "GPW dividends",
+        "swing_label": "Report", "div_label": "Dividend report",
+        "of_day": "dated", "archive": "archive", "latest": "Latest report", "prev": "Previous reports",
+        "arch_h1": "Report archive — {t}", "arch_title": "Archive — {t}",
+        "placeholder": "The first report is in preparation. This tab will show stocks that pay regular dividends and have not yet "
+                       "announced one, with an estimated announcement window.",
+        "untranslated": "This page has not been translated into English yet — it is shown in Polish.",
+        "port_title": "{n} Portfolio",
+        "built": "Built",
+    },
+}
+
+CSS += ""
 
 
 def md_files(folder):
@@ -137,95 +201,178 @@ def report_files():
     return md_files(REPORTS)
 
 
-def pretty_date(stem):
+def pretty_date(stem, lang="pl"):
     import datetime as dt
 
     d = dt.date.fromisoformat(stem)
+    if lang == "en":
+        return f"{DAYS_EN[d.weekday()]} {d.day} {MONTHS_EN[d.month - 1]} {d.year}"
     return f"{DAYS[d.weekday()]} {d.day}.{d.month:02d}.{d.year}"
 
 
-def render_md(text, ref=None):
+def render_md(text, ref=None, lang="pl", chart_text=None):
+    """text: treść do pokazania; chart_text: polski Markdown, z którego budujemy wykresy (domyślnie text)."""
     md = markdown.Markdown(extensions=["tables", "sane_lists", "toc"], extension_configs={"toc": {"toc_depth": "2-3"}})
     out = md.convert(text)
     # Koloruje komórki z samą zmianą procentową: +x% zielony, −x% czerwony.
     out = re.sub(r"<td>(\+\s?\d[\d\s,.]*%)</td>", r'<td class="up">\1</td>', out)
-    out = re.sub(r"<td>([\u2212-]\s?\d[\d\s,.]*%)</td>", r'<td class="down">\1</td>', out)
-    charts = render_charts(text, ref)
-    if charts:
+    out = re.sub(r"<td>([−-]\s?\d[\d\s,.]*%)</td>", r'<td class="down">\1</td>', out)
+    charts.LANG = lang
+    try:
+        ch = render_charts(chart_text if chart_text is not None else text, ref)
+    finally:
+        charts.LANG = "pl"
+    if ch:
         for m in re.finditer(r"<table>.*?</table>", out, flags=re.S):
-            if "<th>Suma</th>" in m.group(0):
-                out = out[:m.end()] + "\n" + charts + out[m.end():]
+            if "<th>Suma</th>" in m.group(0) or "<th>Total</th>" in m.group(0):
+                out = out[:m.end()] + "\n" + ch + out[m.end():]
                 break
     return out
 
 
-def nav_html(active, base):
+def tabs_for(lang, ports):
+    u = UI[lang]["tabs"]
+    tabs = [("swing", u["swing"]), ("div", u["div"])]
+    tabs += [(f"port-{k}", u["port"].format(n=k.capitalize())) for k in ports]
+    tabs += [("meth", u["meth"]), ("arch", u["arch"]), ("darch", u["darch"])]
+    return tabs
+
+
+def fname(key, lang):
+    i = LANGS.index(lang)
+    if key in FILES:
+        return FILES[key][i]
+    k = key.split("-", 1)[1]  # port-<strategia>
+    return (f"portfel-{k}.html", f"portfolio-{k}.html")[i]
+
+
+PORTS = []  # uzupełniane w main()
+
+
+def nav_html(active, lang, base):
     return "".join(
-        f'<a href="{base}{href}"' + (' class="on"' if key == active else "") + f">{label}</a>"
-        for key, href, label in TABS
+        f'<a href="{base}{fname(key, lang)}"' + (' class="on"' if key == active else "") + f">{html.escape(label)}</a>"
+        for key, label in tabs_for(lang, PORTS)
     )
 
 
-def page(title, body, base="", active="swing", desc=DESC_SWING):
-    return PAGE.format(title=html.escape(title), css=CSS, base=base, body=body, disclaimer=DISCLAIMER,
-                       deco=deco_svg(), nav=nav_html(active, base), desc=html.escape(desc))
+def page(title, body, lang="pl", active="swing", desc="", sub=False, counter=None):
+    """sub: strona leży w podkatalogu (reports/<data>.html). counter: (ścieżka PL, ścieżka EN) tej samej strony,
+    każda względem korzenia swojej wersji językowej."""
+    u = UI[lang]
+    base = "../" if sub else ""
+    root = base if lang == "pl" else base + "../"      # ścieżka do korzenia serwisu
+    en_root = root + "en/"
+    pl_href = root + counter[0] if counter else root + "index.html"
+    en_href = en_root + counter[1] if counter else en_root + "index.html"
+    if lang == "pl":
+        sw = f'<span class="cur">PL</span><a href="{en_href}" hreflang="en" lang="en" title="English">EN</a>'
+    else:
+        sw = f'<a href="{pl_href}" hreflang="pl" lang="pl" title="Polski">PL</a><span class="cur">EN</span>'
+    alt = (f'<link rel="alternate" hreflang="pl" href="{pl_href}">\n<link rel="alternate" hreflang="en" href="{en_href}">'
+           if counter else "")
+    return PAGE.format(title=html.escape(title), css=CSS, base=base, body=body, disclaimer=u["disclaimer"], footer=u["footer"],
+                       deco=deco_svg(), nav=nav_html(active, lang, base), desc=html.escape(desc), lang=lang,
+                       langsw=f'<div class="lang" role="group" aria-label="Language">{sw}</div>', brand=u["brand"], alt=alt)
 
 
-def build_section(files, folder, out_name, arch_name, label, active, arch_active, desc, title_prefix, root_base):
-    """Buduje raporty jednego rodzaju. Zwraca najnowszą datę albo None."""
+def md_text(lang, folder_pl, stem, kind):
+    """Zwraca (tekst do pokazania, tekst polski, czy przetłumaczone)."""
+    pl = (folder_pl / f"{stem}.md").read_text(encoding="utf-8")
+    if lang == "pl":
+        return pl, pl, True
+    src = MD_SRC["en"][0 if kind == "swing" else 1] / f"{stem}.md"
+    if src.exists():
+        return src.read_text(encoding="utf-8"), pl, True
+    return pl, pl, False
+
+
+def build_section(lang, kind):
+    """Buduje raporty jednego rodzaju (swing/div) dla języka. Zwraca najnowszą datę albo None."""
     import datetime as dt
 
+    u = UI[lang]
+    out_root = ROOT if lang == "pl" else ROOT / "en"
+    out_root.mkdir(exist_ok=True)
+    folder_pl = REPORTS if kind == "swing" else DIVS
+    files = md_files(folder_pl)  # zbiór dat zawsze z polskich raportów
+    sub = SUBDIRS[lang][0 if kind == "swing" else 1]
+    sub_pl = SUBDIRS["pl"][0 if kind == "swing" else 1]
+    key, akey = ("swing", "arch") if kind == "swing" else ("div", "darch")
+    arch_name, out_name = fname(akey, lang), fname(key, lang)
+    label = u["swing_label"] if kind == "swing" else u["div_label"]
+    title_prefix = u["swing_title"] if kind == "swing" else u["div_title"]
+    desc = u["desc_swing"] if kind == "swing" else u["desc_div"]
     if not files:
-        if out_name != "index.html":
-            body = ('<div class="banner">Pierwszy raport w przygotowaniu. Zakładka pokaże spółki regularnie wypłacające '
-                    'dywidendę, które jeszcze jej nie ogłosiły, z szacowanym oknem ogłoszenia.</div>')
-            (ROOT / out_name).write_text(page(title_prefix, body, active=active, desc=desc), encoding="utf-8")
+        if kind == "div":
+            body = f'<div class="banner">{u["placeholder"]}</div>'
+            (out_root / out_name).write_text(page(title_prefix, body, lang, key, desc, counter=(fname(key, "pl"), fname(key, "en"))), encoding="utf-8")
         return None
-    sub = folder.name
+    (out_root / sub).mkdir(exist_ok=True)
+    note = lambda ok: "" if ok else f'<div class="banner">{u["untranslated"]}</div>\n'
     for f in files:
         stem = f.stem
-        body = (f'<div class="banner">{label} z dnia <strong>{pretty_date(stem)}</strong> · '
-                f'<a href="../{arch_name}">archiwum</a></div>\n' + render_md(f.read_text(encoding="utf-8"), dt.date.fromisoformat(stem)))
-        (folder / f"{stem}.html").write_text(page(f"{title_prefix} {stem}", body, base="../", active=active, desc=desc), encoding="utf-8")
-    latest = files[-1]
-    stem = latest.stem
-    body = (f'<div class="banner">Najnowszy raport: <strong>{pretty_date(stem)}</strong>. '
-            f'<a href="{arch_name}">Poprzednie raporty</a></div>\n'
-            + render_md(latest.read_text(encoding="utf-8"), dt.date.fromisoformat(stem)))
-    (ROOT / out_name).write_text(page(f"{title_prefix} — {stem}", body, active=active, desc=desc), encoding="utf-8")
-    items = "\n".join(
-        f'<li><a href="{sub}/{f.stem}.html">{pretty_date(f.stem)}</a> · <a href="{sub}/{f.name}">.md</a></li>'
-        for f in reversed(files)
-    )
-    arch = f'<h1>Archiwum raportów — {title_prefix.lower()}</h1>\n<ul class="list">\n{items}\n</ul>'
-    (ROOT / arch_name).write_text(page(f"Archiwum — {title_prefix}", arch, active=arch_active, desc=desc), encoding="utf-8")
+        text, pl, ok = md_text(lang, folder_pl, stem, kind)
+        body = (f'<div class="banner">{label} {u["of_day"]} <strong>{pretty_date(stem, lang)}</strong> · '
+                f'<a href="../{arch_name}">{u["archive"]}</a></div>\n' + note(ok)
+                + render_md(text, dt.date.fromisoformat(stem), lang, pl))
+        (out_root / sub / f"{stem}.html").write_text(
+            page(f"{title_prefix} {stem}", body, lang, key, desc, sub=True, counter=(f"{sub_pl}/{stem}.html", f"{SUBDIRS['en'][0 if kind == 'swing' else 1]}/{stem}.html")),
+            encoding="utf-8")
+    stem = files[-1].stem
+    text, pl, ok = md_text(lang, folder_pl, stem, kind)
+    body = (f'<div class="banner">{u["latest"]}: <strong>{pretty_date(stem, lang)}</strong>. '
+            f'<a href="{arch_name}">{u["prev"]}</a></div>\n' + note(ok)
+            + render_md(text, dt.date.fromisoformat(stem), lang, pl))
+    (out_root / out_name).write_text(
+        page(f"{title_prefix} — {stem}", body, lang, key, desc, counter=(fname(key, "pl"), fname(key, "en"))), encoding="utf-8")
+    items = []
+    for f in reversed(files):
+        _, _, ok = md_text(lang, folder_pl, f.stem, kind)
+        if lang == "pl":
+            mdlink = f'{sub}/{f.name}'
+            tag = ""
+        else:
+            mdlink = f'../{MD_SRC["en"][0 if kind == "swing" else 1].name}/{f.name}' if ok else f'../{sub_pl}/{f.name}'
+            tag = "" if ok else " (PL)"
+        items.append(f'<li><a href="{sub}/{f.stem}.html">{pretty_date(f.stem, lang)}</a>{tag} · <a href="{mdlink}">.md</a></li>')
+    arch = f'<h1>{u["arch_h1"].format(t=title_prefix.lower() if lang == "pl" else title_prefix)}</h1>\n<ul class="list">\n' + "\n".join(items) + "\n</ul>"
+    (out_root / arch_name).write_text(
+        page(u["arch_title"].format(t=title_prefix), arch, lang, akey, desc, counter=(fname(akey, "pl"), fname(akey, "en"))), encoding="utf-8")
     return stem
 
 
 def main():
-    sw = build_section(report_files(), REPORTS, "index.html", "archiwum.html", "Raport", "swing", "arch",
-                       DESC_SWING, "GPW swing", "")
-    if sw is None:
-        print("Brak raportów w reports/", file=sys.stderr)
-        return 1
-    dv = build_section(md_files(DIVS), DIVS, "dywidendy.html", "dywidendy-archiwum.html", "Raport dywidendowy", "div", "darch",
-                       DESC_DIV, "Dywidendy GPW", "")
-    # Portfele wirtualne: każda strategia ma paper/<nazwa>/state.json i stronę portfel-<nazwa>.html
-    # (zakładka w TABS: klucz "port-<nazwa>"). Na razie tylko swing.
     import json
 
-    for ps in sorted((ROOT / "paper").glob("*/state.json")):
-        key = ps.parent.name
-        (ROOT / f"portfel-{key}.html").write_text(
-            page(f"Portfel {key.capitalize()}", portfel.render(json.loads(ps.read_text(encoding="utf-8")), key.capitalize()),
-                 active=f"port-{key}", desc=DESC_PORT), encoding="utf-8")
-    mp = ROOT / "metodologia-swing.md"
-    if mp.exists():
-        mbody = markdown.Markdown(extensions=["tables", "sane_lists"]).convert(mp.read_text(encoding="utf-8"))
-        (ROOT / "metodologia-swing.html").write_text(
-            page("Swing Metodologia — jak działa monitor", mbody, active="meth",
-                 desc="Prosty opis, jak działa dzienny skaner swing GPW: kroki i powody."), encoding="utf-8")
-    print(f"Zbudowano: swing {len(report_files())} (najnowszy {sw}); dywidendy {len(md_files(DIVS))}" + (f" (najnowszy {dv})" if dv else ""))
+    if not report_files():
+        print("Brak raportów w reports/", file=sys.stderr)
+        return 1
+    PORTS[:] = [ps.parent.name for ps in sorted((ROOT / "paper").glob("*/state.json"))]
+    msg = []
+    for lang in LANGS:
+        u = UI[lang]
+        out_root = ROOT if lang == "pl" else ROOT / "en"
+        sw = build_section(lang, "swing")
+        dv = build_section(lang, "div")
+        # Portfele wirtualne: każda strategia ma paper/<nazwa>/state.json i stronę portfel-<nazwa>.html (EN: en/portfolio-<nazwa>.html).
+        for key in PORTS:
+            st = json.loads((ROOT / "paper" / key / "state.json").read_text(encoding="utf-8"))
+            n = key.capitalize()
+            (out_root / fname(f"port-{key}", lang)).write_text(
+                page(u["port_title"].format(n=n), portfel.render(st, n, lang), lang, f"port-{key}", u["desc_port"],
+                     counter=(fname(f"port-{key}", "pl"), fname(f"port-{key}", "en"))), encoding="utf-8")
+        # Metodologia: PL z metodologia-swing.md, EN z metodologia-swing.en.md (brak => polski tekst + informacja).
+        mp = ROOT / ("metodologia-swing.md" if lang == "pl" else "metodologia-swing.en.md")
+        banner = ""
+        if not mp.exists() and lang == "en":
+            mp, banner = ROOT / "metodologia-swing.md", f'<div class="banner">{u["untranslated"]}</div>\n'
+        if mp.exists():
+            mbody = banner + markdown.Markdown(extensions=["tables", "sane_lists"]).convert(mp.read_text(encoding="utf-8"))
+            (out_root / fname("meth", lang)).write_text(
+                page(u["title_meth"], mbody, lang, "meth", u["desc_meth"], counter=(fname("meth", "pl"), fname("meth", "en"))), encoding="utf-8")
+        msg.append(f"{lang}: swing {len(report_files())} (najnowszy {sw})" + (f", dywidendy {len(md_files(DIVS))} (najnowszy {dv})" if dv else ""))
+    print("Zbudowano: " + "; ".join(msg))
     return 0
 
 

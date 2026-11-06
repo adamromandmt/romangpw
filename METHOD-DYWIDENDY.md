@@ -52,9 +52,10 @@ Nagłówek: `# GPW dywidendy — <dzień tygodnia> <D miesiąc RRRR>`, linia o d
 
 1. Zapisz `dywidendy/YYYY-MM-DD.md` (nie nadpisuj starszych), zaktualizuj `data/`.
 2. `pip install --break-system-packages markdown` (jeśli brak), `python3 build.py` → `dywidendy.html`, `dywidendy-archiwum.html`, `dywidendy/YYYY-MM-DD.html`.
-3. Sprawdź, że `dywidendy.html` zawiera tabelę rankingu.
-4. `git pull --rebase origin main`, potem `git add -A && git commit -m "Dywidendy GPW YYYY-MM-DD" && git push origin main` (trailery jak w sesji). Zadanie swing pushuje o 7:15 — nie uruchamiaj publikacji w tym samym czasie; przy konflikcie push `git pull --rebase` i ponów raz.
-5. Jeśli push się nie uda, nie obchodź błędu; zakończ z opisem.
+3. Przetłumacz raport na angielski do `dywidendy-en/YYYY-MM-DD.md` (ta sama struktura i liczba wierszy; nagłówki rankingu: `# | Tic | Company | Sector | Price | Trend | From high | RSI | Years paid | Last DPS | Expected DPS | Window from | Window to | Days to window | Div/50 | Tech/50 | Total | Class | Entry | Stop | T1 | T2 | R (T1 / T2) | Earnings`; daty ISO w kolumnach okna bez zmian; liczby w formacie angielskim; ostatnia linia `Screening exercise under the given framework, not investment advice.`), potem `python3 build.py`. Wykresy powstają z polskiego raportu. Bez tłumaczenia strona `en/dividends.html` pokaże polski tekst z informacją.
+4. Sprawdź, że `dywidendy.html` i `en/dividends.html` zawierają tabelę rankingu.
+5. `git pull --rebase origin main`, potem `git add -A && git commit -m "Dywidendy GPW YYYY-MM-DD" && git push origin main` (trailery jak w sesji). Zadanie swing pushuje o 7:15 — nie uruchamiaj publikacji w tym samym czasie; przy konflikcie push `git pull --rebase` i ponów raz.
+6. Jeśli push się nie uda, nie obchodź błędu; zakończ z opisem.
 
 ## Procedura cotygodniowa (zadanie cykliczne, poniedziałek rano)
 

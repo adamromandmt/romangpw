@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0B0C10">
+<title>GPW swing 2026-11-04</title>
+<meta name="description" content="Daily swing-trading scanner for the Warsaw Stock Exchange (GPW) — a report before the open.">
+<link rel="alternate" hreflang="pl" href="../../reports/2026-11-04.html">
+<link rel="alternate" hreflang="en" href="../../en/reports/2026-11-04.html">
+<style>
+:root{
+  --bg:#0B0C10;--panel:#0F1614;--panel2:#15221E;--line:#1F3330;
+  --fg:#C5CFCB;--strong:#F2F7F5;--muted:#86948E;
+  --accent:#2BFF88;--accent2:#45A29E;--cyan:#66FCF1;--violet:#9B6BFF;
+  --up:#2BFF88;--down:#FF5C7A;--warn:#FFB347;
+}
+*{box-sizing:border-box}
+html{color-scheme:dark}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:
+    radial-gradient(900px 520px at 6% -6%,rgba(43,255,136,.22),transparent 65%),
+    radial-gradient(820px 480px at 96% 0%,rgba(69,162,158,.20),transparent 65%),
+    radial-gradient(760px 520px at 58% 108%,rgba(43,255,136,.10),transparent 65%),
+    radial-gradient(520px 380px at 100% 70%,rgba(155,107,255,.10),transparent 65%)}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:linear-gradient(rgba(43,255,136,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(43,255,136,.055) 1px,transparent 1px);
+  background-size:46px 46px;
+  -webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 0%,transparent 75%);
+  mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 0%,transparent 75%)}
+header,main,footer{max-width:1100px;margin:0 auto;padding:0 16px}
+header{position:relative;padding-top:24px;padding-bottom:14px;min-height:100px;border-bottom:1px solid var(--line)}
+header .deco{position:absolute;right:0;top:0;height:100%;width:60%;max-width:520px;opacity:.6;pointer-events:none}
+header a.brand{position:relative;font-weight:800;font-size:20px;letter-spacing:.2px;color:var(--strong);text-decoration:none}
+header a.brand::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--up);box-shadow:0 0 12px var(--up),0 0 26px rgba(43,255,136,.55);margin-right:11px;vertical-align:middle}
+nav{position:relative;margin-top:10px;font-size:14px}
+nav a{color:var(--accent2);margin-right:18px;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent}
+nav a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+nav a.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+.topbar{position:relative;display:flex;align-items:center;margin:-6px 0 12px}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:rgba(15,22,20,.85);font-size:12px;font-weight:700;letter-spacing:.06em}
+.lang a,.lang span{padding:4px 12px;text-decoration:none;color:var(--muted)}
+.lang a:hover{color:var(--accent)}
+.lang .cur{background:var(--accent);color:#04120a}
+.banner{background:rgba(15,22,20,.85);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;padding:11px 14px;margin:18px 0;font-size:14px;color:var(--fg);backdrop-filter:blur(4px)}
+.banner strong{color:var(--accent)}
+h1{font-size:27px;line-height:1.25;margin:22px 0 8px;color:var(--strong);letter-spacing:-.2px}
+h2{font-size:21px;margin:36px 0 10px;padding-top:12px;color:var(--accent);border-top:1px solid var(--line);position:relative;text-shadow:0 0 22px rgba(43,255,136,.35)}
+h2::before{content:"";position:absolute;top:-1px;left:0;width:64px;height:2px;background:linear-gradient(90deg,var(--accent),var(--cyan));box-shadow:0 0 10px rgba(43,255,136,.6)}
+h3{font-size:17px;margin:24px 0 6px;color:var(--strong)}
+strong{color:var(--strong)}
+a{color:var(--cyan)}
+a:hover{color:#fff}
+code{background:var(--panel2);color:var(--accent);padding:1px 6px;border-radius:4px;font-size:.92em}
+table{border-collapse:separate;border-spacing:0;font-size:13px;margin:14px 0;display:block;overflow-x:auto;max-width:100%;border:1px solid var(--line);border-radius:10px;background:rgba(15,22,20,.9)}
+th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+th{background:var(--panel2);color:var(--accent);font-weight:600;position:sticky;top:0}
+tbody tr:hover td{background:rgba(43,255,136,.06)}
+td.up{color:var(--up);font-weight:600}
+td.down{color:var(--down);font-weight:600}
+ul{padding-left:22px}
+li{margin:4px 0}
+li::marker{color:var(--accent)}
+hr{border:0;border-top:1px solid var(--line)}
+.charts h2{margin-top:30px}
+.chart-card{background:rgba(15,22,20,.9);border:1px solid var(--line);border-radius:12px;padding:14px 14px 10px;margin:16px 0;overflow-x:auto;box-shadow:0 0 0 1px rgba(43,255,136,.04),0 12px 30px rgba(0,0,0,.35)}
+.chart-card h3{margin:0 0 2px;color:var(--strong)}
+.chart-card .sub{margin:0 0 8px;color:var(--muted);font-size:13px}
+.chart-card svg{display:block;width:100%;min-width:680px;height:auto}
+.chart-card svg text{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.chart-card svg .lbl{fill:var(--strong);font-size:13px;font-weight:700}
+.chart-card svg .cls{fill:var(--muted);font-weight:600}
+.chart-card svg .tick{fill:var(--muted);font-size:11.5px}
+.chart-card svg .val{fill:var(--strong);font-size:12.5px;font-weight:700;paint-order:stroke;stroke:#0F1614;stroke-width:3.5px;stroke-linejoin:round}
+.chart-card svg .pos{fill:var(--up);font-size:11.5px;font-weight:700}
+.chart-card svg .neg{fill:var(--down);font-size:11.5px;font-weight:700}
+.chart-card svg .warn{fill:var(--warn);font-size:11.5px;font-weight:700}
+.chart-card svg .grid{stroke:var(--line);stroke-width:1}
+footer{color:var(--muted);font-size:13px;padding-top:26px;padding-bottom:44px;border-top:1px solid var(--line);margin-top:36px}
+.list li{margin:9px 0}
+::selection{background:var(--accent);color:#04120a}
+@media (max-width:700px){header .deco{display:none}body{font-size:15px}h1{font-size:23px}h2{font-size:19px}}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:16px 0}
+.card{background:rgba(15,22,20,.9);border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:0 0 0 1px rgba(43,255,136,.04),0 10px 24px rgba(0,0,0,.3)}
+.card .k{color:var(--muted);font-size:12px;letter-spacing:.03em;text-transform:uppercase}
+.card .v{color:var(--strong);font-size:22px;font-weight:700;margin-top:2px}
+.card .v.up{color:var(--up)}.card .v.down{color:var(--down)}
+.card .s{color:var(--muted);font-size:12px}
+.rules li{margin:4px 0}
+.chart-card svg .eq{fill:none;stroke:var(--up);stroke-width:2.4;stroke-linejoin:round}
+.chart-card svg .base{stroke:var(--warn);stroke-dasharray:5 4;stroke-width:1.3}
+</style>
+</head>
+<body>
+<header>
+<svg class="deco" viewBox="0 0 520 140" preserveAspectRatio="xMaxYMid meet" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="fadeg" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#000"/><stop offset=".5" stop-color="#fff"/></linearGradient><mask id="fadem"><rect width="520" height="140" fill="url(#fadeg)"/></mask></defs><g mask="url(#fadem)"><line x1="31" y1="106.5" x2="31" y2="124.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="24" y="114.0" width="14" height="3.0" rx="2" fill="#2BFF88"/><line x1="62" y1="106.5" x2="62" y2="127.5" stroke="#FF5C7A" stroke-width="1.5"/><rect x="55" y="114.0" width="14" height="6.0" rx="2" fill="#FF5C7A"/><line x1="93" y1="100.5" x2="93" y2="127.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="86" y="108.0" width="14" height="12.0" rx="2" fill="#2BFF88"/><line x1="124" y1="100.5" x2="124" y2="124.5" stroke="#FF5C7A" stroke-width="1.5"/><rect x="117" y="108.0" width="14" height="9.0" rx="2" fill="#FF5C7A"/><line x1="155" y1="97.5" x2="155" y2="124.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="148" y="105.0" width="14" height="12.0" rx="2" fill="#2BFF88"/><line x1="186" y1="88.5" x2="186" y2="112.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="179" y="96.0" width="14" height="9.0" rx="2" fill="#2BFF88"/><line x1="217" y1="88.5" x2="217" y2="111.0" stroke="#FF5C7A" stroke-width="1.5"/><rect x="210" y="96.0" width="14" height="7.5" rx="2" fill="#FF5C7A"/><line x1="248" y1="82.5" x2="248" y2="111.0" stroke="#2BFF88" stroke-width="1.5"/><rect x="241" y="90.0" width="14" height="13.5" rx="2" fill="#2BFF88"/><line x1="279" y1="76.5" x2="279" y2="97.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="272" y="84.0" width="14" height="6.0" rx="2" fill="#2BFF88"/><line x1="310" y1="76.5" x2="310" y2="100.5" stroke="#FF5C7A" stroke-width="1.5"/><rect x="303" y="84.0" width="14" height="9.0" rx="2" fill="#FF5C7A"/><line x1="341" y1="70.5" x2="341" y2="100.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="334" y="78.0" width="14" height="15.0" rx="2" fill="#2BFF88"/><line x1="372" y1="61.5" x2="372" y2="85.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="365" y="69.0" width="14" height="9.0" rx="2" fill="#2BFF88"/><line x1="403" y1="61.5" x2="403" y2="84.0" stroke="#FF5C7A" stroke-width="1.5"/><rect x="396" y="69.0" width="14" height="7.5" rx="2" fill="#FF5C7A"/><line x1="434" y1="55.5" x2="434" y2="84.0" stroke="#2BFF88" stroke-width="1.5"/><rect x="427" y="63.0" width="14" height="13.5" rx="2" fill="#2BFF88"/><line x1="465" y1="48.0" x2="465" y2="70.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="458" y="55.5" width="14" height="7.5" rx="2" fill="#2BFF88"/><line x1="496" y1="37.5" x2="496" y2="63.0" stroke="#2BFF88" stroke-width="1.5"/><rect x="489" y="45.0" width="14" height="10.5" rx="2" fill="#2BFF88"/><polyline points="31,114.0 62,120.0 93,108.0 124,117.0 155,105.0 186,96.0 217,103.5 248,90.0 279,84.0 310,93.0 341,78.0 372,69.0 403,76.5 434,63.0 465,55.5 496,45.0" fill="none" stroke="#66FCF1" stroke-width="2" opacity=".8"/></g></svg>
+<div class="topbar"><div class="lang" role="group" aria-label="Language"><a href="../../reports/2026-11-04.html" hreflang="pl" lang="pl" title="Polski">PL</a><span class="cur">EN</span></div></div>
+<a class="brand" href="../index.html">romangpw.pl · WSE scanner</a>
+<nav><a href="../index.html" class="on">Swing</a><a href="../dividends.html">Dividends</a><a href="../portfolio-swing.html">Swing Portfolio</a><a href="../methodology-swing.html">Swing Methodology</a><a href="../archive.html">Swing archive</a><a href="../dividends-archive.html">Dividend archive</a></nav>
+</header>
+<main>
+<div class="banner">Report dated <strong>Wednesday 4 November 2026</strong> · <a href="../archive.html">archive</a></div>
+<h1 id="gpw-swing-screen-wednesday-4-november-2026-1-month-horizon">GPW swing screen — Wednesday 4 November 2026 (1-month horizon)</h1>
+<p>Data: 50 sessions 26 Aug–3 Nov 2026 (biznesradar <code>notowania-historyczne/&lt;TIC&gt;</code>), closes from <strong>3 Nov</strong>; prices before the 4 Nov open are stale and are not quoted. Exception: ALE — the source returned data only through 2 Nov (buffer), so ALE is assessed at the 2 Nov close. Dividend-adjusted: LPP −500 (ex-date 8 Oct), BFT −100 (ex-date 4 Sep). 22 names scanned (WIG20 + mWIG40 + selected sWIG80) — fewer than the planned 45–85, because the source could only be queried at URLs surfaced by search results (see Method).</p>
+<h2 id="market-regime">Market regime</h2>
+<ul>
+<li>WIG20 on 3 Nov: 4,138.60 (−0.33%), <strong>3.4% below ATH 4,283.82 (29 Oct)</strong>; below EMA20 (4,194) and SMA20 (4,202), marginally below SMA50 (4,151); RSI 45, MACD histogram negative and deepening. The 8 Oct low of 4,128.78 is still defended on a closing basis (3 Nov intraday 4,081.53 — close 4,138.60).</li>
+<li>WIG 155,850 (−3.5% from the high of 161,500), below SMA50 (156,436), RSI 44. Three consecutive down sessions since 29 Oct.</li>
+<li>Sectors: <strong>banks weak</strong> (PKO −8.8% from high, below SMA50 117.5; PEO −7.7%, below SMA50 266.6; RSI 46–48), <strong>commodities/metals collapsed</strong> (KGH −27% from the 378 high, RSI 31), fuels weak (PKN −11%, below SMA50), power utilities after a parabolic run (PGE −10% after +43%), financials/brokers down (XTB −29%, KRU −25%). <strong>Leaders</strong>: consumer and e-commerce (LPP, ALE, BFT, DNP), mBank after results (+8.5% in 2 sessions on 28–29 Oct).</li>
+<li>Breadth: of the 22 scanned companies, 8 are ≥ 8% below their 50-session high, and only 5 sit within ±1.5% of the high. The market is at the start of a correction, not in panic (WIG20 RSI 45, no volume expansion).</li>
+<li>Not retrieved in this run: S&amp;P/Nasdaq/VIX, UST, oil/copper, USD/PLN, MPC/CPI calendar — unverified, so I do not assess them.</li>
+<li><strong>Conclusion: the environment is neutral-to-cautious. A corrective index (below EMA20, RSI 45) favors looking for pullback entries in leaders, but does not favor buying "with the market" or broad exposure. Positions smaller than usual (about 50–70% of standard), limit orders in the zones, hard stops. Of 22 names only 8 meet the criteria — I am not forcing 10–15.</strong></li>
+</ul>
+<h2 id="ranking-r-from-the-midpoint-of-the-entry-zone">Ranking (R from the midpoint of the entry zone)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Tic</th>
+<th>Company</th>
+<th>Sector</th>
+<th>Price</th>
+<th>From high</th>
+<th>Trend</th>
+<th>Support</th>
+<th>RSI</th>
+<th>Fund/30</th>
+<th>Tech/70</th>
+<th>Total</th>
+<th>Class</th>
+<th>Entry</th>
+<th>Stop</th>
+<th>T1</th>
+<th>T2</th>
+<th>R (T1 / T2)</th>
+<th>Earnings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>LPP</td>
+<td>LPP</td>
+<td>apparel/retail</td>
+<td>26,220</td>
+<td class="down">−3.7%</td>
+<td>uptrend (SMA20 26,288 &gt; SMA50 23,893)</td>
+<td>25,500–26,000 (EMA20 26,154, lows of 12–13 Oct 25,260–25,660)</td>
+<td>56</td>
+<td>23</td>
+<td>48</td>
+<td>71</td>
+<td>B (limit order on pullback)</td>
+<td>25,500–26,000</td>
+<td>24,950</td>
+<td>27,250</td>
+<td>28,300</td>
+<td>1.9 / 3.2</td>
+<td>3 Dec</td>
+</tr>
+<tr>
+<td>2</td>
+<td>MBK</td>
+<td>mBank</td>
+<td>banks</td>
+<td>1,610</td>
+<td class="down">−3.4%</td>
+<td>uptrend after gap (SMA20 1,476 &gt; SMA50 1,452)</td>
+<td>1,525–1,575 (bottom of 28 Oct gap: 1,471–1,611)</td>
+<td>64</td>
+<td>22</td>
+<td>48</td>
+<td>70</td>
+<td>B (gap retest)</td>
+<td>1,525–1,575</td>
+<td>1,470</td>
+<td>1,700</td>
+<td>1,800</td>
+<td>1.9 / 3.1</td>
+<td>none until February (results 28–29 Oct)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>DNP</td>
+<td>Dino Polska</td>
+<td>grocery</td>
+<td>38.10</td>
+<td class="down">−3.9%</td>
+<td>uptrend (SMA20 37.68 &gt; SMA50 36.29)</td>
+<td>37.30–37.90 (EMA/SMA20 37.68)</td>
+<td>56</td>
+<td>19</td>
+<td>47</td>
+<td>66</td>
+<td>B — <strong>after earnings</strong></td>
+<td>37.30–37.90</td>
+<td>36.30</td>
+<td>39.65</td>
+<td>41.50</td>
+<td>1.6 / 3.0</td>
+<td><strong>5 Nov (tomorrow)</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td>BFT</td>
+<td>Benefit Systems</td>
+<td>services</td>
+<td>5,900</td>
+<td>−1.3% (no pullback)</td>
+<td>uptrend (SMA20 5,710 &gt; SMA50 5,384)</td>
+<td>5,700–5,800 (EMA20 5,732)</td>
+<td>64</td>
+<td>21</td>
+<td>42</td>
+<td>63</td>
+<td>B (retest)</td>
+<td>5,700–5,800</td>
+<td>5,520</td>
+<td>6,050</td>
+<td>6,350</td>
+<td>1.3 / 2.6</td>
+<td>19 Nov (15 days)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>PCO</td>
+<td>Pepco Group</td>
+<td>retail</td>
+<td>48.13</td>
+<td class="down">−5.6%</td>
+<td>uptrend (SMA20 46.97 &gt; SMA50 44.46)</td>
+<td>47.20–48.00 (EMA20 47.31)</td>
+<td>57</td>
+<td>15</td>
+<td>43</td>
+<td>58</td>
+<td>C</td>
+<td>47.20–48.00</td>
+<td>45.00</td>
+<td>51.00</td>
+<td>53.50</td>
+<td>1.3 / 2.3</td>
+<td>none in the November calendar; <strong>unverified</strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td>ACP</td>
+<td>Asseco Poland</td>
+<td>IT</td>
+<td>236.60</td>
+<td>−5.7% (−5% in 1 day)</td>
+<td>uptrend (SMA20 236.2 &gt; SMA50 231.3)</td>
+<td>232–236.5 (SMA20/SMA50)</td>
+<td>49</td>
+<td>20</td>
+<td>36</td>
+<td>56</td>
+<td>B trigger</td>
+<td>&gt;241 (close)</td>
+<td>226</td>
+<td>250</td>
+<td>258</td>
+<td>1.9 / 2.9</td>
+<td>not confirmed (previously: 26 Nov)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>CDR</td>
+<td>CD Projekt</td>
+<td>gaming</td>
+<td>256.50</td>
+<td class="down">−5.6%</td>
+<td>sideways-to-up (SMA50 250.4)</td>
+<td>250–256 (SMA50, 8 Oct low 252.5)</td>
+<td>46</td>
+<td>16</td>
+<td>39</td>
+<td>55</td>
+<td>B trigger</td>
+<td>&gt;262 (close)</td>
+<td>246</td>
+<td>272</td>
+<td>285</td>
+<td>2.0 / 3.6</td>
+<td>24 Nov (20 days)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>PGE</td>
+<td>PGE</td>
+<td>power utilities</td>
+<td>15.50</td>
+<td class="down">−10.4%</td>
+<td>after a parabolic run (SMA50 14.63)</td>
+<td>15.00–15.50</td>
+<td>48</td>
+<td>14</td>
+<td>37</td>
+<td>51</td>
+<td>C</td>
+<td>15.00–15.50</td>
+<td>14.30</td>
+<td>16.70</td>
+<td>17.30</td>
+<td>1.5 / 2.2</td>
+<td>24 Nov (20 days)</td>
+</tr>
+</tbody>
+</table>
+<section class="charts">
+<h2>Charts from the ranking</h2>
+<div class="chart-card"><h3>Score ranking</h3><p class="sub">Total points split into fundamentals and the rest of the score (0–100).</p><svg viewBox="0 0 800 300" role="img" aria-label="Candidate score ranking" xmlns="http://www.w3.org/2000/svg"><rect x="150" y="5" width="12" height="12" rx="3" style="fill:var(--up)"/><text class="tick" x="168" y="15">Fundamentals (of 30)</text><rect x="310" y="5" width="12" height="12" rx="3" style="fill:var(--accent2)"/><text class="tick" x="328" y="15">Technicals and the rest</text><line class="grid" x1="150.0" y1="42" x2="150.0" y2="296"/><text class="tick" x="150.0" y="36" text-anchor="middle">0</text><line class="grid" x1="295.0" y1="42" x2="295.0" y2="296"/><text class="tick" x="295.0" y="36" text-anchor="middle">25</text><line class="grid" x1="440.0" y1="42" x2="440.0" y2="296"/><text class="tick" x="440.0" y="36" text-anchor="middle">50</text><line class="grid" x1="585.0" y1="42" x2="585.0" y2="296"/><text class="tick" x="585.0" y="36" text-anchor="middle">75</text><line class="grid" x1="730.0" y1="42" x2="730.0" y2="296"/><text class="tick" x="730.0" y="36" text-anchor="middle">100</text><text class="lbl" x="140" y="69" text-anchor="end">LPP <tspan class="cls">· B</tspan></text><g><title>LPP: 71 pts (fundamentals 23, rest 48)</title><rect x="150" y="58" width="133.4" height="16" rx="3" style="fill:var(--up)"/><rect x="283.4" y="58" width="278.4" height="16" rx="3" style="fill:var(--accent2)"/></g><text class="val" x="569.8" y="70">71</text><text class="lbl" x="140" y="99" text-anchor="end">MBK <tspan class="cls">· B</tspan></text><g><title>MBK: 70 pts (fundamentals 22, rest 48)</title><rect x="150" y="88" width="127.6" height="16" rx="3" style="fill:var(--up)"/><rect x="277.6" y="88" width="278.4" height="16" rx="3" style="fill:var(--accent2)"/></g><text class="val" x="564.0" y="100">70</text><text class="lbl" x="140" y="129" text-anchor="end">DNP <tspan class="cls">· B</tspan></text><g><title>DNP: 66 pts (fundamentals 19, rest 47)</title><rect x="150" y="118" width="110.2" height="16" rx="3" style="fill:var(--up)"/><rect x="260.2" y="118" width="272.6" height="16" rx="3" style="fill:var(--accent2)"/></g><text class="val" x="540.8" y="130">66</text><text class="lbl" x="140" y="159" text-anchor="end">BFT <tspan class="cls">· B</tspan></text><g><title>BFT: 63 pts (fundamentals 21, rest 42)</title><rect x="150" y="148" width="121.8" height="16" rx="3" style="fill:var(--up)"/><rect x="271.8" y="148" width="243.6" height="16" rx="3" style="fill:var(--accent2)"/></g><text class="val" x="523.4" y="160">63</text><text class="lbl" x="140" y="189" text-anchor="end">PCO <tspan class="cls">· C</tspan></text><g><title>PCO: 58 pts (fundamentals 15, rest 43)</title><rect x="150" y="178" width="87.0" height="16" rx="3" style="fill:var(--up)"/><rect x="237.0" y="178" width="249.4" height="16" rx="3" style="fill:var(--accent2)"/></g><text class="val" x="494.4" y="190">58</text><text class="lbl" x="140" y="219" text-anchor="end">ACP <tspan class="cls">· B</tspan></text><g><title>ACP: 56 pts (fundamentals 20, rest 36)</title><rect x="150" y="208" width="116.0" height="16" rx="3" style="fill:var(--up)"/><rect x="266.0" y="208" width="208.8" height="16" rx="3" style="fill:var(--accent2)"/></g><text class="val" x="482.8" y="220">56</text><text class="lbl" x="140" y="249" text-anchor="end">CDR <tspan class="cls">· B</tspan></text><g><title>CDR: 55 pts (fundamentals 16, rest 39)</title><rect x="150" y="238" width="92.8" height="16" rx="3" style="fill:var(--up)"/><rect x="242.8" y="238" width="226.2" height="16" rx="3" style="fill:var(--accent2)"/></g><text class="val" x="477.0" y="250">55</text><text class="lbl" x="140" y="279" text-anchor="end">PGE <tspan class="cls">· C</tspan></text><g><title>PGE: 51 pts (fundamentals 14, rest 37)</title><rect x="150" y="268" width="81.2" height="16" rx="3" style="fill:var(--up)"/><rect x="231.2" y="268" width="214.6" height="16" rx="3" style="fill:var(--accent2)"/></g><text class="val" x="453.8" y="280">51</text></svg></div>
+<div class="chart-card"><h3>Risk and reward map</h3><p class="sub">Stop, entry zone and targets as a deviation from the last price (first 6 setups with a full set of levels).</p><svg viewBox="0 0 800 414" role="img" aria-label="Risk and reward map relative to price" xmlns="http://www.w3.org/2000/svg"><rect x="110" y="5" width="12" height="12" rx="3" style="fill:var(--down)"/><text class="tick" x="128" y="15">risk to stop</text><rect x="260" y="5" width="12" height="12" rx="3" style="fill:var(--up)"/><text class="tick" x="278" y="15">upside to targets</text><rect x="430" y="5" width="12" height="12" rx="3" style="fill:rgba(102,252,241,.35)"/><text class="tick" x="448" y="15">entry zone</text><line class="grid" x1="128.4" y1="38" x2="128.4" y2="392"/><text class="tick" x="128.4" y="408" text-anchor="middle">−10%</text><line class="grid" x1="260.4" y1="38" x2="260.4" y2="392"/><text class="tick" x="260.4" y="408" text-anchor="middle">−5%</text><line class="grid" x1="392.4" y1="38" x2="392.4" y2="392"/><text class="tick" x="392.4" y="408" text-anchor="middle">price</text><line class="grid" x1="524.4" y1="38" x2="524.4" y2="392"/><text class="tick" x="524.4" y="408" text-anchor="middle">+5%</text><line class="grid" x1="656.4" y1="38" x2="656.4" y2="392"/><text class="tick" x="656.4" y="408" text-anchor="middle">+10%</text><line x1="392.4" y1="38" x2="392.4" y2="392" style="stroke:var(--strong);stroke-dasharray:4 4;opacity:.6"/><text class="lbl" x="98" y="80" text-anchor="end">LPP <tspan class="cls">· B</tspan></text><g><title>LPP: stop −4.8%, entry −2.7…−0.8%, target 1 +3.9%, target 2 +7.9% relative to price</title><rect x="264.5" y="71" width="80.6" height="10" rx="3" style="fill:var(--down);opacity:.85"/><rect x="345.1" y="71" width="256.8" height="10" rx="3" style="fill:var(--up);opacity:.9"/><rect x="319.9" y="63" width="50.3" height="26" rx="5" style="fill:rgba(102,252,241,.18);stroke:var(--cyan);stroke-width:1.5"/><circle cx="496.1" cy="76" r="5.5" style="fill:#0B0C10;stroke:var(--up);stroke-width:2"/><circle cx="601.9" cy="76" r="5.5" style="fill:var(--up);stroke:#0B0C10;stroke-width:2"/></g><text class="neg" x="264.5" y="59" text-anchor="middle">−4.8%</text><text class="pos" x="496.1" y="59" text-anchor="middle">+3.9%</text><text class="pos" x="601.9" y="59" text-anchor="middle">+7.9%</text><text class="lbl" x="98" y="136" text-anchor="end">MBK <tspan class="cls">· B</tspan></text><g><title>MBK: stop −8.7%, entry −5.3…−2.2%, target 1 +5.6%, target 2 +11.8% relative to price</title><rect x="162.8" y="127" width="131.2" height="10" rx="3" style="fill:var(--down);opacity:.85"/><rect x="294.0" y="127" width="410.0" height="10" rx="3" style="fill:var(--up);opacity:.9"/><rect x="253.0" y="119" width="82.0" height="26" rx="5" style="fill:rgba(102,252,241,.18);stroke:var(--cyan);stroke-width:1.5"/><circle cx="540.0" cy="132" r="5.5" style="fill:#0B0C10;stroke:var(--up);stroke-width:2"/><circle cx="704.0" cy="132" r="5.5" style="fill:var(--up);stroke:#0B0C10;stroke-width:2"/></g><text class="neg" x="162.8" y="115" text-anchor="middle">−8.7%</text><text class="pos" x="540.0" y="115" text-anchor="middle">+5.6%</text><text class="pos" x="704.0" y="115" text-anchor="middle">+11.8%</text><text class="lbl" x="98" y="192" text-anchor="end">DNP <tspan class="cls">· B</tspan></text><g><title>DNP: stop −4.7%, entry −2.1…−0.5%, target 1 +4.1%, target 2 +8.9% relative to price</title><rect x="267.7" y="183" width="90.1" height="10" rx="3" style="fill:var(--down);opacity:.85"/><rect x="357.8" y="183" width="270.3" height="10" rx="3" style="fill:var(--up);opacity:.9"/><rect x="337.0" y="175" width="41.6" height="26" rx="5" style="fill:rgba(102,252,241,.18);stroke:var(--cyan);stroke-width:1.5"/><circle cx="499.8" cy="188" r="5.5" style="fill:#0B0C10;stroke:var(--up);stroke-width:2"/><circle cx="628.0" cy="188" r="5.5" style="fill:var(--up);stroke:#0B0C10;stroke-width:2"/></g><text class="neg" x="267.7" y="171" text-anchor="middle">−4.7%</text><text class="pos" x="499.8" y="171" text-anchor="middle">+4.1%</text><text class="pos" x="628.0" y="171" text-anchor="middle">+8.9%</text><text class="lbl" x="98" y="248" text-anchor="end">BFT <tspan class="cls">· B</tspan></text><g><title>BFT: stop −6.4%, entry −3.4…−1.7%, target 1 +2.5%, target 2 +7.6% relative to price</title><rect x="222.3" y="239" width="102.9" height="10" rx="3" style="fill:var(--down);opacity:.85"/><rect x="325.3" y="239" width="268.5" height="10" rx="3" style="fill:var(--up);opacity:.9"/><rect x="302.9" y="231" width="44.8" height="26" rx="5" style="fill:rgba(102,252,241,.18);stroke:var(--cyan);stroke-width:1.5"/><circle cx="459.5" cy="244" r="5.5" style="fill:#0B0C10;stroke:var(--up);stroke-width:2"/><circle cx="593.8" cy="244" r="5.5" style="fill:var(--up);stroke:#0B0C10;stroke-width:2"/></g><text class="neg" x="222.3" y="227" text-anchor="middle">−6.4%</text><text class="pos" x="459.5" y="227" text-anchor="middle">+2.5%</text><text class="pos" x="593.8" y="227" text-anchor="middle">+7.6%</text><text class="lbl" x="98" y="304" text-anchor="end">PCO <tspan class="cls">· C</tspan></text><g><title>PCO: stop −6.5%, entry −1.9…−0.3%, target 1 +6.0%, target 2 +11.2% relative to price</title><rect x="220.7" y="295" width="142.6" height="10" rx="3" style="fill:var(--down);opacity:.85"/><rect x="363.3" y="295" width="323.7" height="10" rx="3" style="fill:var(--up);opacity:.9"/><rect x="341.4" y="287" width="43.9" height="26" rx="5" style="fill:rgba(102,252,241,.18);stroke:var(--cyan);stroke-width:1.5"/><circle cx="549.8" cy="300" r="5.5" style="fill:#0B0C10;stroke:var(--up);stroke-width:2"/><circle cx="687.0" cy="300" r="5.5" style="fill:var(--up);stroke:#0B0C10;stroke-width:2"/></g><text class="neg" x="220.7" y="283" text-anchor="middle">−6.5%</text><text class="pos" x="549.8" y="283" text-anchor="middle">+6.0%</text><text class="pos" x="687.0" y="283" text-anchor="middle">+11.2%</text><text class="lbl" x="98" y="360" text-anchor="end">ACP <tspan class="cls">· B</tspan></text><g><title>ACP: stop −4.5%, entry +1.9…+1.9%, target 1 +5.7%, target 2 +9.0% relative to price</title><rect x="274.1" y="351" width="167.4" height="10" rx="3" style="fill:var(--down);opacity:.85"/><rect x="441.5" y="351" width="189.7" height="10" rx="3" style="fill:var(--up);opacity:.9"/><rect x="441.5" y="343" width="5.0" height="26" rx="5" style="fill:rgba(102,252,241,.18);stroke:var(--cyan);stroke-width:1.5"/><circle cx="541.9" cy="356" r="5.5" style="fill:#0B0C10;stroke:var(--up);stroke-width:2"/><circle cx="631.2" cy="356" r="5.5" style="fill:var(--up);stroke:#0B0C10;stroke-width:2"/></g><text class="neg" x="274.1" y="339" text-anchor="middle">−4.5%</text><text class="pos" x="541.9" y="339" text-anchor="middle">+5.7%</text><text class="pos" x="631.2" y="339" text-anchor="middle">+9.0%</text></svg></div>
+<div class="chart-card"><h3>Reward-to-risk</h3><p class="sub">R to target 1 and target 2 measured from the middle of the entry zone; the framework prefers at least about 1:2.</p><svg viewBox="0 0 800 380" role="img" aria-label="Reward-to-risk (R) for targets 1 and 2" xmlns="http://www.w3.org/2000/svg"><rect x="110" y="5" width="12" height="12" rx="3" style="fill:var(--accent2)"/><text class="tick" x="128" y="15">R to target 1</text><rect x="250" y="5" width="12" height="12" rx="3" style="fill:var(--up)"/><text class="tick" x="268" y="15">R to target 2</text><line class="grid" x1="110.0" y1="42" x2="110.0" y2="376"/><text class="tick" x="110.0" y="36" text-anchor="middle">0</text><line class="grid" x1="260.0" y1="42" x2="260.0" y2="376"/><text class="tick" x="260.0" y="36" text-anchor="middle">1</text><line class="grid" x1="410.0" y1="42" x2="410.0" y2="376"/><text class="tick" x="410.0" y="36" text-anchor="middle">2</text><line class="grid" x1="560.0" y1="42" x2="560.0" y2="376"/><text class="tick" x="560.0" y="36" text-anchor="middle">3</text><line class="grid" x1="710.0" y1="42" x2="710.0" y2="376"/><text class="tick" x="710.0" y="36" text-anchor="middle">4</text><line x1="410.0" y1="42" x2="410.0" y2="376" style="stroke:var(--warn);stroke-dasharray:5 4;stroke-width:1.5"/><text class="warn" x="416.0" y="36">min. 1:2</text><text class="lbl" x="100" y="74" text-anchor="end">LPP <tspan class="cls">· B</tspan></text><g><title>LPP: R to target 1 = 1.9, to target 2 = 3.2</title><rect x="110" y="57" width="285.0" height="12" rx="3" style="fill:var(--accent2)"/><rect x="110" y="72" width="480.0" height="12" rx="3" style="fill:var(--up)"/></g><text class="val" x="402.0" y="67">1.9</text><text class="val" x="597.0" y="82">3.2</text><text class="lbl" x="100" y="114" text-anchor="end">MBK <tspan class="cls">· B</tspan></text><g><title>MBK: R to target 1 = 1.9, to target 2 = 3.1</title><rect x="110" y="97" width="285.0" height="12" rx="3" style="fill:var(--accent2)"/><rect x="110" y="112" width="465.0" height="12" rx="3" style="fill:var(--up)"/></g><text class="val" x="402.0" y="107">1.9</text><text class="val" x="582.0" y="122">3.1</text><text class="lbl" x="100" y="154" text-anchor="end">DNP <tspan class="cls">· B</tspan></text><g><title>DNP: R to target 1 = 1.6, to target 2 = 3.0</title><rect x="110" y="137" width="240.0" height="12" rx="3" style="fill:var(--accent2)"/><rect x="110" y="152" width="450.0" height="12" rx="3" style="fill:var(--up)"/></g><text class="val" x="357.0" y="147">1.6</text><text class="val" x="567.0" y="162">3.0</text><text class="lbl" x="100" y="194" text-anchor="end">BFT <tspan class="cls">· B</tspan></text><g><title>BFT: R to target 1 = 1.3, to target 2 = 2.6</title><rect x="110" y="177" width="195.0" height="12" rx="3" style="fill:var(--accent2)"/><rect x="110" y="192" width="390.0" height="12" rx="3" style="fill:var(--up)"/></g><text class="val" x="312.0" y="187">1.3</text><text class="val" x="507.0" y="202">2.6</text><text class="lbl" x="100" y="234" text-anchor="end">PCO <tspan class="cls">· C</tspan></text><g><title>PCO: R to target 1 = 1.3, to target 2 = 2.3</title><rect x="110" y="217" width="195.0" height="12" rx="3" style="fill:var(--accent2)"/><rect x="110" y="232" width="345.0" height="12" rx="3" style="fill:var(--up)"/></g><text class="val" x="312.0" y="227">1.3</text><text class="val" x="462.0" y="242">2.3</text><text class="lbl" x="100" y="274" text-anchor="end">ACP <tspan class="cls">· B</tspan></text><g><title>ACP: R to target 1 = 1.9, to target 2 = 2.9</title><rect x="110" y="257" width="285.0" height="12" rx="3" style="fill:var(--accent2)"/><rect x="110" y="272" width="435.0" height="12" rx="3" style="fill:var(--up)"/></g><text class="val" x="402.0" y="267">1.9</text><text class="val" x="552.0" y="282">2.9</text><text class="lbl" x="100" y="314" text-anchor="end">CDR <tspan class="cls">· B</tspan></text><g><title>CDR: R to target 1 = 2.0, to target 2 = 3.6</title><rect x="110" y="297" width="300.0" height="12" rx="3" style="fill:var(--accent2)"/><rect x="110" y="312" width="540.0" height="12" rx="3" style="fill:var(--up)"/></g><text class="val" x="417.0" y="307">2.0</text><text class="val" x="657.0" y="322">3.6</text><text class="lbl" x="100" y="354" text-anchor="end">PGE <tspan class="cls">· C</tspan></text><g><title>PGE: R to target 1 = 1.5, to target 2 = 2.2</title><rect x="110" y="337" width="225.0" height="12" rx="3" style="fill:var(--accent2)"/><rect x="110" y="352" width="330.0" height="12" rx="3" style="fill:var(--up)"/></g><text class="val" x="342.0" y="347">1.5</text><text class="val" x="447.0" y="362">2.2</text></svg></div>
+</section>
+<p>R is calculated from the midpoint of the entry zone. No earnings report among the table's companies falls within 14 days except <strong>DNP (5 Nov — tomorrow)</strong>; BFT on 19 Nov is 15 days away (just outside the window). Fund/30 for LPP, MBK, DNP, BFT, ACP, CDR is carried over from previous scans (financial statements not refreshed); for PCO and PGE it is a conservative estimate — treat as lower confidence.</p>
+<h2 id="top-3-right-now">TOP 3 right now</h2>
+<ol>
+<li><strong>LPP</strong> — leader (+27% in 49 sessions, +25 pp vs WIG), shallow 3.7% pullback from the ATH of 27,240 to the EMA20, dividend already behind us, best R (1.9 / 3.2) with a logical stop below the 13 Oct low.</li>
+<li><strong>MBK</strong> — gap breakout after results (28 Oct: +8.5% on ~3× average volume), no earnings until February; buy the pullback to the middle of the gap, don't chase 1,610.</li>
+<li><strong>BFT</strong> — strong trend and RS (+11 pp vs WIG over 20 sessions), no pullback, so only a retest of the EMA20 at ~5,730; R to T1 is modest (1.3), hence limit order only. DNP (66 pts) is left out of the TOP 3 only because of tomorrow's earnings — after the reaction to results it may move into position 2–3.</li>
+</ol>
+<h2 id="detailed-analysis-of-the-top-5">Detailed analysis of the TOP 5</h2>
+<h3 id="lpp-lpp">LPP — LPP</h3>
+<p><strong>Why it is interesting</strong>
+- Greatest relative strength in the scan: +26.7% in 49 sessions and +7.8 pp vs WIG over the last 20; the 18 Sep upside gap (+8% on ~26k shares — more than 7× the usual volume) cleared the 21,000–22,000 base.
+- Higher highs and higher lows since 18 Sep; SMA20 &gt; SMA50 by a wide margin (26,288 vs 23,893).
+- After the dividend (ex-date 8 Oct, −500) the price filled the gap within a week — the market "absorbed" it.</p>
+<p><strong>Fundamentals</strong> — carried over from previous scans (Fund 23/30); financial statements and consensus were not refreshed in this run. Next earnings 3 Dec (strefainwestorow, calendar).</p>
+<p><strong>Technical structure</strong> — daily: ATH 27,240 (22 Oct), since then three lower highs and lower closes (27,000 → 26,220), 3 Nov close near the EMA20 (26,154). Pullback volume 2.5–4.8k shares — no greater than on the advances; 3 Nov 4.6k shares on a wide range of 25,860–26,820 (close of 26,220 mid-range). RSI 56, MACD histogram negative (−164) — momentum is fading.</p>
+<p><strong>Why the pullback happened</strong> — mainly market-driven (WIG −3.5%, broad weakening); no negative news in the data. Profit-taking after 4 weeks of gains.</p>
+<p><strong>Key support</strong> — 26,154 (EMA20), 25,660/25,260 (closes of 12–13 Oct, former resistance → support), 24,980 (13 Oct low), 24,300 (8 Oct low, dividend-adjusted).</p>
+<p><strong>Entry strategy</strong>
+- Aggressive: limit 25,860–26,000 (3 Nov low / EMA20), half position.
+- Conservative/confirmed: close &gt; 26,820 (3 Nov daily high) on volume above the 20-session average of ≈ 3.9k.
+- Ideal signal: a rejection candle at 25,500–25,700 followed by a close above the previous day's.</p>
+<p><strong>Stop / invalidation</strong> — 24,950 (below the 13 Oct low of 24,980 and the closes of 14–15 Oct); a close below means loss of the structure that has held since 18 Sep.</p>
+<p><strong>Targets</strong> — T1 27,250 (ATH 22 Oct) — R 1.9; T2 28,300 (ATH + about 1 width of the 24,000–27,250 consolidation, ~ +3.9%) — R 3.2.</p>
+<p><strong>Catalysts</strong> — earnings 3 Dec (outside the window), holiday season (sales), continued sector strength.</p>
+<p><strong>Risks</strong> — (1) deeper correction in WIG/WIG20 below 4,080; (2) high share price (25–27k) and low liquidity — wider slippage; (3) the Q3 result on 3 Dec may revise expectations; (4) working capital/FX (unverified); (5) rotation from consumer into banks.</p>
+<p><strong>Verdict: GOOD SETUP</strong> (as a limit order on a pullback; at market — WAIT).</p>
+<h3 id="mbk-mbank">MBK — mBank</h3>
+<p><strong>Why it is interesting</strong>
+- The strongest bank in the scan: +15.7% in 49 sessions, +14 pp vs WIG; the rest of the sector (PKO, PEO) is below SMA50.
+- Gap breakout on 28 Oct (open 1,485 → close 1,611.5) after results; a further high of 1,701 intraday (29 Oct); since then a pullback of only 3.4%.
+- The quarterly report is already behind us — no earnings risk until February.</p>
+<p><strong>Fundamentals</strong> — Fund 22/30 carried over from the 12 Oct scan (provisions for legal risk on FX loans are a risk factor, PLN 154 million in the previous scan); Q3 results details were not retrieved in this run — I give no figures.</p>
+<p><strong>Technical structure</strong> — daily: SMA20 1,476 &gt; SMA50 1,452, price 9.0% above SMA20; closes above the EMA20 (1,509). Breakout volume 63.6k (about 3× the ~20k average), since then 52k → 45k → 31k — fading (healthy). RSI 64, MACD histogram +23 (positive but shrinking).</p>
+<p><strong>Why the pullback happened</strong> — profit-taking after the gap plus weakness of the whole banking sector (PKO/PEO down 7–9%).</p>
+<p><strong>Key support</strong> — 1,575–1,583 (lows of 2–3 Nov), 1,485–1,520 (bottom of the gap / 27 Oct close of 1,484.5), 1,452 (SMA50), 1,471 (28 Oct low).</p>
+<p><strong>Entry strategy</strong>
+- Aggressive: limit 1,575–1,585 (2–3 Nov lows).
+- Conservative: 1,525–1,550 — filling half the gap, on declining volume.
+- Ideal signal: rejection within the gap and a close above the previous day's; alternatively a close &gt; 1,668 (new closing high) on volume &gt; 45k.</p>
+<p><strong>Stop / invalidation</strong> — 1,470 (below the 28 Oct low of 1,471 and the 27 Oct close of 1,484.5). A close inside the gap below 1,485 = gap filled, thesis violated.</p>
+<p><strong>Targets</strong> — T1 1,700 (intraday high of 1,701 from 29 Oct) — R 1.9; T2 1,800 (extension of the gap move, +~190 pts) — R 3.1.</p>
+<p><strong>Catalysts</strong> — continuation after results, possible recommendation revisions, payout/capital policy (unverified).</p>
+<p><strong>Risks</strong> — (1) the banking sector is in a correction (PKO, PEO below SMA50 — possible further downside); (2) provisions for FX loans / court rulings; (3) a quick reversal after the gap (29 Oct high rejected with a long wick); (4) MPC rate changes/CPI (not checked); (5) slippage risk on low volume (31–64k).</p>
+<p><strong>Verdict: GOOD SETUP</strong> (entry only in the pullback zone).</p>
+<h3 id="dnp-dino-polska">DNP — Dino Polska</h3>
+<p><strong>Why it is interesting</strong>
+- +13.4% in 20 sessions (RS +15 pp vs WIG), rebound from the 33.10 low (5 Oct); the 8 Oct spike of +6.4% on 7.2M shares (2.4×) started the move.
+- SMA20 (37.68) &gt; SMA50 (36.29), price above both; high 39.65 (23 Oct).
+- Pullback since 23 Oct only 3.9%, declining volume (1.8–4.8M).</p>
+<p><strong>Fundamentals</strong> — Fund 19/30 (12 Oct scan); not refreshed. <strong>Q3 report on 5 Nov (tomorrow, strefainwestorow)</strong> — the main risk factor.</p>
+<p><strong>Technical structure</strong> — daily higher lows 33.10 → 34.4 → 35.5 → 37.4; closes of 37.7–38.4 (since 28 Oct) around the EMA20 at 37.68. RSI 56, MACD histogram slightly negative (−0.09). Volume on 3 Nov 2.8M — below the 20-session average (~3.8M).</p>
+<p><strong>Why the pullback happened</strong> — market-driven (WIG −3.5%) and anticipation of results; no signs of distribution (volume peaks on advances).</p>
+<p><strong>Key support</strong> — 37.70 (EMA/SMA20), 37.37–37.44 (closes of 15/16 Oct), 36.29 (SMA50), 36.24–36.42 (lows of 13–14 Oct).</p>
+<p><strong>Entry strategy</strong>
+- Aggressive: not before the report (a binary event for a growth company).
+- Conservative: after the report — limit 37.30–37.90 or a close &gt; 38.88 (30 Oct high) on volume &gt; 3.8M.
+- Ideal signal: after the report, an upside gap that holds plus a close above 39.07.</p>
+<p><strong>Stop / invalidation</strong> — 36.30 (below the 13–14 Oct lows and SMA50). A gap down below 36.3 after the report = no entry.</p>
+<p><strong>Targets</strong> — T1 39.65 (ATH 23 Oct) — R 1.6; T2 41.50 (extension from the 33–36.9 base, ~ +4.7% above ATH) — R 3.0.</p>
+<p><strong>Catalysts</strong> — 5 Nov report, store openings, LFL momentum (unverified in this run).</p>
+<p><strong>Risks</strong> — (1) 5 Nov report — gap in either direction; (2) margin/wage pressure in retail (unverified); (3) weak market; (4) volume below average; (5) a result below market expectations = loss of the trend since 5 Oct.</p>
+<p><strong>Verdict: WAIT FOR CONFIRMATION</strong> (after the 5 Nov report).</p>
+<h3 id="bft-benefit-systems">BFT — Benefit Systems</h3>
+<p><strong>Why it is interesting</strong>
+- Breakout from the 4,994–5,160 base (6 Oct, ~2× volume), since then +18% to 5,975; strong trend: SMA20 5,710 &gt; SMA50 5,384.
+- RS +11 pp vs WIG over 20 sessions; closes &gt; 5,900 since 27 Oct with price near ATH.
+- Next earnings 19 Nov (15 days — just outside the 14-day window).</p>
+<p><strong>Fundamentals</strong> — Fund 21/30 (12 Oct scan), not refreshed.</p>
+<p><strong>Technical structure</strong> — daily higher lows 4,816 → 4,994 → 5,225 → 5,410 → 5,565 → 5,780; 7 sessions in a narrow 5,880–5,975 range (consolidation under 5,975 resistance). RSI 64, MACD histogram positive but shrinking (+3.9 vs +13.7). Volume in recent sessions 4.5–7.5k (20-session average ~5.5k).</p>
+<p><strong>Why the pullback happened</strong> — there is no pullback; price is at the highs — this is consolidation, not a pullback. Hence class B only (limit order on a retest).</p>
+<p><strong>Key support</strong> — 5,710–5,732 (SMA20/EMA20), 5,540–5,700 (15–20 Oct zone), 5,520 (below: 19 Oct low of 5,565 / close of 5,540), 5,384 (SMA50).</p>
+<p><strong>Entry strategy</strong>
+- Aggressive: not at the 5,900 price (R to T1 only ~0.5).
+- Conservative: limit 5,700–5,800.
+- Confirmation: close &gt; 5,975 on volume &gt; 7k (breakout from consolidation) — then a smaller position, stop 5,700.</p>
+<p><strong>Stop / invalidation</strong> — 5,520 (below the 19–20 Oct lows). A close &lt; 5,384 = return to the base.</p>
+<p><strong>Targets</strong> — T1 6,050 (resistance above ATH, +2.5% above 5,900) — R 1.3; T2 6,350 (extension of the 4,994–5,975 base ≈ +980) — R 2.6.</p>
+<p><strong>Catalysts</strong> — 19 Nov report, growth in the number of cards/users (unverified).</p>
+<p><strong>Risks</strong> — (1) no pullback — the retest entry may never occur; (2) modest R to T1; (3) the 19 Nov report is 15 days out — within the swing horizon; (4) low share liquidity (price 5,900) — slippage; (5) rotation out of consumer.</p>
+<p><strong>Verdict: WAIT FOR CONFIRMATION</strong> (retest or a breakout above 5,975 on volume).</p>
+<h3 id="pco-pepco-group">PCO — Pepco Group</h3>
+<p><strong>Why it is interesting</strong>
+- +11.6% in 49 sessions (+10 pp vs WIG), low of ~40.1 on 4 Sep → 50.96 (29 Oct); SMA20 46.97 &gt; SMA50 44.46.
+- Pullback of −5.6% from 29 Oct to the 3 Nov close (48.13) after two down sessions and a +0.7% bounce.
+- Higher lows: 40.08 → 42.3 → 43.7 → 45.7 → 47.5.</p>
+<p><strong>Fundamentals</strong> — <strong>not verified in this run</strong> (Fund 15/30 — conservative estimate). In the strefainwestorow calendar only the annual report on 1 Mar 2027 is shown for Pepco — there is no confirmed earnings date in November.</p>
+<p><strong>Technical structure</strong> — RSI 57; MACD histogram ~0. On 2 Nov volume 2.7M (−2.8%, ~2× average) — supply; on 3 Nov volume 1.4M (lower) on the bounce. EMA20 47.31.</p>
+<p><strong>Why the pullback happened</strong> — market-driven plus profit-taking after +19% from 20 Oct (45.11 → 50.96).</p>
+<p><strong>Key support</strong> — 47.31 (EMA20), 46.30–47.48 (closes of 20–21 Oct), 45.67 (15 Oct close), 45.11 (20 Oct low).</p>
+<p><strong>Entry strategy</strong>
+- Aggressive: limit 47.20–48.00.
+- Conservative: close &gt; 49.20 (30 Oct close) on volume &gt; 1.5M.
+- Ideal signal: rejection at the EMA20 and a close &gt; 48.6.</p>
+<p><strong>Stop / invalidation</strong> — 45.00 (below the 20 Oct low of 45.11).</p>
+<p><strong>Targets</strong> — T1 51.00 (ATH 50.96 / 29 Oct) — R 1.3; T2 53.50 — R 2.3.</p>
+<p><strong>Catalysts</strong> — sales/like-for-like results (unverified), an improving market.</p>
+<p><strong>Risks</strong> — (1) unverified fundamentals and earnings date; (2) seller volume on 2 Nov (2× average); (3) low R to T1; (4) EUR/PLN risk and the CEE consumer (not checked); (5) weak market.</p>
+<p><strong>Verdict: WATCH</strong> (class C; entry only with a small position).</p>
+<h2 id="watchlist-13-weeks">Watchlist: 1–3 weeks</h2>
+<ul>
+<li><strong>ALE</strong> (Allegro) — no pullback (RSI 80, +34% in 49 sessions, data to 2 Nov): wait for a pullback to <strong>55.5–56.5</strong> (EMA20 56.5 / SMA20 56.0) with a rejection, stop below 53.3 (14 Oct close). Earnings 12 Nov — outside the entry zone.</li>
+<li><strong>BDX</strong> (Budimex) — new high of 734.6 (3 Nov, −0.8%) after a rebound from 679.2: wait for a retest of <strong>705–716</strong> (SMA20 705, EMA20 709) with a close above the previous day's; stop 679.</li>
+<li><strong>PKO</strong> — below SMA50 117.5, RSI 46: interest only after a close <strong>&gt; 118.4</strong> (29 Oct high) on volume &gt; 3.2M; earnings <strong>5 Nov</strong>.</li>
+<li><strong>PEO</strong> — below SMA50 266.6, 3 Nov bounce of +3% on 592k: close <strong>&gt; 266.7</strong> on volume &gt; 600k; stop 250.4.</li>
+<li><strong>KTY</strong> (Kęty) — narrow range 1,230–1,292, RSI 46: close <strong>&gt; 1,292</strong> on volume &gt; 20k (16 Oct close of 1,292 as resistance).</li>
+</ul>
+<h2 id="rejected">Rejected</h2>
+<ul>
+<li><strong>KGH</strong> — structure broken (−27% from the 378 high, RSI 31, below SMA20/SMA50, −20% in 20 sessions); the trigger from the previous scan did not fire, the 324 stop was broken on 15 Oct. No reversal pattern. Earnings 18 Nov.</li>
+<li><strong>XTB</strong> (−29%, −10% gap on 3 Sep), <strong>KRU</strong> (−25%) — prolonged declines, there is no "healthy pullback".</li>
+<li><strong>PKN</strong> — −11% from the 162.60 high, RSI 38, below SMA50 152.7; still under pressure after the windfall tax; earnings 19 Nov.</li>
+<li><strong>PKO / PEO</strong> — distribution in the sector (below SMA50), wait for SMA50 to be reclaimed.</li>
+<li><strong>PGE</strong> (class C in the table) — after a +43% parabolic run, trend uncertain: small position only, with a 15.0–15.5 limit.</li>
+<li><strong>CBF</strong> (−11.4%, RSI 39, below SMA50 197.4, earnings 16 Nov) — the stop of 194 from the previous scan was broken on 19 Oct.</li>
+<li><strong>ALR</strong> (sideways, no pullback), <strong>PZU</strong> (range 70–77, SMA50 73.4) — no edge.</li>
+<li><strong>ALE</strong> and <strong>BDX</strong> — no pullback (see watchlist).</li>
+</ul>
+<h2 id="review-of-the-previous-scan-12-oct">Review of the previous scan (12 Oct)</h2>
+<ul>
+<li><strong>ALE</strong> (A, entry 50.40–51.20, stop 49.40): the zone <strong>was not touched</strong> after 12 Oct (lowest low 51.58 on the scan day, then it kept rising); price 60.00 (2 Nov), +15.3% from 52.02. Limit order not filled — chasing above 52 gave low R straight away.</li>
+<li><strong>LPP</strong> (A, limit 24,600–24,900, stop 24,100, T1 26,000, T2 27,000): range touched only on 12 Oct intraday (low 24,880); afterwards no pullback. Price 26,220 (+3.2% vs 25,400); <strong>T1 26,000 reached</strong> (14 Oct), <strong>T2 27,000 reached</strong> (21–22 Oct, high 27,240). For an entry in the zone the realized result is +R 1.9 / +R 3.5.</li>
+<li><strong>BFT</strong> (B, retest 5,300–5,400, stop 5,180, T1 5,595, T2 5,900): after 12 Oct the lowest low was 5,410 (13 Oct) — the zone was not reached. Price 5,900 (+7.7% vs 5,480); T1 and T2 reached.</li>
+<li><strong>DNP</strong> (C, limit 35.30–35.80, stop 34.30, T1 37.70, T2 40): zone not touched after 12 Oct (low 35.65 on the scan day, then 36.24+); price 38.10 (+4.9% vs 36.31). T1 reached (23 Oct high 39.68), T2 not.</li>
+<li><strong>KGH</strong> (B trigger &gt;356.10, stop 324): the trigger did not fire (max close 349.70 on the scan day); the 324 stop broke on 15 Oct — <strong>caution paid off</strong>, price 275.35 (−21.5% vs 350.80).</li>
+<li><strong>CBF</strong> (C, 199–202, stop 194): entry in the zone was possible on 13–14 Oct; the 194 stop broke on 19 Oct (low 192.80, close 194.30 above the stop — it broke intraday); price 189 (−5.9% vs 200.80).</li>
+<li><strong>CDR</strong> (B trigger &gt;269 on &gt;400k): close 270.30 (29 Oct) on 192k — volume condition not met; price 256.50 (−3.5%).</li>
+<li><strong>MBK</strong> (B trigger &gt;1,460): close 1,484.50 (27 Oct); the 1,385 stop was not hit after entry; T1 1,526 and T2 1,600 reached on 28–29 Oct; price 1,610 (+12% vs 1,437).</li>
+<li><strong>ACP</strong> (sideways, trigger &gt;229.5, stop 216.5, T1 241.9, T2 258): trigger on 14 Oct (close 231); T1 reached on 21 Oct (max 242.20); T2 not (max 256.20); price 236.60 (+4.9% vs 225.50).</li>
+<li><strong>EBP</strong> — no data in this run (URL unavailable), not settled.</li>
+<li><strong>PKO / PEO / PKN</strong> (rejected): PKO 113.62 (−0.3% vs 113.94), PEO 261.20 (+0.0%), PKN 144.24 (−7.5% vs ~156) — the rejection was right.</li>
+</ul>
+<h2 id="method-and-caveats">Method and caveats</h2>
+<ul>
+<li>Source: biznesradar.pl (history, 50 sessions 26 Aug–3 Nov) for the WIG20/WIG indices and 20 companies (ALE, LPP, KGH, PKO, PEO, DNP, BFT, CDR, MBK, PZU, ACP, PKN, PGE, BDX, XTB, KRU, KTY, ALR, CBF, PCO). The shell had no access to web pages; WebFetch in this run <strong>rejected URLs that were not in search results</strong> (PROVENANCE_REQUIRED), so only companies found via search were retrieved. Not retrieved: EBP, SPL, JSW, among others — out of the 45–85 names expected in the universe; narrowing the universe to 22 names is a <strong>significant limitation</strong> of this report.</li>
+<li>ALE: last candle 2 Nov (buffer); price on 3 Nov unknown.</li>
+<li>Python: SMA20/50, EMA20, Wilder RSI14, MACD(12,26,9), hi50, lo20, ROC and RS vs WIG (20/49 sessions). Volume assessed from the summary table (the 20-session average was not computed programmatically for each company — "~average" values are approximations). SMA100/SMA200 are unavailable for GPW in free sources and are not given.</li>
+<li>Technical levels (supports/stops/targets) come from the 50 sessions above (closes and intraday ranges from the source); T2 are move extensions, not source data.</li>
+<li>Earnings dates: strefainwestorow.pl (calendar): DNP and PKO 5 Nov, ALE 12 Nov, CBF 16 Nov, KGH 18 Nov, BFT and PKN 19 Nov, PGE and CDR 24 Nov, LPP 3 Dec. No dates for ACP, BDX, PEO, PCO (the only entry is the annual report on 1 Mar 2027), MBK (annual report 27 Feb 2027). The ACP date (26 Nov) is from the previous scan — unconfirmed.</li>
+<li>Fundamentals (margins, FCF, net debt/EBITDA, consensus) were not verified in this run; Fund/30 for LPP, MBK, DNP, BFT, ACP, CDR is carried over from the 12 Oct report, and estimated for PCO and PGE. No data retrieved on the US, commodities, exchange rates, MPC/NBP; the causes of the KGH/XTB/KRU declines were not verified.</li>
+<li>A news search for the 3 Nov session returned no useful result.</li>
+</ul>
+<p>Screening exercise under the given framework, not investment advice.</p>
+</main>
+<footer>Screening exercise under the given framework, not investment advice.<br>Data from public sources (incl. biznesradar.pl, bankier.pl) may contain errors or delays. Reports are generated automatically. Polish is the original language of the reports.</footer>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "dee8fe193ffe4484bef9d4691b8d77d2"}'></script>
+</body>
+</html>
