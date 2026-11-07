@@ -279,6 +279,22 @@ class EndToEndTests(unittest.TestCase):
             self.assertIn("AAA", jumps)
             self.assertEqual(jumps["AAA"][0], [(start + timedelta(days=20)).isoformat(), -50.0])
 
+    def test_refetch_backfills_history_of_a_ticker_added_later(self):
+        """Zwykły przebieg nie uzupełnia historii nowego symbolu; --refetch pobiera wszystkie sesje od nowa."""
+        site = FakeSite()
+        with Env(["AAA"], site) as env:
+            env.run()
+            uni = json.loads((env.root / "data" / "universe.json").read_text(encoding="utf-8"))
+            uni["stocks"].append("BBB")
+            (env.root / "data" / "universe.json").write_text(json.dumps(uni), encoding="utf-8")
+            env.run()
+            self.assertEqual(sorted(env.csv("BBB.csv")), ["2026-11-06"])              # tylko ponownie pobrana najnowsza sesja
+            n = len(site.calls)
+            env.run("--refetch")
+            self.assertEqual(sorted(env.csv("BBB.csv")), ["2026-11-02", "2026-11-03", "2026-11-05", "2026-11-06"])
+            self.assertGreater(len(site.calls) - n, 6)                                # każdy dzień z okna zapytany ponownie
+            self.assertEqual(env.json("_status.json")["sessions_known"], 4)
+
     def test_second_run_is_idempotent_and_refetches_only_latest_and_recent_gaps(self):
         site = FakeSite()
         with Env(["AAA", "BBB", "KVT"], site) as env:

@@ -12,6 +12,11 @@ on:
         description: "Głębokość pobierania wstecz w dniach kalendarzowych"
         default: "380"
         required: false
+      refetch:
+        description: "Pobierz od nowa wszystkie sesje z okna (ok. 20 min); po dopisaniu spółki do data/universe.json"
+        type: boolean
+        default: false
+        required: false
 
 permissions:
   contents: write
@@ -35,9 +40,10 @@ jobs:
         id: fetch
         env:
           DAYS: ${{ inputs.days || '380' }}
+          REFETCH: ${{ inputs.refetch && '--refetch' || '' }}
         run: |
           set +e
-          timeout 2700 python3 -u fetch_quotes.py --days "$DAYS" --budget 2200 | tee fetch.log
+          timeout 2700 python3 -u fetch_quotes.py --days "$DAYS" $REFETCH --budget 2200 | tee fetch.log
           echo "code=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
       - name: Commit
         if: always()
