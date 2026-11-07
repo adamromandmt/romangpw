@@ -1,5 +1,5 @@
 {
- "description": "Uniwersum notowań GPW pobieranych przez fetch_quotes.py. Tylko spółki i indeksy GPW. Nieznane symbole są po prostu raportowane jako błąd.",
+ "description": "Uniwersum notowań GPW pobieranych przez fetch_quotes.py z archiwum GPW. stocks: skróty (tickery) GPW; gpw_alias: nazwa instrumentu w archiwum GPW dla spółek, których nie ma w migawce notowań ciągłych (np. notowane w systemie jednolitym); indices: indeksy zapisywane jako data/market/_<NAZWA>.csv. Tickery nierozpoznane w GPW (wycofane lub ze zmienionym skrótem) są raportowane w data/market/_status.json (failed).",
  "stocks": [
   "11B",
   "1AT",
@@ -162,39 +162,14 @@
   "YAN",
   "ZEP"
  ],
- "biznesradar_alias": {
-  "KGH": "KGHM",
-  "PEO": "PEKAO",
-  "MBK": "MBANK",
-  "EBP": "ERSTEPL",
-  "ACP": "ASSECO-POLAND",
-  "CDR": "CD-PROJEKT",
-  "PKN": "ORLEN",
-  "ASB": "ASBISC",
-  "BFT": "BENEFIT-SYSTEMS",
-  "MBR": "MOBRUK",
-  "CBF": "CYBER-FOLKS"
+ "gpw_alias": {
+  "KVT": "KRVITAMIN",
+  "QNT": "QUANTUM"
  },
- "indices": {
-  "WIG": {
-   "stooq": "wig",
-   "br": "WIG",
-   "yahoo": "WIG.WA"
-  },
-  "WIG20": {
-   "stooq": "wig20",
-   "br": "WIG20",
-   "yahoo": "WIG20.WA"
-  },
-  "MWIG40": {
-   "stooq": "mwig40",
-   "br": "MWIG40",
-   "yahoo": "MWIG40.WA"
-  },
-  "SWIG80": {
-   "stooq": "swig80",
-   "br": "SWIG80",
-   "yahoo": "SWIG80.WA"
-  }
- }
+ "indices": [
+  "WIG",
+  "WIG20",
+  "MWIG40",
+  "SWIG80"
+ ]
 }

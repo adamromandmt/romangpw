@@ -1,11 +1,17 @@
 name: Notowania GPW
 
-# Pobiera dzienne notowania spółek i indeksów GPW do data/market/*.csv i commituje zmiany.
+# Pobiera dzienne notowania spółek i indeksów z oficjalnego archiwum GPW do data/market/*.csv i commituje zmiany.
 # Zadanie dzienne (ok. 3:53 czasu warszawskiego) czyta te pliki z repozytorium.
+# Pierwsze uruchomienie robi backfill ok. 260 sesji (kilkanaście minut); kolejne pobierają 1-2 nowe sesje.
 on:
   schedule:
     - cron: "15 1 * * 1-5"   # 2:15 zimą / 3:15 latem czasu warszawskiego
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      days:
+        description: "Głębokość pobierania wstecz w dniach kalendarzowych"
+        default: "380"
+        required: false
 
 permissions:
   contents: write
@@ -17,20 +23,21 @@ concurrency:
 jobs:
   fetch:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 50
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
       - name: Pobierz notowania
         id: fetch
         env:
-          EODHD_API_KEY: ${{ secrets.EODHD_API_KEY }}
-          STOOQ_APIKEY: ${{ secrets.STOOQ_APIKEY }}
+          DAYS: ${{ inputs.days || '380' }}
         run: |
           set +e
-          timeout 900 python3 -u fetch_quotes.py --budget 720 | tee fetch.log
+          timeout 2700 python3 -u fetch_quotes.py --days "$DAYS" --budget 2200 | tee fetch.log
           echo "code=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
       - name: Commit
         if: always()
@@ -42,8 +49,8 @@ jobs:
           git commit -m "Notowania GPW $(date -u +%F)"
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push origin "HEAD:${GITHUB_REF_NAME}"
-      - name: Zakończ błędem, gdy pobrano za mało
+      - name: Zakończ błędem, gdy dane niepełne lub nieświeże
         if: steps.fetch.outputs.code != '0'
         run: |
-          echo "Pobrano mniej niż 50% symboli — sprawdź fetch.log i data/market/_status.json"
+          echo "Najnowsza sesja nieświeża, pokrycie spółek poniżej 85% albo błąd pobierania — sprawdź fetch.log i data/market/_status.json"
           exit 1

@@ -1,0 +1,7 @@
+-r requirements.txt
+# Testy (tests/): sztuczne pliki .xls GPW; działają pod unittest i pytest
+xlwt==1.3.0
+pytest==9.1.1
+# tools/make_assets.py (ikony i obrazy OG) oraz kontrole strony
+Pillow==12.3.0
+playwright==1.63.0
