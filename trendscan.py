@@ -1,35 +1,26 @@
 #!/usr/bin/env python3
 """Wskaźniki trendu i płynności dla puli spółek dywidendowych.
 
-Wejście: data/quotes/<TIC>.csv (date,open,high,low,close,volume; ~50 sesji),
-         data/dividends/pool_list.json
+Wejście: data/market/<TIC>.csv (notowania z archiwum GPW, zob. quotes.py i fetch_quotes.py; liczone na ostatnich
+         50 sesjach, bo na tym oknie dobrano progi rankingu dywidend), data/dividends/pool_list.json
 Wyjście: data/dividends/trend.json  (+ tabela na stdout)
 
 Użycie: python3 trendscan.py [--min-turnover 200000]
 """
-import csv
 import json
 import sys
 from pathlib import Path
 
+import quotes
+
 ROOT = Path(__file__).resolve().parent
-Q = ROOT / "data" / "quotes"
 D = ROOT / "data" / "dividends"
+WINDOW = 50  # liczba ostatnich sesji w metrykach (hi_n, ret_all, off_high_pct) — jak w pierwotnych danych
 
 
 def load(tic):
-    f = Q / f"{tic}.csv"
-    if not f.exists():
-        return None
-    rows = []
-    with f.open(encoding="utf-8", newline="") as fh:
-        for r in csv.DictReader(fh):
-            try:
-                rows.append({k: (r[k] if k == "date" else float(r[k])) for k in ("date", "open", "high", "low", "close", "volume")})
-            except (ValueError, KeyError, TypeError):
-                continue
-    rows.sort(key=lambda r: r["date"])
-    return rows
+    rows = quotes.load(tic)
+    return rows[-WINDOW:] if rows else None
 
 
 def ema(vals, n):

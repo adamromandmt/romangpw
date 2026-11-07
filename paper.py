@@ -17,34 +17,32 @@ Zasady (parametry w paper/state.json -> "config"):
 Użycie:
     (opcja --strategy NAZWA, domyślnie swing: stan w paper/<NAZWA>/)
     python3 paper.py init
-    python3 paper.py update --asof YYYY-MM-DD          # przetwarza paper/quotes/<TIC>.csv do podanej sesji
+    python3 paper.py update --asof YYYY-MM-DD          # przetwarza data/market/<TIC>.csv do podanej sesji
     python3 paper.py signal reports/RRRR-MM-DD.md [--valid-from YYYY-MM-DD]
     python3 paper.py mark --asof YYYY-MM-DD            # dopisuje punkt krzywej kapitału
     python3 paper.py show
 """
 import copy
-import csv
 import datetime as dt
 import json
 import math
-import re
 import sys
 from pathlib import Path
 
-from charts import build_items, parse_ranking
+import quotes
+import ranking
 
 ROOT = Path(__file__).resolve().parent
-STRATEGY = "swing"  # kolejne strategie dostają własny katalog paper/<nazwa>/ (state.json, quotes/)
+STRATEGY = "swing"  # kolejne strategie dostają własny katalog paper/<nazwa>/ (state.json)
 PAPER = ROOT / "paper" / STRATEGY
 STATE = PAPER / "state.json"
-QUOTES = PAPER / "quotes"
 
 
 def use_strategy(name):
-    """Przełącza ścieżki stanu i notowań na paper/<name>/."""
-    global STRATEGY, PAPER, STATE, QUOTES
+    """Przełącza ścieżkę stanu na paper/<name>/ (notowania są wspólne: data/market)."""
+    global STRATEGY, PAPER, STATE
     STRATEGY, PAPER = name, ROOT / "paper" / name
-    STATE, QUOTES = PAPER / "state.json", PAPER / "quotes"
+    STATE = PAPER / "state.json"
 
 DEFAULT_CFG = {
     "start_capital": 100000.0, "position_value": 5000.0, "max_open": 20, "fee_pct": 0.2,
@@ -78,18 +76,9 @@ def log(st, date, text):
 
 
 def bars(tic):
-    f = QUOTES / f"{tic}.csv"
-    if not f.exists():
-        return None
-    out = []
-    with f.open(encoding="utf-8", newline="") as fh:
-        for r in csv.DictReader(fh):
-            try:
-                out.append((r["date"], float(r["open"]), float(r["high"]), float(r["low"]), float(r["close"])))
-            except (KeyError, ValueError, TypeError):
-                continue
-    out.sort()
-    return out
+    """Świece (data, open, high, low, close) z data/market albo None, gdy brak notowań."""
+    rows = quotes.load(tic)
+    return [(r["date"], r["open"], r["high"], r["low"], r["close"]) for r in rows] if rows else None
 
 
 def fee(st):
@@ -106,87 +95,70 @@ def reserved(st):
 
 # ---------------------------------------------------------------- sygnały
 
-def _earnings_in_days(cell, report_date):
-    """Pierwsza data dd.mm z komórki „Raport" -> liczba dni od daty raportu (None, gdy brak)."""
-    m = re.search(r"(\d{1,2})\.(\d{2})", cell or "")
-    if not m:
-        return None
-    best = None
-    for y in (report_date.year - 1, report_date.year, report_date.year + 1):
-        try:
-            d = dt.date(y, int(m.group(2)), int(m.group(1)))
-        except ValueError:
-            continue
-        if best is None or abs((d - report_date).days) < abs((best - report_date).days):
-            best = d
-    return (best - report_date).days if best else None
-
-
 def signal(st, report_path, valid_from=None):
-    md = Path(report_path).read_text(encoding="utf-8")
+    """Tworzy zlecenia z rankingu raportu (dane z ranking.py, nie z komórek tabeli)."""
     report_date = dt.date.fromisoformat(Path(report_path).stem)
     vf = dt.date.fromisoformat(valid_from) if valid_from else report_date
-    head, rows = parse_ranking(md)
-    if not head:
+    data = ranking.build(report_path)
+    if not data["candidates"]:
         return ["Brak tabeli rankingu w raporcie"]
-    items = build_items(head, rows)
     cfg = st["config"]
     notes, cand = [], []
     held = {p["tic"] for p in st["positions"]} | {o["tic"] for o in st["orders"]}
-    for it, row in zip(items, rows):
-        t = it["tic"]
+    for c in data["candidates"]:
+        t, e = c["tic"], c["entry"]
         why = None
         if t in held:
             why = "już w portfelu/zleceniu"
-        elif it["kl"] not in cfg["classes"]:
-            why = f"klasa {it['kl'] or '?'}"
-        elif (it["suma"] or 0) < cfg["min_score"]:
-            why = f"suma {it['suma']}"
-        elif any(it[k] is None for k in ("hi", "stop", "c1", "c2", "r1", "r2")):
+        elif (c["class"] or "") not in cfg["classes"]:
+            why = f"klasa {c['class'] or '?'}"
+        elif (c["score"] or 0) < cfg["min_score"]:
+            why = f"suma {c['score']}"
+        elif e is None or any(c[k] is None for k in ("stop", "t1", "t2", "r1", "r2")):
             why = "brak poziomów"
-        elif ">" in row.get(next((h for h in head if h.startswith("Wej")), ""), ""):
+        elif e["breakout"]:
             why = "wejście na wybiciu (nieobsługiwane)"
-        elif it["r1"] < cfg["min_r1"] or it["r2"] < cfg["min_r2"]:
-            why = f"R {it['r1']}/{it['r2']}"
-        elif not (it["stop"] < it["hi"] < it["c1"]):
+        elif c["r1"] < cfg["min_r1"] or c["r2"] < cfg["min_r2"]:
+            why = f"R {c['r1']}/{c['r2']}"
+        elif not (c["stop"] < e["hi"] < c["t1"]):
             why = "niespójne poziomy"
         else:
-            d = _earnings_in_days(row.get("Raport", ""), report_date)
+            d = (c["earnings"] or {}).get("days")
             if d is not None and 0 <= d <= cfg["skip_earnings_days"]:
                 why = f"raport kwartalny za {d} dni"
         if why:
             notes.append(f"pominięto {t}: {why}")
         else:
-            cand.append((it, row))
-    cand.sort(key=lambda x: -(x[0]["suma"] or 0))
+            cand.append(c)
+    cand.sort(key=lambda c: -(c["score"] or 0))
     created = 0
-    for it, row in cand:
+    for c in cand:
+        t, e = c["tic"], c["entry"]
         if created >= cfg["max_new_per_day"]:
-            notes.append(f"pominięto {it['tic']}: limit {cfg['max_new_per_day']} zleceń dziennie")
+            notes.append(f"pominięto {t}: limit {cfg['max_new_per_day']} zleceń dziennie")
             continue
         if len(st["positions"]) + len(st["orders"]) >= cfg["max_open"]:
-            notes.append(f"pominięto {it['tic']}: limit {cfg['max_open']} pozycji")
+            notes.append(f"pominięto {t}: limit {cfg['max_open']} pozycji")
             continue
-        limit, stop = it["hi"], it["stop"]
+        limit, stop = e["hi"], c["stop"]
         unit = limit * (1 + fee(st))
         n = math.floor(cfg["position_value"] / unit)
         if n < 1:
-            notes.append(f"pominięto {it['tic']}: cena akcji {limit:g} przekracza limit {cfg['position_value']:g} PLN na pozycję")
+            notes.append(f"pominięto {t}: cena akcji {limit:g} przekracza limit {cfg['position_value']:g} PLN na pozycję")
             continue
         avail = st["cash"] - reserved(st)
         n = min(n, math.floor(avail / unit))
         if n < 1:
-            notes.append(f"pominięto {it['tic']}: cała gotówka zaangażowana, czekamy na zamknięcie pozycji")
+            notes.append(f"pominięto {t}: cała gotówka zaangażowana, czekamy na zamknięcie pozycji")
             continue
-        spolka = row.get("Spółka", it["tic"])
-        order = {"id": st["next_id"], "tic": it["tic"], "name": spolka, "shares": n, "limit": limit, "zone_lo": it["lo"],
-                 "stop": stop, "c1": it["c1"], "c2": it["c2"], "score": it["suma"], "cls": it["kl"], "report": report_date.isoformat(),
+        order = {"id": st["next_id"], "tic": t, "name": c["name"] or t, "shares": n, "limit": limit, "zone_lo": e["lo"],
+                 "stop": stop, "c1": c["t1"], "c2": c["t2"], "score": c["score"], "cls": c["class"], "report": report_date.isoformat(),
                  "valid_from": vf.isoformat(), "expires": (vf + dt.timedelta(days=cfg["order_days"])).isoformat(), "checked_through": None}
         st["next_id"] += 1
         st["orders"].append(order)
         created += 1
-        log(st, report_date.isoformat(), f"Zlecenie kupna {it['tic']}: {n} szt., limit {limit:g}, stop {stop:g}, C1 {it['c1']:g}, C2 {it['c2']:g} (suma {it['suma']:g}, klasa {it['kl']})")
-        notes.append(f"zlecenie {it['tic']}: {n} szt. @ limit {limit:g}")
+        log(st, report_date.isoformat(), f"Zlecenie kupna {t}: {n} szt., limit {limit:g}, stop {stop:g}, C1 {c['t1']:g}, C2 {c['t2']:g} (suma {c['score']:g}, klasa {c['class']})")
+        notes.append(f"zlecenie {t}: {n} szt. @ limit {limit:g}")
     return notes
 
 

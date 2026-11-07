@@ -783,9 +783,17 @@ def write_site_files():
 def main():
     import json
 
-    if not report_files():
+    reports = report_files()
+    if not reports:
         print("Brak raportów w reports/", file=sys.stderr)
         return 1
+    # Dane rankingu obok każdego raportu (reports/RRRR-MM-DD.json); problemy w najnowszym raporcie wypisujemy, ale nie psują buildu.
+    import ranking
+    for f in reports:
+        problems = ranking.check(ranking.write_sidecar(f))
+        if f == reports[-1]:
+            for p in problems:
+                print(f"UWAGA ranking {f.name} {p['tic'] or ''}: {p['msg']}", file=sys.stderr)
     (ROOT / "favicon.svg").write_text(FAVICON, encoding="utf-8")
     (ROOT / "logo.svg").write_text(
         '<svg viewBox="0 0 250 48" xmlns="http://www.w3.org/2000/svg">' + MARK +
