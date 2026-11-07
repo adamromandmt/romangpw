@@ -2,6 +2,7 @@
 
 Użycie: python3 tools/check_site.py   (kod wyjścia 1, gdy są problemy; uruchamiane w CI po `python3 build.py`)
 """
+import datetime as dt
 import re
 import sys
 from html.parser import HTMLParser
@@ -132,6 +133,14 @@ for rel, pr in parsed.items():
             problems.append(f'{rel}: canonical target missing {c}')
         elif cf.resolve() != f.resolve():
             problems.append(f'{rel}: canonical points to different file {c}')
+    # kanał Atom wskazany w <head>
+    feeds = [l[1] for l in pr.links if l[0] == 'alternate' and (l[3].get('type') == 'application/atom+xml')]
+    if len(feeds) != 1:
+        problems.append(f'{rel}: atom feed links {len(feeds)}')
+    elif not url_to_file(feeds[0]).exists():
+        problems.append(f'{rel}: atom feed target missing {feeds[0]}')
+    elif feeds[0] != SITE + ('/en/feed.xml' if exp_lang == 'en' else '/feed.xml'):
+        problems.append(f'{rel}: atom feed for wrong language {feeds[0]}')
     # hreflang
     alts = {l[2]: l[1] for l in pr.links if l[0] == 'alternate' and l[2]}
     for k in ('pl', 'en', 'x-default'):
@@ -211,6 +220,29 @@ for m in sorted(missing):
     problems.append(f'sitemap: canonical not in sitemap {m}')
 for m in sorted(extra):
     problems.append(f'sitemap: url without matching canonical page {m}')
+# kanały Atom
+ATOM = '{http://www.w3.org/2005/Atom}'
+for rel in ('feed.xml', 'en/feed.xml'):
+    try:
+        root = ET.parse(ROOT / rel).getroot()
+    except (OSError, ET.ParseError) as e:
+        problems.append(f'{rel}: nie da się wczytać kanału: {e}')
+        continue
+    entries = root.findall(ATOM + 'entry')
+    if not entries:
+        problems.append(f'{rel}: kanał bez wpisów')
+    for e in entries:
+        href = e.find(ATOM + 'link').get('href')
+        if not url_to_file(href).exists():
+            problems.append(f'{rel}: wpis wskazuje brakującą stronę {href}')
+        for tag in ('title', 'id', 'updated', 'summary'):
+            if e.find(ATOM + tag) is None or not (e.find(ATOM + tag).text or '').strip():
+                problems.append(f'{rel}: wpis {href} bez pola {tag}')
+        try:
+            dt.datetime.fromisoformat(e.find(ATOM + 'updated').text.replace('Z', '+00:00'))
+        except (ValueError, AttributeError):
+            problems.append(f'{rel}: zła data updated we wpisie {href}')
+    print(f'{rel}: wpisów {len(entries)}')
 print('robots:', (ROOT / 'robots.txt').read_text().strip().replace('\n', ' | '))
 print('pages checked:', len(parsed))
 print('PROBLEMS:', len(problems))

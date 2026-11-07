@@ -663,6 +663,7 @@ def page(title, body, lang="pl", active="swing", desc="", sub=False, counter=Non
         seo = (f'<link rel="canonical" href="{url}">\n'
                f'<link rel="alternate" hreflang="pl" href="{url_pl}">\n<link rel="alternate" hreflang="en" href="{url_en}">\n'
                f'<link rel="alternate" hreflang="x-default" href="{url_pl}">\n'
+               f'<link rel="alternate" type="application/atom+xml" title="{BRAND}" href="{SITE}/{"feed.xml" if lang == "pl" else "en/feed.xml"}">\n'
                f'<meta property="og:type" content="website">\n<meta property="og:site_name" content="{BRAND}">\n'
                f'<meta property="og:title" content="{t}">\n<meta property="og:description" content="{d}">\n'
                f'<meta property="og:url" content="{url}">\n<meta property="og:locale" content="{"pl_PL" if lang == "pl" else "en_US"}">\n'
@@ -750,6 +751,20 @@ def build_news(lang):
     return latest.stem
 
 
+def atom_feed(lang, entries):
+    """Kanał Atom 1.0 z najnowszymi raportami swing. entries: [(data RRRR-MM-DD, tytuł, adres, opis)] od najnowszego."""
+    home = f"{SITE}/" if lang == "pl" else f"{SITE}/en/"
+    x = ['<?xml version="1.0" encoding="UTF-8"?>', f'<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="{lang}">',
+         f"<title>{html.escape(BRAND)}</title>", f"<subtitle>{html.escape(UI[lang]['desc_swing'])}</subtitle>",
+         f'<link rel="self" type="application/atom+xml" href="{home}feed.xml"/>', f'<link rel="alternate" type="text/html" href="{home}"/>',
+         f"<id>{home}</id>", f"<updated>{entries[0][0]}T00:00:00Z</updated>"]
+    for stem, title, url, summary in entries:
+        x += ["<entry>", f"<title>{html.escape(title)}</title>", f'<link rel="alternate" type="text/html" href="{url}"/>', f"<id>{url}</id>",
+              f"<updated>{stem}T00:00:00Z</updated>", f"<summary>{html.escape(summary)}</summary>", "</entry>"]
+    x.append("</feed>")
+    return "\n".join(x) + "\n"
+
+
 def build_section(lang, kind):
     """Buduje raporty jednego rodzaju (swing/div) dla języka. Zwraca najnowszą datę albo None."""
     import datetime as dt
@@ -780,9 +795,12 @@ def build_section(lang, kind):
         names = top3_names(text)
         return u["desc_rep"][kind].format(d=sdate(stem, lang), t=", ".join(names)) if names else desc
 
+    feed = []
     for f in files:
         stem = f.stem
         text, pl, ok = md_text(lang, folder_pl, stem, kind)
+        if kind == "swing":
+            feed.append((stem, f"{ptitle} {sdate(stem, lang)}", canon(f"{'' if lang == 'pl' else 'en/'}{sub}/{stem}.html"), report_desc(text, stem)))
         body = (f'<div class="banner">{label} {u["of_day"]} <strong>{pretty_date(stem, lang)}</strong> · '
                 f'<a href="../{arch_name}">{u["archive"]}</a></div>\n' + note(ok)
                 + render_md(text, dt.date.fromisoformat(stem), lang, pl, kind))
@@ -790,6 +808,8 @@ def build_section(lang, kind):
             page(f"{ptitle} {sdate(stem, lang)}", body, lang, key, report_desc(text, stem), sub=True,
                  counter=(f"{sub_pl}/{stem}.html", f"{sub_en}/{stem}.html"), lastmod=stem),
             encoding="utf-8")
+    if kind == "swing":
+        (out_root / "feed.xml").write_text(atom_feed(lang, feed[::-1][:20]), encoding="utf-8")
     stem = files[-1].stem
     text, pl, ok = md_text(lang, folder_pl, stem, kind)
     body = (f'<div class="banner">{u["latest"]}: <strong>{pretty_date(stem, lang)}</strong>. '
