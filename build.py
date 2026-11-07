@@ -3,6 +3,8 @@
 
 Swing: reports/*.md -> index.html, reports/<data>.html, archiwum.html.
 Dywidendy: dywidendy/*.md -> dywidendy.html, dywidendy/<data>.html, dywidendy-archiwum.html.
+Strategie uzupełniające (Kompas, Pęd, Złoty Środek, Przystań, Dryf): strategie/<slug>/pl|en/*.md -> <slug>.html, <slug>/<data>.html,
+<slug>-archiwum.html, metodologia-<slug>.html, portfel-<slug>.html (EN: en/<slug_en>...). Rejestr: strat/registry.py.
 Wymaga pakietu `markdown` (pip install markdown).
 """
 import datetime as dt
@@ -16,6 +18,10 @@ import markdown
 import charts
 from charts import deco_svg, render_charts
 import portfel
+from strat import engine as sengine
+from strat import lib as slib
+from strat import registry as sreg
+from strat import run as srun
 
 ROOT = Path(__file__).resolve().parent
 _cname = ROOT / "CNAME"
@@ -371,6 +377,33 @@ UI = {
 
 CSS += ""
 
+# ---- strategie uzupełniające: adresy stron, etykiety zakładek i teksty interfejsu --------------------------------------------
+STRATS = sreg.STRATEGIES
+for _s in STRATS:
+    _sl, _en = _s["slug"], _s["slug_en"]
+    FILES.update({f"rep-{_sl}": (f"{_sl}.html", f"{_en}.html"), f"port-{_sl}": (f"portfel-{_sl}.html", f"portfolio-{_en}.html"),
+                  f"meth-{_sl}": (f"metodologia-{_sl}.html", f"methodology-{_en}.html"), f"arch-{_sl}": (f"{_sl}-archiwum.html", f"{_en}-archive.html")})
+    for _lang in LANGS:
+        UI[_lang]["groups"][_sl] = _s["name"][_lang]
+UI["pl"]["tabs"].update({"s_rep": "{n} Raport", "s_port": "Portfel {n}", "s_meth": "{n} Metodologia", "s_arch": "{n} Archiwum"})
+UI["en"]["tabs"].update({"s_rep": "{n} Report", "s_port": "{n} Portfolio", "s_meth": "{n} Methodology", "s_arch": "{n} Archive"})
+UI["pl"].update({
+    "s_report": "Raport", "s_cadence": "Rytm", "s_links": ("Portfel", "Metodologia", "Archiwum"),
+    "s_arch_h1": "Archiwum raportów — {n}", "s_arch_t": "Archiwum raportów {n}",
+    "s_meth_t": "{n} Metodologia — jak działa strategia",
+    "s_desc_meth": "Metodologia strategii {n}: hipoteza, reguły wejścia i wyjścia, parametry, dowody z literatury i znane ograniczenia.",
+    "s_desc_rep": "{n} z {d}: {h}. {t}", "s_desc_port": "Portfel wirtualny strategii {n}: sprawdzian prognoz od dnia startu. {t}",
+    "s_empty": "Pierwszy raport tej strategii jest w przygotowaniu.",
+})
+UI["en"].update({
+    "s_report": "Report", "s_cadence": "Cadence", "s_links": ("Portfolio", "Methodology", "Archive"),
+    "s_arch_h1": "Report archive — {n}", "s_arch_t": "{n} report archive",
+    "s_meth_t": "{n} Methodology — how the strategy works",
+    "s_desc_meth": "Methodology of the {n} strategy: hypothesis, entry and exit rules, parameters, evidence from the literature and known limitations.",
+    "s_desc_rep": "{n} of {d}: {h}. {t}", "s_desc_port": "Virtual portfolio of the {n} strategy: a forward check from the start date. {t}",
+    "s_empty": "The first report of this strategy is in preparation.",
+})
+
 
 def md_files(folder):
     return sorted(folder.glob("20??-??-??.md")) if folder.exists() else []
@@ -586,6 +619,7 @@ def render_md(text, ref=None, lang="pl", chart_text=None, kind=None):
 MENU = [
     ("link", "news"),
     ("menu", "swing", ["swing", "port-swing", "meth", "arch"]),
+] + [("menu", _s["slug"], [f"rep-{_s['slug']}", f"port-{_s['slug']}", f"meth-{_s['slug']}", f"arch-{_s['slug']}"]) for _s in STRATS] + [
     ("link", "div"),
 ]
 NAV_ALIAS = {"darch": "div"}  # archiwum dywidend należy do zakładki Dywidendy (archiwum swing jest w menu Swing)
@@ -593,6 +627,9 @@ NAV_ALIAS = {"darch": "div"}  # archiwum dywidend należy do zakładki Dywidendy
 
 def tab_label(key, lang):
     u = UI[lang]["tabs"]
+    kind, _, slug = key.partition("-")
+    if slug in sreg.BY_SLUG and kind in ("rep", "port", "meth", "arch"):
+        return u["s_" + kind].format(n=sreg.BY_SLUG[slug]["name"][lang])
     return u["port"].format(n=key.split("-", 1)[1].capitalize()) if key.startswith("port-") else u[key]
 
 
@@ -840,6 +877,88 @@ def build_section(lang, kind):
     return stem
 
 
+def strategy_body(text, sig, lang):
+    """Raport strategii: Markdown -> HTML, wykres w miejscu znacznika <!-- chart --> i pasek sekcji przed pierwszym nagłówkiem."""
+    out = render_md(text, None, lang, "", None)
+    chart = charts.strategy_chart(sig["chart"], lang) if sig.get("chart") else ""
+    out = out.replace("<!-- chart -->", chart)
+    i = out.find("<h2")
+    return out[:i] + toc_html(out, lang) + out[i:] if i >= 0 else out
+
+
+def build_strategy(lang, strat):
+    """Strony jednej strategii uzupełniającej w jednym języku: najnowszy raport, raporty dzienne, archiwum, metodologia i portfel.
+    Zwraca datę najnowszego raportu albo None."""
+    u = UI[lang]
+    slug = strat["slug"]
+    own = slug if lang == "pl" else strat["slug_en"]                 # katalog raportów dziennych w tym języku
+    name, tagline, cadence = strat["name"][lang], strat["tagline"][lang], strat["cadence"][lang]
+    out_root = ROOT if lang == "pl" else ROOT / "en"
+    out_root.mkdir(exist_ok=True)
+    k_rep, k_port, k_meth, k_arch = (f"{p}-{slug}" for p in ("rep", "port", "meth", "arch"))
+    pair = lambda key: (fname(key, "pl"), fname(key, "en"))
+    sdir = slib.STRAT_DIR / slug
+    dates = srun.report_dates(slug)
+    lbl = lambda key: tab_label(key, lang)
+    links = lambda pre: " · ".join(f'<a href="{pre}{fname(k, lang)}">{html.escape(t)}</a>' for k, t in zip((k_port, k_meth), u["s_links"][:2]))
+    sigs = {d: (srun.read_signal(slug, d) or {}) for d in dates}
+    if dates:
+        (out_root / own).mkdir(exist_ok=True)
+        for d in dates:
+            text = (sdir / lang / f"{d}.md").read_text(encoding="utf-8")
+            head = sigs[d].get("headline", {}).get(lang, "")
+            banner = (f'<div class="banner">{u["s_report"]} {u["of_day"]} <strong>{pretty_date(d, lang)}</strong> · '
+                      f'<a href="../{fname(k_arch, lang)}">{u["archive"]}</a> · {links("../")}</div>\n')
+            (out_root / own / f"{d}.html").write_text(
+                page(f"{lbl(k_rep)} {sdate(d, lang)}", banner + strategy_body(text, sigs[d], lang), lang, k_rep,
+                     u["s_desc_rep"].format(n=name, d=sdate(d, lang), h=head, t=tagline), sub=True,
+                     counter=(f"{slug}/{d}.html", f"{strat['slug_en']}/{d}.html"), lastmod=d), encoding="utf-8")
+        latest = dates[-1]
+        text = (sdir / lang / f"{latest}.md").read_text(encoding="utf-8")
+        head = sigs[latest].get("headline", {}).get(lang, "")
+        banner = (f'<div class="banner"><strong>{html.escape(name)}</strong>: {html.escape(tagline)} {u["s_cadence"]}: {html.escape(cadence)}. '
+                  f'{u["latest"]}: <strong>{pretty_date(latest, lang)}</strong>. <a href="{fname(k_arch, lang)}">{u["prev"]}</a> · {links("")}</div>\n')
+        (out_root / fname(k_rep, lang)).write_text(
+            page(f"{lbl(k_rep)} {sdate(latest, lang)}", banner + strategy_body(text, sigs[latest], lang), lang, k_rep,
+                 u["s_desc_rep"].format(n=name, d=sdate(latest, lang), h=head, t=tagline), counter=pair(k_rep), lastmod=latest), encoding="utf-8")
+        groups = {}
+        for d in reversed(dates):
+            mdlink = f'strategie/{slug}/pl/{d}.md' if lang == "pl" else f'../strategie/{slug}/en/{d}.md'
+            chips = " ".join(f'<span class="tk">{html.escape(t)}</span>' for t in sigs[d].get("chips", []))
+            head = html.escape(sigs[d].get("headline", {}).get(lang, ""))
+            groups.setdefault(month_name(d, lang), []).append(
+                f'<li class="ar"><a class="ar-d" href="{own}/{d}.html">{pretty_date(d, lang)}</a> <span class="ar-l">{head}</span> {chips}'
+                f'<a class="ar-md" href="{mdlink}" title="Markdown">.md</a></li>')
+        arch = (f'<h1>{html.escape(u["s_arch_h1"].format(n=name))}</h1>\n'
+                + "\n".join(f'<h2>{html.escape(m)}</h2>\n<ul class="ar-list">\n' + "\n".join(lis) + "\n</ul>" for m, lis in groups.items()))
+    else:
+        latest = None
+        empty = f'<div class="banner">{u["s_empty"]}</div>'
+        (out_root / fname(k_rep, lang)).write_text(
+            page(lbl(k_rep), f'<h1>{html.escape(name)}</h1>\n{empty}', lang, k_rep, u["s_desc_rep"].format(n=name, d="—", h=u["s_empty"], t=tagline),
+                 counter=pair(k_rep)), encoding="utf-8")
+        arch = f'<h1>{html.escape(u["s_arch_h1"].format(n=name))}</h1>\n{empty}'
+    (out_root / fname(k_arch, lang)).write_text(
+        page(u["s_arch_t"].format(n=name), arch, lang, k_arch, u["s_desc_rep"].format(n=name, d="—", h=u["s_arch_t"].format(n=name), t=tagline),
+             counter=pair(k_arch), lastmod=latest), encoding="utf-8")
+    # Metodologia: PL z metodologia.md, EN z metodologia.en.md (brak => polski tekst + informacja).
+    mp, banner = sdir / ("metodologia.md" if lang == "pl" else "metodologia.en.md"), ""
+    if lang == "en" and not mp.exists():
+        mp, banner = sdir / "metodologia.md", f'<div class="banner">{u["untranslated"]}</div>\n'
+    if mp.exists():
+        (out_root / fname(k_meth, lang)).write_text(
+            page(u["s_meth_t"].format(n=name), banner + md_html(mp.read_text(encoding="utf-8"), ("tables", "sane_lists")), lang, k_meth,
+                 u["s_desc_meth"].format(n=name), counter=pair(k_meth)), encoding="utf-8")
+    # Portfel wirtualny
+    st = sengine.load(slug)
+    if st:
+        (out_root / fname(k_port, lang)).write_text(
+            page(u["port_title"].format(n=name), portfel.render_strategy(st, strat, lang, sigs.get(dates[-1]) if dates else None), lang, k_port,
+                 u["s_desc_port"].format(n=name, t=tagline), counter=pair(k_port),
+                 lastmod=(st["equity"][-1]["date"] if st["equity"] else st["start_date"])), encoding="utf-8")
+    return latest
+
+
 def write_site_files():
     """sitemap.xml (z hreflang), robots.txt, manifest.webmanifest i 404.html. Adres serwisu bierzemy z pliku CNAME."""
     import json
@@ -906,6 +1025,8 @@ def main():
         dv = build_section(lang, "div")
         # Portfele wirtualne: każda strategia ma paper/<nazwa>/state.json i stronę portfel-<nazwa>.html (EN: en/portfolio-<nazwa>.html).
         for key in PORTS:
+            if key in sreg.BY_SLUG:
+                continue                       # portfele strategii uzupełniających buduje build_strategy
             st = json.loads((ROOT / "paper" / key / "state.json").read_text(encoding="utf-8"))
             n = key.capitalize()
             (out_root / fname(f"port-{key}", lang)).write_text(
@@ -921,6 +1042,8 @@ def main():
             mbody = banner + md_html(mp.read_text(encoding="utf-8"), ("tables", "sane_lists"))
             (out_root / fname("meth", lang)).write_text(
                 page(u["title_meth"], mbody, lang, "meth", u["desc_meth"], counter=(fname("meth", "pl"), fname("meth", "en"))), encoding="utf-8")
+        sv = {s["slug"]: build_strategy(lang, s) for s in STRATS}
+        msg.append(f"{lang}: strategie " + ", ".join(f"{k} {v}" for k, v in sv.items()))
         msg.append(f"{lang}: newsy {len(md_files(NEWS))} (najnowszy {nw}); swing {len(report_files())} (najnowszy {sw})" + (f", dywidendy {len(md_files(DIVS))} (najnowszy {dv})" if dv else ""))
     write_site_files()
     print("Zbudowano: " + "; ".join(msg))

@@ -1,0 +1,65 @@
+{
+ "kind": "targets",
+ "config": {
+  "start_capital": 100000.0,
+  "fee_pct": 0.2,
+  "fractional": true,
+  "max_wait_sessions": 5,
+  "position_value": 5000.0,
+  "max_open": 20,
+  "max_hold_sessions": 40
+ },
+ "start_date": "2026-11-06",
+ "cash": 100000.0,
+ "processed_through": "2026-11-06",
+ "pending": {
+  "signal_date": "2026-11-06",
+  "targets": [
+   {
+    "tic": "WIG20",
+    "name": "WIG20",
+    "weight": 1.0
+   }
+  ],
+  "waited": 0,
+  "why": {
+   "pl": "Sygnał Kompasu",
+   "en": "Compass signal"
+  },
+  "size_factor": 1.0,
+  "exit_reasons": {
+   "WIG20": {
+    "pl": "zmiana sygnału Kompasu",
+    "en": "Compass signal change"
+   },
+   "MWIG40": {
+    "pl": "zmiana sygnału Kompasu",
+    "en": "Compass signal change"
+   },
+   "SWIG80": {
+    "pl": "zmiana sygnału Kompasu",
+    "en": "Compass signal change"
+   }
+  }
+ },
+ "orders": [],
+ "positions": [],
+ "closed": [],
+ "equity": [
+  {
+   "date": "2026-11-06",
+   "equity": 100000.0,
+   "cash": 100000.0,
+   "invested": 0.0,
+   "bench": 4131.37
+  }
+ ],
+ "log": [
+  {
+   "date": "2026-11-06",
+   "pl": "Sygnał: docelowy skład WIG20",
+   "en": "Signal: target holdings WIG20"
+  }
+ ],
+ "next_id": 1
+}

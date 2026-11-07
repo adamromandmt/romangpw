@@ -364,6 +364,62 @@ def chart_calendar(items, ref, c=False):
     return _svg(h, T("Okna oczekiwanego ogłoszenia dywidendy"), "".join(p), w, "c" if c else "")
 
 
+def chart_bars(rows, unit="%", c=False, label=""):
+    """Poziome słupki z osią zerową (dodatnie na zielono, ujemne na czerwono) dla raportów strategii. rows: [(etykieta, wartość)]."""
+    rows = [(str(l), float(v)) for l, v in rows if v is not None]
+    if not rows:
+        return ""
+    w = WC if c else W
+    x0, x1 = (88, w - 56) if c else (150, w - 96)
+    lo, hi = min(0.0, min(v for _, v in rows)), max(0.0, max(v for _, v in rows))
+    if hi - lo < 1e-9:
+        hi = lo + 1
+    pad = (hi - lo) * 0.04
+    lo, hi = (lo - pad if lo < 0 else 0.0), (hi + pad if hi > 0 else 0.0)
+    sc = (x1 - x0) / (hi - lo)
+    zx = x0 - lo * sc
+    rh, top = 28, 26
+    h = top + rh * len(rows) + 8
+    d = 0 if max(abs(v) for _, v in rows) >= 100 else 1
+    fmt = lambda v, sign=False: _pl(v, d, sign) + unit
+    p = []
+    for k in range(5):
+        v = lo + (hi - lo) * k / 4
+        x = x0 + (v - lo) * sc
+        p.append(f'<line class="grid" x1="{x:.1f}" y1="{top - 10}" x2="{x:.1f}" y2="{h - 4}"/>')
+        p.append(f'<text class="tick" x="{x:.1f}" y="{top - 14}" text-anchor="middle">{fmt(v)}</text>')
+    for i, (lab, v) in enumerate(rows):
+        y = top + i * rh
+        bw = max(abs(v) * sc, 1.0)
+        bx = zx if v >= 0 else zx - bw
+        col = "var(--up)" if v >= 0 else "var(--down)"
+        p.append(f'<text class="lbl" x="{x0 - 10}" y="{y + 17}" text-anchor="end">{esc(lab)}</text>')
+        p.append(f'<g><title>{esc(lab)}: {fmt(v, True)}</title><rect x="{bx:.1f}" y="{y + 5}" width="{bw:.1f}" height="16" rx="3" style="fill:{col}"/></g>')
+        tx, anchor = (bx + bw + 8, "start") if v >= 0 else (bx - 8, "end")
+        p.append(f'<text class="val" x="{tx:.1f}" y="{y + 18}" text-anchor="{anchor}">{fmt(v, True)}</text>')
+    p.append(f'<line x1="{zx:.1f}" y1="{top - 10}" x2="{zx:.1f}" y2="{h - 4}" style="stroke:var(--muted);stroke-width:1.2"/>')
+    return _svg(h, label, "".join(p), w, "c" if c else "")
+
+
+def strategy_chart(spec, lang="pl"):
+    """Karta wykresu dla raportu strategii (znacznik <!-- chart --> w Markdownie). spec: {unit, rows, title{pl,en}, sub{pl,en}}.
+    Pusty wynik, gdy brak danych."""
+    global LANG
+    old, LANG = LANG, lang
+    try:
+        rows = spec.get("rows") or []
+        title, sub = spec["title"][lang], spec["sub"][lang]
+        wide, compact = chart_bars(rows, spec.get("unit", "%"), False, title), chart_bars(rows, spec.get("unit", "%"), True, title)
+        if not wide:
+            return ""
+        return (f'<div class="chart-card"><h2 class="ch">{esc(title)}</h2><p class="sub">{esc(sub)}</p>'
+                f'<div class="cv-d">{wide}</div><div class="cv-c">{compact}</div></div>')
+    except (KeyError, TypeError, ValueError):
+        return ""
+    finally:
+        LANG = old
+
+
 def render_charts(md, ref=None):
     """Zwraca HTML sekcji z wykresami albo pusty tekst, gdy nie da się ich zbudować.
     Każdy wykres powstaje w dwóch wariantach: szerokim (komputer) i kompaktowym (telefon); CSS pokazuje jeden z nich."""
