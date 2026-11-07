@@ -228,6 +228,8 @@ for rel in ('feed.xml', 'en/feed.xml'):
     except (OSError, ET.ParseError) as e:
         problems.append(f'{rel}: nie da się wczytać kanału: {e}')
         continue
+    if not (root.findtext(f'{ATOM}author/{ATOM}name') or '').strip():
+        problems.append(f'{rel}: kanał bez autora (RFC 4287 wymaga atom:author na poziomie kanału lub w każdym wpisie)')
     entries = root.findall(ATOM + 'entry')
     if not entries:
         problems.append(f'{rel}: kanał bez wpisów')

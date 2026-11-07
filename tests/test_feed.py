@@ -19,6 +19,7 @@ class AtomFeedTests(unittest.TestCase):
         self.assertEqual(root.tag, ATOM + "feed")
         self.assertEqual(root.get("{http://www.w3.org/XML/1998/namespace}lang"), "pl")
         self.assertEqual(root.find(ATOM + "updated").text, "2026-11-06T00:00:00Z")
+        self.assertEqual(root.findtext(f"{ATOM}author/{ATOM}name"), build.BRAND)                # RFC 4287: autor kanału wymagany
         entries = root.findall(ATOM + "entry")
         self.assertEqual(len(entries), 2)
         self.assertEqual(entries[0].find(ATOM + "summary").text, "TOP 3: A & B <ok>")        # znaki specjalne poprawnie zakodowane

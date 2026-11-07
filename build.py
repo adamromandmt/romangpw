@@ -757,7 +757,8 @@ def atom_feed(lang, entries):
     x = ['<?xml version="1.0" encoding="UTF-8"?>', f'<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="{lang}">',
          f"<title>{html.escape(BRAND)}</title>", f"<subtitle>{html.escape(UI[lang]['desc_swing'])}</subtitle>",
          f'<link rel="self" type="application/atom+xml" href="{home}feed.xml"/>', f'<link rel="alternate" type="text/html" href="{home}"/>',
-         f"<id>{home}</id>", f"<updated>{entries[0][0]}T00:00:00Z</updated>"]
+         f"<id>{home}</id>", f"<updated>{entries[0][0]}T00:00:00Z</updated>",
+         f"<author><name>{html.escape(BRAND)}</name><uri>{SITE}/</uri></author>"]
     for stem, title, url, summary in entries:
         x += ["<entry>", f"<title>{html.escape(title)}</title>", f'<link rel="alternate" type="text/html" href="{url}"/>', f"<id>{url}</id>",
               f"<updated>{stem}T00:00:00Z</updated>", f"<summary>{html.escape(summary)}</summary>", "</entry>"]
