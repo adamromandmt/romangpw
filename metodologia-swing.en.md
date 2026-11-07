@@ -18,13 +18,13 @@ This is a screening exercise based on fixed rules, **not investment advice**. A 
 GPW does not trade on weekends and public holidays (e.g. 1 and 11 November, 6 January, Easter). There is no report on those days. **Why:** data from a day without a session would add nothing.
 
 ### 2. Downloads the quotes
-For each company in the universe it downloads about 50 recent sessions: the opening, highest, lowest and closing price, and the volume (the number of shares traded). The pre-market report is based on the **previous session's close**, because morning prices are not yet up to date. **Why:** everything that follows is math on these candles; if the data is old or incomplete, the report says so plainly.
+For each company in the universe it uses daily quotes from the official GPW archive (about a year of sessions, refreshed automatically every night): the opening, highest, lowest and closing price, and the volume (the number of shares traded). Prices are raw, i.e. not adjusted for dividends or splits, and a day without trading produces no candle. The pre-market report is based on the **previous session's close**, because morning prices are not yet up to date. **Why:** everything that follows is math on these candles; if the data is old or incomplete, the report says so plainly.
 
 ### 3. Assesses the market as a whole (market regime)
 Before it picks companies, it looks at the backdrop: the WIG20, WIG, mWIG40 and sWIG80 indices, market breadth (how many companies are in a trend), sectors, the US market (S&P 500, Nasdaq, the VIX fear index), bond yields, oil, copper, the zloty exchange rates and the calendar (Monetary Policy Council decisions, the Fed, inflation data). **Why:** even a great company can fall together with the market. When conditions are bad, the report says so plainly, reduces the number of candidates and suggests smaller positions or waiting.
 
 ### 4. Looks for companies in an uptrend
-It uses moving averages, i.e. "the averaged price over the last N days": **EMA20** (about 1 month, reacts quickly) and **SMA50** (about 2.5 months). A good trend is one in which the price is above the averages and the shorter average lies above the longer one, along with higher highs and higher lows and outperformance of the WIG index (so-called relative strength). **Why:** statistically, it is easier to buy what is already rising than what is falling.
+It uses moving averages, i.e. "the averaged price over the last N days": **EMA20** (about 1 month, reacts quickly) and **SMA50** (about 2.5 months) and, for companies with at least 200 sessions in the data, **SMA100** and **SMA200** (about half a year and a year). A good trend is one in which the price is above the averages and the shorter average lies above the longer one, along with higher highs and higher lows and outperformance of the WIG index (so-called relative strength). **Why:** statistically, it is easier to buy what is already rising than what is falling.
 
 ### 5. Looks for a healthy correction
 It is interested in a pullback of about **5–20% from a recent high** that looks like normal profit-taking or a move of the whole market, rather than a collapse of the company. A good correction is orderly and the **volume shrinks** (there are fewer sellers). A bad correction is a decline on rising volume or after poor results. **Why:** a correction in a strong trend is an opportunity, while a broken trend is a risk.
@@ -80,8 +80,8 @@ A report file is created, the page is generated and goes to gpwradar.pl. The rep
 
 ## Limitations worth knowing about
 
-- The data comes from public sources (including biznesradar.pl, bankier.pl, and services with company announcements). It is sometimes delayed, incomplete or contains errors. The report notes when something could not be verified.
-- For GPW companies, the SMA100 and SMA200 averages are not available in free sources, so they are not provided.
+- Quotes come from the official GPW archive, while news, announcements and report dates come from public sources (including bankier.pl, biznesradar.pl, and services with company announcements). The data is sometimes delayed, incomplete or contains errors. The report notes when something could not be verified.
+- The SMA100 and SMA200 averages are calculated only for companies with at least 200 sessions in the data; for the others the report does not provide them.
 - Prices, indicators and report dates are not made up. If something is missing, the report says so plainly and does not guess.
 - The method does not know the future. A stop-loss and a small position limit the risk, but they do not eliminate it.
 

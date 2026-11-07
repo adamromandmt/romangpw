@@ -226,11 +226,11 @@ footer{color:var(--muted);font-size:13px;padding-top:26px;padding-bottom:44px;bo
 <h3>1. Sprawdza, czy giełda dziś pracuje</h3>
 <p>GPW nie handluje w weekendy i święta (np. 1 i 11 listopada, 6 stycznia, Wielkanoc). W takie dni raportu nie ma. <strong>Dlaczego:</strong> dane z dnia bez sesji nic by nie wniosły.</p>
 <h3>2. Pobiera notowania</h3>
-<p>Dla każdej spółki z uniwersum pobiera ok. 50 ostatnich sesji: cenę otwarcia, najwyższą, najniższą, zamknięcia i wolumen (liczbę handlowanych akcji). Raport przed otwarciem opiera się na <strong>zamknięciu poprzedniej sesji</strong>, bo poranne kursy są jeszcze nieaktualne. <strong>Dlaczego:</strong> wszystko dalej to matematyka na tych świecach; jeśli dane są stare lub niekompletne, raport mówi to wprost.</p>
+<p>Dla każdej spółki z uniwersum korzysta z dziennych notowań z oficjalnego archiwum GPW (ok. roku sesji, uzupełnianych automatycznie każdej nocy): cena otwarcia, najwyższa, najniższa, zamknięcia i wolumen (liczba handlowanych akcji). Ceny są surowe, czyli nie uwzględniają dywidend ani splitów, a dzień bez obrotu nie daje świecy. Raport przed otwarciem opiera się na <strong>zamknięciu poprzedniej sesji</strong>, bo poranne kursy są jeszcze nieaktualne. <strong>Dlaczego:</strong> wszystko dalej to matematyka na tych świecach; jeśli dane są stare lub niekompletne, raport mówi to wprost.</p>
 <h3>3. Ocenia rynek jako całość (reżim rynkowy)</h3>
 <p>Zanim wybierze spółki, patrzy na tło: indeksy WIG20, WIG, mWIG40 i sWIG80, szerokość rynku (ile spółek jest w trendzie), sektory, rynek USA (S&amp;P 500, Nasdaq, indeks strachu VIX), rentowność obligacji, ropę, miedź, kursy złotego oraz kalendarz (decyzje RPP, Fed, dane o inflacji). <strong>Dlaczego:</strong> nawet świetna spółka potrafi spaść razem z rynkiem. Gdy otoczenie jest złe, raport mówi to wprost, zmniejsza liczbę kandydatów i sugeruje mniejsze pozycje albo czekanie.</p>
 <h3>4. Szuka spółek w trendzie wzrostowym</h3>
-<p>Używa średnich kroczących, czyli „uśrednionej ceny z ostatnich N dni": <strong>EMA20</strong> (ok. 1 miesiąc, reaguje szybko), <strong>SMA50</strong> (ok. 2,5 miesiąca). Dobry trend to taki, w którym cena jest nad średnimi, a krótsza średnia leży nad dłuższą, do tego wyższe szczyty i wyższe dołki oraz przewaga nad indeksem WIG (tzw. siła relatywna). <strong>Dlaczego:</strong> statystycznie łatwiej kupować to, co już rośnie, niż to, co spada.</p>
+<p>Używa średnich kroczących, czyli „uśrednionej ceny z ostatnich N dni": <strong>EMA20</strong> (ok. 1 miesiąc, reaguje szybko), <strong>SMA50</strong> (ok. 2,5 miesiąca) oraz, dla spółek z co najmniej 200 sesjami w danych, <strong>SMA100</strong> i <strong>SMA200</strong> (ok. pół roku i rok). Dobry trend to taki, w którym cena jest nad średnimi, a krótsza średnia leży nad dłuższą, do tego wyższe szczyty i wyższe dołki oraz przewaga nad indeksem WIG (tzw. siła relatywna). <strong>Dlaczego:</strong> statystycznie łatwiej kupować to, co już rośnie, niż to, co spada.</p>
 <h3>5. Szuka zdrowej korekty</h3>
 <p>Interesuje go cofnięcie ok. <strong>5–20% od niedawnego szczytu</strong>, które wygląda na normalną realizację zysków albo ruch całego rynku, a nie na załamanie spółki. Dobra korekta jest uporządkowana, a <strong>wolumen maleje</strong> (sprzedających ubywa). Zła korekta to spadek na rosnącym wolumenie albo po złych wynikach. <strong>Dlaczego:</strong> korekta w silnym trendzie to okazja, a załamanie trendu to ryzyko.</p>
 <h3>6. Wyznacza wsparcia i strefę wejścia</h3>
@@ -277,8 +277,8 @@ footer{color:var(--muted);font-size:13px;padding-top:26px;padding-bottom:44px;bo
 </ul>
 <h2>Ograniczenia, o których warto wiedzieć</h2>
 <ul>
-<li>Dane pochodzą z publicznych źródeł (m.in. biznesradar.pl, bankier.pl, serwisy z komunikatami spółek). Czasem są opóźnione, niekompletne albo zawierają błędy. Raport zaznacza, kiedy czegoś nie udało się zweryfikować.</li>
-<li>Dla spółek z GPW nie ma w darmowych źródłach średnich SMA100 i SMA200, więc nie są podawane.</li>
+<li>Notowania pochodzą z oficjalnego archiwum GPW, a wiadomości, komunikaty i terminy raportów z publicznych źródeł (m.in. bankier.pl, biznesradar.pl, serwisy z komunikatami spółek). Dane bywają opóźnione, niekompletne albo zawierają błędy. Raport zaznacza, kiedy czegoś nie udało się zweryfikować.</li>
+<li>Średnie SMA100 i SMA200 są liczone tylko dla spółek, które mają w danych co najmniej 200 sesji; dla pozostałych raport ich nie podaje.</li>
 <li>Ceny, wskaźniki i daty raportów nie są wymyślane. Jeśli czegoś brakuje, raport mówi to wprost i nie zgaduje.</li>
 <li>Metoda nie zna przyszłości. Stop-loss i niewielka pozycja ograniczają ryzyko, ale go nie eliminują.</li>
 </ul>

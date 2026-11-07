@@ -26,6 +26,7 @@ nie zakończyły się błędem; 1 w przeciwnym razie.
 import csv
 import datetime as dt
 import html
+import http.client
 import json
 import re
 import sys
@@ -65,7 +66,7 @@ def http_get(url, timeout=40, tries=3):
             last = e
             if e.code < 500 and e.code != 429:
                 raise
-        except (urllib.error.URLError, TimeoutError, OSError) as e:
+        except (urllib.error.URLError, TimeoutError, OSError, http.client.HTTPException) as e:   # także IncompleteRead (urwana odpowiedź)
             last = e
         time.sleep(RETRY_DELAY * (attempt + 1))
     raise last
@@ -310,7 +311,7 @@ def main(argv):
         if rows:
             ds = sorted(rows)
             last_date[tic], n_rows[tic] = ds[-1], len(ds)
-            for a, b in zip(ds[-60:], ds[-59:]):
+            for a, b in zip(ds, ds[1:]):          # cała zapisana historia (ok. roku): SMA200 i szczyt 52-tyg. obejmują ją całą
                 if rows[a][3] and abs(rows[b][3] / rows[a][3] - 1) > 0.30:
                     jumps.setdefault(tic, []).append([b, round((rows[b][3] / rows[a][3] - 1) * 100, 1)])
     ok = sorted(t for t, d in last_date.items() if d == latest)

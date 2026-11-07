@@ -10,6 +10,7 @@ import sys
 import tempfile
 import unittest
 import urllib.error
+from datetime import date as dt_date, timedelta
 from pathlib import Path
 from unittest import mock
 
@@ -183,6 +184,57 @@ class ParsingTests(unittest.TestCase):
         self.assertEqual(days, ["2026-11-06", "2026-11-09", "2026-11-10"])
 
 
+class HttpGetTests(unittest.TestCase):
+    """http_get ponawia przy urwanej odpowiedzi (IncompleteRead), błędach sieci i 5xx, ale nie przy 404."""
+
+    class Resp:
+        def __init__(self, body=b"ok", error=None):
+            self.body, self.error = body, error
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+        def read(self):
+            if self.error:
+                raise self.error
+            return self.body
+
+    def run_get(self, outcomes):
+        seq = list(outcomes)
+
+        def fake_urlopen(req, timeout=None):
+            o = seq.pop(0)
+            if isinstance(o, BaseException):
+                raise o
+            return o
+        with mock.patch.object(fq.urllib.request, "urlopen", fake_urlopen), mock.patch.object(fq.time, "sleep", lambda s: None):
+            return fq.http_get("https://example.test/x"), len(outcomes) - len(seq)
+
+    def test_incomplete_read_is_retried(self):
+        import http.client
+        body, calls = self.run_get([self.Resp(error=http.client.IncompleteRead(b"abc", 10)), self.Resp(b"data")])
+        self.assertEqual((body, calls), (b"data", 2))
+
+    def test_network_error_and_5xx_are_retried(self):
+        err503 = fq.urllib.error.HTTPError("https://example.test/x", 503, "unavailable", {}, None)
+        body, calls = self.run_get([ConnectionResetError("reset"), err503, self.Resp(b"data")])
+        self.assertEqual((body, calls), (b"data", 3))
+
+    def test_404_is_not_retried(self):
+        err404 = fq.urllib.error.HTTPError("https://example.test/x", 404, "nf", {}, None)
+        with self.assertRaises(fq.urllib.error.HTTPError):
+            self.run_get([err404, self.Resp(b"never")])
+
+    def test_gives_up_after_all_tries(self):
+        import http.client
+        errs = [http.client.IncompleteRead(b"", 1) for _ in range(3)]
+        with self.assertRaises(http.client.IncompleteRead):
+            self.run_get([self.Resp(error=e) for e in errs])
+
+
 class EndToEndTests(unittest.TestCase):
     def test_full_run_writes_stocks_indices_calendar_and_status(self):
         site = FakeSite()
@@ -210,6 +262,22 @@ class EndToEndTests(unittest.TestCase):
             self.assertEqual(st["repaired_bars"], 4)                                       # BBB w czterech sesjach
             self.assertEqual(st["indices_last_date"], {"WIG20": "2026-11-06", "MWIG40": "2026-11-06"})
             self.assertEqual(env.json("_names.json")["isin"][ISIN_OF["KRVITAMIN"]], "KVT")  # ISIN zapamiętany po dopasowaniu nazwy
+
+    def test_suspect_jump_is_reported_anywhere_in_stored_history(self):
+        """Skok >30% sprzed 100 sesji (np. split) trafia do statusu, bo zaburza SMA200 i szczyt 52-tyg."""
+        with Env(["AAA", "BBB"], FakeSite()) as env:
+            start = dt_date(2026, 6, 1)
+            rows, price = [], 20.0
+            for i in range(100):
+                d = (start + timedelta(days=i)).isoformat()
+                if i == 20:
+                    price = price / 2                                            # 1:2 split w sztucznej historii
+                rows.append(f"{d},{price},{price},{price},{price},1000")
+            (env.out / "AAA.csv").write_text("date,open,high,low,close,volume\n" + "\n".join(rows) + "\n", encoding="utf-8")
+            env.run()
+            jumps = env.json("_status.json")["suspect_jumps_over_30pct"]
+            self.assertIn("AAA", jumps)
+            self.assertEqual(jumps["AAA"][0], [(start + timedelta(days=20)).isoformat(), -50.0])
 
     def test_second_run_is_idempotent_and_refetches_only_latest_and_recent_gaps(self):
         site = FakeSite()
