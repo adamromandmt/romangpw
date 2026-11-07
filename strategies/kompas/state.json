@@ -23,23 +23,48 @@
  "report": {
   "asof": "2026-11-06",
   "half": false,
-  "missing": [
+  "missing": [],
+  "nobuy": [],
+  "pending": [
    {
-    "code": "index",
-    "names": "WIG20, mWIG40, sWIG80"
+    "tic": "WIG20",
+    "w": 1.0
    }
   ],
-  "nobuy": [],
-  "pending": [],
-  "pick": null,
-  "status": "waiting",
+  "pick": "WIG20",
+  "status": "ok",
   "tables": [
    {
     "kind": "kompas",
-    "rows": []
+    "rows": [
+     {
+      "avg10": 3798.042,
+      "close": 4131.37,
+      "name": "WIG20",
+      "r12": 0.37622420018920977,
+      "r6": 0.12053561741922891,
+      "score": 0.24837990880421934
+     },
+     {
+      "avg10": 9813.293,
+      "close": 10594.92,
+      "name": "mWIG40",
+      "r12": 0.3135560754441886,
+      "r6": 0.10079378272795281,
+      "score": 0.2071749290860707
+     },
+     {
+      "avg10": 30584.915,
+      "close": 29016.68,
+      "name": "sWIG80",
+      "r12": -0.010404559617158027,
+      "r6": -0.09798995365400942,
+      "score": -0.054197256635583724
+     }
+    ]
    }
   ]
  },
- "sessions": 122,
- "status": "waiting"
+ "sessions": 400,
+ "status": "ok"
 }
