@@ -1,341 +1,29 @@
 {
- "run_utc": "2026-11-07T07:25:20Z",
- "probe": {
-  "eodhd": {
-   "ok": false,
-   "error": "EODHD pominięty",
-   "sec": 0.0
-  },
-  "biznesradar": {
-   "ok": true,
-   "last": "2026-11-06",
-   "rows": 50,
-   "sec": 1.2
-  },
-  "yahoo": {
-   "ok": false,
-   "error": "HTTP Error 429: Too Many Requests",
-   "sec": 6.3
-  },
-  "stooq.pl": {
-   "ok": false,
-   "error": "brak nagłówka CSV: <!DOCTYPE html><html><head><meta charset=\"utf-8\"><meta name=\"robots\" content=\"no",
-   "sec": 0.8
-  },
-  "stooq.com": {
-   "ok": false,
-   "error": "brak nagłówka CSV: <!DOCTYPE html><html><head><meta charset=\"utf-8\"><meta name=\"robots\" content=\"no",
-   "sec": 0.6
-  }
- },
- "disabled_sources": {
-  "eodhd": "pominięty (brak klucza)",
-  "yahoo": "nie przeszło próby: HTTP Error 429: Too Many Requests",
-  "stooq.pl": "nie przeszło próby: brak nagłówka CSV: <!DOCTYPE html><html><head><meta charset=\"utf-8\"><meta name=\"robots\" content=\"no",
-  "stooq.com": "nie przeszło próby: brak nagłówka CSV: <!DOCTYPE html><html><head><meta charset=\"utf-8\"><meta name=\"robots\" content=\"no"
- },
- "latest_session": "2026-11-06",
- "ok": 99,
- "failed": {
-  "CBF": [
-   "biznesradar: HTTP Error 404: Not Found"
-  ],
-  "CCC": [
-   "biznesradar: HTTP Error 404: Not Found"
-  ],
-  "CIE": [
-   "biznesradar: HTTP Error 404: Not Found"
-  ],
-  "LVC": [
-   "biznesradar: HTTP Error 404: Not Found"
-  ],
-  "ODL": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "OND": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "OPL": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "OPN": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "PCO": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "PCR": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "PEO": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "PEP": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "PGE": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "PJP": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "PKN": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "PKO": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "PLW": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "PTW": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "PXM": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "PZU": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "QNT": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "RBW": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "RPC": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "SAN": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "SEK": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "SEL": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "SGN": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "SKA": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "SKH": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "SLV": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "SNK": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "SNT": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "SON": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "SPH": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "SPL": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "SPR": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "STF": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "STP": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "SWG": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "TAR": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "TEN": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "TOR": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "TPE": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "TRN": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "TXT": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "UCG": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "ULG": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "UNI": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "UNT": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "VIN": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "VOT": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "VOX": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "VRC": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "VRG": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "WAS": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "WPL": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "WWL": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "XPL": [
-   "biznesradar: <urlopen error timed out>"
-  ],
-  "XTB": [
-   "przekroczony budżet czasu"
-  ],
-  "YAN": [
-   "przekroczony budżet czasu"
-  ],
-  "ZEP": [
-   "przekroczony budżet czasu"
-  ],
-  "WIG": [
-   "przekroczony budżet czasu"
-  ],
-  "WIG20": [
-   "przekroczony budżet czasu"
-  ],
-  "MWIG40": [
-   "przekroczony budżet czasu"
-  ],
-  "SWIG80": [
-   "przekroczony budżet czasu"
-  ]
- },
  "behind_latest_session": [
-  "MLP"
+  "MLP",
+  "QNT"
  ],
- "sources": {
-  "11B": "biznesradar",
-  "1AT": "biznesradar",
-  "ABE": "biznesradar",
-  "ABS": "biznesradar",
-  "ACP": "biznesradar",
-  "ALE": "biznesradar",
-  "ALR": "biznesradar",
-  "AMB": "biznesradar",
-  "AMC": "biznesradar",
-  "APN": "biznesradar",
-  "APR": "biznesradar",
-  "APT": "biznesradar",
-  "ARH": "biznesradar",
-  "ASB": "biznesradar",
-  "ASE": "biznesradar",
-  "AST": "biznesradar",
-  "ATG": "biznesradar",
-  "ATP": "biznesradar",
-  "ATR": "biznesradar",
-  "ATT": "biznesradar",
-  "BCM": "biznesradar",
-  "BDX": "biznesradar",
-  "BFT": "biznesradar",
-  "BHW": "biznesradar",
-  "BIO": "biznesradar",
-  "BNP": "biznesradar",
-  "BOS": "biznesradar",
-  "CAR": "biznesradar",
-  "CDR": "biznesradar",
-  "CEZ": "biznesradar",
-  "CLD": "biznesradar",
-  "CPS": "biznesradar",
-  "CRJ": "biznesradar",
-  "CSR": "biznesradar",
-  "DBC": "biznesradar",
-  "DCR": "biznesradar",
-  "DEL": "biznesradar",
-  "DGA": "biznesradar",
-  "DIG": "biznesradar",
-  "DNP": "biznesradar",
-  "DOM": "biznesradar",
-  "DVL": "biznesradar",
-  "EAH": "biznesradar",
-  "EBP": "biznesradar",
-  "ECH": "biznesradar",
-  "EDI": "biznesradar",
-  "ELT": "biznesradar",
-  "ENA": "biznesradar",
-  "ENT": "biznesradar",
-  "EUR": "biznesradar",
-  "FAB": "biznesradar",
-  "FRO": "biznesradar",
-  "FTE": "biznesradar",
-  "GOP": "biznesradar",
-  "GPP": "biznesradar",
-  "GPW": "biznesradar",
-  "GRX": "biznesradar",
-  "HUG": "biznesradar",
-  "IFI": "biznesradar",
-  "IMS": "biznesradar",
-  "ING": "biznesradar",
-  "INK": "biznesradar",
-  "INL": "biznesradar",
-  "INP": "biznesradar",
-  "IPE": "biznesradar",
-  "IZS": "biznesradar",
-  "JSW": "biznesradar",
-  "JWW": "biznesradar",
-  "KGH": "biznesradar",
-  "KMP": "biznesradar",
-  "KPL": "biznesradar",
-  "KRK": "biznesradar",
-  "KRU": "biznesradar",
-  "KTY": "biznesradar",
-  "KVT": "biznesradar",
-  "LBW": "biznesradar",
-  "LEN": "biznesradar",
-  "LKD": "biznesradar",
-  "LPP": "biznesradar",
-  "MAB": "biznesradar",
-  "MAK": "biznesradar",
-  "MBK": "biznesradar",
-  "MBR": "biznesradar",
-  "MDG": "biznesradar",
-  "MEX": "biznesradar",
-  "MGT": "biznesradar",
-  "MIL": "biznesradar",
-  "MLG": "biznesradar",
-  "MLP": "biznesradar",
-  "MNC": "biznesradar",
-  "MOL": "biznesradar",
-  "MRB": "biznesradar",
-  "MVP": "biznesradar",
-  "NEU": "biznesradar",
-  "NTT": "biznesradar",
-  "NVA": "biznesradar",
-  "NVT": "biznesradar",
-  "NWA": "biznesradar",
-  "NWG": "biznesradar"
+ "calendar_gaps": 1,
+ "calendar_gaps_sample": [
+  "2026-10-19"
+ ],
+ "coverage": 0.994,
+ "errors": [
+  "2026-10-19: IncompleteRead: IncompleteRead(77601 bytes read)"
+ ],
+ "failed": {
+  "CCC": "nierozpoznana: brak w migawce GPW i w gpw_alias (wycofana z obrotu lub zmieniony ticker?)",
+  "CIE": "nierozpoznana: brak w migawce GPW i w gpw_alias (wycofana z obrotu lub zmieniony ticker?)",
+  "LVC": "nierozpoznana: brak w migawce GPW i w gpw_alias (wycofana z obrotu lub zmieniony ticker?)",
+  "MLP": "nierozpoznana: brak w migawce GPW i w gpw_alias (wycofana z obrotu lub zmieniony ticker?)",
+  "QNT": "bez obrotu w najnowszej sesji (ostatni wiersz 2026-11-05)",
+  "SPL": "nierozpoznana: brak w migawce GPW i w gpw_alias (wycofana z obrotu lub zmieniony ticker?)"
+ },
+ "indices_last_date": {
+  "MWIG40": "2026-11-06",
+  "SWIG80": "2026-11-06",
+  "WIG": "2026-11-06",
+  "WIG20": "2026-11-06"
  },
  "last_date": {
   "11B": "2026-11-06",
@@ -366,6 +54,7 @@
   "BNP": "2026-11-06",
   "BOS": "2026-11-06",
   "CAR": "2026-11-06",
+  "CBF": "2026-11-06",
   "CDR": "2026-11-06",
   "CEZ": "2026-11-06",
   "CLD": "2026-11-06",
@@ -436,6 +125,94 @@
   "NVA": "2026-11-06",
   "NVT": "2026-11-06",
   "NWA": "2026-11-06",
-  "NWG": "2026-11-06"
- }
+  "NWG": "2026-11-06",
+  "ODL": "2026-11-06",
+  "OND": "2026-11-06",
+  "OPL": "2026-11-06",
+  "OPN": "2026-11-06",
+  "PCO": "2026-11-06",
+  "PCR": "2026-11-06",
+  "PEO": "2026-11-06",
+  "PEP": "2026-11-06",
+  "PGE": "2026-11-06",
+  "PJP": "2026-11-06",
+  "PKN": "2026-11-06",
+  "PKO": "2026-11-06",
+  "PLW": "2026-11-06",
+  "PTW": "2026-11-06",
+  "PXM": "2026-11-06",
+  "PZU": "2026-11-06",
+  "QNT": "2026-11-05",
+  "RBW": "2026-11-06",
+  "RPC": "2026-11-06",
+  "SAN": "2026-11-06",
+  "SEK": "2026-11-06",
+  "SEL": "2026-11-06",
+  "SGN": "2026-11-06",
+  "SKA": "2026-11-06",
+  "SKH": "2026-11-06",
+  "SLV": "2026-11-06",
+  "SNK": "2026-11-06",
+  "SNT": "2026-11-06",
+  "SON": "2026-11-06",
+  "SPH": "2026-11-06",
+  "SPR": "2026-11-06",
+  "STF": "2026-11-06",
+  "STP": "2026-11-06",
+  "SWG": "2026-11-06",
+  "TAR": "2026-11-06",
+  "TEN": "2026-11-06",
+  "TOR": "2026-11-06",
+  "TPE": "2026-11-06",
+  "TRN": "2026-11-06",
+  "TXT": "2026-11-06",
+  "UCG": "2026-11-06",
+  "ULG": "2026-11-06",
+  "UNI": "2026-11-06",
+  "UNT": "2026-11-06",
+  "VIN": "2026-11-06",
+  "VOT": "2026-11-06",
+  "VOX": "2026-11-06",
+  "VRC": "2026-11-06",
+  "VRG": "2026-11-06",
+  "WAS": "2026-11-06",
+  "WPL": "2026-11-06",
+  "WWL": "2026-11-06",
+  "XPL": "2026-11-06",
+  "XTB": "2026-11-06",
+  "YAN": "2026-11-06",
+  "ZEP": "2026-11-06"
+ },
+ "latest_session": "2026-11-06",
+ "ok": 154,
+ "repaired_bars": 0,
+ "resolvable": 155,
+ "rows_min": 50,
+ "run_utc": "2026-11-07T08:07:35Z",
+ "sessions_fetched_now": 260,
+ "sessions_known": 260,
+ "sessions_pending": 0,
+ "sessions_without_file_now": [
+  "2025-12-24",
+  "2025-12-25",
+  "2025-12-26",
+  "2025-12-31",
+  "2026-01-01",
+  "2026-01-06",
+  "2026-04-03",
+  "2026-04-06",
+  "2026-05-01",
+  "2026-06-04"
+ ],
+ "short_history_under_200": [
+  "KMP",
+  "MLP",
+  "NWA",
+  "SPH"
+ ],
+ "snapshot_tickers": 371,
+ "source": "archiwum notowań GPW (gpw.pl)",
+ "suspect_jumps_over_30pct": {},
+ "universe": 160,
+ "warnings": []
 }
