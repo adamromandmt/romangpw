@@ -16,4 +16,5 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - run: pip install xlrd==2.0.1
       - run: python3 -u tools/probe_sources.py
