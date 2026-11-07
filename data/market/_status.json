@@ -1,35 +1,41 @@
 {
- "run_utc": "2026-11-06T18:57:44Z",
+ "run_utc": "2026-11-07T07:25:20Z",
  "probe": {
   "eodhd": {
    "ok": false,
    "error": "EODHD pominięty",
    "sec": 0.0
   },
+  "biznesradar": {
+   "ok": true,
+   "last": "2026-11-06",
+   "rows": 50,
+   "sec": 1.2
+  },
+  "yahoo": {
+   "ok": false,
+   "error": "HTTP Error 429: Too Many Requests",
+   "sec": 6.3
+  },
   "stooq.pl": {
    "ok": false,
    "error": "brak nagłówka CSV: <!DOCTYPE html><html><head><meta charset=\"utf-8\"><meta name=\"robots\" content=\"no",
-   "sec": 0.9
+   "sec": 0.8
   },
   "stooq.com": {
    "ok": false,
    "error": "brak nagłówka CSV: <!DOCTYPE html><html><head><meta charset=\"utf-8\"><meta name=\"robots\" content=\"no",
-   "sec": 0.5
-  },
-  "biznesradar": {
-   "ok": true,
-   "last": "2026-11-05",
-   "rows": 50,
-   "sec": 1.2
+   "sec": 0.6
   }
  },
  "disabled_sources": {
   "eodhd": "pominięty (brak klucza)",
+  "yahoo": "nie przeszło próby: HTTP Error 429: Too Many Requests",
   "stooq.pl": "nie przeszło próby: brak nagłówka CSV: <!DOCTYPE html><html><head><meta charset=\"utf-8\"><meta name=\"robots\" content=\"no",
   "stooq.com": "nie przeszło próby: brak nagłówka CSV: <!DOCTYPE html><html><head><meta charset=\"utf-8\"><meta name=\"robots\" content=\"no"
  },
- "latest_session": "2026-11-05",
- "ok": 103,
+ "latest_session": "2026-11-06",
+ "ok": 99,
  "failed": {
   "CBF": [
    "biznesradar: HTTP Error 404: Not Found"
@@ -43,14 +49,26 @@
   "LVC": [
    "biznesradar: HTTP Error 404: Not Found"
   ],
+  "ODL": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "OND": [
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "OPL": [
+   "biznesradar: <urlopen error timed out>"
+  ],
   "OPN": [
-   "biznesradar: The read operation timed out"
+   "biznesradar: <urlopen error timed out>"
+  ],
+  "PCO": [
+   "biznesradar: <urlopen error timed out>"
   ],
   "PCR": [
    "biznesradar: <urlopen error timed out>"
   ],
   "PEO": [
-   "biznesradar: <urlopen error _ssl.c:994: The handshake operation timed out>"
+   "biznesradar: <urlopen error timed out>"
   ],
   "PEP": [
    "biznesradar: <urlopen error timed out>"
@@ -194,25 +212,25 @@
    "biznesradar: <urlopen error timed out>"
   ],
   "XTB": [
-   "biznesradar: <urlopen error timed out>"
+   "przekroczony budżet czasu"
   ],
   "YAN": [
-   "biznesradar: <urlopen error timed out>"
+   "przekroczony budżet czasu"
   ],
   "ZEP": [
-   "biznesradar: <urlopen error timed out>"
+   "przekroczony budżet czasu"
   ],
   "WIG": [
-   "biznesradar: <urlopen error timed out>"
+   "przekroczony budżet czasu"
   ],
   "WIG20": [
-   "biznesradar: <urlopen error timed out>"
+   "przekroczony budżet czasu"
   ],
   "MWIG40": [
-   "biznesradar: <urlopen error timed out>"
+   "przekroczony budżet czasu"
   ],
   "SWIG80": [
-   "biznesradar: <urlopen error timed out>"
+   "przekroczony budżet czasu"
   ]
  },
  "behind_latest_session": [
@@ -317,115 +335,107 @@
   "NVA": "biznesradar",
   "NVT": "biznesradar",
   "NWA": "biznesradar",
-  "NWG": "biznesradar",
-  "ODL": "biznesradar",
-  "OND": "biznesradar",
-  "OPL": "biznesradar",
-  "PCO": "biznesradar"
+  "NWG": "biznesradar"
  },
  "last_date": {
-  "11B": "2026-11-05",
-  "1AT": "2026-11-05",
-  "ABE": "2026-11-05",
-  "ABS": "2026-11-05",
-  "ACP": "2026-11-05",
-  "ALE": "2026-11-05",
-  "ALR": "2026-11-05",
-  "AMB": "2026-11-05",
-  "AMC": "2026-11-05",
-  "APN": "2026-11-05",
-  "APR": "2026-11-05",
-  "APT": "2026-11-05",
-  "ARH": "2026-11-05",
-  "ASB": "2026-11-05",
-  "ASE": "2026-11-05",
-  "AST": "2026-11-05",
-  "ATG": "2026-11-05",
-  "ATP": "2026-11-05",
-  "ATR": "2026-11-05",
-  "ATT": "2026-11-05",
-  "BCM": "2026-11-05",
-  "BDX": "2026-11-05",
-  "BFT": "2026-11-05",
-  "BHW": "2026-11-05",
-  "BIO": "2026-11-05",
-  "BNP": "2026-11-05",
-  "BOS": "2026-11-05",
-  "CAR": "2026-11-05",
-  "CDR": "2026-11-05",
-  "CEZ": "2026-11-05",
-  "CLD": "2026-11-05",
-  "CPS": "2026-11-05",
-  "CRJ": "2026-11-05",
-  "CSR": "2026-11-05",
-  "DBC": "2026-11-05",
-  "DCR": "2026-11-05",
-  "DEL": "2026-11-05",
-  "DGA": "2026-11-05",
-  "DIG": "2026-11-05",
-  "DNP": "2026-11-05",
-  "DOM": "2026-11-05",
-  "DVL": "2026-11-05",
-  "EAH": "2026-11-05",
-  "EBP": "2026-11-05",
-  "ECH": "2026-11-05",
-  "EDI": "2026-11-05",
-  "ELT": "2026-11-05",
-  "ENA": "2026-11-05",
-  "ENT": "2026-11-05",
-  "EUR": "2026-11-05",
-  "FAB": "2026-11-05",
-  "FRO": "2026-11-05",
-  "FTE": "2026-11-05",
-  "GOP": "2026-11-05",
-  "GPP": "2026-11-05",
-  "GPW": "2026-11-05",
-  "GRX": "2026-11-05",
-  "HUG": "2026-11-05",
-  "IFI": "2026-11-05",
-  "IMS": "2026-11-05",
-  "ING": "2026-11-05",
-  "INK": "2026-11-05",
-  "INL": "2026-11-05",
-  "INP": "2026-11-05",
-  "IPE": "2026-11-05",
-  "IZS": "2026-11-05",
-  "JSW": "2026-11-05",
-  "JWW": "2026-11-05",
-  "KGH": "2026-11-05",
-  "KMP": "2026-11-05",
-  "KPL": "2026-11-05",
-  "KRK": "2026-11-05",
-  "KRU": "2026-11-05",
-  "KTY": "2026-11-05",
-  "KVT": "2026-11-05",
-  "LBW": "2026-11-05",
-  "LEN": "2026-11-05",
-  "LKD": "2026-11-05",
-  "LPP": "2026-11-05",
-  "MAB": "2026-11-05",
-  "MAK": "2026-11-05",
-  "MBK": "2026-11-05",
-  "MBR": "2026-11-05",
-  "MDG": "2026-11-05",
-  "MEX": "2026-11-05",
-  "MGT": "2026-11-05",
-  "MIL": "2026-11-05",
-  "MLG": "2026-11-05",
+  "11B": "2026-11-06",
+  "1AT": "2026-11-06",
+  "ABE": "2026-11-06",
+  "ABS": "2026-11-06",
+  "ACP": "2026-11-06",
+  "ALE": "2026-11-06",
+  "ALR": "2026-11-06",
+  "AMB": "2026-11-06",
+  "AMC": "2026-11-06",
+  "APN": "2026-11-06",
+  "APR": "2026-11-06",
+  "APT": "2026-11-06",
+  "ARH": "2026-11-06",
+  "ASB": "2026-11-06",
+  "ASE": "2026-11-06",
+  "AST": "2026-11-06",
+  "ATG": "2026-11-06",
+  "ATP": "2026-11-06",
+  "ATR": "2026-11-06",
+  "ATT": "2026-11-06",
+  "BCM": "2026-11-06",
+  "BDX": "2026-11-06",
+  "BFT": "2026-11-06",
+  "BHW": "2026-11-06",
+  "BIO": "2026-11-06",
+  "BNP": "2026-11-06",
+  "BOS": "2026-11-06",
+  "CAR": "2026-11-06",
+  "CDR": "2026-11-06",
+  "CEZ": "2026-11-06",
+  "CLD": "2026-11-06",
+  "CPS": "2026-11-06",
+  "CRJ": "2026-11-06",
+  "CSR": "2026-11-06",
+  "DBC": "2026-11-06",
+  "DCR": "2026-11-06",
+  "DEL": "2026-11-06",
+  "DGA": "2026-11-06",
+  "DIG": "2026-11-06",
+  "DNP": "2026-11-06",
+  "DOM": "2026-11-06",
+  "DVL": "2026-11-06",
+  "EAH": "2026-11-06",
+  "EBP": "2026-11-06",
+  "ECH": "2026-11-06",
+  "EDI": "2026-11-06",
+  "ELT": "2026-11-06",
+  "ENA": "2026-11-06",
+  "ENT": "2026-11-06",
+  "EUR": "2026-11-06",
+  "FAB": "2026-11-06",
+  "FRO": "2026-11-06",
+  "FTE": "2026-11-06",
+  "GOP": "2026-11-06",
+  "GPP": "2026-11-06",
+  "GPW": "2026-11-06",
+  "GRX": "2026-11-06",
+  "HUG": "2026-11-06",
+  "IFI": "2026-11-06",
+  "IMS": "2026-11-06",
+  "ING": "2026-11-06",
+  "INK": "2026-11-06",
+  "INL": "2026-11-06",
+  "INP": "2026-11-06",
+  "IPE": "2026-11-06",
+  "IZS": "2026-11-06",
+  "JSW": "2026-11-06",
+  "JWW": "2026-11-06",
+  "KGH": "2026-11-06",
+  "KMP": "2026-11-06",
+  "KPL": "2026-11-06",
+  "KRK": "2026-11-06",
+  "KRU": "2026-11-06",
+  "KTY": "2026-11-06",
+  "KVT": "2026-11-06",
+  "LBW": "2026-11-06",
+  "LEN": "2026-11-06",
+  "LKD": "2026-11-06",
+  "LPP": "2026-11-06",
+  "MAB": "2026-11-06",
+  "MAK": "2026-11-06",
+  "MBK": "2026-11-06",
+  "MBR": "2026-11-06",
+  "MDG": "2026-11-06",
+  "MEX": "2026-11-06",
+  "MGT": "2026-11-06",
+  "MIL": "2026-11-06",
+  "MLG": "2026-11-06",
   "MLP": "2026-11-04",
-  "MNC": "2026-11-05",
-  "MOL": "2026-11-05",
-  "MRB": "2026-11-05",
-  "MVP": "2026-11-05",
-  "NEU": "2026-11-05",
-  "NTT": "2026-11-05",
-  "NVA": "2026-11-05",
-  "NVT": "2026-11-05",
-  "NWA": "2026-11-05",
-  "NWG": "2026-11-05",
-  "ODL": "2026-11-05",
-  "OND": "2026-11-05",
-  "OPL": "2026-11-05",
-  "PCO": "2026-11-05"
+  "MNC": "2026-11-06",
+  "MOL": "2026-11-06",
+  "MRB": "2026-11-06",
+  "MVP": "2026-11-06",
+  "NEU": "2026-11-06",
+  "NTT": "2026-11-06",
+  "NVA": "2026-11-06",
+  "NVT": "2026-11-06",
+  "NWA": "2026-11-06",
+  "NWG": "2026-11-06"
  }
 }
