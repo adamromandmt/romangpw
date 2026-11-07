@@ -1,0 +1,31 @@
+{
+  "_opis": "Konfiguracja zakładki „Newsy dnia”. Edytuj ten plik, żeby dodawać/usuwać źródła i zmieniać progi; kryteria wyboru newsów są w NEWS-METHOD.md. Pole enabled=false wyłącza źródło bez usuwania wpisu.",
+  "config": {
+    "min_score": 6,
+    "max_items": 8,
+    "max_age_hours": 36,
+    "dedup_last_issues": 3,
+    "publish_when_empty": false
+  },
+  "sources": [
+    {"id": "strefainwestorow", "name": "Strefa Inwestorów (depesze PAP Biznes)", "url": "https://strefainwestorow.pl/", "type": "depesze", "priority": 1, "enabled": true, "access": "ok",
+     "notes": "Wyniki vs konsensus PAP Biznes, komunikaty spółek, „Dzień na rynkach”. Adresy artykułów zawierają datę (/wiadomosci/RRRRMMDD/...). Analizy częściowo płatne."},
+    {"id": "stockwatch", "name": "StockWatch.pl", "url": "https://www.stockwatch.pl/", "type": "depesze", "priority": 2, "enabled": true, "access": "ok",
+     "notes": "Kontrakty, komunikaty spółek, rynek obligacji i surowców. Artykuły „STREFA PREMIUM” są płatne — pomijaj."},
+    {"id": "parkiet", "name": "Parkiet — giełda", "url": "https://www.parkiet.com/gielda", "type": "komentarz", "priority": 3, "enabled": true, "access": "ok",
+     "notes": "Lista bez godzin publikacji. Używaj do potwierdzania faktów i kontekstu, nie do opinii. Część treści może być płatna."},
+    {"id": "bankier", "name": "Bankier.pl — wiadomości giełdowe", "url": "https://www.bankier.pl/gielda/wiadomosci/", "type": "depesze", "priority": 2, "enabled": false, "access": "zablokowane",
+     "notes": "Sprawdzone 6.11.2026: odpowiedź client_error. Można ponowić po zmianie sposobu pobierania."},
+    {"id": "x", "name": "X (Twitter) — wpisy influencerów", "url": "https://x.com/", "type": "social", "priority": 3, "enabled": false, "access": "zablokowane",
+     "notes": "robots.txt zabrania pobierania. Wypowiedzi osób z listy people można znajdować tylko przez wyszukiwarkę, gdy cytują je media."},
+    {"id": "pap_biznes", "name": "PAP Biznes", "url": "https://biznes.pap.pl/", "type": "depesze", "priority": 1, "enabled": false, "access": "zablokowane",
+     "notes": "Wg wcześniejszych prób blokada (Incapsula/403). Depesze PAP są dostępne pośrednio przez Strefę Inwestorów."}
+  ],
+  "candidates": [
+    {"name": "GPW — komunikaty i rewizje indeksów", "url": "https://www.gpw.pl/", "note": "do sprawdzenia: ESPI/EBI i zmiany w indeksach"},
+    {"name": "Relacje inwestorskie spółek z WIG20", "url": "", "note": "do sprawdzenia: komunikaty bezpośrednio od spółek"},
+    {"name": "GUS / NBP / RPP", "url": "", "note": "dane makro i decyzje; wcześniej bywały blokowane — sprawdzić ponownie"}
+  ],
+  "people": [],
+  "queries": []
+}

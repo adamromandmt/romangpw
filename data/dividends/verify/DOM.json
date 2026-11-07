@@ -1,0 +1,40 @@
+{
+  "tic": "DOM",
+  "announced_current_cycle": "tak",
+  "announcement_note": "Zaliczka na poczet dywidendy za 2026 ogłoszona 2026-10-07 (decyzja zarządu + zgoda RN tego samego dnia, na podstawie badanego sprawozdania za I poł. 2026): 7,35 zł/akcję, 189,6 mln zł, ostatni dzień z prawem 2026-11-30, dzień dywidendy 2026-12-02, wypłata 2026-12-09 (jeszcze niewypłacona). Ostatnia ZAKOŃCZONA wypłata: dywidenda końcowa za 2025, 7,00 zł, wypłacona 2026-07-02 (łącznie za 2025: 14,00 zł). Dywidenda KOŃCOWA za 2026 (druga transza) NIE jest jeszcze ogłoszona - rekomendacja spodziewana w marcu 2027 razem z raportem rocznym. Uwaga: pola 'agm_date' z dividends.py/biznesradaru dla jesiennych zaliczek (2024-10-08, 2025-10-06, 2026-10-07) to daty decyzji/komunikatu zarządu, nie WZA - zaliczka nie wymaga WZA.",
+  "history": [
+    {"fy": 2026, "type": "zaliczka", "rec_date": "2026-10-07", "rec_dps": 7.35, "agm_date": null, "final_dps": 7.35, "cum_date": "2026-11-30", "pay_date": "2026-12-09", "source": "https://strefainwestorow.pl/dywidendy/dom-development-zaliczka-dywidenda-2026-2027"},
+    {"fy": 2025, "type": "koncowa", "rec_date": "2026-03-17", "rec_dps": 14.0, "agm_date": "2026-06-18", "final_dps": 7.0, "cum_date": "2026-06-23", "pay_date": "2026-07-02", "source": "https://www.parkiet.com/komunikaty-espi/art43978151-dom-development-spolka-akcyjna-rekomendacja-zarzadu-dotyczaca-wyplaty-dywidendy", "note": "ESPI 4/2026 z 2026-03-17: rekomendacja łącznej dywidendy 14,00 zł za 2025 (w tym zaliczka 7,00 zł), do wypłaty 7,00 zł; WZA uchwaliło 14 zł (strefainwestorow 2026-06-18)"},
+    {"fy": 2025, "type": "zaliczka", "rec_date": "2025-10-06", "rec_dps": 7.0, "agm_date": null, "final_dps": 7.0, "cum_date": "2025-11-28", "pay_date": "2025-12-09", "source": "https://www.parkiet.com/komunikaty-espi/art43978151-dom-development-spolka-akcyjna-rekomendacja-zarzadu-dotyczaca-wyplaty-dywidendy", "note": "uchwała zarządu z 2025-10-06 (wg ESPI 4/2026); cum_date z danych biznesradaru"},
+    {"fy": 2024, "type": "koncowa", "rec_date": "2025-03-18", "rec_dps": 13.0, "agm_date": "2025-06-12", "final_dps": 7.0, "cum_date": "2025-06-23", "pay_date": "2025-07-03", "source": "https://www.parkiet.com/komunikaty-espi/art41959011-dom-development-spolka-akcyjna-rekomendacja-zarzadu-dotyczaca-wyplaty-dywidendy", "note": "ESPI 3/2025 z 2025-03-18: łącznie 13,00 zł (zaliczka 6,00 zł + 7,00 zł)"},
+    {"fy": 2024, "type": "zaliczka", "rec_date": "2024-10-08", "rec_dps": 6.0, "agm_date": null, "final_dps": 6.0, "cum_date": "2024-12-10", "pay_date": "2024-12-18", "source": "https://www.biznesradar.pl/a/130305,dom-development-planuje-6-zl-zaliczki-na-poczet-dywidendy-za-2024-r", "note": "zamiar ogłoszony 2024-10-08; formalna uchwała zarządu nr 01/11/24 z 2024-11-06 (po raporcie H1); cum_date z biznesradaru"},
+    {"fy": 2023, "type": "koncowa", "rec_date": null, "rec_dps": null, "agm_date": "2024-06-19", "final_dps": 6.5, "cum_date": "2024-06-24", "pay_date": "2024-07-04", "source": "https://www.biznesradar.pl/dywidenda/DOM", "note": "tylko dane biznesradaru (data rekomendacji nie sprawdzona)"},
+    {"fy": 2023, "type": "zaliczka", "rec_date": null, "rec_dps": null, "agm_date": null, "final_dps": 5.5, "cum_date": "2023-12-08", "pay_date": "2023-12-18", "source": "https://www.biznesradar.pl/dywidenda/DOM", "note": "tylko dane biznesradaru; data komunikatu nie sprawdzona"}
+  ],
+  "policy": "Model dwuetapowy: zaliczka w grudniu (po badanym raporcie półrocznym, do 50% zysku od początku roku) i dywidenda końcowa latem; intencja zarządu to zwiększanie DPS co roku szybciej niż inflacja przy zachowaniu silnego bilansu (komunikat z 2020-03-06, nadal stosowane: DPS za 2020-2025 rosło 10,0 -> 14,0 zł). Źródło: https://www.biznesradar.pl/a/87724,zarzad-dom-development-rekomenduje-rekordowa-dywidende-i-planuje-jej-zwiekszanie-w-kolejnych-latach oraz https://strefainwestorow.pl/dywidendy/dom-development-zaliczka-dywidenda-2026-2027",
+  "next_reports": [
+    {"what": "Q3 2026 (skonsolidowany)", "date": "2026-11-19", "source": "https://inwestor.domd.pl/en/file/CR%201_2026%20report%20dates%202026.pdf"},
+    {"what": "Raport roczny za 2026", "date": null, "source": "kalendarz na 2027 jeszcze nieopublikowany (raport za 2025 wyszedł 2026-03-17, za 2024: 2025-03-18)"}
+  ],
+  "expected_rec_window": {"from": "2027-03-10", "to": "2027-03-24", "basis": "dotyczy REKOMENDACJI DYWIDENDY KOŃCOWEJ za 2026 (druga transza): zarząd publikuje ją w dniu raportu rocznego - 2025-03-18 (FY2024) i 2026-03-17 (FY2025). Szacunek z dividends.py (2027-04-29, okno 04-14..05-07) jest wyprowadzony z terminów WZA i NIE pasuje do DOM. Kolejna zaliczka (FY2027) - komunikat ok. początku października 2027 (2024-10-08, 2025-10-06, 2026-10-07)."},
+  "results_note": "I poł. 2026: zysk netto grupy 258,5 mln zł, przychody 1 560,9 mln zł, EBIT 320,7 mln zł (II kw.: 78,5 mln zł netto) - wystarcza na zaliczkę 189,6 mln zł; FY2025 zysk netto jednostkowy 580,8 mln zł, dywidenda łącznie 361,2 mln zł (62%). Źródła: https://strefainwestorow.pl/wiadomosci/20260827/zysk-netto-jd-dom-development-w-ii-kw-26-wyniosl-785-mln-zl-zgodnie-z-0 ; https://www.bankier.pl/wiadomosc/DOM-DEVELOPMENT-S-A-Rekomendacja-Zarzadu-dotyczaca-wyplaty-dywidendy-9099447.html",
+  "flags": [
+    "ZALICZKA ZA 2026 JUŻ OGŁOSZONA (2026-10-07, 7,35 zł, cum 2026-11-30, wypłata 2026-12-09) - dla skanera 'przed ogłoszeniem' cykl jesienny jest zamknięty",
+    "Dopiero dywidenda końcowa za 2026 jest przed ogłoszeniem (rekomendacja ok. marca 2027 z raportem rocznym), nie kwiecień/maj jak szacuje dividends.py",
+    "Daty 'agm_date' jesienią w danych biznesradaru to daty komunikatu zarządu, nie WZA",
+    "Raport Q3 2026 w dniu 2026-11-19 (przed cum zaliczki 2026-11-30)",
+    "Rozbieżność tekstu strefainwestorow (DPS 2023 = 12,00, 2024 = 13,00) vs tabela (6,5+5,5 oraz 7,0+6,0): zgodnie z ESPI FY2024 = 6,00 zaliczka + 7,00 = 13,00"
+  ],
+  "confidence": "wysoka",
+  "sources": [
+    "https://strefainwestorow.pl/dywidendy/dom-development-zaliczka-dywidenda-2026-2027",
+    "https://www.parkiet.com/komunikaty-espi/art43978151-dom-development-spolka-akcyjna-rekomendacja-zarzadu-dotyczaca-wyplaty-dywidendy",
+    "https://www.bankier.pl/wiadomosc/DOM-DEVELOPMENT-S-A-Rekomendacja-Zarzadu-dotyczaca-wyplaty-dywidendy-9099447.html",
+    "https://www.parkiet.com/komunikaty-espi/art41959011-dom-development-spolka-akcyjna-rekomendacja-zarzadu-dotyczaca-wyplaty-dywidendy",
+    "https://www.biznesradar.pl/a/130305,dom-development-planuje-6-zl-zaliczki-na-poczet-dywidendy-za-2024-r",
+    "https://strefainwestorow.pl/wiadomosci/20260618/dom-development-wyplaci-lacznie-14-zl-dywidendy-na-akcje-za-2025-rok",
+    "https://inwestor.domd.pl/en/file/CR%201_2026%20report%20dates%202026.pdf",
+    "https://strefainwestorow.pl/wiadomosci/20260827/zysk-netto-jd-dom-development-w-ii-kw-26-wyniosl-785-mln-zl-zgodnie-z-0",
+    "https://www.biznesradar.pl/a/87724,zarzad-dom-development-rekomenduje-rekordowa-dywidende-i-planuje-jej-zwiekszanie-w-kolejnych-latach"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "tic": "NTT",
+  "announced_current_cycle": "tak",
+  "announcement_note": "Dywidenda za 2025 już ogłoszona i uchwalona, ale jeszcze niewypłacona: rekomendacja zarządu ESPI 4/2026 z 2026-05-28 (do 0,22 zł/akcję, ok. 2,98 mln zł), WZA 2026-06-30 uchwaliło 0,22 zł (13 547 768 akcji, z zysku 2025 21,82 mln zł), dzień dywidendy 2026-09-30 (ostatni dzień z prawem 2026-09-28), wypłata 2026-12-30. Ostatnia ZAKOŃCZONA wypłata: 0,14 zł za 2024, wypłacona 2025-12-19. Rekomendacji za 2026 nie ma i nie powinno być przed II kw. 2027.",
+  "history": [
+    {"fy": 2025, "rec_date": "2026-05-28", "rec_dps": 0.22, "agm_date": "2026-06-30", "final_dps": 0.22, "cum_date": "2026-09-28", "pay_date": "2026-12-30", "source": "https://ntt.pl/wp-content/uploads/2026/06/raport04_2026.pdf", "note": "ESPI 4/2026; uchwała WZA: https://www.parkiet.com/komunikaty-espi/art44738921-ntt-system-spolka-akcyjna-uchwala-o-wyplacie-dywidendy-podjeta-przez-zwyczajne-walne-zgromadzenie-ntt-system-s-a-w-dniu-30-czerwca-2026-roku ; dzień dywidendy 2026-09-30"},
+    {"fy": 2024, "rec_date": "2025-05-15", "rec_dps": 0.12, "agm_date": "2025-06-27", "final_dps": 0.14, "cum_date": "2025-09-23", "pay_date": "2025-12-19", "source": "https://ntt.pl/wp-content/uploads/2025/06/raport11_2025.pdf", "note": "ESPI 7/2025: rekomendacja 'do 0,12 zł' (raport07_2025), WZA uchwaliło 0,14 zł (raport 11/2025); dzień dywidendy 2025-09-25"},
+    {"fy": 2023, "rec_date": "2024-04-22", "rec_dps": 0.12, "agm_date": "2024-06-27", "final_dps": 0.15, "cum_date": "2024-09-23", "pay_date": "2024-09-27", "source": "https://ntt.pl/wp-content/uploads/2024/04/raport07_2024.pdf", "note": "ESPI 6/2024 z 2024-04-22 (rekomendacja zarządu, do 0,12 zł), opinia RN 7/2024 z 2024-04-24; DPS uchwalony 0,15 wg biznesradaru/strefainwestorow (uchwały WZA nie pobrano)"}
+  ],
+  "policy": "Brak formalnej polityki dywidendowej w znalezionych źródłach; zarząd uzasadnia rekomendację utrzymaniem optymalnego poziomu kapitałów własnych, finansowaniem kapitału obrotowego i rozwojem, wypłaty niskie (2-14% zysku jednostkowego: 2,98 mln zł z 21,8 mln zł za 2025). Źródło: https://ntt.pl/wp-content/uploads/2026/06/raport04_2026.pdf ; https://strefainwestorow.pl/notowania/spolki/PLNTSYS00013/dywidendy",
+  "next_reports": [
+    {"what": "Q3 2026", "date": "2026-11-27", "source": "https://strefainwestorow.pl/dane/raporty/lista-publikacji-raportow-okresowych/all (kalendarium serwisu; harmonogram spółki nie pobrany)"},
+    {"what": "Raport roczny za 2026", "date": null, "source": "terminarz 2027 nieopublikowany"}
+  ],
+  "expected_rec_window": {"from": "2027-04-20", "to": "2027-05-31", "basis": "rekomendacje zarządu: 2024-04-22, 2025-05-15, 2026-05-28 (trend coraz później); dividends.py: 2027-04-27..05-18. Dotyczy dywidendy za 2026; WZA zawsze ok. 27-30 VI, cum we wrześniu, wypłata X-XII"},
+  "results_note": "I poł. 2026 (skonsolidowane, raport 2026-09-30): przychody 637,6 mln zł (vs 516,4), zysk operacyjny 32,5 mln zł (vs 11,4), zysk netto 21,1 mln zł (vs 7,8), EPS 1,55 zł. FY2025 zysk netto jednostkowy 21,8 mln zł, FY2024 27,2 mln zł. Zdolność do wypłaty duża względem niskiego payoutu. Źródła: https://www.biznesradar.pl/a/158302,ntt-system-sa-raport-okresowy-polroczny-za-psr ; https://ntt.pl/wp-content/uploads/2025/06/raport11_2025.pdf",
+  "flags": [
+    "Dywidenda za 2025 uchwalona, ale NIEWYPŁACONA (wypłata 2026-12-30) - dla skanera 'przed ogłoszeniem' to cykl w toku; kolejna rekomendacja (FY2026) dopiero ok. V 2027",
+    "WZA dwukrotnie uchwaliło więcej niż rekomendacja zarządu (FY2023: 0,15 vs 'do 0,12'; FY2024: 0,14 vs 'do 0,12') - rekomendacja bywa zaniżona (ścieżka akcjonariuszy/projektów uchwał, nie zbadano przyczyny)",
+    "dividends.py traktuje FY2025 jako zakończony (status 'uchwalona'), a wypłata jest 2026-12-30",
+    "Bardzo niski payout i stopa ~1,4% (kurs 30,70 zł na 2026-11-04)",
+    "Data Q3 2026 (2026-11-27) tylko z kalendarium strefainwestorow"
+  ],
+  "confidence": "wysoka",
+  "sources": [
+    "https://ntt.pl/wp-content/uploads/2026/06/raport04_2026.pdf",
+    "https://www.bankier.pl/wiadomosc/NTT-SYSTEM-S-A-Rekomendacja-Zarzadu-NTT-System-S-A-w-sprawie-podzialu-zysku-netto-za-2025-rok-9141484.html",
+    "https://www.parkiet.com/komunikaty-espi/art44738921-ntt-system-spolka-akcyjna-uchwala-o-wyplacie-dywidendy-podjeta-przez-zwyczajne-walne-zgromadzenie-ntt-system-s-a-w-dniu-30-czerwca-2026-roku",
+    "https://ntt.pl/wp-content/uploads/2025/05/raport07_2025.pdf",
+    "https://ntt.pl/wp-content/uploads/2025/06/raport11_2025.pdf",
+    "https://ntt.pl/wp-content/uploads/2024/04/raport07_2024.pdf",
+    "https://strefainwestorow.pl/notowania/spolki/PLNTSYS00013/dywidendy",
+    "https://www.biznesradar.pl/a/158302,ntt-system-sa-raport-okresowy-polroczny-za-psr",
+    "https://strefainwestorow.pl/dane/raporty/lista-publikacji-raportow-okresowych/all"
+  ]
+}

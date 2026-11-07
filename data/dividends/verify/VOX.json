@@ -1,0 +1,42 @@
+{
+  "tic": "VOX",
+  "announced_current_cycle": "nie",
+  "announcement_note": "Stan na 2026-11-05: nie znaleziono rekomendacji/zamiaru dywidendy za 2026 ani zaliczki (lista komunikatow biznesradar do 21.10.2026 i strefainwestorow z 30.10.2026 bez takiej pozycji). UWAGA: poprzedni cykl nie jest jeszcze w pelni zakonczony - dywidenda 2,50 zl za 2025 (26,26 mln zl) uchwalona na WZA 30.06.2026 (ESPI 16/2026), dzien dywidendy 30.09.2026, ostatni dzien z prawem 28.09.2026, WYPLATA 04.12.2026 jednorazowo. Rekomendacja za 2025: uchwala Zarzadu o podziale zysku (2,50 zl) opublikowana 03.06.2026 razem z materialami na WZA (financialreports.eu); osobnego ESPI z tytulem 'Rekomendacja...' za 2026 nie odnaleziono.",
+  "history": [
+    {"fy": 2025, "rec_date": "2026-06-03", "rec_dps": 2.50, "agm_date": "2026-06-30", "final_dps": 2.50, "cum_date": "2026-09-28", "source": "https://www.parkiet.com/komunikaty-espi/art44740291-voxel-spolka-akcyjna-uchwala-o-wyplacie-dywidendy-podjeta-przez-zwyczajne-walne-zgromadzenie-w-dniu-30-czerwca-2026-roku", "note": "rec_date to data publikacji uchwaly Zarzadu w materialach WZA (https://financialreports.eu/companies/voxel-sa/); dzien dywidendy 2026-09-30, wyplata 2026-12-04 (jeszcze niewyplacona)"},
+    {"fy": 2024, "rec_date": "2025-06-03", "rec_dps": 3.00, "agm_date": "2025-06-30", "final_dps": 4.78, "cum_date": "2025-09-23", "source": "https://biznes.pap.pl/wiadomosci/firmy/voxel-medical-wants-pay-dividend-pln-3-share-2024-profit", "note": "Zarzad rekomendowal 3,00 zl (31,5 mln zl), WZA uchwalilo 4,78 zl (50,2 mln zl) - roznica nieznana przyczyna (nie zweryfikowano wnioskodawcy); wyplata 2025-10-10"},
+    {"fy": 2023, "rec_date": null, "rec_dps": null, "agm_date": "2024-06-28", "final_dps": 2.78, "cum_date": "2024-09-18", "source": "https://www.biznesradar.pl/dywidenda/VOX", "note": "daty rekomendacji nie potwierdzono (bankier 8550597 nieczytelny); wyplata 2024-12-06"},
+    {"fy": 2022, "rec_date": null, "rec_dps": null, "agm_date": "2023-06-30", "final_dps": 2.17, "cum_date": "2023-09-27", "source": "https://www.biznesradar.pl/dywidenda/VOX", "note": "daty rekomendacji nie potwierdzono; wyplata 2023-12-21"}
+  ],
+  "policy": "Polityka dywidendowa na lata 2021-2025 (przyjeta 11.01.2021): rekomendacja min. 50% jednostkowego zysku netto oraz min. 25% funduszu dywidendowego z kapitalu rezerwowego 2015-2017 (https://www.biznesradar.pl/a/96429,voxel-z-nowa-polityka-dywidendowa). Polityka objela lata do FY2025 wlacznie; nowej polityki na FY2026+ nie znaleziono.",
+  "next_reports": [
+    {"what": "Q3 2026 (raport kwartalny skonsolidowany)", "date": "2026-11-26", "source": "https://www.parkiet.com/komunikaty-espi/art43731141-voxel-spolka-akcyjna-terminy-publikacji-raportow-okresowych-w-roku-obrotowym-2026"},
+    {"what": "Raport roczny za 2026", "date": null, "source": "kalendarz na 2027 jeszcze nieopublikowany (raport za 2025 wyszedl 26.03.2026 wg kalendarza z 30.01.2026)"}
+  ],
+  "expected_rec_window": {"from": "2027-05-25", "to": "2027-06-10", "basis": "Rekomendacje/uchwaly Zarzadu publikowane 03.06.2025 i 03.06.2026, czyli razem z ogloszeniem o zwolaniu WZA (WZA 30.06 oba lata; 28.06.2024; 30.06.2023). Tylko 2 potwierdzone obserwacje. Okno dividends.py (27.04-18.05, est. 11.05) jest ok. 3-4 tygodnie za wczesne wzgledem faktycznych dat."},
+  "results_note": "Q2 2026: przychody 184,8 mln zl (+20,9% vs konsensus), EBITDA 58,2 mln zl, zysk netto jedn. dominujacej 32,5 mln zl (+45,5% vs konsensus; https://strefainwestorow.pl/wiadomosci/20260903/wyniki-voxel-w-ii-kw-2026-roku-vs-konsensus-pap-tabela); H1 2026: przychody 342,0 mln zl, zysk netto 65,7 mln zl, z czego 64,4 mln zl dla akcjonariuszy jedn. dominujacej (https://www.biznesradar.pl/a/151396,voxel-sa-raport-okresowy-polroczny-za-psr). Zdolnosc do wyplaty wysoka (dywidenda 26,3 mln zl vs zysk netto H1 64,4 mln zl).",
+  "flags": [
+    "Dywidenda za 2025 (2,50 zl) jeszcze niewyplacona - wyplata 04.12.2026; dividends.py oznacza ja jako zakonczony cykl",
+    "Korekta raportu rocznego za 2025 i Q1 2026 (1.09.2026) po zaleceniach KNF z 16.07.2026: odpis 7,05 mln zl (podatek u zrodla od dywidend 2020-2022 od podmiotu dominujacego), zysk netto 2024 obnizony, 2025 bez wplywu (https://www.biznesradar.pl/a/150721,voxel-sa-21-2026-korekta-raportu-rocznego-za-2025-rok)",
+    "Termin raportu H1 2026 przesuniety z 27.08 na 03.09.2026; 25.08.2026 komunikat o zmianie terminu - sprawdzic czy Q3 (26.11) bez zmian",
+    "WZA 2025 podniosl dywidende z rekomendowanych 3,00 do 4,78 zl; akcjonariusz Voxel SARL zlozyl 09.06.2026 wniosek o uzupelnienie porzadku obrad WZA 2026 (zatwierdzenie polaczenia i zmiana statutu)",
+    "Polaczenie z Pro-Scan i Supramed Konin zarejestrowane 31.07.2026; zmiana statutu",
+    "Polityka dywidendowa 2021-2025 wygasla; brak nowej - kwota za 2026 nieprzewidywalna",
+    "Okno dividends.py zbyt wczesne (maj vs poczatek czerwca)"
+  ],
+  "confidence": "srednia",
+  "sources": [
+    "https://www.parkiet.com/komunikaty-espi/art44740291-voxel-spolka-akcyjna-uchwala-o-wyplacie-dywidendy-podjeta-przez-zwyczajne-walne-zgromadzenie-w-dniu-30-czerwca-2026-roku",
+    "https://financialreports.eu/companies/voxel-sa/",
+    "https://financialreports.eu/companies/voxel-sa/?page=2",
+    "https://biznes.pap.pl/wiadomosci/firmy/voxel-medical-wants-pay-dividend-pln-3-share-2024-profit",
+    "https://www.biznesradar.pl/dywidenda/VOX",
+    "https://strefainwestorow.pl/notowania/spolki/PLVOXEL00014/dywidendy",
+    "https://www.biznesradar.pl/a/96429,voxel-z-nowa-polityka-dywidendowa",
+    "https://www.parkiet.com/komunikaty-espi/art43731141-voxel-spolka-akcyjna-terminy-publikacji-raportow-okresowych-w-roku-obrotowym-2026",
+    "https://www.biznesradar.pl/wiadomosci/VOXEL",
+    "https://www.biznesradar.pl/a/150721,voxel-sa-21-2026-korekta-raportu-rocznego-za-2025-rok",
+    "https://www.biznesradar.pl/a/151396,voxel-sa-raport-okresowy-polroczny-za-psr",
+    "https://strefainwestorow.pl/wiadomosci/20260903/wyniki-voxel-w-ii-kw-2026-roku-vs-konsensus-pap-tabela"
+  ]
+}

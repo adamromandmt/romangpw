@@ -1,0 +1,41 @@
+{
+  "tic": "KTY",
+  "announced_current_cycle": "nie",
+  "announcement_note": "Stan na 2026-11-05: nie znaleziono rekomendacji za FY2026 (ppcg: 'decyzja o dywidendzie za 2026' bez daty; hipotetyczne ok. 55 zł/akcję to wyliczenie autora, nie komunikat). Cykl FY2025 właśnie zamknięty: rekomendacja Zarządu 2026-04-20 (49,05 zł, zysk netto 553,04 mln zł, dwie transze), WZA 2026-06-18 uchwaliło 48,97 zł (po aktualizacji liczby akcji; transze 16,33 zł wypłacona 2026-09-03 i 32,64 zł wypłacona 2026-11-04; ostatni dzień z prawem 2026-08-17, dzień dywidendy 2026-08-19).",
+  "history": [
+    {"fy": 2021, "rec_date": "2022-04-22", "rec_dps": 52.40, "agm_date": "2022-05-25", "final_dps": 52.37, "cum_date": "2022-07-07", "source": "https://www.biznesradar.pl/a/109153,zarzad-grupy-kety-rekomenduje-rekordowa-dywidende"},
+    {"fy": 2022, "rec_date": null, "rec_dps": null, "agm_date": "2023-06-21", "final_dps": 62.50, "cum_date": "2023-08-18", "source": "https://strefainwestorow.pl/dywidendy/grupa-kety-dywidenda-2026"},
+    {"fy": 2023, "rec_date": "2024-04-22", "rec_dps": 55.70, "agm_date": "2024-05-29", "final_dps": 55.41, "cum_date": "2024-08-19", "source": "https://grupakety.com/en/raporty_biezace/motion-of-the-management-board-of-grupa-kety-s-a-with-regard-to-2023-profit-distribution-and-dividend-payment-as-well-as-assessment-of-the-motion-by-the-supervisory-board/"},
+    {"fy": 2024, "rec_date": "2025-04-22", "rec_dps": 48.78, "agm_date": "2025-05-28", "final_dps": 55.46, "cum_date": "2025-08-18", "source": "https://www.parkiet.com/komunikaty-espi/art42158701-grupa-kety-sa-wniosek-zarzadu-grupy-kety-s-a-w-sprawie-podzialu-zysku-osiagnietego-w-2024-roku-i-wyplaty-dywidendy-oraz-ocena-tego-wniosku-przez-rade-nadzorcza"},
+    {"fy": 2025, "rec_date": "2026-04-20", "rec_dps": 49.05, "agm_date": "2026-06-18", "final_dps": 48.97, "cum_date": "2026-08-17", "source": "https://grupakety.com/en/raporty_biezace/motion-of-the-management-board-of-grupa-kety-s-a-with-regard-to-2025-profit-distribution-and-dividend-payment-as-well-as-assessment-of-the-motion-by-the-supervisory-board/"}
+  ],
+  "policy": "Strategia/polityka 2025-2029 (RB z 2025-04-22): wypłata 60-100% skonsolidowanego zysku netto za poprzedni rok, średnio ok. 85%, łącznie ok. 2,59 mld zł w latach 2025-2029 (https://www.biznesradar.pl/a/135321,nowa-strategia-grupy-kety-wzrost-przychodow-o-8-6-rocznie-i-2-6-mld-zl-dla-akcjonariuszy). Po ogłoszeniu przejęcia Metra zarząd twierdzi, że polityka się nie zmienia (https://xyz.pl/grupa-kety-przed-gigantyczna-akwizycja-za-28-mld-zl-oto-szanse-i-zagrozenia/). Wypłata w dwóch transzach (wrzesień i listopad).",
+  "next_reports": [
+    {"what": "Q3 2026 (opublikowany wg kalendarza 2026-10-26; wstępne dane podane 2026-09-24)", "date": "2026-10-26", "source": "https://grupakety.com/en/raporty_biezace/interim-reports-publishing-dates-and-calendar-of-corporate-events-for-the-year-2026/"},
+    {"what": "Raport roczny za 2026 (kalendarz 2027 jeszcze nieopublikowany; raport roczny za 2025 ukazał się 2026-03-26)", "date": null, "source": "https://grupakety.com/en/raporty_biezace/interim-reports-publishing-dates-and-calendar-of-corporate-events-for-the-year-2026/"}
+  ],
+  "expected_rec_window": {"from": "2027-04-17", "to": "2027-04-24", "basis": "Rekomendacje Zarządu: 2022-04-22, 2024-04-22, 2025-04-22, 2026-04-20 (rok 2023 nie ustalono) - w kilka tygodni po raporcie rocznym (2026-03-26), tuż przed rozpoczęciem sezonu WZA. Okno ze skryptu (2027-04-07..05-14, est. 04-29) jest szersze i późniejsze."},
+  "results_note": "Q3 2026 wstępnie (2026-09-24): przychody ok. 1,62 mld zł (+11,6%), EBITDA ok. 325 mln zł (+10%), zysk netto jedn. dominującej ok. 201 mln zł (+14%), dług netto ok. 1,18 mld zł; po przejęciu Metra ND/EBITDA ok. 2,5-2,7x wobec 1,3x planowanego na koniec roku (https://ppcg.com.pl/grupa-kety-kty-wyniki-iii-kwartal-2026-zgodne-z-konsensusem/). Zysk netto FY2025 553,0 mln zł, wypłata 482,8 mln zł (ok. 87%).",
+  "flags": [
+    "Przejęcie Metra (Fengari Holdings): umowa warunkowa 2026-09-14, cena do 450 mln EUR (EV 645 mln EUR, ok. 2,8 mld zł), finansowanie kredytem pomostowym 2 mld zł z Pekao; zamknięcie najwcześniej 2027-01-07, najpóźniej w I kw. 2027; wymaga zgód antymonopolowych. Zarząd: polityka bez zmian, ale analityk spodziewa się payoutu bliżej 60% zysku (https://xyz.pl/grupa-kety-przed-gigantyczna-akwizycja-za-28-mld-zl-oto-szanse-i-zagrozenia/). Ryzyko niższej DPS za FY2026 i kowenantów.",
+    "FY2024: rekomendacja Zarządu z 2025-04-22 wynosiła 48,78 zł, a uchwała WZA z 2025-05-28 to 55,50 zł (po aktualizacji liczby akcji 55,46 zł) - nie ustaliłem, czy rekomendację zmieniono po 22 kwietnia; kwoty końcowe pochodzą z RB spółki (grupakety.com, 'update of information on the number of shares covered with the dividend') i biznesradar.",
+    "Drobne rozbieżności kwot FY2025: biznesradar/dividends.py 48,96 (16,32+32,64) vs komunikat spółki i strefainwestorow 48,97 (16,33+32,64) - przyjęto wersję spółki.",
+    "Dywidenda wypłacana zawsze w dwóch transzach (ok. 1/3 w sierpniu/wrześniu, ok. 2/3 w listopadzie) - dzień dywidendy jest w sierpniu, więc ekspozycja 'przed ogłoszeniem' kończy się w kwietniu.",
+    "Pełnych wyników Q3 2026 (raport z 2026-10-26) nie czytano - użyto szacunków wstępnych z 2026-09-24."
+  ],
+  "confidence": "średnia",
+  "sources": [
+    "https://grupakety.com/en/raporty_biezace/motion-of-the-management-board-of-grupa-kety-s-a-with-regard-to-2025-profit-distribution-and-dividend-payment-as-well-as-assessment-of-the-motion-by-the-supervisory-board/",
+    "https://strefainwestorow.pl/dywidendy/grupa-kety-dywidenda-2026",
+    "https://strefainwestorow.pl/wiadomosci/20260618/grupa-kety-wyplaci-4897-zl-dywidendy-na-akcje-za-25",
+    "https://www.parkiet.com/komunikaty-espi/art42158701-grupa-kety-sa-wniosek-zarzadu-grupy-kety-s-a-w-sprawie-podzialu-zysku-osiagnietego-w-2024-roku-i-wyplaty-dywidendy-oraz-ocena-tego-wniosku-przez-rade-nadzorcza",
+    "https://grupakety.com/en/raporty_biezace/update-of-information-on-the-number-of-shares-covered-with-the-dividend-passed-by-the-annual-general-meeting/",
+    "https://grupakety.com/?p=17704",
+    "https://grupakety.com/en/raporty_biezace/motion-of-the-management-board-of-grupa-kety-s-a-with-regard-to-2023-profit-distribution-and-dividend-payment-as-well-as-assessment-of-the-motion-by-the-supervisory-board/",
+    "https://www.biznesradar.pl/a/109153,zarzad-grupy-kety-rekomenduje-rekordowa-dywidende",
+    "https://www.biznesradar.pl/a/135321,nowa-strategia-grupy-kety-wzrost-przychodow-o-8-6-rocznie-i-2-6-mld-zl-dla-akcjonariuszy",
+    "https://grupakety.com/en/raporty_biezace/interim-reports-publishing-dates-and-calendar-of-corporate-events-for-the-year-2026/",
+    "https://ppcg.com.pl/grupa-kety-kty-wyniki-iii-kwartal-2026-zgodne-z-konsensusem/",
+    "https://xyz.pl/grupa-kety-przed-gigantyczna-akwizycja-za-28-mld-zl-oto-szanse-i-zagrozenia/"
+  ]
+}

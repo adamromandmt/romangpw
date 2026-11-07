@@ -1,0 +1,66 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://www.gpwradar.pl/schemas/ranking.schema.json",
+ "title": "Ranking dzienny GPW Radar",
+ "description": "Dane z tabeli rankingu raportu reports/RRRR-MM-DD.md, wyciągane przez ranking.py i zapisywane obok raportu jako reports/RRRR-MM-DD.json. Ceny i poziomy w PLN. Raport (Markdown) pozostaje źródłem; plik jest generowany przy każdym buildzie.",
+ "type": "object",
+ "additionalProperties": false,
+ "required": ["schema", "date", "columns", "candidates"],
+ "properties": {
+  "schema": {"const": 1, "description": "Wersja schematu."},
+  "date": {"type": "string", "format": "date", "description": "Data raportu (z nazwy pliku)."},
+  "columns": {"type": "array", "items": {"type": "string"}, "description": "Nagłówki tabeli rankingu w raporcie."},
+  "candidates": {"type": "array", "items": {"$ref": "#/$defs/candidate"}}
+ },
+ "$defs": {
+  "number": {"type": ["number", "null"]},
+  "text": {"type": ["string", "null"]},
+  "candidate": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": ["rank", "tic", "score", "class", "entry", "stop", "t1", "t2", "r1", "r2", "r_basis", "earnings"],
+   "properties": {
+    "rank": {"type": "integer", "minimum": 1},
+    "tic": {"type": "string", "minLength": 1, "description": "Skrót spółki na GPW."},
+    "name": {"$ref": "#/$defs/text"},
+    "sector": {"$ref": "#/$defs/text"},
+    "price": {"$ref": "#/$defs/number", "description": "Kurs podany w raporcie."},
+    "price_asof": {"type": ["string", "null"], "format": "date", "description": "Data kursu, gdy raport zaznaczył inną niż ostatnia sesja (np. „1 610 (3.11)”)."},
+    "off_high_pct": {"$ref": "#/$defs/number", "description": "Odległość od maksimum z ostatnich 50 sesji w procentach (ujemna = poniżej szczytu)."},
+    "rsi": {"$ref": "#/$defs/number"},
+    "trend": {"$ref": "#/$defs/text"},
+    "support": {"$ref": "#/$defs/text"},
+    "fund": {"$ref": "#/$defs/number", "description": "Punkty fundamentów (z 30)."},
+    "tech": {"$ref": "#/$defs/number", "description": "Punkty techniki (z 70)."},
+    "score": {"$ref": "#/$defs/number", "description": "Suma punktów (0–100)."},
+    "class": {"enum": ["A", "B", "C", null], "description": "Klasa setupu: A gotowy do wejścia, B lista obserwacyjna, C wczesny/agresywny."},
+    "class_note": {"type": "string"},
+    "entry": {
+     "type": ["object", "null"],
+     "additionalProperties": false,
+     "required": ["lo", "hi", "breakout"],
+     "properties": {
+      "lo": {"type": "number"}, "hi": {"type": "number"},
+      "breakout": {"type": "boolean", "description": "Wejście na wybiciu (zapis „>241”): lo = hi = poziom wybicia."}
+     }
+    },
+    "stop": {"$ref": "#/$defs/number"},
+    "t1": {"$ref": "#/$defs/number", "description": "Cel 1 (kolumna C1)."},
+    "t2": {"$ref": "#/$defs/number", "description": "Cel 2 (kolumna C2)."},
+    "r1": {"$ref": "#/$defs/number", "description": "R do celu 1, jak w raporcie."},
+    "r2": {"$ref": "#/$defs/number", "description": "R do celu 2, jak w raporcie."},
+    "r_basis": {"enum": ["entry", "price"], "description": "Od czego policzono R: od wejścia (środek strefy lub poziom wybicia) albo od kursu (raport dopisał „od kursu”)."},
+    "earnings": {
+     "type": ["object", "null"],
+     "additionalProperties": false,
+     "required": ["text", "date", "days"],
+     "properties": {
+      "text": {"type": "string"},
+      "date": {"type": ["string", "null"], "format": "date", "description": "Pierwsza data dd.mm z tekstu (przyszła albo przeszła, np. już opublikowane wyniki)."},
+      "days": {"type": ["integer", "null"], "description": "Dni od daty raportu do tej daty; ujemne = data przeszła."}
+     }
+    }
+   }
+  }
+ }
+}

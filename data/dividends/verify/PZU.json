@@ -1,0 +1,40 @@
+{
+  "tic": "PZU",
+  "announced_current_cycle": "nie",
+  "announcement_note": "Stan na 2026-11-05: brak rekomendacji/zaliczki za 2026 (dywidenda wyplacana w 2027). Ostatnia rekomendacja: 4,80 zl za 2025 (ok. 4,14 mld zl, w tym 1,09 mld zl z kapitalu zapasowego z zysku 2024), opublikowana 13.05.2026 (biznesradar 147277, 10:41; strefainwestorow 13.05.2026), WZA 18.06.2026, dzien dywidendy 17.09.2026, wyplata 08.10.2026. PZU nie wyplaca zaliczek (brak w danych). Nie znaleziono komunikatu o zamiarze dywidendy za 2026; polityka kapitalowa zapowiada >=50% zysku, ale rekomendacja zwykle pada w maju.",
+  "history": [
+    {"fy": 2025, "rec_date": "2026-05-13", "rec_dps": 4.80, "agm_date": "2026-06-18", "final_dps": 4.80, "cum_date": "2026-09-15", "source": "https://www.biznesradar.pl/a/147277,pzu-proponuje-4-80-zl-dywidendy-na-akcje-za-2025-r", "note": "uwzglednia stanowisko KNF z 17.12.2025; dzien dywidendy 2026-09-17, wyplata 2026-10-08; rec_date wg daty artykulu 13.05.2026 10:35-10:41"},
+    {"fy": 2024, "rec_date": "2025-05-06", "rec_dps": 4.47, "agm_date": "2025-06-25", "final_dps": 4.47, "cum_date": "2025-09-23", "source": "https://annualreport2025.pzu.pl/en/dividend/", "note": "RB 16/2025 z 6.05.2025; biznesradar 136164 6.05.2025 17:44; ok. 3,86 mld zl, wyplata 2025-10-16"},
+    {"fy": 2023, "rec_date": "2024-05-14", "rec_dps": 4.34, "agm_date": "2024-06-18", "final_dps": 4.34, "cum_date": "2024-09-13", "source": "https://strefainwestorow.pl/artykuly/dywidendy/20240514/pzu-dywidenda-2024", "note": "rec_date wg daty artykulu 14.05.2024 (marketscreener tez 14.05.2024); dokladna godzina ESPI nie potwierdzona, mozliwe 13.05; uwzglednia stanowisko KNF z 14.12.2023; wyplata 2024-10-08"},
+    {"fy": 2022, "rec_date": null, "rec_dps": null, "agm_date": "2023-06-07", "final_dps": 2.40, "cum_date": "2023-09-05", "source": "https://strefainwestorow.pl/dywidendy/pzu-dywidenda-2026", "note": "tylko daty z tabeli dywidend; wyplata 2023-09-28; data rekomendacji niezweryfikowana"}
+  ],
+  "policy": "Polityka kapitalowa i dywidendowa Grupy PZU na lata 2025-2027 (przyjeta 28.11.2024): min. 50% zysku skonsolidowanego przypadajacego akcjonariuszom jednostki dominujacej jako dywidenda, do 20% moze zostac zatrzymane na rozwoj, cel wskaznika wyplacalnosci 200% (po zmianach Solvency II 180% dla Grupy), dzwignia <=25%, bez emisji akcji (https://annualreport2025.pzu.pl/en/dividend/). Wg ppcg.com.pl i prezentacji wynikow Q1 2026 strategia zaklada tez minimum 4,50 zl na akcje rocznie (zrodlo wtorne, strona raportu rocznego nie podaje progu DPS).",
+  "next_reports": [
+    {"what": "Q3 2026 (raport za III kwartal)", "date": "2026-11-19", "source": "https://strefainwestorow.pl/dane/raporty/lista-publikacji-raportow-okresowych/wig20"},
+    {"what": "Raport roczny za 2026", "date": null, "source": "kalendarz na 2027 jeszcze nieopublikowany (kalendarz 2026: https://www.bankier.pl/wiadomosc/PZU-SA-Terminy-publikacji-raportow-okresowych-w-roku-obrotowym-2026-9067572.html - strona nieczytelna)"}
+  ],
+  "expected_rec_window": {"from": "2027-05-04", "to": "2027-05-18", "basis": "Rekomendacje: 14.05.2024 (art.), 06.05.2025, 13.05.2026, czyli 6-14 maja, po wynikach Q1 i po stanowisku KNF z grudnia. Okno z dividends.py (14.04-07.05, est. 29.04) jest wczesniejsze niz wszystkie 3 obserwacje. Poprzedzajace zdarzenie: stanowisko KNF ws. polityki dywidendowej na 2027 spodziewane w grudniu 2026 (wzorzec: 14.12.2023, 17.12.2025)."},
+  "results_note": "Q2 2026 zysk netto Grupy 1 647 mln zl (+12% r/r, 7,2% ponad konsensus 1 536 mln zl), H1 2026 ok. 3,0 mld zl (-6,8% r/r z 3,23 mld zl); Q1 2026 ok. 1,36 mld zl; wyplacalnosc Grupy 239% (koniec 2025), ok. 230% po Q1 2026 (https://strefainwestorow.pl/wiadomosci/20260820/zysk-netto-grupy-pzu-w-ii-kw-26-wyniosl-165-mld-zl-powyzej-oczekiwan-opis). Zysk skonsolidowany 2025: ok. 6,7 mld zl; dywidenda za 2025 ok. 4,14 mld zl.",
+  "flags": [
+    "Stanowisko KNF ws. dywidend na 2026 (z 17.12.2025): ubezpieczyciele moga wyplacic do 100% zysku za 2024 i 2025 przy spelnieniu warunkow (BION dobra/zadowalajaca, brak niedoboru, wyplacalnosc przed dywidenda >175% dz. I / >150% dz. II); analogiczne stanowisko na 2027 jeszcze nie opublikowane - kluczowe ryzyko/katalizator w grudniu 2026 (https://www.knf.gov.pl/knf/pl/komponenty/img/Stanowisko_KNF_ws_polityki_dywidendowej_w_2026_roku_96591.pdf)",
+    "Nadchodzace zmiany regulacyjne (Solvency II) moga zwiekszyc wymogi kapitalowe o ok. 2,5 mld zl (ppcg.com.pl, zrodlo wtorne; PZU deklaruje wyplacalnosc >200%)",
+    "Dywidenda za 2025 zawierala 1,09 mld zl z kapitalu zapasowego; zysk H1 2026 -6,8% r/r",
+    "Polityka 2025-2027 wygasa po dywidendzie za 2027 - FY2026 jest w jej obrebie",
+    "Dane dividends.py: okno rekomendacji (14.04-07.05) zbyt wczesne wzgledem historii"
+  ],
+  "confidence": "wysoka",
+  "sources": [
+    "https://www.biznesradar.pl/a/147277,pzu-proponuje-4-80-zl-dywidendy-na-akcje-za-2025-r",
+    "https://strefainwestorow.pl/wiadomosci/20260513/zarzad-pzu-rekomenduje-wyplate-48-zl-dywidendy-na-akcje-opis",
+    "https://strefainwestorow.pl/dywidendy/pzu-dywidenda-2026",
+    "https://www.biznesradar.pl/a/136164,pzu-planuje-wyplate-4-47-zl-dywidendy-na-akcje",
+    "https://xyz.pl/?p=69925",
+    "https://annualreport2025.pzu.pl/en/dividend/",
+    "https://strefainwestorow.pl/artykuly/dywidendy/20240514/pzu-dywidenda-2024",
+    "https://www.knf.gov.pl/knf/pl/komponenty/img/Stanowisko_KNF_ws_polityki_dywidendowej_w_2026_roku_96591.pdf",
+    "https://ppcg.com.pl/dywidenda-pzu-2026-wyniki-i-kwartal-regulacje/",
+    "https://www.pzu.pl/_fileserver/item/1571619",
+    "https://strefainwestorow.pl/wiadomosci/20260820/zysk-netto-grupy-pzu-w-ii-kw-26-wyniosl-165-mld-zl-powyzej-oczekiwan-opis",
+    "https://strefainwestorow.pl/dane/raporty/lista-publikacji-raportow-okresowych/wig20"
+  ]
+}

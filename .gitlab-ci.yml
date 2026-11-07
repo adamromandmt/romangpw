@@ -1,18 +1,70 @@
-import:
-  image: python:3.12-slim
+# GitLab CI: testy przy każdym pushu, a według harmonogramu pobranie notowań, przeliczenie strategii i przebudowa strony.
+# Cloudflare Pages jest połączony z tym repozytorium i sam publikuje stronę po każdym commicie na gałęzi main (bez polecenia budowania).
+#
+# Jednorazowa konfiguracja w GitLabie:
+#   1. Settings > Access tokens: token projektu, rola Maintainer, uprawnienie write_repository  -> skopiuj go.
+#   2. Settings > CI/CD > Variables: dodaj PUSH_TOKEN (wartość = token z kroku 1; Masked, bez Protected, jeśli main nie jest chroniona).
+#   3. Build > Pipeline schedules: nowy harmonogram "15 1 * * 1-5", strefa Europe/Warsaw (dni robocze), gałąź main.
+image: python:3.12-slim
+
+stages: [test, update]
+
+default:
+  cache:
+    key: pip
+    paths: [.cache/pip]
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+test:
+  stage: test
   rules:
-    - if: '$CI_PIPELINE_SOURCE == "web"'
+    - if: '$CI_PIPELINE_SOURCE == "push" || $CI_PIPELINE_SOURCE == "merge_request_event"'
   script:
-    - apt-get update -qq && apt-get install -y -qq git >/dev/null
+    - pip install -r requirements.txt -r requirements-dev.txt
+    - python3 -m pytest -q
+    - python3 build.py
     - |
-      python3 - <<'PY'
-      import os, urllib.request as u
-      r = u.Request(os.environ["TRANSFER_URL"], headers={"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120 Safari/537.36"})
-      open("repo.tgz", "wb").write(u.urlopen(r).read())
-      PY
-    - mkdir /tmp/imp && tar xzf repo.tgz -C /tmp/imp && cd /tmp/imp/romangpw
-    - git config user.name "gpwradar-bot" && git config user.email "romekrugby@gmail.com"
-    - URL="https://oauth2:${PUSH_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git"
-    - git fetch "$URL" main
-    - NEW=$(git commit-tree 'HEAD^{tree}' -p FETCH_HEAD -m "Import repozytorium")
-    - git push "$URL" "$NEW:refs/heads/main"
+      if [ -n "$(git status --porcelain)" ]; then
+        echo "Wygenerowane pliki różnią się od zacommitowanych. Uruchom python3 build.py i zacommituj zmiany."
+        git status --short | head -20
+        exit 1
+      fi
+    - python3 tools/check_site.py
+
+quotes:
+  stage: update
+  timeout: 50 minutes
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule" || $CI_PIPELINE_SOURCE == "web"'
+  resource_group: quotes
+  before_script:
+    - apt-get update -qq && apt-get install -y -qq git >/dev/null
+    - pip install -r requirements.txt
+  script:
+    - set +e
+    - timeout 2700 python3 -u fetch_quotes.py --days "${DAYS:-380}" --budget 2200 | tee fetch.log
+    - FETCH_CODE=${PIPESTATUS[0]}
+    - set -e
+    - python3 strategies.py
+    - python3 build.py
+    - git config user.name "gpwradar-bot"
+    - git config user.email "romekrugby@gmail.com"
+    - git add -A data/market strategies data/fundamentals.csv "*.html" en sitemap.xml
+    - |
+      if git diff --cached --quiet; then
+        echo "Bez zmian"
+      else
+        git commit -m "Notowania GPW $(date -u +%F) [skip ci]"
+        git pull --rebase "https://oauth2:${PUSH_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git" main
+        git push "https://oauth2:${PUSH_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git" "HEAD:main"
+      fi
+    - |
+      if [ "$FETCH_CODE" != "0" ]; then
+        echo "Najnowsza sesja nieświeża, pokrycie poniżej 85% albo błąd pobierania — sprawdź fetch.log i data/market/_status.json"
+        exit 1
+      fi
+  artifacts:
+    when: always
+    paths: [fetch.log, data/market/_status.json]
+    expire_in: 14 days

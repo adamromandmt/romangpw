@@ -1,0 +1,181 @@
+ticker,company,fiscal_year,agm_date,last_cum_date,pay_date,dps_pln,status
+ABE,AB,2021,15 gru 22,27 gru 22,16 sty 23,1.25,wypłacona
+TXT,TEXT,2022,05 gru 22,27 gru 22,05 sty 23,1.46,wypłacona
+ECH,ECHO INVESTMENT,2022,23 gru 22,24 sty 23,02 lut 23,0.22,wypłacona
+SNT,SYNEKTIK SPOLKA AKCYJNA,2022,21 lut 23,27 lut 23,09 mar 23,0.60,wypłacona
+IFI,IFIRMA SA,2022,20 lut 23,13 mar 23,22 mar 23,0.40,wypłacona
+SCP,SCOPE FLUIDICS,2022,20 mar 23,23 mar 23,31 mar 23,85.57,wypłacona
+ATP,ATLANTA POLAND,2022,19 gru 22,24 mar 23,17 kwi 23,0.38,wypłacona
+INL,INTROL,2022,27 mar 23,30 mar 23,06 kwi 23,0.20,wypłacona
+STX,STALEXPORT,2022,04 kwi 23,11 kwi 23,25 kwi 23,0.20,wypłacona
+UCG,UNICREDIT,2022,31 mar 23,21 kwi 23,26 kwi 23,4.71,wypłacona
+SAN,BANCO SANTANDER,2022,28 lut 23,26 kwi 23,02 maj 23,0.28,wypłacona
+GTN,GETIN HOLDING,2022,27 kwi 23,02 maj 23,10 maj 23,0.58,wypłacona
+PCR,PCC ROKITA,2022,26 kwi 23,02 maj 23,10 maj 23,21.57,wypłacona
+PCX,PCC EXOL,2022,26 kwi 23,02 maj 23,10 maj 23,0.10,wypłacona
+COG,COGNOR HOLDING,2022,24 kwi 23,02 maj 23,16 maj 23,1.22,wypłacona
+BHW,HANDLOWY,2022,26 kwi 23,04 maj 23,15 maj 23,9.00,wypłacona
+ETL,EUROTEL,2022,26 kwi 23,08 maj 23,24 maj 23,10.95,wypłacona
+NWA,NWAIDM,2022,10 maj 23,11 maj 23,22 maj 23,2.00,wypłacona
+SKA,SNIEZKA,2022,27 kwi 23,12 maj 23,31 maj 23,2.00,wypłacona
+BDX,BUDIMEX,2022,18 maj 23,23 maj 23,05 cze 23,17.99,wypłacona
+ULM,ULMA SA,2022,17 maj 23,23 maj 23,08 cze 23,3.81,wypłacona
+ERB,ERBUD,2022,22 maj 23,24 maj 23,01 cze 23,0.84,wypłacona
+EDI,ED INVEST,2022,23 maj 23,24 maj 23,01 cze 23,0.39,wypłacona
+OPN,OPONEO.PL,2022,17 maj 23,24 maj 23,05 cze 23,2.00,wypłacona
+BRS,BORYSZEW,2022,22 maj 23,25 maj 23,05 cze 23,0.74,wypłacona
+ODL,ODLEWNIE,2022,15 maj 23,29 maj 23,14 cze 23,0.50,wypłacona
+KMP,KOMPAP,2022,24 maj 23,29 maj 23,13 cze 23,1.00,wypłacona
+APR,AUTO PARTNER,2022,25 maj 23,30 maj 23,15 cze 23,0.15,wypłacona
+IPE,IPOPEMA,2022,24 maj 23,31 maj 23,09 cze 23,0.15,wypłacona
+AST,ASTARTA HOLDING,2022,25 maj 23,31 maj 23,16 cze 23,2.25,wypłacona
+PWX,POLWAX,2022,24 maj 23,01 cze 23,23 lip 23,0.20,wypłacona
+PPS,PEPEES,2022,23 maj 23,02 cze 23,19 lip 23,0.10,wypłacona
+SEL,SELENA FM SA,2022,25 maj 23,05 cze 23,30 cze 23,1.40,wypłacona
+ABS,ASSECO BUSINESS,2022,31 maj 23,06 cze 23,21 cze 23,2.30,wypłacona
+UNT,UNIMOT,2022,05 cze 23,08 cze 23,16 cze 23,13.69,wypłacona
+CDR,CD PROJEKT RED,2022,06 cze 23,09 cze 23,20 cze 23,1.00,wypłacona
+SON,SONEL,2022,29 maj 23,12 cze 23,03 lip 23,0.60,wypłacona
+WTN,WITTCHEN,2022,05 cze 23,12 cze 23,05 lip 23,3.33,wypłacona
+IFI,IFIRMA SA,2023,15 maj 23,12 cze 23,21 cze 23,0.30,wypłacona
+SWG,SECO WARWICK,2022,07 cze 23,13 cze 23,29 cze 23,1.00,wypłacona
+ATC,ARCTIC PAPER,2022,06 cze 23,13 cze 23,21 cze 23,2.70,wypłacona
+OTS,OT LOGISTICS,2022,26 maj 23,14 cze 23,21 cze 23,6.40,wypłacona
+WAS,WASKO,2022,29 maj 23,14 cze 23,04 lip 23,0.07,wypłacona
+MNC,MENNICA,2022,07 cze 23,14 cze 23,26 cze 23,0.10,wypłacona
+SPH,SOPHARMA AD,2022,02 cze 23,14 cze 23,31 lip 23,1.35,wypłacona
+BMX,BIOMAXIMA,2022,14 cze 23,15 cze 23,30 cze 23,0.50,wypłacona
+ACP,ASSECO POLAND,2022,30 maj 23,15 cze 23,28 cze 23,3.50,wypłacona
+ULG,ULTIMATE GAMES,2022,13 cze 23,15 cze 23,30 cze 23,0.50,wypłacona
+CAR,INTER CARS,2022,13 cze 23,15 cze 23,26 cze 23,0.71,wypłacona
+MGT,MANGATA HOLDING SA,2022,06 cze 23,16 cze 23,27 cze 23,9.00,wypłacona
+TEN,TEN SQUARE GAMES,2022,14 cze 23,19 cze 23,28 cze 23,7.20,wypłacona
+FSG,FASING,2022,15 cze 23,19 cze 23,30 cze 23,0.30,wypłacona
+1AT,ATAL,2022,14 cze 23,20 cze 23,03 lip 23,5.00,wypłacona
+TAR,TARCZYNSKI,2022,15 cze 23,20 cze 23,29 cze 23,2.20,wypłacona
+CLD,CLOUD TECHNOLOGIES,2022,12 cze 23,21 cze 23,30 cze 23,1.00,wypłacona
+ASB,ASBISC,2022,10 maj 23,22 cze 23,06 lip 23,1.08,wypłacona
+MRB,MIRBUD,2022,19 cze 23,22 cze 23,21 lip 23,0.26,wypłacona
+EUR,EUROCASH,2022,19 cze 23,22 cze 23,29 cze 23,0.36,wypłacona
+DOM,DOM DEVELOPMENT,2022,15 cze 23,22 cze 23,04 lip 23,11.00,wypłacona
+LEN,LENA LIGHTING SA,2022,20 cze 23,23 cze 23,11 lip 23,0.20,wypłacona
+MSP,MOSTOSTAL PLOCK,2022,16 cze 23,23 cze 23,27 lip 23,0.80,wypłacona
+CSR,CASPAR ASSET MANAGEMENT,2022,15 cze 23,23 cze 23,10 lip 23,0.56,wypłacona
+BBT,BOOMBIT,2022,21 cze 23,26 cze 23,06 lip 23,0.77,wypłacona
+JWW,JWW INVEST,2022,22 cze 23,28 cze 23,14 lip 23,0.09,wypłacona
+PBX,PEKABEX,2022,14 cze 23,28 cze 23,31 lip 23,0.41,wypłacona
+SEK,SEKO,2022,21 cze 23,28 cze 23,07 lip 23,0.33,wypłacona
+MRC,MERCATOR MEDICAL,2022,23 cze 23,28 cze 23,14 lip 23,2.50,wypłacona
+ASE,ASSECO SOUTH,2022,22 cze 23,28 cze 23,13 lip 23,1.46,wypłacona
+GPP,GRUPA PRACUJ,2022,15 cze 23,28 cze 23,14 lip 23,1.50,wypłacona
+CEZ,CEZ A.S.,2022,26 cze 23,28 cze 23,01 sie 23,27.17,wypłacona
+CLN,CELON PHARMA,2022,22 cze 23,28 cze 23,06 lip 23,0.09,wypłacona
+STP,STALPRODUKT,2022,27 cze 23,29 cze 23,17 lip 23,15.00,wypłacona
+ATG,ATM GRUPA SA,2022,26 cze 23,29 cze 23,07 lip 23,0.18,wypłacona
+MBR,MO-BRUK SA,2022,26 cze 23,29 cze 23,10 lip 23,13.17,wypłacona
+LKD,LOKUM DEWELOPER,2022,14 cze 23,29 cze 23,10 lip 23,1.69,wypłacona
+NVT,NOVITA,2022,14 cze 23,29 cze 23,17 lip 23,12.00,wypłacona
+GOP,GAMES OPERATORS,2022,23 cze 23,29 cze 23,14 lip 23,0.60,wypłacona
+MEX,MEX POLSKA,2022,27 cze 23,30 cze 23,11 lip 23,0.14,wypłacona
+WPL,WIRTUALNA POLSKA HOLDING,2022,21 cze 23,30 cze 23,11 lip 23,2.50,wypłacona
+PEO,PEKAO,2022,06 cze 23,30 cze 23,18 lip 23,5.42,wypłacona
+FAB,FABRITY,2022,27 cze 23,30 cze 23,04 paź 23,4.00,wypłacona
+IMS,IMS,2022,28 cze 23,03 lip 23,19 lip 23,0.21,wypłacona
+RBW,RAINBOW TOURS,2022,28 cze 23,03 lip 23,12 lip 23,0.50,wypłacona
+DIG,DIGITAL NETWORK,2022,29 cze 23,03 lip 23,13 lip 23,0.73,wypłacona
+LWB,BOGDANKA,2022,29 cze 23,04 lip 23,21 lip 23,2.58,wypłacona
+ZUK,STAPORKOW,2022,28 cze 23,04 lip 23,25 wrz 23,0.20,wypłacona
+SNK,SANOK RUBBER COMPANY,2022,26 cze 23,04 lip 23,20 lip 23,1.20,wypłacona
+BCS,BIG CHEESE STUDIO,2022,29 cze 23,05 lip 23,12 lip 23,2.67,wypłacona
+ELT,ELEKTROTIM,2022,20 cze 23,05 lip 23,28 lip 23,1.50,wypłacona
+DCR,DECORA,2022,22 cze 23,05 lip 23,14 lip 23,2.02,wypłacona
+ENP,ENERGOAPARATURA,2022,28 cze 23,05 lip 23,14 lip 23,0.05,wypłacona
+APN,APLISENS,2022,20 cze 23,05 lip 23,27 lip 23,0.80,wypłacona
+IZS,IZOSTAL SA,2022,28 kwi 23,05 lip 23,21 lip 23,0.12,wypłacona
+BOW,BOWIM,2022,20 cze 23,06 lip 23,21 lip 23,0.60,wypłacona
+XPL,XPLUS,2022,29 cze 23,06 lip 23,18 lip 23,0.06,wypłacona
+LPP,LPP,2022,30 cze 23,06 lip 23,14 lip 23,215.00,wypłacona
+LPP,LPP,2022,30 cze 23,06 lip 23,10 paź 23,215.00,wypłacona
+PTW,POLSKIE TOWARZYSTWO WSPIERANIA PRZEDSIEBIORCZOSCI,2022,29 cze 23,06 lip 23,18 lip 23,5.66,wypłacona
+XTB,XTB,2022,30 cze 23,06 lip 23,21 lip 23,4.86,wypłacona
+KVT,KRYNICA VITAMIN,2022,26 cze 23,07 lip 23,25 lip 23,0.20,wypłacona
+RPC,ROPCZYCE,2022,19 cze 23,07 lip 23,17 lip 23,1.50,wypłacona
+OPL,ORANGE POLSKA,2022,29 cze 23,10 lip 23,20 lip 23,0.35,wypłacona
+MAK,MAKARONY,2022,27 cze 23,12 lip 23,21 sie 23,0.60,wypłacona
+DVL,DEVELIA,2022,27 cze 23,12 lip 23,21 lip 23,0.24,wypłacona
+DGA,DGA,2022,30 cze 23,12 lip 23,31 lip 23,0.40,wypłacona
+DVL,DEVELIA,2022,27 cze 23,12 lip 23,13 paź 23,0.16,wypłacona
+GTC,GTC,2022,21 cze 23,12 lip 23,15 wrz 23,0.23,wypłacona
+ARH,ARCHICOM,2022,23 cze 23,12 lip 23,28 lip 23,2.12,wypłacona
+WWL,WAWEL,2022,30 cze 23,12 lip 23,27 lip 23,10.00,wypłacona
+NEU,NEUCA,2022,10 maj 23,14 lip 23,27 lip 23,13.00,wypłacona
+SNX,SUNEX,2022,30 maj 23,14 lip 23,26 lip 23,0.28,wypłacona
+ZUE,ZUE SA,2022,07 cze 23,14 lip 23,03 sie 23,0.07,wypłacona
+YAN,YANOSIK,2022,22 cze 23,14 lip 23,20 lip 23,4.60,wypłacona
+KRK,KRKA,2022,06 lip 23,17 lip 23,20 lip 23,30.93,wypłacona
+EAH,ESOTIQ & HENDERSON,2022,30 cze 23,19 lip 23,18 sie 23,1.20,wypłacona
+MOL,MOL NYRT.,2022,27 kwi 23,19 lip 23,28 lip 23,4.36,wypłacona
+KPD,KPPD,2022,26 maj 23,19 lip 23,30 sie 23,4.00,wypłacona
+GPW,GPW,2022,26 cze 23,20 lip 23,07 sie 23,2.70,wypłacona
+UNI,UNIBEP SA,2022,21 cze 23,20 lip 23,21 sie 23,0.22,wypłacona
+INP,INPRO SA,2022,27 cze 23,21 lip 23,08 sie 23,0.25,wypłacona
+KGH,KGHM POLSKA MIEDZ SA,2022,21 cze 23,25 lip 23,10 sie 23,1.00,wypłacona
+TXT,TEXT,2022,03 lip 23,26 lip 23,04 sie 23,1.46,wypłacona
+APT,APATOR,2022,28 cze 23,28 lip 23,10 sie 23,0.30,wypłacona
+WLT,WIELTON,2022,29 cze 23,31 lip 23,07 sie 23,0.10,wypłacona
+WLT,WIELTON,2022,29 cze 23,31 lip 23,02 lis 23,0.30,wypłacona
+RWL,RAWLPLUG,2022,22 cze 23,02 sie 23,25 sie 23,0.60,wypłacona
+PKN,ORLEN,2022,21 cze 23,08 sie 23,31 sie 23,5.50,wypłacona
+PJP,PJP MAKRUM,2022,26 cze 23,10 sie 23,28 sie 23,0.51,wypłacona
+ATR,ATREM,2022,26 cze 23,10 sie 23,28 sie 23,0.11,wypłacona
+INK,INSTAL KRAKOW,2022,23 cze 23,10 sie 23,21 wrz 23,1.50,wypłacona
+TRN,TRANS POLONIA,2022,28 lip 23,11 sie 23,28 sie 23,0.50,wypłacona
+RBW,RAINBOW TOURS,2023,14 lip 23,14 sie 23,24 sie 23,0.79,wypłacona
+LSI,LSI,2022,28 lip 23,14 sie 23,31 sie 23,0.25,wypłacona
+PHN,POLSKI HOLDING NIERUCHOMOSCI,2022,29 cze 23,16 sie 23,31 sie 23,0.08,wypłacona
+VRC,VERCOM,2022,23 cze 23,17 sie 23,24 sie 23,1.13,wypłacona
+TSG,TESGAS,2022,29 cze 23,17 sie 23,21 wrz 23,0.20,wypłacona
+INL,INTROL,2022,16 sie 23,18 sie 23,25 sie 23,0.34,wypłacona
+KTY,KETY,2022,21 cze 23,18 sie 23,06 wrz 23,20.00,wypłacona
+KTY,KETY,2022,21 cze 23,18 sie 23,08 lis 23,42.50,wypłacona
+PLW,PLAYWAY,2022,30 cze 23,18 sie 23,29 sie 23,19.39,wypłacona
+KPL,KINO POLSKA TV,2022,26 cze 23,21 sie 23,31 sie 23,0.35,wypłacona
+STF,STALPROFIL,2022,25 maj 23,21 sie 23,13 wrz 23,0.74,wypłacona
+TXT,TEXT,2022,18 sie 23,23 sie 23,01 wrz 23,3.03,wypłacona
+CRJ,CREEPY JAR,2022,30 maj 23,25 sie 23,04 wrz 23,40.00,wypłacona
+CBF,CYBER_FOLKS,2022,26 cze 23,28 sie 23,04 wrz 23,0.93,wypłacona
+GKI,GK IMMOBILE,2022,02 cze 23,30 sie 23,15 wrz 23,0.05,wypłacona
+VIN,VINDEXUS,2022,29 maj 23,01 wrz 23,15 wrz 23,0.27,wypłacona
+IFI,IFIRMA SA,2023,16 sie 23,05 wrz 23,14 wrz 23,0.40,wypłacona
+PZU,PZU,2022,07 cze 23,05 wrz 23,28 wrz 23,2.40,wypłacona
+KRU,KRUK,2022,20 cze 23,05 wrz 23,28 wrz 23,15.00,wypłacona
+HDR,HYDROTOR,2022,24 cze 23,06 wrz 23,22 wrz 23,2.00,wypłacona
+NVA,PA NOVA,2022,14 cze 23,08 wrz 23,11 gru 23,0.65,wypłacona
+FRO,FERRO,2022,21 cze 23,12 wrz 23,12 paź 23,1.50,wypłacona
+MCR,MCR,2022,07 wrz 23,12 wrz 23,20 wrz 23,1.51,wypłacona
+BFT,BENEFIT SYSTEMS,2022,29 cze 23,13 wrz 23,29 wrz 23,41.00,wypłacona
+IZO,IZOLACJA JAROCIN,2022,19 cze 23,13 wrz 23,15 gru 23,0.10,wypłacona
+VRG,VRG,2022,28 cze 23,18 wrz 23,15 gru 23,0.20,wypłacona
+VOT,VOTUM,2022,23 cze 23,19 wrz 23,20 paź 23,1.25,wypłacona
+VOT,VOTUM,2022,23 cze 23,19 wrz 23,20 gru 23,1.25,wypłacona
+DBC,DEBICA,2022,27 cze 23,20 wrz 23,19 gru 23,3.95,wypłacona
+ALL,AILLERON,2022,27 cze 23,25 wrz 23,18 paź 23,1.00,wypłacona
+NTT,NTT SYSTEM,2022,28 cze 23,25 wrz 23,18 paź 23,0.07,wypłacona
+BCM,BETACOM,2022,21 wrz 23,26 wrz 23,12 paź 23,0.23,wypłacona
+WIK,WIKANA,2022,29 cze 23,27 wrz 23,31 paź 23,0.25,wypłacona
+VOX,VOXEL,2022,30 cze 23,27 wrz 23,21 gru 23,2.17,wypłacona
+BMC,BUMECH,2022,19 lip 23,17 paź 23,30 lis 23,2.00,wypłacona
+SAN,BANCO SANTANDER,2023,26 wrz 23,27 paź 23,02 lis 23,0.36,wypłacona
+AMB,AMBRA,2022,19 paź 23,31 paź 23,13 lis 23,1.10,wypłacona
+ECH,ECHO INVESTMENT,2023,11 paź 23,31 paź 23,10 lis 23,0.22,wypłacona
+EDI,ED INVEST,2023,30 paź 23,23 lis 23,01 gru 23,1.21,wypłacona
+ASB,ASBISC,2023,08 lis 23,23 lis 23,07 gru 23,0.83,wypłacona
+OTS,OT LOGISTICS,2023,31 paź 23,29 lis 23,08 gru 23,2.86,wypłacona
+DOM,DOM DEVELOPMENT,2023,06 lis 23,08 gru 23,18 gru 23,5.50,wypłacona
+IFI,IFIRMA SA,2023,13 lis 23,08 gru 23,19 gru 23,0.30,wypłacona
+ATG,ATM GRUPA SA,2023,03 lis 23,12 gru 23,21 gru 23,0.08,wypłacona
+ENP,ENERGOAPARATURA,2023,09 lis 23,12 gru 23,21 gru 23,0.10,wypłacona
+APT,APATOR,2023,22 lis 23,13 gru 23,21 gru 23,0.20,wypłacona
+NVT,NOVITA,2022,13 gru 23,15 gru 23,28 gru 23,4.00,wypłacona
+EBP,ERSTE BANK POLSKA,2023,16 lis 23,20 gru 23,29 gru 23,23.25,wypłacona
+QNT,QUANTUM,2023,19 gru 23,20 gru 23,29 gru 23,0.65,wypłacona

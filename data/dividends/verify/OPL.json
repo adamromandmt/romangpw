@@ -1,0 +1,41 @@
+{
+  "tic": "OPL",
+  "announced_current_cycle": "nie",
+  "announcement_note": "Cykl za 2025 zamkniety: rekomendacja 0,61 zl oglosiona 2026-02-18 (wstepne wyniki roczne), WZA 2026-04-10, dzien dywidendy 2026-06-24, wyplata 2026-07-08. Rekomendacji/zamiaru za 2026 nie znaleziono; wyniki III kw. 2026 (opublikowane 2026-10-26) nie zawieraja wzmianki o dywidendzie (xyz.pl). Spolka nie wyplaca zaliczek.",
+  "history": [
+    {"fy": 2025, "rec_date": "2026-02-18", "rec_dps": 0.61, "agm_date": "2026-04-10", "final_dps": 0.61, "cum_date": "2026-06-22", "pay_date": "2026-07-08", "source": "https://www.orange-ir.pl/wp-content/uploads/2026/04/RB-11-2026_dywidenda_decyzja-WZA.pdf", "note": "rekomendacja z komunikatem o wstepnych wynikach 2025 (strefainwestorow/xyz 2026-02-18, biznesradar: komunikat ESPI/EBI 18.02.2026); dzien dywidendy 2026-06-24"},
+    {"fy": 2024, "rec_date": "2025-02-12", "rec_dps": 0.53, "agm_date": "2025-04-17", "final_dps": 0.53, "cum_date": "2025-06-23", "pay_date": "2025-07-09", "source": "https://strefainwestorow.pl/wiadomosci/20250212/orange-polska-chce-wyplacic-053-zl-dywidendy-na-akcje-z-zysku-za-2024-r", "note": "dzien dywidendy 2025-06-25"},
+    {"fy": 2023, "rec_date": "2024-02-14", "rec_dps": 0.48, "agm_date": "2024-04-19", "final_dps": 0.48, "cum_date": "2024-06-24", "pay_date": "2024-07-10", "source": "https://www.orange-ir.pl/wp-content/uploads/2024/02/CR-3-2024-profit-distribution.pdf", "note": "dzien dywidendy 2024-06-26; decyzja zarzadu 2024-02-14"},
+    {"fy": 2022, "rec_date": "2023-02-15", "rec_dps": 0.35, "agm_date": "2023-06-29", "final_dps": 0.35, "cum_date": "2023-07-10", "pay_date": "2023-07-20", "source": "https://www.orange-ir.pl/wp-content/uploads/2023/02/RB-4-2023-Podzial-zysku-za-2022.pdf", "note": "pierwotnie dzien dywidendy 2023-06-22, wyplata 2023-07-06; daty zmienione (RB 12/2023) po przesunieciu WZA na 2023-06-29"}
+  ],
+  "policy": "Strategia 'Lead the Future' (przyjeta 2025-03-19): 0,53 zl na akcje jako poziom bazowy na lata 2025-2028, decyzje o wzroscie podejmowane co roku; wg strefainwestorow (2026-02-18) po rekomendacji 0,61 zl to nowy poziom bazowy do 2028 (ppcg.com.pl nadal podaje 'co najmniej 0,53' - rozbieznosc, nie potwierdzone w ESPI). Zrodla: https://strefainwestorow.pl/dywidendy/orange-polska-stretegia-minimalna-dywidenda-2025 ; https://strefainwestorow.pl/dywidendy/orange-dywidenda-2026",
+  "next_reports": [
+    {"what": "Wstepne wyniki roczne 2026 (z rekomendacja dywidendy)", "date": null, "source": "termin 2027 nieopublikowany; w 2026 byly 2026-02-18 (RB 16/2025)"},
+    {"what": "Raport roczny za 2026", "date": "2027-03-05", "source": "https://www.orange-ir.pl/wp-content/uploads/2026/01/RB-2-2026-daty-raportowania.pdf"},
+    {"what": "Q3 2026 (juz opublikowany)", "date": "2026-10-26", "source": "https://xyz.pl/?p=267793"}
+  ],
+  "expected_rec_window": {"from": "2027-02-10", "to": "2027-02-24", "basis": "rekomendacja zawsze razem z wstepnymi wynikami rocznymi: 2023-02-15, 2024-02-14, 2025-02-12, 2026-02-18 (4 lata pod rzad, mid-luty); w 2027 raport roczny jest na 2027-03-05, wiec wstepne wyniki prawdopodobnie ok. polowy lutego (nieoficjalnie). Okno z dividends.py (2027-03-01..03-24, liczone od WZA) jest za pozne."},
+  "results_note": "III kw. 2026: zysk netto 328 mln zl (konsensus PAP 314,8), przychody ok. 3,6 mld zl (+7,9% r/r), EBITDAaL 1,04 mld zl (+15,6%), zysk operacyjny 522 mln zl (xyz.pl 2026-10-26). Za 2025: przychody 13,1 mld zl, EBITDAaL 3,47 mld zl, zysk netto 762 mln zl (-17% r/r przez prowizje restrukturyzacyjne); dywidenda 0,61 zl = 800,5 mln zl (RB 8/2026). Zrodla: https://xyz.pl/?p=267793 ; https://xyz.pl/?p=171197",
+  "flags": [
+    "Rekomendacja pojawia sie w lutym razem z wstepnymi wynikami, ok. 7-8 tygodni przed WZA - wczesniej niz sugeruje okno z dividends.py",
+    "Formalnosc 'poziomu bazowego' 0,61 zl nie potwierdzona w ESPI (rozbieznosc zrodel: 0,53 vs 0,61)",
+    "Dywidenda za 2025 (800,5 mln zl) jest wyzsza niz skonsolidowany zysk netto 2025 (762 mln zl) - podwyzka za 2026 zalezy od poprawy wynikow (III kw. 2026: zysk netto 328 mln zl, EBITDAaL +15,6% r/r)"
+  ],
+  "confidence": "wysoka",
+  "sources": [
+    "https://www.orange-ir.pl/wp-content/uploads/2026/04/RB-11-2026_dywidenda_decyzja-WZA.pdf",
+    "https://www.orange-ir.pl/wp-content/uploads/2026/03/RB-8-2026-projekty-uchwal-WZA_z-zalacznikami.pdf",
+    "https://strefainwestorow.pl/dywidendy/orange-dywidenda-2026",
+    "https://www.biznesradar.pl/wiadomosci/ORANGE,7",
+    "https://strefainwestorow.pl/wiadomosci/20250212/orange-polska-chce-wyplacic-053-zl-dywidendy-na-akcje-z-zysku-za-2024-r",
+    "https://www.orange-ir.pl/wp-content/uploads/2024/02/CR-3-2024-profit-distribution.pdf",
+    "https://www.orange-ir.pl/wp-content/uploads/2023/02/RB-4-2023-Podzial-zysku-za-2022.pdf",
+    "https://www.biznesradar.pl/dywidenda/ORANGEPL",
+    "https://strefainwestorow.pl/dywidendy/orange-polska-stretegia-minimalna-dywidenda-2025",
+    "https://ppcg.com.pl/orange-akcje/",
+    "https://www.orange-ir.pl/wp-content/uploads/2026/01/RB-2-2026-daty-raportowania.pdf",
+    "https://www.orange-ir.pl/wp-content/uploads/2025/12/RB-16-2025-zmiana-terminu-raportow-rocznych-za-2025.pdf",
+    "https://xyz.pl/?p=267793",
+    "https://xyz.pl/?p=171197"
+  ]
+}

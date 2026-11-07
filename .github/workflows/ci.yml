@@ -1,0 +1,45 @@
+name: CI
+
+# Testy jednostkowe, sprawdzenie, że zacommitowane strony odpowiadają źródłom (build.py niczego nie zmienia),
+# oraz statyczna kontrola wygenerowanej strony (SEO, linki, kotwice, sitemap). Nie blokuje publikacji (GitHub Pages
+# publikuje z gałęzi), tylko pokazuje czerwony znak, gdy coś się rozjechało.
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "data/market/**"
+  pull_request:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+      - run: pip install -r requirements-dev.txt
+      - name: Testy
+        run: python -m pytest -q
+      - name: Build bez zmian w repozytorium
+        run: |
+          python3 build.py
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "::error::Wygenerowane pliki różnią się od zacommitowanych. Uruchom python3 build.py i zacommituj zmiany."
+            git status --short
+            git --no-pager diff --stat
+            exit 1
+          fi
+      - name: Kontrola strony (SEO, linki, kotwice, sitemap)
+        run: python3 tools/check_site.py

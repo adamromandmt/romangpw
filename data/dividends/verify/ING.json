@@ -1,0 +1,39 @@
+{
+  "tic": "ING",
+  "announced_current_cycle": "nie",
+  "announcement_note": "Cykl za 2025 zamkniety: zamiar ok. 75% zysku jednostkowego oglosiony 2026-02-10 (z wybranymi danymi za IV kw.), formalna rekomendacja 26,71 zl z 2026-03-03, WZA 2026-04-16 (RB 17/2026), dzien dywidendy 2026-04-22, wyplata 2026-04-27. Rekomendacji/zamiaru za 2026 nie znaleziono; wyniki III kw. 2026 (2026-10-29) nie zawieraja wzmianki o dywidendzie (xyz.pl). Bank nie wyplaca zaliczek (w historii brak).",
+  "history": [
+    {"fy": 2025, "rec_date": "2026-02-10", "rec_dps": null, "agm_date": "2026-04-16", "final_dps": 26.71, "cum_date": "2026-04-20", "pay_date": "2026-04-27", "formal_rec_date": "2026-03-03", "formal_rec_dps": 26.71, "source": "https://www.parkiet.com/komunikaty-espi/art44172001-ing-bank-slaski-spolka-akcyjna-informacja-w-sprawie-wyplaty-dywidendy-za-2025-rok", "note": "2026-02-10 (xyz.pl, wybrane dane IV kw.): zamiar rekomendacji ok. 75% zysku jednostkowego 2025, bez kwoty; 2026-03-03: formalna rekomendacja 26,71 zl (3,47 mld zl, 75%); bank nie mial jeszcze indywidualnego zalecenia dywidendowego KNF; dzien dywidendy 2026-04-22"},
+    {"fy": 2024, "rec_date": "2025-02-06", "rec_dps": null, "agm_date": "2025-04-29", "final_dps": 25.18, "cum_date": "2025-05-02", "pay_date": "2025-05-12", "formal_rec_date": "2025-03-05", "formal_rec_dps": 25.18, "source": "https://biznes.pap.pl/wiadomosci/firmy/ing-bank-slaski-sa-32025-decyzja-zarzadu-banku-w-sprawie-propozycji-wyplaty", "note": "2025-02-06 (strefainwestorow): zamiar ok. 75% zysku jednostkowego 2024; 2025-03-05: RB 3/2025 rekomendacja 25,18 zl (3,276 mld zl, 75%), brak indywidualnego zalecenia KNF w chwili rekomendacji; dzien dywidendy 2025-05-06"},
+    {"fy": 2023, "rec_date": null, "rec_dps": null, "agm_date": "2024-04-11", "final_dps": 33.35, "cum_date": "2024-04-15", "pay_date": "2024-05-06", "formal_rec_date": null, "formal_rec_dps": null, "source": "https://www.parkiet.com/komunikaty-espi/art40151481-ing-bank-slaski-spolka-akcyjna-informacja-w-sprawie-wyplaty-dywidendy-za-2023-rok", "note": "daty rekomendacji nie znalezione; 33,35 zl = 4,339 mld zl, w tym 1 008,3 mln zl z kapitalu rezerwowego (97,7% zysku jednostkowego wg IR ING) - jednorazowo podwyzszona; dzien dywidendy 2024-04-17"}
+  ],
+  "policy": "Polityka zatwierdzona przez RN 2025-11-17: 'stabilny proces wyplaty dywidendy do 75% rocznego zysku netto Banku' (mozliwe wiecej z kapitalu rezerwowego/niepodzielonego zysku), pod warunkiem spelnienia minimow kapitalowych (CET1 4,5% + 56,25% P2R itd. plus bufory i P2G) oraz stanowiska KNF. Zrodlo: https://en.ing.pl/company-profile/investor-relations/dividends",
+  "next_reports": [
+    {"what": "Wybrane dane niezbadane za IV kw./2026 (komunikat biezacy, zwykle z zamiarem dywidendy)", "date": null, "source": "terminarz 2027 nieopublikowany (w 2026: 2026-02-10 wg RB 28/2025; w 2025: 2025-02-06)"},
+    {"what": "Skonsolidowany raport roczny za 2026", "date": null, "source": "terminarz 2027 nieopublikowany (raport za 2025: 2026-03-05, RB 28/2025 z 2025-12-01 - https://www.parkiet.com/komunikaty-espi/art43437071-ing-bank-slaski-spolka-akcyjna-daty-przekazywania-raportow-okresowych-w-2026-roku)"},
+    {"what": "Q3 2026 (juz opublikowany)", "date": "2026-10-29", "source": "https://xyz.pl/?p=269153"}
+  ],
+  "expected_rec_window": {"from": "2027-02-04", "to": "2027-03-05", "basis": "dwuetapowo: (1) zamiar ok. 75% zysku z wybranymi danymi za IV kw.: 2025-02-06, 2026-02-10 (przewidywane 2027-02-04..02-12); (2) formalna rekomendacja z kwota: 2025-03-05, 2026-03-03 (przewidywane 2027-03-02..03-05, tuz przed raportem rocznym). dividends.py: 2027-03-04..04-02 - okno liczone od WZA, pomija etap zamiaru w lutym."},
+  "results_note": "III kw. 2026: zysk netto 1,13 mld zl (6% powyzej konsensusu, +2% r/r), 9M 2026 3,15 mld zl (-3% r/r przez wzrost stawki CIT dla bankow z 19% do 30%); ROE 22,7%, lacznie wspolczynnik kapitalowy 15,09%, depozyty +15% r/r (xyz.pl 2026-10-29). Zdolnosc do wyplaty ~75% zysku zachowana. Zrodlo: https://xyz.pl/?p=269153",
+  "flags": [
+    "Pierwszy sygnal (zamiar ~75% zysku, bez kwoty) pojawia sie juz w pierwszej polowie lutego z wybranymi danymi za IV kw. - formalna rekomendacja dopiero ok. 3-5 marca",
+    "Bank wskazuje za kazdym razem, ze nie ma jeszcze indywidualnego zalecenia dywidendowego KNF (2025, 2026) - formalny warunek",
+    "CIT sektora bankowego 30% w 2026 obniza zysk (9M -3% r/r), co przy payout 75% daje nizsza dywidende niz przy starej stawce",
+    "Dywidenda za 2023 (33,35 zl) byla jednorazowo podniesiona kapitalem rezerwowym; 2022 - bez dywidendy (biznesradar/IR ING)"
+  ],
+  "confidence": "wysoka",
+  "sources": [
+    "https://www.parkiet.com/komunikaty-espi/art44172001-ing-bank-slaski-spolka-akcyjna-informacja-w-sprawie-wyplaty-dywidendy-za-2025-rok",
+    "https://www.biznesradar.pl/a/143982,zarzad-ing-banku-slaskiego-rekomenduje-wyplate-26-71-zl-dywidendy-na-akcje",
+    "https://xyz.pl/dzieje-sie/ing-bs-wskazal-ile-chce-wyplacic-dywidendy-za-ubiegly-rok-1092",
+    "https://xyz.pl/?p=167838",
+    "https://ppcg.com.pl/dywidenda-ing-bsk-za-2025-zarzad-rekomenduje-75-zysku-ile-na-akcje/",
+    "https://biznes.pap.pl/wiadomosci/firmy/ing-bank-slaski-sa-32025-decyzja-zarzadu-banku-w-sprawie-propozycji-wyplaty",
+    "https://strefainwestorow.pl/wiadomosci/20250206/zarzad-ing-bsk-chce-przeznaczyc-na-dywidende-ok-75-proc-zysku-jednostkowego-za",
+    "https://www.parkiet.com/komunikaty-espi/art40151481-ing-bank-slaski-spolka-akcyjna-informacja-w-sprawie-wyplaty-dywidendy-za-2023-rok",
+    "https://www.biznesradar.pl/dywidenda/ING-BANK-SLASKI",
+    "https://en.ing.pl/company-profile/investor-relations/dividends",
+    "https://www.parkiet.com/komunikaty-espi/art43437071-ing-bank-slaski-spolka-akcyjna-daty-przekazywania-raportow-okresowych-w-2026-roku",
+    "https://xyz.pl/?p=269153"
+  ]
+}

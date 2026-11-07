@@ -1,0 +1,182 @@
+{
+ "LPP": {
+  "name": "LPP",
+  "sector": "odzież / detal",
+  "stab": 10,
+  "health": 5,
+  "last_dps": "900 (w tym zaliczka)",
+  "exp_dps": "zaliczka + min. dywidenda; polityka ≥50% zysku",
+  "years": "5/5",
+  "report": "3 gru 2026 (Q3)"
+ },
+ "OPL": {
+  "name": "Orange Polska",
+  "sector": "telekomunikacja",
+  "stab": 8,
+  "health": 4,
+  "last_dps": "0,61",
+  "exp_dps": "≥0,53 (poziom bazowy)",
+  "years": "5/5",
+  "report": "—"
+ },
+ "ACP": {
+  "name": "Asseco Poland",
+  "sector": "IT",
+  "stab": 4,
+  "health": 4,
+  "last_dps": "13,05 (efekt Sapiens)",
+  "exp_dps": "≈4–6 (bez efektu jednorazowego)",
+  "years": "5/5",
+  "report": "26 lis 2026 (Q3)"
+ },
+ "ING": {
+  "name": "ING Bank Śląski",
+  "sector": "banki",
+  "stab": 6,
+  "health": 3,
+  "last_dps": "26,71",
+  "exp_dps": "do 75% zysku; zysk 9M −3% r/r (CIT)",
+  "years": "4/5",
+  "report": "—"
+ },
+ "EBP": {
+  "name": "Erste Bank Polska",
+  "sector": "banki",
+  "stab": 4,
+  "health": 2,
+  "last_dps": "49,98",
+  "exp_dps": "niższa niż 49,98 (zysk 9M −20% r/r)",
+  "years": "4/5",
+  "report": "—"
+ },
+ "CAR": {
+  "name": "Inter Cars",
+  "sector": "motoryzacja (dystrybucja)",
+  "stab": 7,
+  "health": 4,
+  "last_dps": "1,42",
+  "exp_dps": "≈1,42 (wzorzec)",
+  "years": "5/5",
+  "report": "⚠ 17 lis 2026 (Q3)"
+ },
+ "BDX": {
+  "name": "Budimex",
+  "sector": "budownictwo",
+  "stab": 7,
+  "health": 4,
+  "last_dps": "32,42",
+  "exp_dps": "≈100% zysku (polityka do FY2026)",
+  "years": "5/5",
+  "report": "—"
+ },
+ "WAS": {
+  "name": "Wasko",
+  "sector": "IT",
+  "stab": 5,
+  "health": 3,
+  "last_dps": "0,10",
+  "exp_dps": "0,03–0,10 (niska pewność)",
+  "years": "5/5",
+  "report": "⚠ 13 lis 2026 (Q3)"
+ },
+ "KTY": {
+  "name": "Grupa Kęty",
+  "sector": "przemysł (aluminium, opakowania)",
+  "stab": 6,
+  "health": 3,
+  "last_dps": "48,97",
+  "exp_dps": "polityka 60–100% zysku; dług po Metrze",
+  "years": "5/5",
+  "report": "—"
+ },
+ "BHW": {
+  "name": "Bank Handlowy",
+  "sector": "banki",
+  "stab": 5,
+  "health": 3,
+  "last_dps": "9,80",
+  "exp_dps": "≥75% zysku; wymaga zgody KNF",
+  "years": "5/5",
+  "report": "⚠ 5 lis 2026 (Q3 dziś)"
+ },
+ "GPW": {
+  "name": "GPW",
+  "sector": "finanse (giełda)",
+  "stab": 9,
+  "health": 5,
+  "last_dps": "3,40",
+  "exp_dps": "≥3,40 (60–80% zysku, rosnący DPS)",
+  "years": "5/5",
+  "report": "⚠ 16 lis 2026 (Q3)"
+ },
+ "1AT": {
+  "name": "Atal",
+  "sector": "deweloperzy",
+  "stab": 4,
+  "health": 3,
+  "last_dps": "4,50",
+  "exp_dps": "≤4,50 (DPS spada 2 lata)",
+  "years": "5/5",
+  "report": "26 lis 2026 (Q3)"
+ },
+ "MBR": {
+  "name": "Mo-BRUK",
+  "sector": "gospodarka odpadami",
+  "stab": 5,
+  "health": 2,
+  "last_dps": "15,23 (z kapitału zapasowego)",
+  "exp_dps": "niżej, jeśli zysk ≪ kapitału zapasowego",
+  "years": "5/5",
+  "report": "⚠ 19 lis 2026 (Q3)"
+ },
+ "PLW": {
+  "name": "Playway",
+  "sector": "gry",
+  "stab": 4,
+  "health": 2,
+  "last_dps": "17,39",
+  "exp_dps": "n/d (spadek r/r w 2026)",
+  "years": "5/5",
+  "report": "27 lis 2026 (Q3)"
+ },
+ "VOX": {
+  "name": "Voxel",
+  "sector": "diagnostyka medyczna",
+  "stab": 5,
+  "health": 2,
+  "last_dps": "2,50 (wypłata 4 gru 2026)",
+  "exp_dps": "n/d (polityka wygasła)",
+  "years": "5/5",
+  "report": "26 lis 2026 (Q3)"
+ },
+ "PZU": {
+  "name": "PZU",
+  "sector": "ubezpieczenia",
+  "stab": 8,
+  "health": 3,
+  "last_dps": "4,80",
+  "exp_dps": "≥50% zysku (polityka 2025–27)",
+  "years": "5/5",
+  "report": "⚠ 19 lis 2026 (Q3)"
+ },
+ "MOL": {
+  "name": "MOL Nyrt.",
+  "sector": "paliwa i energia",
+  "stab": 6,
+  "health": 3,
+  "last_dps": "HUF 317,58 (część nadzwyczajna)",
+  "exp_dps": "niższa, jeśli bez części nadzwyczajnej",
+  "years": "5/5",
+  "report": "⚠ 6 lis 2026 (Q3)"
+ },
+ "SNT": {
+  "name": "Synektik",
+  "sector": "medtech",
+  "stab": 6,
+  "health": 3,
+  "last_dps": "10,75",
+  "exp_dps": "n/d (bez polityki; podział Syn2bio)",
+  "years": "5/5",
+  "report": "⚠ 18 lis 2026 (Q4)"
+ }
+}

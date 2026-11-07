@@ -1,0 +1,41 @@
+{
+  "tic": "ACP",
+  "announced_current_cycle": "nie",
+  "announcement_note": "Cykl za 2025 zamkniety: rekomendacja 13,05 zl (1 050,7 mln zl) z 2026-03-31 (RB 13/2026, RN pozytywnie tego samego dnia), WZA 2026-05-07, dzien dywidendy 2026-05-14, wyplata 2026-05-22 (RB 17/2026). Rekomendacji/zamiaru za 2026 nie znaleziono; strona 'Wiadomosci' Asseco Poland na parkiet.com nie wspomina o dywidendzie. Dywidenda za 2025 byla jednorazowo wysoka (sprzedaz akcji Sapiens przez Formula Systems + czesc zyskow z lat ubieglych; sam zysk netto 2025 wystarczalby na max 6,07 zl/akcje).",
+  "history": [
+    {"fy": 2025, "rec_date": "2026-03-31", "rec_dps": 13.05, "agm_date": "2026-05-07", "final_dps": 13.05, "cum_date": "2026-05-12", "pay_date": "2026-05-22", "source": "https://inwestor.asseco.com/files/investor/uploads/13_2026_rekomendacja_wyplaty_dywidendy.pdf", "note": "dzien dywidendy 2026-05-14 (RB 17/2026); rekomendacja z dnia publikacji raportu rocznego (31.03); jednorazowy efekt Sapiens"},
+    {"fy": 2024, "rec_date": "2025-03-27", "rec_dps": 3.94, "agm_date": "2025-05-14", "final_dps": 3.94, "cum_date": "2025-06-20", "pay_date": "2025-06-30", "source": "https://strefainwestorow.pl/dywidendy/asseco-poland-dywidenda-2025", "note": "RN pozytywnie 2025-03-27 (czwartek); lacznie 268,67 mln zl"},
+    {"fy": 2023, "rec_date": "2024-03-27", "rec_dps": 3.66, "agm_date": "2024-06-12", "final_dps": 3.66, "cum_date": "2024-06-19", "pay_date": "2024-06-28", "source": "https://inwestor.asseco.com/files/investor/uploads/05_2024_rekomendacja_wyplaty_dywidendy.pdf", "note": "RB 5/2024 z 2024-03-27; 249,6 mln zl"},
+    {"fy": 2022, "rec_date": "2023-04-19", "rec_dps": 3.50, "agm_date": "2023-05-30", "final_dps": 3.50, "cum_date": "2023-06-15", "pay_date": "2023-06-28", "source": "https://www.parkiet.com/technologie/art38352561-asseco-z-ostroznym-optymizmem", "note": "data = data artykulu parkiet o rekomendacji 3,50 zl (290,5 mln zl); komunikatu ESPI nie pobrano - data przyblizona"},
+    {"fy": 2020, "rec_date": "2021-03-23", "rec_dps": 3.11, "agm_date": "2021-05-20", "final_dps": 3.11, "cum_date": "2021-06-01", "pay_date": "2021-06-18", "source": "https://www.biznesradar.pl/a/98398,asseco-poland-rekordowa-dywidenda-i-nowa-polityka", "note": "dane starsze; data rekomendacji z biznesradaru (artykul 2021-03-23)"}
+  ],
+  "policy": "Od dywidendy za 2020: zarzad zamierza rekomendowac wyplate dywidendy przekraczajaca 50% zysku netto Spolki, z uwzglednieniem sytuacji finansowej i plynnosci, planow inwestycyjnych i zobowiazan; kazdorazowo decyduje WZA. Zrodlo: https://inwestor.asseco.com/en/financial-information/dividend",
+  "next_reports": [
+    {"what": "Skonsolidowany raport za III kwartal 2026", "date": "2026-11-26", "source": "https://inwestor.asseco.com/files/investor/uploads/02_2026_terminy_publikacji_raportow_okresowych_w_2026.pdf"},
+    {"what": "Raport roczny za 2026", "date": null, "source": "terminarz 2027 nieopublikowany (raport za 2025 byl 2026-03-31; terminarz 2026 wyszedl 2026-01-23)"}
+  ],
+  "expected_rec_window": {"from": "2027-03-23", "to": "2027-04-02", "basis": "rekomendacja z data publikacji raportu rocznego: 2024-03-27, 2025-03-27, 2026-03-31 (+ 2021-03-23; wyjatek 2023: ok. 2023-04-19). dividends.py: 2027-03-03..03-26 - nieco za wczesnie. Pewnosc srednia, bo termin raportu rocznego 2026 nieznany."},
+  "results_note": "I kw. 2026: zysk netto akcjonariuszy 228 mln zl (vs 136 mln zl rok wczesniej, konsensus ok. 185 mln), przychody 4,40 mld zl (szacunki 2026-05-20, parkiet); II kw. 2026: zysk netto 201,2 mln zl (konsensus 185,2), EBITDA 769,9 mln zl, przychody 4,85 mld zl (xyz.pl 2026-08-27). Zdolnosc do wyplaty dobra, ale baza do porownania (13,05 zl) byla jednorazowa. Zrodla: https://www.parkiet.com/technologie/art44414161-asseco-dobrze-zaczelo-rok-zysk-zaskakuje ; https://xyz.pl/?p=243064",
+  "flags": [
+    "Dywidenda za 2025 (13,05 zl) zawyzona jednorazowym efektem Sapiens - DPS za 2026 prawdopodobnie wroci blizej 4+ zl (wniosek wlasny z zalozenia polityki >50% zysku), co istotnie zmienia stope dywidendy",
+    "Zmiana prezesa: RN powolala Rafala Kozlowskiego na prezesa na kadencje 2027-2031 (naglowek parkiet.com, bez daty) - ryzyko zmiany podejscia, polityka dotychczas bez zmian",
+    "Polityka mowi o zamiarze >50% zysku, nie gwarancji; brak zaliczek w historii",
+    "Raport Q3 2026 wychodzi 2026-11-26 - mozliwy komentarz o dywidendzie, ale historycznie rekomendacja dopiero w marcu/kwietniu"
+  ],
+  "confidence": "wysoka",
+  "sources": [
+    "https://inwestor.asseco.com/files/investor/uploads/13_2026_rekomendacja_wyplaty_dywidendy.pdf",
+    "https://inwestor.asseco.com/files/investor/uploads/17_2026_dividend_payment.pdf",
+    "https://strefainwestorow.pl/dywidendy/asseco-poland-dywidenda-2026",
+    "https://strefainwestorow.pl/dywidendy/asseco-poland-dywidenda-2025",
+    "https://inwestor.asseco.com/files/investor/uploads/05_2024_rekomendacja_wyplaty_dywidendy.pdf",
+    "https://www.parkiet.com/technologie/art38352561-asseco-z-ostroznym-optymizmem",
+    "https://www.biznesradar.pl/a/98398,asseco-poland-rekordowa-dywidenda-i-nowa-polityka",
+    "https://www.biznesradar.pl/dywidenda/ACP",
+    "https://inwestor.asseco.com/en/financial-information/dividend",
+    "https://inwestor.asseco.com/files/investor/uploads/02_2026_terminy_publikacji_raportow_okresowych_w_2026.pdf",
+    "https://www.parkiet.com/technologie/art44414161-asseco-dobrze-zaczelo-rok-zysk-zaskakuje",
+    "https://xyz.pl/?p=243064",
+    "https://www.parkiet.com/firmy/76581-asseco-poland/wiadomosci"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "tic": "GPW",
+  "announced_current_cycle": "nie",
+  "announcement_note": "Ostatni cykl zamknięty: dywidenda za 2025 (3,40 zł) wypłacona 2026-08-06. Rekomendacji/zamiaru za 2026 nie znaleziono (zarząd składa wniosek do Rady Giełdy zwykle pod koniec kwietnia, po raporcie rocznym; GPW nie wypłaca zaliczek).",
+  "history": [
+    {"fy": 2025, "rec_date": "2026-04-27", "rec_dps": 3.4, "agm_date": "2026-06-23", "final_dps": 3.4, "cum_date": "2026-07-21", "pay_date": "2026-08-06", "source": "https://mondovisione.com/news/gpw-management-boards-request-to-the-exchange-supervisory-board-for-an-opinion-2026427/", "note": "wniosek zarządu do Rady Giełdy 2026-04-27 (142,7 mln zł, 72,2% zysku skonsolidowanego); opinia RN 2026-05-13; dzień dywidendy 2026-07-23; AGM wg biznesradaru"},
+    {"fy": 2024, "rec_date": "2025-04-28", "rec_dps": 3.15, "agm_date": "2025-06-30", "final_dps": 3.15, "cum_date": "2025-07-21", "pay_date": "2025-08-06", "source": "https://www.parkiet.com/komunikaty-espi/art42233251-gielda-papierow-wartosciowych-w-warszawie-sa-opinia-rady-nadzorczej-gpw-dotyczaca-propozycji-zarzadu-gieldy-w-sprawie-podzialu-zysku-spolki-za-rok-2024", "note": "raport 7/2025 z 2025-04-28 (data z odwołania w raporcie RN z 2025-05-05); 132,2 mln zł, w tym 42,8 mln z kapitału rezerwowego, 88,7% zysku; dzień dywidendy 2025-07-23"},
+    {"fy": 2023, "rec_date": null, "rec_dps": null, "agm_date": "2024-06-27", "final_dps": 3.0, "cum_date": "2024-07-22", "pay_date": "2024-08-07", "source": "https://www.biznesradar.pl/dywidenda/GPW", "note": "data rekomendacji nie zweryfikowana (tylko dane biznesradaru)"}
+  ],
+  "policy": "Strategia 2025-2027: wypłata 60-80% zysku netto grupy i stały wzrost DPS (komunikat prasowy GPW Q2 2026: 'atrakcyjna i rosnąca polityka dywidendowa'); DPS 2,50 (FY2020) -> 3,40 zł (FY2025). Źródła: https://ppcg.com.pl/gpw-ze-wzrostem-dywidendy-o-5-za-2024-rok/ ; https://www.gpw.pl/pub/GPW/files/PDF/raporty/R2026/Q2/Komunikat_Prasowy_GPW_Q2_2026.pdf",
+  "next_reports": [
+    {"what": "Q3 2026 (skonsolidowany)", "date": "2026-11-16", "source": "https://biznes.pap.pl/wiadomosci/firmy/gpw-sa-12026-terminy-przekazywania-raportow-okresowych-w-2026-roku"},
+    {"what": "Raport roczny za 2026", "date": null, "source": "terminarz 2027 nieopublikowany (raport za 2025 wyszedł 2026-03-23)"}
+  ],
+  "expected_rec_window": {"from": "2027-04-20", "to": "2027-05-05", "basis": "wnioski zarządu do Rady Giełdy: 2025-04-28 (FY2024) i 2026-04-27 (FY2025), czyli ok. 5 tygodni po raporcie rocznym (2026-03-23); dividends.py szacuje 2027-04-19..05-12 - zgodne"},
+  "results_note": "I poł. 2026: przychody 324,2 mln zł (+17,3% r/r), skorygowana EBITDA 140,6 mln zł (+20,1%), skorygowany zysk netto j.d. 127,9 mln zł (+18,2%), ROE 20,1% (najwyższe od 7 lat); I kw. 2026 zysk netto 69,58 mln zł (+37,8% r/r, rekord). Zdolność do wypłaty wysoka. Źródła: https://www.gpw.pl/pub/GPW/files/PDF/raporty/R2026/Q2/Komunikat_Prasowy_GPW_Q2_2026.pdf ; https://comparic.pl/gpw-z-rekordowym-i-kw-2026-zysk-netto-wzrosl-o-378-do-6958-mln-zl/",
+  "flags": [
+    "Brak ogłoszenia za 2026 - zgodnie ze wzorcem (rekomendacja dopiero IV/V 2027)",
+    "Raport Q3 2026 już 2026-11-16 (wynik dobry = pozytywny sygnał dla DPS, ale to nie rekomendacja)",
+    "FY2024: wypłata 88,7% zysku (z kapitału rezerwowego) wykraczała poza zakres polityki 60-80% - zarząd bywa elastyczny w górę",
+    "Rekomendację zarząd kieruje do Rady Giełdy (opinia ok. 2 tygodnie później), WZA w drugiej połowie czerwca"
+  ],
+  "confidence": "wysoka",
+  "sources": [
+    "https://mondovisione.com/news/gpw-management-boards-request-to-the-exchange-supervisory-board-for-an-opinion-2026427/",
+    "https://mondovisione.com/news/opinion-of-the-exchange-supervisory-board-on-the-distribution-of-the-companys-p-2026513/",
+    "https://xyz.pl/?p=197569",
+    "https://ppcg.com.pl/gpw-hojnie-dzieli-sie-zyskiem-zarzad-proponuje-340-zl-dywidendy-na-akcje-za-2025-rok/",
+    "https://www.parkiet.com/komunikaty-espi/art42233251-gielda-papierow-wartosciowych-w-warszawie-sa-opinia-rady-nadzorczej-gpw-dotyczaca-propozycji-zarzadu-gieldy-w-sprawie-podzialu-zysku-spolki-za-rok-2024",
+    "https://ppcg.com.pl/gpw-ze-wzrostem-dywidendy-o-5-za-2024-rok/",
+    "https://www.biznesradar.pl/dywidenda/GPW",
+    "https://biznes.pap.pl/wiadomosci/firmy/gpw-sa-12026-terminy-przekazywania-raportow-okresowych-w-2026-roku",
+    "https://www.gpw.pl/pub/GPW/files/PDF/raporty/R2026/Q2/Komunikat_Prasowy_GPW_Q2_2026.pdf"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+ "asof": "2026-11-06",
+ "cash": 100000.0,
+ "closed": [],
+ "config": {
+  "fee_pct": 0.2,
+  "first_orders": "2026-11-09",
+  "start_capital": 100000.0,
+  "start_date": "2026-11-06"
+ },
+ "decisions": [],
+ "equity": [
+  {
+   "date": "2026-11-06",
+   "equity": 100000.0
+  }
+ ],
+ "key": "kompas",
+ "log": [],
+ "orders": [],
+ "positions": [],
+ "processed": "2026-11-06",
+ "report": {
+  "asof": "2026-11-06",
+  "half": false,
+  "missing": [
+   {
+    "code": "index",
+    "names": "WIG20, mWIG40, sWIG80"
+   }
+  ],
+  "nobuy": [],
+  "pending": [],
+  "pick": null,
+  "status": "waiting",
+  "tables": [
+   {
+    "kind": "kompas",
+    "rows": []
+   }
+  ]
+ },
+ "sessions": 122,
+ "status": "waiting"
+}

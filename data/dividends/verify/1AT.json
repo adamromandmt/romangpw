@@ -1,0 +1,41 @@
+{
+  "tic": "1AT",
+  "announced_current_cycle": "nie",
+  "announcement_note": "Ostatni cykl zamknięty: dywidenda za 2025 (4,50 zł, 194,7 mln zł) wypłacona 2026-10-01 (dzień dywidendy 2026-07-15). Rekomendacji/zamiaru za 2026 ani zaliczki nie znaleziono (strefainwestorow: brak informacji o dywidendzie za 2026; Atal nie wypłaca zaliczek w ostatnich latach).",
+  "history": [
+    {"fy": 2025, "rec_date": null, "rec_dps": 4.5, "agm_date": "2026-06-24", "final_dps": 4.5, "cum_date": "2026-07-13", "pay_date": "2026-10-01", "source": "https://atal.pl/wp-content/uploads/2026/06/2026.06.24-WZA-ATAL-SA-podjelo-decyzje-o-wyplacie-dywidendy.pdf", "note": "rekomendacja zarządu opublikowana wraz z raportem rocznym ok. 2026-03-25/26 (artykuł ppcg i nota Erste datowane 2026-03-26; ESPI nie pobrano, więc dokładna data niepotwierdzona); dzień dywidendy 2026-07-15"},
+    {"fy": 2024, "rec_date": null, "rec_dps": 5.5, "agm_date": "2025-06-17", "final_dps": 5.5, "cum_date": "2025-07-11", "pay_date": "2025-09-03", "source": "https://atal.pl/wp-content/uploads/2025/06/2025.06.17-WZA-ATAL-SA-podjelo-decyzje-o-wyplacie-dywidendy-MEDIA-RELEASE.pdf", "note": "rekomendacja: raport bieżący 22/2025 (PAP/biznes.pap.pl/wiadomosci/firma/1385), data niepotwierdzona - strona PAP zablokowana; dzień dywidendy 2025-07-15"},
+    {"fy": 2023, "rec_date": null, "rec_dps": 6.0, "agm_date": "2024-06-20", "final_dps": 6.0, "cum_date": "2024-06-25", "pay_date": "2024-07-03", "source": "https://www.parkiet.com/komunikaty-espi/art40676191-atal-spolka-akcyjna-wyplata-dywidendy-za-2023-rok", "note": "ESPI 13/2024 i 17/2024 (korekta tytułu) z 2024-06-20: WZA 6,00 zł, dzień dywidendy 2024-06-27; data rekomendacji niezweryfikowana"},
+    {"fy": 2021, "rec_date": "2022-04-20", "rec_dps": 6.0, "agm_date": "2022-06-14", "final_dps": 6.0, "cum_date": "2022-06-21", "pay_date": "2022-07-04", "source": "https://www.biznesradar.pl/a/109093,zarzad-atal-rekomenduje-wyplate-najwyzszej-w-historii-spolki-dywidendy", "note": "uchwała zarządu 2022-04-20"},
+    {"fy": 2020, "rec_date": "2021-03-18", "rec_dps": 3.03, "agm_date": "2021-06-30", "final_dps": 3.03, "cum_date": "2021-07-05", "pay_date": "2021-07-15", "source": "https://www.parkiet.com/komunikaty-espi/art26723191-atal-s-a-rekomendacja-zarzadu-dotyczaca-poziomu-wyplaty-dywidendy-za-2020-rok", "note": "ESPI z 2021-03-18"}
+  ],
+  "policy": "Polityka z 2017 (RB 9/2017): wypłata 70-100% skonsolidowanego zysku netto j.d. za rok, z uwzględnieniem inwestycji, płynności, kosztu finansowania i kowenantów zadłużenia; wciąż prezentowana na stronie IR (ri.atal.pl/?p=1867). FY2025: 4,50 zł = 194,7 mln zł przy zysku jednostkowym 221,2 mln zł. Źródła: https://ri.atal.pl/?p=1867 ; https://www.biznesradar.pl/a/17186,atal-rekomenduje-1-68-zl-dywidendy-na-akcje-zgodnie-z-nowa-polityka-dywidendowa",
+  "next_reports": [
+    {"what": "Q3 2026", "date": "2026-11-26", "source": "https://strefainwestorow.pl/dane/raporty/lista-publikacji-raportow-okresowych/all (kalendarium serwisu; raport ESPI Atal z terminami 2026 niepobrany - bankier zablokowany; Q3 2025 wyszedł 2025-11-13, więc data warta weryfikacji)"},
+    {"what": "Raport roczny za 2026", "date": null, "source": "terminarz 2027 nieopublikowany (raport za 2025 ok. 2026-03-25)"}
+  ],
+  "expected_rec_window": {"from": "2027-03-15", "to": "2027-04-25", "basis": "obserwowane rekomendacje: 2021-03-18 (FY2020), 2022-04-20 (FY2021), ok. 2026-03-25 (FY2025); FY2022-FY2024 niezweryfikowane. Szacunek dividends.py (2027-04-20..05-13, z terminów WZA) jest prawdopodobnie za późny - rekomendacja bywa z raportem rocznym w marcu"},
+  "results_note": "I kw. 2026: zysk netto 55,3 mln zł (marża 17,6%), 500 przekazań (vs 218), sprzedaż 644 umów; suma 12 mies. do I poł. 2026: przychody 1 637 mln zł, zysk netto 328,1 mln zł, gotówka 500,4 mln zł; IV kw. 2025 zysk netto 91,8 mln zł (+126%). Zdolność do wypłaty dobra, lecz wyższy dług i zakup Budner (133,5 mln zł) obciążają bilans. Źródła: https://atal.pl/wp-content/uploads/2026/05/2026.05.14-Grupa-ATAL-wyniki-finansowe-Q1-2026.pdf ; https://strefainwestorow.pl/notowania/spolki/PLATAL000046/wyniki-finansowe ; https://www.gpw.pl/pub/pwpa/20260326_erste_securities_polska_1at_pl_aw.pdf",
+  "flags": [
+    "DPS spada dwa lata z rzędu (6,00 -> 5,50 -> 4,50 zł), mimo zysku w górę - zarząd ostrożny wobec rosnącego zadłużenia (Erste: bilans ciaśniejszy niż u konkurentów)",
+    "Wstępna umowa zakupu udziałów Budner (133,5 mln zł) - alokacja kapitału kosztem dywidendy możliwa",
+    "Dokładna data rekomendacji za FY2025/FY2024 niepotwierdzona primary source (bankier/PAP zablokowane) - użyto artykułów z 2026-03-26",
+    "Data Q3 2026 (2026-11-26) tylko z kalendarium strefainwestorow - warto zweryfikować w ESPI",
+    "Wypłata w październiku 2026 (cum lipiec) - długi odstęp cum->pay (2025: lipiec->wrzesień, 2026: lipiec->październik)"
+  ],
+  "confidence": "średnia",
+  "sources": [
+    "https://atal.pl/wp-content/uploads/2026/06/2026.06.24-WZA-ATAL-SA-podjelo-decyzje-o-wyplacie-dywidendy.pdf",
+    "https://atal.pl/wp-content/uploads/2025/06/2025.06.17-WZA-ATAL-SA-podjelo-decyzje-o-wyplacie-dywidendy-MEDIA-RELEASE.pdf",
+    "https://ppcg.com.pl/atal-rekomenduje-450-zl-dywidendy-na-akcje-za-2025-rok-znamy-szczegoly/",
+    "https://www.gpw.pl/pub/pwpa/20260326_erste_securities_polska_1at_pl_aw.pdf",
+    "https://www.parkiet.com/komunikaty-espi/art40676191-atal-spolka-akcyjna-wyplata-dywidendy-za-2023-rok",
+    "https://www.biznesradar.pl/a/109093,zarzad-atal-rekomenduje-wyplate-najwyzszej-w-historii-spolki-dywidendy",
+    "https://www.parkiet.com/komunikaty-espi/art26723191-atal-s-a-rekomendacja-zarzadu-dotyczaca-poziomu-wyplaty-dywidendy-za-2020-rok",
+    "https://ri.atal.pl/?p=1867",
+    "https://strefainwestorow.pl/notowania/spolki/PLATAL000046/dywidendy",
+    "https://strefainwestorow.pl/notowania/spolki/PLATAL000046/wyniki-finansowe",
+    "https://strefainwestorow.pl/dane/raporty/lista-publikacji-raportow-okresowych/all",
+    "https://atal.pl/wp-content/uploads/2026/05/2026.05.14-Grupa-ATAL-wyniki-finansowe-Q1-2026.pdf"
+  ]
+}

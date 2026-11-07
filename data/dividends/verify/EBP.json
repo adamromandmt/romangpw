@@ -1,0 +1,40 @@
+{
+  "tic": "EBP",
+  "announced_current_cycle": "nie",
+  "announcement_note": "EBP = Erste Bank Polska S.A. (dawniej Santander Bank Polska S.A., ticker SPL; zmiana nazwy zarejestrowana w KRS 2026-04-24, rebranding 24-26.04.2026; prefiks instrumentow SPL->EBP od 2026-05-05; wg xyz.pl Erste Group podpisal umowe kupna 49% akcji banku; wg biznesradaru bank nalezy do ERSTE Group od 2026). Cykl za 2025 zamkniety: rekomendacja 49,98 zl z 2026-03-18 (RB 18/2026), WZA 2026-04-15, dzien dywidendy 2026-05-13, wyplata 2026-05-20. Rekomendacji/zamiaru ani zaliczki za 2026 nie znaleziono; wyniki III kw. 2026 (2026-10-30) nie zawieraja wzmianki o dywidendzie (xyz.pl). Przegladano glownie komunikaty do konca kwietnia 2026 (strona biznesradar EBP) oraz wyniki z 2026-10-30; NWZ w sprawie zaliczki nie znaleziono.",
+  "history": [
+    {"fy": 2025, "rec_date": "2026-03-18", "rec_dps": 49.98, "agm_date": "2026-04-15", "final_dps": 49.98, "cum_date": "2026-05-11", "pay_date": "2026-05-20", "source": "https://www.erste.pl/en/investor-relations/reports/reports-list/current-report-no-18-2026", "note": "RB 18/2026: 5,107 mld zl = 74,99% zysku 2025 (6,709 mld zl; 5,031 mld zl) + 76,8 mln zl z kapitalu dywidendowego; listy KNF 2026-02-27 (RB 10/2026) i 2026-03-16 (RB 15/2026, potwierdzenie mozliwosci dodatkowej dywidendy); 2026-03-16: bank informowal o maksymalnej zdolnosci 5,1 mld zl bez decyzji (xyz.pl); dzien dywidendy 2026-05-13"},
+    {"fy": 2024, "rec_date": "2025-03-19", "rec_dps": 46.37, "agm_date": "2025-04-15", "final_dps": 46.37, "cum_date": "2025-05-09", "pay_date": "2025-05-20", "source": "https://www.erste.pl/relacje-inwestorskie/raporty/raporty-lista/raport-biezacy-nr-15-2025", "note": "RB 15/2025: 4,739 mld zl = 3,898 mld zl (74,99% zysku 2024) + 840,9 mln zl z kapitalu dywidendowego; dzien dywidendy 2025-05-13"},
+    {"fy": 2023, "rec_date": "2024-03-21", "rec_dps": 44.63, "agm_date": "2024-04-18", "final_dps": 67.88, "cum_date": "2024-05-14", "pay_date": "2024-05-23", "advance_dps": 23.25, "source": "https://www.erste.pl/en/investor-relations/reports/reports-list/current-report-no-19-2024", "note": "RB 19/2024: czesc glowna 44,63 zl (3,504 mld zl = 74,99% zysku + 1,057 mld zl z kapitalu dywidendowego); wczesniej zaliczka 23,25 zl z kapitalu dywidendowego (NWZ 2023-11-16, dzien prawa 2023-12-22, wyplata 2023-12-29); final_dps = lacznie 67,88 zl; dzien dywidendy 2024-05-16"}
+  ],
+  "policy": "Brak odrebnej publicznej polityki w pobranych zrodlach; praktyka: wyplata ok. 74,99% zysku netto (kryterium KNF do 75%) plus dodatkowo z kapitalu dywidendowego za zgoda KNF. Prezes M. Gajewski (wywiad 2026-05-06): bank zamierza dalej wyplacac maksymalna mozliwa dywidende, bez zmian; nowa strategia ma byc oglaszana na przelomie 2026/2027 (inwestycje.pl 2026-07-30). Zrodla: https://strefainwestorow.pl/wywiady/erstebankpolska-dywidenda-strategia-integracja-rebranding-gpw ; https://inwestycje.pl/biznes/erste-bank-polska-planuje-oglosic-nowa-strategie-rozwoju-na-przelomie-roku/",
+  "next_reports": [
+    {"what": "Wybrane niezbadane dane skonsolidowane za 2026 (komunikat biezacy)", "date": null, "source": "terminarz 2027 nieopublikowany (w 2026: 2026-02-04, RB 3/2026)"},
+    {"what": "Raport roczny za 2026", "date": null, "source": "terminarz 2027 nieopublikowany (raport za 2025: 2026-02-24, https://www.erste.pl/en/investor-relations/reports/reports-list/current-report-no-3-2026)"},
+    {"what": "Q3 2026 (juz opublikowany)", "date": "2026-10-30", "source": "https://xyz.pl/?p=269791"}
+  ],
+  "expected_rec_window": {"from": "2027-03-17", "to": "2027-03-24", "basis": "formalna rekomendacja zarzadu: 2024-03-21, 2025-03-19, 2026-03-18 (trzy lata, srodek marca, po raporcie rocznym z konca lutego i po liscie KNF). dividends.py: 2027-03-07..03-28 - zgodne. Mozliwa zapowiedz wczesniej (strategia na przelomie roku / dane za 2026 ok. poczatku lutego), brak precedensu dla zamiaru jak w ING."},
+  "results_note": "III kw. 2026: zysk netto 1,49 mld zl (-21% r/r, zgodnie z konsensusem), 9M 2026 3,69 mld zl vs 4,64 mld zl rok wczesniej (36,12 zl vs 45,41 zl na akcje); lacznie wspolczynnik kapitalowy 18,75%, ROE 18,2%; koszty rebrandingu 226 mln zl i integracji z Erste 158 mln zl (xyz.pl 2026-10-30). Przy payout ok. 75% sam zysk 9M dawalby ok. 27 zl/akcje (obliczenie wlasne) vs 49,98 zl za 2025. Zrodlo: https://xyz.pl/?p=269791",
+  "flags": [
+    "Zysk netto 9M 2026 -20% r/r (rebranding i integracja z Erste, nizsze stopy, nizsze prowizje) - DPS za 2026 prawdopodobnie wyraznie nizszy niz 49,98 zl",
+    "Wyplata za 2023-2025 zawierala czesc z kapitalu dywidendowego (za zgoda KNF); za 2025 pozostalo z niego tylko 76,8 mln zl - wzgledna wyplata moze wrocic do ok. 75% biezacego zysku",
+    "Zaliczki bank wyplacal w 2021 (NWZ 2021-09-01) i 2023 (NWZ 2023-11-16) z kapitalu dywidendowego - nie znaleziono zadnej zapowiedzi na 2026",
+    "Nowa strategia (do konca 2026) moze zmienic podejscie do dywidendy; zmiana akcjonariatu (Erste Group 49%)",
+    "Zrodlo komunikatow po 2026-04-30 ograniczone - pewnosc co do braku zapowiedzi srednia"
+  ],
+  "confidence": "średnia",
+  "sources": [
+    "https://www.erste.pl/en/investor-relations/reports/reports-list/current-report-no-18-2026",
+    "https://www.erste.pl/relacje-inwestorskie/raporty/raporty-lista/raport-biezacy-nr-15-2025",
+    "https://www.erste.pl/en/investor-relations/reports/reports-list/current-report-no-19-2024",
+    "https://www.erste.pl/en/investor-relations/reports/reports-list/current-report-no-3-2026",
+    "https://www.biznesradar.pl/dywidenda/EBP",
+    "https://www.biznesradar.pl/wiadomosci/EBP,6",
+    "https://strefainwestorow.pl/wiadomosci/20260430/gpw-komunikat-erste-bank-polska",
+    "https://xyz.pl/?p=180760",
+    "https://xyz.pl/?p=269791",
+    "https://strefainwestorow.pl/wywiady/erstebankpolska-dywidenda-strategia-integracja-rebranding-gpw",
+    "https://inwestycje.pl/biznes/erste-bank-polska-planuje-oglosic-nowa-strategie-rozwoju-na-przelomie-roku/",
+    "https://stockanalysis.com/quote/wse/EBP/"
+  ]
+}
