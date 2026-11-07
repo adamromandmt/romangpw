@@ -1,6 +1,5 @@
 {
  "behind_latest_session": [
-  "MLP",
   "QNT"
  ],
  "calendar_gaps": 0,
@@ -8,12 +7,7 @@
  "coverage": 0.994,
  "errors": [],
  "failed": {
-  "CCC": "nierozpoznana: brak w migawce GPW i w gpw_alias (wycofana z obrotu lub zmieniony ticker?)",
-  "CIE": "nierozpoznana: brak w migawce GPW i w gpw_alias (wycofana z obrotu lub zmieniony ticker?)",
-  "LVC": "nierozpoznana: brak w migawce GPW i w gpw_alias (wycofana z obrotu lub zmieniony ticker?)",
-  "MLP": "nierozpoznana: brak w migawce GPW i w gpw_alias (wycofana z obrotu lub zmieniony ticker?)",
-  "QNT": "bez obrotu w najnowszej sesji (ostatni wiersz 2026-11-05)",
-  "SPL": "nierozpoznana: brak w migawce GPW i w gpw_alias (wycofana z obrotu lub zmieniony ticker?)"
+  "QNT": "bez obrotu w najnowszej sesji (ostatni wiersz 2026-11-05)"
  },
  "indices_last_date": {
   "MWIG40": "2026-11-06",
@@ -107,11 +101,11 @@
   "MBK": "2026-11-06",
   "MBR": "2026-11-06",
   "MDG": "2026-11-06",
+  "MDV": "2026-11-06",
   "MEX": "2026-11-06",
   "MGT": "2026-11-06",
   "MIL": "2026-11-06",
   "MLG": "2026-11-06",
-  "MLP": "2026-11-04",
   "MNC": "2026-11-06",
   "MOL": "2026-11-06",
   "MRB": "2026-11-06",
@@ -180,18 +174,28 @@
   "ZEP": "2026-11-06"
  },
  "latest_session": "2026-11-06",
- "ok": 154,
+ "ok": 155,
  "repaired_bars": 0,
- "resolvable": 155,
- "rows_min": 50,
- "run_utc": "2026-11-07T08:11:08Z",
- "sessions_fetched_now": 2,
+ "resolvable": 156,
+ "rows_min": 72,
+ "run_utc": "2026-11-07T08:33:13Z",
+ "sessions_fetched_now": 261,
  "sessions_known": 261,
  "sessions_pending": 0,
- "sessions_without_file_now": [],
+ "sessions_without_file_now": [
+  "2025-12-24",
+  "2025-12-25",
+  "2025-12-26",
+  "2025-12-31",
+  "2026-01-01",
+  "2026-01-06",
+  "2026-04-03",
+  "2026-04-06",
+  "2026-05-01",
+  "2026-06-04"
+ ],
  "short_history_under_200": [
   "KMP",
-  "MLP",
   "NWA",
   "SPH"
  ],
@@ -229,6 +233,6 @@
    ]
   ]
  },
- "universe": 160,
+ "universe": 156,
  "warnings": []
 }
