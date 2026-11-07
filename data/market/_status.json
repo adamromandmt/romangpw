@@ -3,14 +3,10 @@
   "MLP",
   "QNT"
  ],
- "calendar_gaps": 1,
- "calendar_gaps_sample": [
-  "2026-10-19"
- ],
+ "calendar_gaps": 0,
+ "calendar_gaps_sample": [],
  "coverage": 0.994,
- "errors": [
-  "2026-10-19: IncompleteRead: IncompleteRead(77601 bytes read)"
- ],
+ "errors": [],
  "failed": {
   "CCC": "nierozpoznana: brak w migawce GPW i w gpw_alias (wycofana z obrotu lub zmieniony ticker?)",
   "CIE": "nierozpoznana: brak w migawce GPW i w gpw_alias (wycofana z obrotu lub zmieniony ticker?)",
@@ -188,22 +184,11 @@
  "repaired_bars": 0,
  "resolvable": 155,
  "rows_min": 50,
- "run_utc": "2026-11-07T08:07:35Z",
- "sessions_fetched_now": 260,
- "sessions_known": 260,
+ "run_utc": "2026-11-07T08:11:08Z",
+ "sessions_fetched_now": 2,
+ "sessions_known": 261,
  "sessions_pending": 0,
- "sessions_without_file_now": [
-  "2025-12-24",
-  "2025-12-25",
-  "2025-12-26",
-  "2025-12-31",
-  "2026-01-01",
-  "2026-01-06",
-  "2026-04-03",
-  "2026-04-06",
-  "2026-05-01",
-  "2026-06-04"
- ],
+ "sessions_without_file_now": [],
  "short_history_under_200": [
   "KMP",
   "MLP",
@@ -212,7 +197,38 @@
  ],
  "snapshot_tickers": 371,
  "source": "archiwum notowań GPW (gpw.pl)",
- "suspect_jumps_over_30pct": {},
+ "suspect_jumps_over_30pct": {
+  "CRJ": [
+   [
+    "2026-01-07",
+    37.8
+   ]
+  ],
+  "LBW": [
+   [
+    "2026-06-01",
+    31.1
+   ]
+  ],
+  "ODL": [
+   [
+    "2026-02-23",
+    32.1
+   ]
+  ],
+  "TRN": [
+   [
+    "2026-05-27",
+    -40.3
+   ]
+  ],
+  "WAS": [
+   [
+    "2025-12-23",
+    31.0
+   ]
+  ]
+ },
  "universe": 160,
  "warnings": []
 }
