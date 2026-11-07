@@ -15,6 +15,10 @@ Dzienny skaner swing GPW, publikowany na https://www.gpwradar.pl (GitHub Pages; 
 
 Ćwiczenie przesiewowe według zadanego frameworku, nie porada inwestycyjna.
 
+## Menu w nagłówku
+- Układ: **Newsy dnia** · **Swing ▾** (rozwijane: Swing Raport, Portfel Swing, Swing Metodologia, Archiwum, w tej kolejności) · **Dywidendy**. Definicja w `MENU` w `build.py`, nazwy grup w `UI[lang]["groups"]`, style i skrypt rozwijania w `CSS` i `NAV_JS` (klik, najechanie, klawiatura, telefon; bez JS działa `:hover`/`:focus-within`).
+- Kolejna strategia: dopisz do `MENU` wpis `("menu", "<klucz>", [raport, "port-<nazwa>", metodologia, archiwum])`, nazwę grupy do `UI["pl"]["groups"]` i `UI["en"]["groups"]`, a strony do `FILES` i `UI[lang]["tabs"]`. Archiwum dywidend podświetla zakładkę Dywidendy (`NAV_ALIAS`). `tests/test_nav.py` pilnuje kolejności i aktywnej zakładki.
+
 ## Zakładka Newsy dnia
 - `NEWS-METHOD.md` — kryteria wyboru newsów (ocena istotności, język bez emocji, format); `newsy/sources.json` — źródła, progi i lista osób (edytowalne bez zmian w kodzie).
 - `newsy/RRRR-MM-DD.md` (PL) i `newsy-en/` (EN) — wydania; w dni bez istotnych wiadomości wydanie nie powstaje. Strony: `newsy.html`, `en/news.html`.

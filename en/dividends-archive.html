@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0B0C10">
+<script>document.documentElement.classList.add("js")</script>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
@@ -64,9 +65,23 @@ header a.brand .wm{font-size:26px;font-weight:800;letter-spacing:-.4px;line-heig
 header a.brand .wm b{font-weight:800;background:linear-gradient(90deg,#8DF2B8,#4FA7AB);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
 header a.brand:hover .wm{opacity:.92}
 header nav{position:relative;margin-top:10px;font-size:14px;display:flex;flex-wrap:wrap;gap:6px 18px}
-header nav a{color:var(--accent2);text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;white-space:nowrap}
-header nav a:hover{color:var(--accent);border-bottom-color:var(--accent)}
-header nav a.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+header nav>a,header nav .dd-b{color:var(--accent2);text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;white-space:nowrap}
+header nav>a:hover,header nav .dd-b:hover,header nav .dd.open .dd-b{color:var(--accent);border-bottom-color:var(--accent)}
+header nav>a.on,header nav .dd.on .dd-b{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+/* Zakładka z rozwijanym menu (strategia): przycisk + lista linków. Otwiera ją klik, najechanie myszą i klawiatura (NAV_JS); bez JS działają :hover i :focus-within. */
+.dd{position:relative;display:flex}
+.dd-b{display:flex;align-items:center;gap:5px;margin:0;padding:0;border:0;background:none;font:inherit;line-height:inherit;cursor:pointer}
+.dd-c{width:10px;height:10px;flex:none;transition:transform .15s ease}
+.dd.open .dd-c{transform:rotate(180deg)}
+.dd-m{display:none;position:absolute;z-index:60;left:-19px;top:calc(100% + 10px);min-width:232px;margin:0;padding:6px;list-style:none;background:rgba(12,18,16,.97);border:1px solid var(--line);border-radius:12px;box-shadow:0 0 0 1px rgba(43,255,136,.05),0 16px 36px rgba(0,0,0,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.dd-m::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
+.dd.open .dd-m,html:not(.js) .dd:hover .dd-m,html:not(.js) .dd:focus-within .dd-m{display:block}
+.dd-m li{margin:0}
+.dd-m a{display:block;padding:9px 12px;border-radius:8px;color:var(--fg);font-size:14px;text-decoration:none;white-space:nowrap}
+.dd-m a:hover{background:rgba(43,255,136,.09);color:var(--strong)}
+.dd-m a[aria-current=page]{background:rgba(43,255,136,.07);color:var(--accent);font-weight:600}
+@media (prefers-reduced-motion:reduce){.dd-c{transition:none}}
+@media (max-width:640px){.dd{position:static}.dd-m{left:0;right:0;min-width:0;top:calc(100% + 8px)}.dd-m a{padding:11px 12px;font-size:15px}}
 .topbar{position:relative;display:flex;align-items:center;margin:-6px 0 12px}
 .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:rgba(15,22,20,.85);font-size:12px;font-weight:700;letter-spacing:.06em}
 .lang a,.lang span{padding:4px 12px;text-decoration:none;color:var(--muted)}
@@ -196,7 +211,7 @@ footer{color:var(--muted);font-size:13px;padding-top:26px;padding-bottom:44px;bo
 <svg class="deco" viewBox="0 0 520 140" preserveAspectRatio="xMaxYMid meet" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="fadeg" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#000"/><stop offset=".5" stop-color="#fff"/></linearGradient><mask id="fadem"><rect width="520" height="140" fill="url(#fadeg)"/></mask></defs><g mask="url(#fadem)"><line x1="31" y1="106.5" x2="31" y2="124.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="24" y="114.0" width="14" height="3.0" rx="2" fill="#2BFF88"/><line x1="62" y1="106.5" x2="62" y2="127.5" stroke="#FF5C7A" stroke-width="1.5"/><rect x="55" y="114.0" width="14" height="6.0" rx="2" fill="#FF5C7A"/><line x1="93" y1="100.5" x2="93" y2="127.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="86" y="108.0" width="14" height="12.0" rx="2" fill="#2BFF88"/><line x1="124" y1="100.5" x2="124" y2="124.5" stroke="#FF5C7A" stroke-width="1.5"/><rect x="117" y="108.0" width="14" height="9.0" rx="2" fill="#FF5C7A"/><line x1="155" y1="97.5" x2="155" y2="124.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="148" y="105.0" width="14" height="12.0" rx="2" fill="#2BFF88"/><line x1="186" y1="88.5" x2="186" y2="112.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="179" y="96.0" width="14" height="9.0" rx="2" fill="#2BFF88"/><line x1="217" y1="88.5" x2="217" y2="111.0" stroke="#FF5C7A" stroke-width="1.5"/><rect x="210" y="96.0" width="14" height="7.5" rx="2" fill="#FF5C7A"/><line x1="248" y1="82.5" x2="248" y2="111.0" stroke="#2BFF88" stroke-width="1.5"/><rect x="241" y="90.0" width="14" height="13.5" rx="2" fill="#2BFF88"/><line x1="279" y1="76.5" x2="279" y2="97.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="272" y="84.0" width="14" height="6.0" rx="2" fill="#2BFF88"/><line x1="310" y1="76.5" x2="310" y2="100.5" stroke="#FF5C7A" stroke-width="1.5"/><rect x="303" y="84.0" width="14" height="9.0" rx="2" fill="#FF5C7A"/><line x1="341" y1="70.5" x2="341" y2="100.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="334" y="78.0" width="14" height="15.0" rx="2" fill="#2BFF88"/><line x1="372" y1="61.5" x2="372" y2="85.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="365" y="69.0" width="14" height="9.0" rx="2" fill="#2BFF88"/><line x1="403" y1="61.5" x2="403" y2="84.0" stroke="#FF5C7A" stroke-width="1.5"/><rect x="396" y="69.0" width="14" height="7.5" rx="2" fill="#FF5C7A"/><line x1="434" y1="55.5" x2="434" y2="84.0" stroke="#2BFF88" stroke-width="1.5"/><rect x="427" y="63.0" width="14" height="13.5" rx="2" fill="#2BFF88"/><line x1="465" y1="48.0" x2="465" y2="70.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="458" y="55.5" width="14" height="7.5" rx="2" fill="#2BFF88"/><line x1="496" y1="37.5" x2="496" y2="63.0" stroke="#2BFF88" stroke-width="1.5"/><rect x="489" y="45.0" width="14" height="10.5" rx="2" fill="#2BFF88"/><polyline points="31,114.0 62,120.0 93,108.0 124,117.0 155,105.0 186,96.0 217,103.5 248,90.0 279,84.0 310,93.0 341,78.0 372,69.0 403,76.5 434,63.0 465,55.5 496,45.0" fill="none" stroke="#66FCF1" stroke-width="2" opacity=".8"/></g></svg>
 <div class="topbar"><div class="lang" role="group" aria-label="Language"><a href="../dywidendy-archiwum.html" hreflang="pl" lang="pl" title="Polski">PL</a><span class="cur">EN</span></div></div>
 <a class="brand" href="index.html" aria-label="GPW Radar — WSE scanner" title="GPW Radar"><svg class="logo" viewBox="0 0 48 48" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8DF2B8"/><stop offset="1" stop-color="#4FA7AB"/></linearGradient></defs><rect x="1.5" y="1.5" width="45" height="45" rx="13" fill="#0F1614" stroke="url(#lg)" stroke-width="2"/><circle cx="24" cy="25" r="14" fill="none" stroke="url(#lg)" stroke-width="2.2" opacity=".55"/><circle cx="24" cy="25" r="7.5" fill="none" stroke="url(#lg)" stroke-width="2.2" opacity=".8"/><path d="M24 25 L24 11 A14 14 0 0 1 36.1 18 Z" fill="url(#lg)" opacity=".32"/><line x1="24" y1="25" x2="36.1" y2="18" stroke="url(#lg)" stroke-width="3" stroke-linecap="round"/><circle cx="24" cy="25" r="2.6" fill="#8DF2B8"/><circle cx="19" cy="15.5" r="2.8" fill="#8DF2B8"/></svg><span class="wm">GPW <b>Radar</b></span></a>
-<nav aria-label="Main navigation"><a href="news.html">News of the day</a><a href="index.html">Swing Report</a><a href="portfolio-swing.html">Swing Portfolio</a><a href="methodology-swing.html">Swing Methodology</a><a href="dividends.html">Dividends</a><a href="archive.html" class="on" aria-current="page">Archive</a></nav>
+<nav aria-label="Main navigation"><a href="news.html">News of the day</a><div class="dd"><button type="button" class="dd-b" aria-expanded="false" aria-controls="dd-swing">Swing<svg class="dd-c" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="dd-m" id="dd-swing"><li><a href="index.html">Swing Report</a></li><li><a href="portfolio-swing.html">Swing Portfolio</a></li><li><a href="methodology-swing.html">Swing Methodology</a></li><li><a href="archive.html">Archive</a></li></ul></div><a href="dividends.html" class="on" aria-current="page">Dividends</a></nav>
 </header>
 <main id="main" tabindex="-1">
 <div class="subtabs" role="group"><a href="archive.html">Swing</a><span class="cur">Dividends</span></div>
@@ -207,6 +222,32 @@ footer{color:var(--muted);font-size:13px;padding-top:26px;padding-bottom:44px;bo
 </ul>
 </main>
 <footer>Screening exercise under the given framework, not investment advice.<br>Data from public sources (incl. biznesradar.pl, bankier.pl) may contain errors or delays. Reports are generated automatically. Polish is the original language of the reports.</footer>
+<script>(function(){
+var groups=[].slice.call(document.querySelectorAll(".dd"));
+if(!groups.length)return;
+groups.forEach(function(g){
+var btn=g.querySelector(".dd-b"),items=[].slice.call(g.querySelectorAll(".dd-m a")),pinned=false,timer;
+function isOpen(){return g.classList.contains("open")}
+function open(){clearTimeout(timer);groups.forEach(function(o){if(o!==g)o.close()});g.classList.add("open");btn.setAttribute("aria-expanded","true")}
+function close(){clearTimeout(timer);pinned=false;g.classList.remove("open");btn.setAttribute("aria-expanded","false")}
+g.close=close;
+btn.addEventListener("click",function(){if(!isOpen()){open();pinned=true}else if(!pinned)pinned=true;else close()});
+g.addEventListener("pointerenter",function(e){if(e.pointerType==="mouse")open()});
+g.addEventListener("pointerleave",function(e){if(e.pointerType==="mouse"&&!pinned)timer=setTimeout(close,160)});
+g.addEventListener("keydown",function(e){
+var i=items.indexOf(document.activeElement),k=e.key;
+if(k==="Escape"){if(isOpen()){close();btn.focus()}}
+else if(k==="ArrowDown"){e.preventDefault();if(!isOpen()){open();pinned=true}items[Math.min(i+1,items.length-1)].focus()}
+else if(k==="ArrowUp"&&i>=0){e.preventDefault();if(i>0)items[i-1].focus();else btn.focus()}
+else if(k==="Home"&&i>=0){e.preventDefault();items[0].focus()}
+else if(k==="End"&&i>=0){e.preventDefault();items[items.length-1].focus()}
+});
+});
+function outside(e){groups.forEach(function(g){if(!g.contains(e.target))g.close()})}
+document.addEventListener("pointerdown",outside);
+document.addEventListener("focusin",outside);
+window.addEventListener("pageshow",function(e){if(e.persisted)groups.forEach(function(g){g.close()})});
+})();</script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1968667fc753428b8344b96f81a99adb"}'></script>
 </body>
 </html>

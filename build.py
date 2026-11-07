@@ -63,9 +63,23 @@ header a.brand .wm{font-size:26px;font-weight:800;letter-spacing:-.4px;line-heig
 header a.brand .wm b{font-weight:800;background:linear-gradient(90deg,#8DF2B8,#4FA7AB);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
 header a.brand:hover .wm{opacity:.92}
 header nav{position:relative;margin-top:10px;font-size:14px;display:flex;flex-wrap:wrap;gap:6px 18px}
-header nav a{color:var(--accent2);text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;white-space:nowrap}
-header nav a:hover{color:var(--accent);border-bottom-color:var(--accent)}
-header nav a.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+header nav>a,header nav .dd-b{color:var(--accent2);text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;white-space:nowrap}
+header nav>a:hover,header nav .dd-b:hover,header nav .dd.open .dd-b{color:var(--accent);border-bottom-color:var(--accent)}
+header nav>a.on,header nav .dd.on .dd-b{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+/* Zakładka z rozwijanym menu (strategia): przycisk + lista linków. Otwiera ją klik, najechanie myszą i klawiatura (NAV_JS); bez JS działają :hover i :focus-within. */
+.dd{position:relative;display:flex}
+.dd-b{display:flex;align-items:center;gap:5px;margin:0;padding:0;border:0;background:none;font:inherit;line-height:inherit;cursor:pointer}
+.dd-c{width:10px;height:10px;flex:none;transition:transform .15s ease}
+.dd.open .dd-c{transform:rotate(180deg)}
+.dd-m{display:none;position:absolute;z-index:60;left:-19px;top:calc(100% + 10px);min-width:232px;margin:0;padding:6px;list-style:none;background:rgba(12,18,16,.97);border:1px solid var(--line);border-radius:12px;box-shadow:0 0 0 1px rgba(43,255,136,.05),0 16px 36px rgba(0,0,0,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.dd-m::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
+.dd.open .dd-m,html:not(.js) .dd:hover .dd-m,html:not(.js) .dd:focus-within .dd-m{display:block}
+.dd-m li{margin:0}
+.dd-m a{display:block;padding:9px 12px;border-radius:8px;color:var(--fg);font-size:14px;text-decoration:none;white-space:nowrap}
+.dd-m a:hover{background:rgba(43,255,136,.09);color:var(--strong)}
+.dd-m a[aria-current=page]{background:rgba(43,255,136,.07);color:var(--accent);font-weight:600}
+@media (prefers-reduced-motion:reduce){.dd-c{transition:none}}
+@media (max-width:640px){.dd{position:static}.dd-m{left:0;right:0;min-width:0;top:calc(100% + 8px)}.dd-m a{padding:11px 12px;font-size:15px}}
 .topbar{position:relative;display:flex;align-items:center;margin:-6px 0 12px}
 .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:rgba(15,22,20,.85);font-size:12px;font-weight:700;letter-spacing:.06em}
 .lang a,.lang span{padding:4px 12px;text-decoration:none;color:var(--muted)}
@@ -187,6 +201,7 @@ PAGE = """<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0B0C10">
+<script>document.documentElement.classList.add("js")</script>
 <link rel="icon" type="image/svg+xml" href="{root}favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="{root}favicon-32.png">
 <link rel="apple-touch-icon" href="{root}apple-touch-icon.png">
@@ -208,10 +223,42 @@ PAGE = """<!doctype html>
 {body}
 </main>
 <footer>{disclaimer}<br>{footer}</footer>
+<script>{navjs}</script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{{"token": "1968667fc753428b8344b96f81a99adb"}}'></script>
 </body>
 </html>
 """
+
+# Rozwijane menu zakładek-strategii (.dd). Wzorzec „disclosure navigation": przycisk z aria-expanded + lista linków.
+# Otwiera: klik/dotyk/Enter (menu zostaje otwarte aż do kliknięcia poza nim, Esc albo ponownego kliku), najechanie myszą
+# (zamyka się po zjechaniu, o ile nie kliknięto), strzałka w dół na przycisku. Strzałki/Home/End chodzą po pozycjach,
+# Esc zamyka i wraca na przycisk; jednocześnie otwarte jest co najwyżej jedno menu.
+NAV_JS = """(function(){
+var groups=[].slice.call(document.querySelectorAll(".dd"));
+if(!groups.length)return;
+groups.forEach(function(g){
+var btn=g.querySelector(".dd-b"),items=[].slice.call(g.querySelectorAll(".dd-m a")),pinned=false,timer;
+function isOpen(){return g.classList.contains("open")}
+function open(){clearTimeout(timer);groups.forEach(function(o){if(o!==g)o.close()});g.classList.add("open");btn.setAttribute("aria-expanded","true")}
+function close(){clearTimeout(timer);pinned=false;g.classList.remove("open");btn.setAttribute("aria-expanded","false")}
+g.close=close;
+btn.addEventListener("click",function(){if(!isOpen()){open();pinned=true}else if(!pinned)pinned=true;else close()});
+g.addEventListener("pointerenter",function(e){if(e.pointerType==="mouse")open()});
+g.addEventListener("pointerleave",function(e){if(e.pointerType==="mouse"&&!pinned)timer=setTimeout(close,160)});
+g.addEventListener("keydown",function(e){
+var i=items.indexOf(document.activeElement),k=e.key;
+if(k==="Escape"){if(isOpen()){close();btn.focus()}}
+else if(k==="ArrowDown"){e.preventDefault();if(!isOpen()){open();pinned=true}items[Math.min(i+1,items.length-1)].focus()}
+else if(k==="ArrowUp"&&i>=0){e.preventDefault();if(i>0)items[i-1].focus();else btn.focus()}
+else if(k==="Home"&&i>=0){e.preventDefault();items[0].focus()}
+else if(k==="End"&&i>=0){e.preventDefault();items[items.length-1].focus()}
+});
+});
+function outside(e){groups.forEach(function(g){if(!g.contains(e.target))g.close()})}
+document.addEventListener("pointerdown",outside);
+document.addEventListener("focusin",outside);
+window.addEventListener("pageshow",function(e){if(e.persisted)groups.forEach(function(g){g.close()})});
+})();"""
 
 
 DIVS = ROOT / "dywidendy"
@@ -258,6 +305,7 @@ UI = {
         "footer": "Dane z publicznych źródeł (m.in. biznesradar.pl, bankier.pl), mogą zawierać błędy lub opóźnienia. Raporty generowane automatycznie.",
         "tabs": {"news": "Newsy dnia", "swing": "Swing Raport", "div": "Dywidendy", "port": "Portfel {n}", "meth": "Swing Metodologia",
                  "arch": "Archiwum"},
+        "groups": {"swing": "Swing"},
         "sub": {"arch": "Swing", "darch": "Dywidendy"},
         "desc_swing": "Dzienny skaner swing GPW — raport przed otwarciem sesji.",
         "desc_news": "Newsy dnia GPW: najważniejsze komunikaty spółek i wydarzenia rynkowe, bez emocji, ze źródłami.",
@@ -291,6 +339,7 @@ UI = {
         "footer": "Data from public sources (incl. biznesradar.pl, bankier.pl) may contain errors or delays. Reports are generated automatically. Polish is the original language of the reports.",
         "tabs": {"news": "News of the day", "swing": "Swing Report", "div": "Dividends", "port": "{n} Portfolio", "meth": "Swing Methodology",
                  "arch": "Archive"},
+        "groups": {"swing": "Swing"},
         "sub": {"arch": "Swing", "darch": "Dividends"},
         "desc_swing": "Daily swing-trading scanner for the Warsaw Stock Exchange (GPW) — a report before the open.",
         "desc_news": "News of the day for the Warsaw Stock Exchange (GPW): the most important company announcements and market events, without emotion, with sources.",
@@ -530,12 +579,21 @@ def render_md(text, ref=None, lang="pl", chart_text=None, kind=None):
     return out
 
 
-def tabs_for(lang, ports):
+# Menu główne w nagłówku. ("link", klucz strony) = zwykła zakładka; ("menu", klucz grupy, [klucze stron]) = zakładka z rozwijanym menu
+# (jedna strategia: raport, portfel, metodologia, archiwum — w tej kolejności). Klucze stron jak w FILES oraz "port-<strategia>"
+# (pozycja portfela znika, gdy nie ma paper/<strategia>/state.json). Nazwa grupy: UI[lang]["groups"][klucz grupy].
+# Kolejna strategia = kolejny wpis „menu" na tej liście.
+MENU = [
+    ("link", "news"),
+    ("menu", "swing", ["swing", "port-swing", "meth", "arch"]),
+    ("link", "div"),
+]
+NAV_ALIAS = {"darch": "div"}  # archiwum dywidend należy do zakładki Dywidendy (archiwum swing jest w menu Swing)
+
+
+def tab_label(key, lang):
     u = UI[lang]["tabs"]
-    tabs = [("news", u["news"]), ("swing", u["swing"])]
-    tabs += [(f"port-{k}", u["port"].format(n=k.capitalize())) for k in ports]
-    tabs += [("meth", u["meth"]), ("div", u["div"]), ("arch", u["arch"])]
-    return tabs
+    return u["port"].format(n=key.split("-", 1)[1].capitalize()) if key.startswith("port-") else u[key]
 
 
 def fname(key, lang):
@@ -550,12 +608,29 @@ PORTS = []  # uzupełniane w main()
 
 
 def nav_html(active, lang, base):
-    return "".join(
-        f'<a href="{base}{fname(key, lang)}"'
-        + (' class="on" aria-current="page"' if key == active or (key == "arch" and active == "darch") else "")
-        + f">{html.escape(label)}</a>"
-        for key, label in tabs_for(lang, PORTS)
-    )
+    """Menu w nagłówku: zwykłe zakładki i grupy z rozwijanym menu (patrz MENU). active = klucz bieżącej strony (None = żadna)."""
+    active = NAV_ALIAS.get(active, active)
+    out = []
+    for entry in MENU:
+        if entry[0] == "link":
+            key = entry[1]
+            cur = ' class="on" aria-current="page"' if key == active else ""
+            out.append(f'<a href="{base}{fname(key, lang)}"{cur}>{html.escape(tab_label(key, lang))}</a>')
+            continue
+        _, group, keys = entry
+        keys = [k for k in keys if not k.startswith("port-") or k.split("-", 1)[1] in PORTS]
+        current = ' aria-current="page"'
+        items = "".join(
+            f'<li><a href="{base}{fname(k, lang)}"{current if k == active else ""}>{html.escape(tab_label(k, lang))}</a></li>'
+            for k in keys)
+        name = html.escape(UI[lang]["groups"][group])
+        out.append(
+            f'<div class="dd{" on" if active in keys else ""}">'
+            f'<button type="button" class="dd-b" aria-expanded="false" aria-controls="dd-{group}">{name}'
+            '<svg class="dd-c" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" '
+            'stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>'
+            f'<ul class="dd-m" id="dd-{group}">{items}</ul></div>')
+    return "".join(out)
 
 
 def canon(path):
@@ -602,7 +677,7 @@ def page(title, body, lang="pl", active="swing", desc="", sub=False, counter=Non
     return PAGE.format(title=html.escape(full_title), css=CSS, base=base, body=body, disclaimer=u["disclaimer"], footer=u["footer"],
                        deco=deco_svg(), nav=nav_html(active, lang, base), desc=html.escape(desc), lang=lang,
                        langsw=f'<div class="lang" role="group" aria-label="{u["langlabel"]}">{sw}</div>', brand=u["brand"], logo=LOGO, root=root,
-                       seo=seo, robots=robots, skip=u["skip"], navlabel=u["navlabel"])
+                       seo=seo, robots=robots, skip=u["skip"], navlabel=u["navlabel"], navjs=NAV_JS)
 
 
 def subtabs(lang, active):
