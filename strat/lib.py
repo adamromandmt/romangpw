@@ -46,6 +46,26 @@ SECTORS = {
     "uslugi": ("Usługi", "Services"),
     "inne": ("Inne / bez klasyfikacji", "Other / unclassified"),
 }
+# Do limitu sektorowego w Pędzie i Przystani banki oraz pozostałe instytucje finansowe liczą się jako jedna grupa.
+FINANCE = {"banki", "fin"}
+
+
+def limit_sector(code):
+    """Klucz sektora do limitu koncentracji: banki i finanse razem, pozostałe sektory bez zmian."""
+    return "finanse" if code in FINANCE else code
+
+
+def rank_gap_note(chosen, lang="pl"):
+    """Notatka pod tabelą docelową, gdy numery rankingu wybranych spółek nie są kolejne (pusta, gdy są)."""
+    ranks = [c["rank"] for c in chosen]
+    if not ranks or ranks == list(range(1, len(ranks) + 1)):
+        return ""
+    return ("Numery w kolumnie # to miejsca w pełnym rankingu. Przeskoki oznaczają spółki pominięte: nie spełniły filtra "
+            "albo ich sektor wyczerpał limit (szczegóły w tabeli rankingu niżej)." if lang == "pl" else
+            "The numbers in the # column are places in the full ranking. Gaps mark stocks that were skipped: they failed a filter "
+            "or their sector had reached its limit (details in the ranking table below).")
+
+
 # Sektory wrażliwe regulacyjnie (limit ekspozycji w Złotym Środku).
 REGULATED = {"banki", "fin", "energia", "paliwa"}
 
@@ -333,7 +353,7 @@ def max_drawdown(s, day, nbars=252):
 # ------------------------------------------------------------------ przesiew uniwersum (wspólny dla Pędu i Przystani)
 
 REASONS = {
-    "manual": ("wykluczona ręcznie (strategie/wykluczenia.json)", "excluded manually (strategie/wykluczenia.json)"),
+    "manual": ("wykluczona ręcznie", "excluded manually"),
     "no_data": ("brak notowań w ostatnich 10 dniach", "no quotes in the last 10 days"),
     "history": ("za krótka historia notowań", "history too short"),
     "illiquid": ("zbyt niski obrót", "turnover too low"),

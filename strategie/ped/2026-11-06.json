@@ -57,22 +57,22 @@
    "sector": "media"
   },
   {
-   "tic": "GPW",
-   "name": "GPW",
-   "weight": 1.0,
-   "sector": "fin"
-  },
-  {
    "tic": "PCO",
    "name": "PEPCO",
    "weight": 1.0,
    "sector": "handel"
   },
   {
-   "tic": "BNP",
-   "name": "BNPPPL",
+   "tic": "ALE",
+   "name": "ALLEGRO",
    "weight": 1.0,
-   "sector": "banki"
+   "sector": "handel"
+  },
+  {
+   "tic": "KTY",
+   "name": "KETY",
+   "weight": 1.0,
+   "sector": "przemysl"
   }
  ],
  "size_factor": 1.0,
@@ -133,16 +133,16 @@
     69.2
    ],
    [
-    "GPW",
-    64.0
-   ],
-   [
     "PCO",
     62.9
    ],
    [
-    "BNP",
-    62.4
+    "ALE",
+    48.9
+   ],
+   [
+    "KTY",
+    45.9
    ]
   ],
   "title": {

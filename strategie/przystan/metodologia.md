@@ -8,19 +8,19 @@ Ta strona opisuje samą strategię. Jak działa wirtualny portfel (kapitał, kos
 
 Spółki o niskiej zmienności dają w długim okresie zwroty skorygowane o ryzyko lepsze niż spółki bardzo zmienne (efekt niskiej zmienności, opisany m.in. przez Blitza i van Vlieta oraz przez Frazziniego i Pedersena). Dla inwestora wyłącznie długiego główna korzyść to niższe ryzyko, a nie pewna nadwyżka nad WIG20TR. W silnych hossach strategia może zostawać w tyle.
 
-## Reguły (tak liczy je kod)
+## Reguły
 
-1. **Uniwersum.** Spółki z naszej listy (data/universe.json), które w dniu sygnału spełniają wszystkie warunki: ostatnie notowanie nie starsze niż 10 dni; historia co najmniej 12 miesięcy; mediana dziennego obrotu z 60 sesji co najmniej 0,3 mln zł; świece w co najmniej 90% z ostatnich 120 sesji (spółki rzadko notowane mają sztucznie niską zmienność); brak dziennej zmiany ceny (skorygowanej o dywidendy) powyżej 30% w ostatnich ok. 260 notowaniach; maksymalne obsunięcie z ostatnich 252 sesji nie głębsze niż 30%. Spółki z listy ręcznych wykluczeń (strategie/wykluczenia.json) odpadają od razu.
+1. **Uniwersum.** Spółki z naszej listy obserwowanych spółek GPW, które w dniu sygnału spełniają wszystkie warunki: ostatnie notowanie nie starsze niż 10 dni; historia co najmniej 12 miesięcy; mediana dziennego obrotu z 60 sesji co najmniej 0,3 mln zł; świece w co najmniej 90% z ostatnich 120 sesji (spółki rzadko notowane mają sztucznie niską zmienność); brak dziennej zmiany ceny (skorygowanej o dywidendy) powyżej 30% w ostatnich ok. 260 notowaniach; maksymalne obsunięcie z ostatnich 252 sesji nie głębsze niż 30%. Spółki wykluczone ręcznie (np. w wezwaniu) odpadają od razu.
 2. **Zmienność.** Odchylenie standardowe dziennych logarytmicznych zwrotów z ostatnich ok. 250 sesji (cena skorygowana o dywidendy, co najmniej 200 zwrotów między kolejnymi sesjami giełdowymi), pomnożone przez pierwiastek z 252.
 3. **Wybór.** Do portfela wchodzą spółki z dolnego kwintyla zmienności spośród spółek uniwersum, czyli najspokojniejsza piąta część.
-4. **Skład.** Do 16 spółek o równych wagach. Spółka dotychczas w portfelu zostaje, dopóki mieści się w najspokojniejszych 40% uniwersum i limit sektora na to pozwala (histereza ogranicza obrót). Maksymalnie 4 spółki z jednego sektora (robocza klasyfikacja własna w data/sectors.json; sektor „inne” nie ma limitu). Portfel może mieć mniej niż 16 spółek, jeśli dolny kwintyl po limitach sektorowych jest mniejszy.
+4. **Skład.** Do 16 spółek o równych wagach. Spółka dotychczas w portfelu zostaje, dopóki mieści się w najspokojniejszych 40% uniwersum i limit sektora na to pozwala (histereza ogranicza obrót). Maksymalnie 4 spółki z jednego sektora (uproszczona klasyfikacja własna; banki i pozostałe instytucje finansowe liczą się razem; sektor „inne” nie ma limitu). Portfel może mieć mniej niż 16 spółek, jeśli dolny kwintyl po limitach sektorowych jest mniejszy.
 5. **Rytm.** Sygnał liczymy na danych z ostatniej sesji marca, czerwca, września i grudnia, a raport ukazuje się po pierwszej sesji następnego miesiąca. Pierwszy skład powstał 6 listopada 2026, poza cyklem.
 
 ## Parametry
 
 Dolny kwintyl, próg 40% w histerezie, limit 16 spółek i 4 na sektor, próg obrotu 0,3 mln zł oraz próg obecności 90% to wartości startowe, nie wyniki badań ani optymalizacji na danych GPW.
 
-**Filtr obsunięcia 30% dodaliśmy po obejrzeniu pierwszego przebiegu na danych próbnych**, jeszcze przed pierwszym składem. Bez niego w dolnym kwintylu zmienności znalazłaby się AMC, która w ciągu roku straciła od szczytu 31,1%, a tuż za nim KRU (−31,7%). Niska zmienność dziennych zwrotów może ukrywać powolne, ale głębokie osuwanie się kursu, a to nie jest portfel, który chcemy nazywać defensywnym. Opracowanie, na którym oparliśmy strategię, proponowało filtr jakości z danych finansowych (dodatni zysk netto i ROE, F-score co najmniej 5, brak ujemnego kapitału własnego). Takich danych nie ma w repozytorium, więc filtr obsunięcia jest tylko zastępczym bezpiecznikiem opartym na cenie. To jedyny parametr, który zmieniliśmy po obejrzeniu danych.
+**Filtr obsunięcia 30% dodaliśmy po obejrzeniu pierwszego przebiegu na danych próbnych**, jeszcze przed pierwszym składem. Bez niego w dolnym kwintylu zmienności znalazłaby się AMC, która w ciągu roku straciła od szczytu 31,1%, a tuż za nim KRU (−31,7%). Niska zmienność dziennych zwrotów może ukrywać powolne, ale głębokie osuwanie się kursu, a to nie jest portfel, który chcemy nazywać defensywnym. Opracowanie, na którym oparliśmy strategię, proponowało filtr jakości z danych finansowych (dodatni zysk netto i ROE, F-score co najmniej 5, brak ujemnego kapitału własnego). Takich danych nie mamy, więc filtr obsunięcia jest tylko zastępczym bezpiecznikiem opartym na cenie. To jedyny parametr, który zmieniliśmy po obejrzeniu danych.
 
 ## Dowody i ich granice
 
@@ -35,7 +35,7 @@ Portfel porównujemy z WIG20, ale WIG20 jest indeksem cenowym, bez dywidend. Wed
 
 ## Dane i znane ograniczenia
 
-- Zmienność liczymy z ok. roku notowań (to cała historia w repozytorium), więc nie ma testu wstecznego tej reguły na danych GPW.
+- Zmienność liczymy z ok. roku notowań (to cała historia, którą mamy), więc nie ma testu wstecznego tej reguły na danych GPW.
 - Uniwersum to dzisiejsza lista spółek, bez wycofanych z obrotu, więc nie nadaje się do testów wstecznych bez korekty o survivorship bias.
 - Brak filtra jakości z danych fundamentalnych (zob. wyżej) oraz brak oceny wyceny: spółki defensywne bywają drogie.
 - Portfel może się skupiać w sektorach defensywnych, a klasyfikacja sektorów jest robocza, więc limit 4 spółek na sektor działa tylko w przybliżeniu.
@@ -48,6 +48,7 @@ Defensywny filar i kandydat na alternatywę dla gotówki w Kompasie, gdy ten pok
 ## Historia zmian reguł
 
 - 7 listopada 2026: pierwsza wersja reguł. Przed pierwszym składem (6 listopada 2026) dodano filtr obsunięcia 30% (zob. Parametry).
+- 7 listopada 2026 (przegląd przed pierwszą transakcją): banki i pozostałe instytucje finansowe liczą się razem do limitu 4 spółek z sektora (wcześniej dwie osobne etykiety, czyli do 8 z 16 miejsc). Raport oznacza też wybrane spółki o medianie obrotu poniżej 0,5 mln zł dziennie. Pierwszy skład przeliczyliśmy według tej reguły, zanim portfel wirtualny złożył pierwsze zlecenia (otwarcie 9 listopada 2026).
 
 ## Źródła
 

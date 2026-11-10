@@ -219,16 +219,17 @@ footer{color:var(--muted);font-size:13px;padding-top:26px;padding-bottom:44px;bo
 <main id="main" tabindex="-1">
 <div class="banner"><strong>Złoty Środek</strong>: Dobre firmy w rozsądnej cenie: jakość (F-score, zyskowność) połączona z wyceną EV/EBIT. Rytm: dwa razy w roku. Najnowszy raport: <strong>piątek 6.11.2026</strong>. <a href="zloty-srodek-archiwum.html">Poprzednie raporty</a> · <a href="portfel-zloty-srodek.html">Portfel</a> · <a href="metodologia-zloty-srodek.html">Metodologia</a></div>
 <h1 id="zoty-srodek-sygna-po-sesji-piatek-6-listopada-2026">Złoty Środek — sygnał po sesji piątek 6 listopada 2026</h1>
-<p>Dane: notowania z archiwum GPW oraz roczne sprawozdania spółek niefinansowych z pliku data/fundamentals.csv (kwoty w tys. zł). Sprawozdanie liczy się dopiero od dnia publikacji (bez wyprzedzania). Banki i ubezpieczyciele są poza zakresem tej wersji. Sektory: robocza klasyfikacja własna (data/sectors.json). <strong>Raport startowy:</strong> pierwszy sygnał portfela wirtualnego, poza cyklem półrocznym (kolejne: ostatnia sesja maja i października).</p>
+<p>Dane: notowania z archiwum GPW oraz roczne sprawozdania finansowe spółek niefinansowych. Sprawozdanie liczy się dopiero od dnia publikacji (bez wyprzedzania). Banki i ubezpieczyciele są poza zakresem tej wersji. Sektory: uproszczona klasyfikacja własna. <strong>Raport startowy:</strong> pierwszy sygnał portfela wirtualnego, poza cyklem półrocznym (kolejne: ostatnia sesja maja i października).</p>
 <h2 id="sygna">Sygnał</h2>
-<p><strong>Czeka na dane fundamentalne.</strong> Plik data/fundamentals.csv nie zawiera sprawozdań dostępnych na ten dzień, więc strategia nie wskazuje spółek, a portfel wirtualny pozostaje w gotówce.</p>
+<p><strong>Czeka na dane fundamentalne.</strong> Nie mamy jeszcze zebranych sprawozdań finansowych spółek dostępnych na ten dzień, więc strategia nie wskazuje spółek, a portfel wirtualny pozostaje w gotówce.</p>
 <h2 id="co-dalej">Co dalej</h2>
 <ul>
-<li>Jak dostarczyć dane: patrz METHOD-ZLOTY-SRODEK.md (kolumny, jednostki, zasada daty publikacji). Po uzupełnieniu pliku uruchom <code>python3 -m strat daily --only zloty-srodek --force</code>.</li>
+<li>Pierwszy skład pojawi się w raporcie opublikowanym po zebraniu rocznych sprawozdań z dwóch kolejnych lat dla płynnych spółek niefinansowych.</li>
+<li>Do tego czasu portfel wirtualny stoi w gotówce, więc jego wynik wynosi zero i nie mówi nic o strategii.</li>
 </ul>
 <h2 id="ograniczenia">Ograniczenia</h2>
 <ul>
-<li>Najtrudniejsza strategia do zautomatyzowania: wymaga danych fundamentalnych, które w repozytorium wypełnia się osobno i które trzeba sprawdzać ręcznie.</li>
+<li>Najtrudniejsza strategia do zautomatyzowania: wymaga danych ze sprawozdań finansowych, które zbieramy osobno i sprawdzamy ręcznie.</li>
 <li>Bank i ubezpieczyciel nie są oceniani (potrzebują P/B, ROE i buforów kapitałowych), a bonus za zwrot dla akcjonariuszy (dywidendy i skupy) nie wchodzi do rankingu: kolumna dywidendy jest informacyjna.</li>
 <li>Tanie spółki bywają tanie z powodów politycznych lub regulacyjnych (pułapki wartości); limit 8 spółek z sektorów wrażliwych regulacyjnie jest tylko częściową ochroną.</li>
 <li>Model czyta tylko roczne sprawozdania, więc sygnał październikowy odświeża głównie wycenę (kurs), a nie jakość; wyniki półroczne nie wchodzą do ocen.</li>

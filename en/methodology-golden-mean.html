@@ -222,19 +222,19 @@ footer{color:var(--muted);font-size:13px;padding-top:26px;padding-bottom:44px;bo
 <p>This page describes the strategy itself. How the virtual portfolio works (capital, costs, order timing) is explained on the Portfolio tab; it is only a forward check of the forecasts from the start date.</p>
 <h2>Hypothesis</h2>
 <p>Gross profitability (gross profit to assets) predicts returns about as well as classic valuation ratios, and it is strongly negatively correlated with them, so combining the two signals improves the result relative to value alone (Novy-Marx). Simple tests of profitability, leverage and efficiency (the Piotroski F-score) help weed out stocks that are cheap because their condition is deteriorating. A similar combination of quality and price lies behind Greenblatt's Magic Formula and the "quality minus junk" factor (Asness, Frazzini and Pedersen). On the GPW we add a limit on political risk: a cap on stocks from regulation-sensitive sectors.</p>
-<h2>Rules (as the code computes them)</h2>
+<h2>Rules</h2>
 <ol>
-<li><strong>Data.</strong> Annual statements of non-financial companies from the data/fundamentals.csv file (amounts in PLN thousand, share counts in units). The file is filled in separately from public statements; the columns and rules are described in METHOD-ZLOTY-SRODEK.md in the repository. A statement counts only from its publication date (when there is no date: period end plus 120 days), so that we do not look ahead. As long as the file is empty, the strategy names no stocks and the virtual portfolio stays in cash.</li>
-<li><strong>Universe.</strong> Stocks from our list (data/universe.json) other than banks and financial companies that meet these conditions on the signal date: the latest quote is no older than 10 days; at least 12 months of history; a 60-session median daily turnover of at least PLN 0.3m; candles in at least 90% of the last 120 sessions; no daily price change above 30% in the last ~260 quotes. Statements for two consecutive years are required. Banks and insurers need different measures (P/B, ROE, capital buffers) and are outside the scope of this version.</li>
+<li><strong>Data.</strong> Annual financial statements of non-financial companies, collected separately from public annual reports. A statement counts only from its publication date (when there is no date: period end plus 120 days), so that we do not look ahead. Until the statements are collected, the strategy names no stocks and the virtual portfolio stays in cash.</li>
+<li><strong>Universe.</strong> Stocks from our watch list of GPW companies other than banks and financial companies that meet these conditions on the signal date: the latest quote is no older than 10 days; at least 12 months of history; a 60-session median daily turnover of at least PLN 0.3m; candles in at least 90% of the last 120 sessions; no daily price change above 30% in the last ~260 quotes. Statements for two consecutive years are required. Banks and insurers need different measures (P/B, ROE, capital buffers) and are outside the scope of this version.</li>
 <li><strong>Indicators.</strong> For each stock we compute the F-score (a simplified Piotroski), free cash flow, net debt to EBITDA, EV/EBIT and gross profitability to assets. The definitions are in the "Indicators" section below.</li>
 <li><strong>Entry thresholds</strong> (for stocks outside the portfolio): an F-score of at least 7, positive FCF, net debt to EBITDA up to 3.</li>
 <li><strong>Ranking.</strong> The sum of the positions in the EV/EBIT ranking (the cheaper the better) and in the gross profitability ranking (the higher the better); a lower sum means a higher place. Ties are broken by the higher F-score, then by the lower EV/EBIT.</li>
-<li><strong>Holdings.</strong> 20 stocks in equal weights. A stock already in the portfolio stays as long as it has an F-score of at least 5, net debt to EBITDA up to 4 and a place in the top 30 of the ranking. At most 4 stocks from one sector (a rough in-house classification in data/sectors.json; the "other" sector has no limit) and 8 in total from regulation-sensitive sectors (power utilities, fuels), which is 40% of the portfolio.</li>
+<li><strong>Holdings.</strong> 20 stocks in equal weights. A stock already in the portfolio stays as long as it has an F-score of at least 5, net debt to EBITDA up to 4 and a place in the top 30 of the ranking. At most 4 stocks from one sector (a simplified in-house classification; the "other" sector has no limit) and 8 in total from regulation-sensitive sectors (power utilities, fuels), which is 40% of the portfolio.</li>
 <li><strong>Timing.</strong> We compute the signal on data from the last session of May and October, and the report comes out after the first session of the next month. The first signal was made on 6 November 2026, outside the cycle.</li>
 </ol>
 <h2>Indicators</h2>
 <ul>
-<li><strong>F-score</strong> (a simplified Piotroski version, 9 tests of 1 point each): positive ROA; positive operating cash flow; ROA up year on year; operating cash flow to assets higher than ROA; debt to assets down; current ratio up; share count up by no more than 0.5%; gross margin up; asset turnover up.</li>
+<li><strong>F-score</strong> (a simplified Piotroski version, 9 tests of 1 point each): positive ROA; positive operating cash flow; ROA up year on year; operating cash flow to assets higher than ROA; debt to assets not up; current ratio up; share count up by no more than 0.5%; gross margin up; asset turnover up.</li>
 <li><strong>Free cash flow</strong> (FCF): operating cash flow minus capital expenditure.</li>
 <li><strong>Net debt to EBITDA</strong>: debt minus cash, divided by EBITDA. A company with net cash scores 0, and a company with net debt and non-positive EBITDA fails.</li>
 <li><strong>EV/EBIT</strong>: enterprise value (market capitalisation at the latest closing price plus net debt) to EBIT. It requires positive EBIT, positive EV and positive equity.</li>
@@ -258,7 +258,7 @@ footer{color:var(--muted);font-size:13px;padding-top:26px;padding-bottom:44px;bo
 <li>The input data are annual statements. The October signal therefore mainly refreshes the valuation (the price), not the quality; half-year results do not enter the assessment.</li>
 <li>Cheap stocks are often cheap for political or regulatory reasons (value traps).</li>
 <li>The shareholder-yield bonus (dividends and buybacks) described in our study is not in the ranking; the dividend over the last 12 months appears in the report as information only.</li>
-<li>A rare rebalance (twice a year) means a long time in a bad regime. The repository holds about a year of quotes, so this rule has no backtest on GPW data.</li>
+<li>A rare rebalance (twice a year) means a long time in a bad regime. We have about a year of quote history, so this rule has no backtest on GPW data.</li>
 <li>The universe is today's list of stocks, without delisted ones (survivorship bias), and the sector classification is rough.</li>
 <li>A change of holdings means realising a gain and 19% tax outside an IKE or IKZE account.</li>
 </ul>
@@ -267,6 +267,7 @@ footer{color:var(--muted);font-size:13px;padding-top:26px;padding-bottom:44px;bo
 <h2>Rule change history</h2>
 <ul>
 <li>7 November 2026: first version of the rules and the first signal (6 November 2026).</li>
+<li>7 November 2026 (review before the first trade): the leverage test in the F-score (debt to assets did not rise year on year) now also passes companies whose debt ratio is unchanged, including debt-free ones. Previously it required a decrease, so a debt-free company lost a point.</li>
 </ul>
 <h2>Sources</h2>
 <ul>

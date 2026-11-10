@@ -222,12 +222,12 @@ footer{color:var(--muted);font-size:13px;padding-top:26px;padding-bottom:44px;bo
 <p>Ta strona opisuje samą strategię. Jak działa wirtualny portfel (kapitał, koszty, terminy zleceń), wyjaśnia zakładka Portfel; jest to tylko sprawdzian prognoz od dnia startu.</p>
 <h2>Hipoteza</h2>
 <p>Zwycięzcy ostatnich miesięcy częściej pozostają zwycięzcami, niż wynikałoby z przypadku (momentum przekrojowe). Jegadeesh i Titman (1993) znaleźli na rynku USA, że zwycięzcy z ostatnich 3–12 miesięcy biją przegranych o ok. 1% miesięcznie (liczba z opracowania wtórnego). George i Hwang (2004) pokazali, że bliskość 52-tygodniowego maksimum prognozuje stopy zwrotu lepiej niż same przeszłe zwroty. Dla GPW dowody są <strong>mieszane</strong> i to najsłabiej udokumentowana strategia z pięciu.</p>
-<h2>Reguły (tak liczy je kod)</h2>
+<h2>Reguły</h2>
 <ol>
-<li><strong>Uniwersum.</strong> Spółki z naszej listy (data/universe.json), które w dniu sygnału spełniają wszystkie warunki: ostatnie notowanie nie starsze niż 10 dni; historia co najmniej 12 miesięcy; mediana dziennego obrotu z 60 sesji co najmniej 0,5 mln zł; świece w co najmniej 90% z ostatnich 120 sesji; brak dziennej zmiany ceny (skorygowanej o dywidendy) powyżej 30% w ostatnich ok. 260 notowaniach, co może oznaczać split lub szok. Spółki z listy ręcznych wykluczeń (strategie/wykluczenia.json) odpadają od razu.</li>
-<li><strong>Ranking 12-1.</strong> Zwrot od 12 miesięcy do 1 miesiąca przed dniem sygnału, na cenach skorygowanych o dywidendy (data/dividends). Ostatni miesiąc pomijamy, zgodnie z klasyczną konstrukcją 12-1, bo bardzo krótkie zwroty bywają odwracane.</li>
+<li><strong>Uniwersum.</strong> Spółki z naszej listy obserwowanych spółek GPW, które w dniu sygnału spełniają wszystkie warunki: ostatnie notowanie nie starsze niż 10 dni; historia co najmniej 12 miesięcy; mediana dziennego obrotu z 60 sesji co najmniej 0,5 mln zł; świece w co najmniej 90% z ostatnich 120 sesji; brak dziennej zmiany ceny (skorygowanej o dywidendy) powyżej 30% w ostatnich ok. 260 notowaniach, co może oznaczać split lub szok. Spółki wykluczone ręcznie (np. w wezwaniu) odpadają od razu.</li>
+<li><strong>Ranking 12-1.</strong> Zwrot od 12 miesięcy do 1 miesiąca przed dniem sygnału, na cenach skorygowanych o dywidendy. Ostatni miesiąc pomijamy, zgodnie z klasyczną konstrukcją 12-1, bo bardzo krótkie zwroty bywają odwracane.</li>
 <li><strong>Filtr trendu.</strong> Kurs musi leżeć nad średnią z 200 sesji.</li>
-<li><strong>Skład.</strong> 12 spółek o równych wagach. Spółka dotychczas w portfelu zostaje, dopóki jest w czołowej 25 rankingu, nadal leży nad średnią z 200 sesji i mieści się w limicie sektora (histereza ogranicza obrót). Wolne miejsca zajmują najwyżej sklasyfikowane spółki, które spełniają filtr trendu i limit: maksymalnie 3 spółki z jednego sektora (robocza klasyfikacja własna w data/sectors.json; sektor „inne” nie ma limitu).</li>
+<li><strong>Skład.</strong> 12 spółek o równych wagach. Spółka dotychczas w portfelu zostaje, dopóki jest w czołowej 25 rankingu, nadal leży nad średnią z 200 sesji i mieści się w limicie sektora (histereza ogranicza obrót). Wolne miejsca zajmują najwyżej sklasyfikowane spółki, które spełniają filtr trendu i limit: maksymalnie 3 spółki z jednego sektora (uproszczona klasyfikacja własna; banki i pozostałe instytucje finansowe liczą się razem; sektor „inne” nie ma limitu).</li>
 <li><strong>Reżim.</strong> Gdy Kompas pokazuje gotówkę, nowe pozycje mają połowę zwykłej wielkości. Pozycji, które zostają, nie dokupujemy ani nie obcinamy.</li>
 <li><strong>Rytm.</strong> Sygnał liczymy na danych z ostatniej sesji każdego miesiąca, a raport ukazuje się po pierwszej sesji następnego miesiąca. Pierwszy skład powstał 6 listopada 2026, poza cyklem.</li>
 </ol>
@@ -246,9 +246,9 @@ footer{color:var(--muted);font-size:13px;padding-top:26px;padding-bottom:44px;bo
 <p>Portfel porównujemy z WIG20, bo na pytanie „czy strategia bije WIG20” ma odpowiedzieć ten sprawdzian. WIG20 jest jednak indeksem cenowym, bez dywidend. Według Parkietu (7 maja 2024) od końca 2004 r. WIG20 zyskał ok. 25%, a WIG20TR ok. 155%, czyli w przeliczeniu ok. 1,2% wobec ok. 5,0% rocznie (własny rachunek z tych wartości, ok. 19,4 roku). Porównanie z indeksem cenowym zawyża więc wynik portfela, który zbiera dywidendy. Poprzeczka jest też niska z przyczyn strukturalnych: w latach 2013–2022 WIG20TR dał ok. −4%, mWIG40TR +114%, a sWIG80TR +119%. Sam brak WIG20 w portfelu może więc dawać przewagę, która nie jest zasługą momentum. Portfela równych wag z całego uniwersum, który pozwoliłby odróżnić selekcję od omijania WIG20, nie prowadzimy, więc wynik względem WIG20 trzeba czytać z tą świadomością.</p>
 <h2>Dane i znane ograniczenia</h2>
 <ul>
-<li>Repozytorium ma ok. roku notowań, więc nie ma testu wstecznego, a pełny ranking 12-1 jest dostępny dopiero od końca października 2026.</li>
+<li>Mamy ok. roku historii notowań, więc nie ma testu wstecznego, a pełny ranking 12-1 jest dostępny dopiero od końca października 2026.</li>
 <li>Uniwersum to dzisiejsza lista spółek, bez wycofanych z obrotu, więc nie nadaje się do testów wstecznych bez korekty o survivorship bias.</li>
-<li>Korekta o dywidendy wynika z danych w data/dividends (daty i kwoty); brakujące wpisy zaniżają zwrot spółek dywidendowych.</li>
+<li>Korekta o dywidendy opiera się na zebranych przez nas datach i kwotach wypłat; brakujące wpisy zaniżają zwrot spółek dywidendowych.</li>
 <li>Klasyfikacja sektorów jest robocza, więc limit 3 spółek na sektor działa tylko w przybliżeniu.</li>
 <li>Momentum ma ryzyko załamań na odbiciach po spadkach rynku i wymaga częstych transakcji (koszty rotacji, podatek 19% przy realizacji poza IKE i IKZE).</li>
 <li>Te same spółki mogą trafić do Pędu i do skanera swing; nakładania się portfeli nie mierzymy.</li>
@@ -258,6 +258,7 @@ footer{color:var(--muted);font-size:13px;padding-top:26px;padding-bottom:44px;bo
 <h2>Historia zmian reguł</h2>
 <ul>
 <li>7 listopada 2026: pierwsza wersja reguł i pierwszy skład (6 listopada 2026).</li>
+<li>7 listopada 2026 (przegląd przed pierwszą transakcją): banki i pozostałe instytucje finansowe liczą się razem do limitu 3 spółek z sektora. Wcześniej były to dwie osobne etykiety z osobnymi limitami, więc finanse mogły zająć do 6 z 12 miejsc. Pierwszy skład przeliczyliśmy według tej reguły, zanim portfel wirtualny złożył pierwsze zlecenia (otwarcie 9 listopada 2026).</li>
 </ul>
 <h2>Źródła</h2>
 <ul>

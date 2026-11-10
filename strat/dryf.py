@@ -195,15 +195,15 @@ def build_md(ctx, S, today, recent, nobuy, st, initial, lang):
           f"**Exit:** a stop at the close before the event (a gap fill; if the market opens below the stop, the sale is at the open) or after {st['config']['max_hold_sessions']} sessions."),
     ]
     limits = [
-        L("To przybliżenie dryfu po wynikach: repozytorium nie ma danych o wynikach, konsensusie ani insiderach. Ruch w oknie raportowym może wynikać z innych wiadomości (przejęcia, plotki, zmiany indeksów).",
-          "This is a proxy for post-earnings drift: the repository has no data on results, consensus or insiders. A move in a reporting window may come from other news (takeovers, rumours, index changes)."),
+        L("To przybliżenie dryfu po wynikach: liczymy je z samych cen i wolumenu, bez danych o wynikach, konsensusie i transakcjach insiderów. Ruch w oknie raportowym może wynikać z innych wiadomości (przejęcia, plotki, zmiany indeksów).",
+          "This is a proxy for post-earnings drift: we compute it from prices and volume alone, without data on results, consensus or insider trades. A move in a reporting window may come from other news (takeovers, rumours, index changes)."),
         L("Badania PEAD na GPW są niejednoznaczne co do strony długiej (zob. metodologia); lepiej udokumentowany jest dryf ujemny, stąd lista „nie kupuj”.",
           "PEAD research on the GPW is ambiguous about the long side (see methodology); negative drift is better documented, hence the no-buy list."),
         L("Progi ustawiono według liczby zdarzeń w ostatnim roku (około dwudziestu w oknach raportowych), nie według wyniku. Nie ma testu wstecznego.",
           "Thresholds were set by the number of events in the last year (about twenty inside reporting windows), not by results. There is no backtest."),
-        L("Stop na zamknięciu sprzed zdarzenia jest odległy (równy ruchowi dnia zdarzenia), więc pojedyncza strata może być duża; stąd stała, niewielka kwota na pozycję.",
-          "A stop at the close before the event is far away (equal to the event day's move), so a single loss can be large; hence the fixed, small amount per position."),
-        L("Okna raportowe są przybliżeniem: kalendarza publikacji spółek nie ma w repozytorium.", "Reporting windows are an approximation: the repository has no company reporting calendar."),
+        L("Stop na zamknięciu sprzed zdarzenia jest odległy (równy ruchowi dnia zdarzenia), więc pojedyncza strata może być duża; stąd stała, niewielka kwota na pozycję (10 000 zł, czyli 10% kapitału startowego, niezależnie od bieżącej wartości portfela).",
+          "A stop at the close before the event is far away (equal to the event day's move), so a single loss can be large; hence the fixed, small amount per position (PLN 10,000, i.e. 10% of the starting capital, regardless of the current portfolio value)."),
+        L("Okna raportowe są przybliżeniem: nie korzystamy z kalendarza publikacji poszczególnych spółek.", "Reporting windows are an approximation: we do not use the reporting calendars of individual companies."),
     ]
     disc = L("Ćwiczenie przesiewowe według zadanego frameworku, nie porada inwestycyjna.", "Screening exercise under the given framework, not investment advice.")
     md += ["## " + L("Jak czytać", "How to read"), ""] + ["- " + x for x in how]

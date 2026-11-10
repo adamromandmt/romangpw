@@ -3,8 +3,8 @@
 Reguła: z płynnych spółek (mediana obrotu z 60 sesji co najmniej 300 tys. zł, notowania w co najmniej 90% sesji, maksymalne
 obsunięcie z 12 miesięcy nie głębsze niż 30% jako zastępczy bezpiecznik jakości) bierzemy dolny kwintyl rocznej zmienności
 dziennych zwrotów (ceny skorygowane o dywidendy). Portfel: do 16 spółek o równych wagach,
-histereza (spółka zostaje, dopóki jest w najspokojniejszych 40% uniwersum), maksymalnie 4 spółki z jednego sektora (25%).
-Brak filtra jakości z danych fundamentalnych (nie ma ich w repozytorium); lista ręcznych wykluczeń: strategie/wykluczenia.json.
+histereza (spółka zostaje, dopóki jest w najspokojniejszych 40% uniwersum), maksymalnie 4 spółki z jednego sektora (25%; banki i pozostałe instytucje finansowe liczą się razem).
+Brak filtra jakości z danych fundamentalnych (nie mamy ich); lista ręcznych wykluczeń: strategie/wykluczenia.json.
 """
 import datetime as dt
 import math
@@ -16,6 +16,7 @@ SLUG = "przystan"
 KIND = "targets"
 MONTHS = {3, 6, 9, 12}
 N, SECTOR_CAP, MIN_TURNOVER, MAX_DD = 16, 4, 300_000, -0.30
+LOW_TURNOVER = 500_000          # poniżej tej mediany obrotu raport dopisuje ostrzeżenie o płynności
 
 
 def evaluate(ctx, S, held):
@@ -41,7 +42,7 @@ def evaluate(ctx, S, held):
         r["rank"] = i
     quint = max(1, math.ceil(len(rows) * 0.2))
     keep = max(quint, math.ceil(len(rows) * 0.4))
-    chosen, skipped = lib.pick(rows, held, N, quint, keep, SECTOR_CAP, lambda x: True, ctx.sector)
+    chosen, skipped = lib.pick(rows, held, N, quint, keep, SECTOR_CAP, lambda x: True, lambda t: lib.limit_sector(ctx.sector(t)))
     return rows, chosen, skipped, bad, quint, keep
 
 
@@ -88,7 +89,7 @@ def build_md(ctx, S, rows, chosen, skipped, bad, quint, keep, held, prev, initia
         if r["tic"] in cset:
             st = L("w portfelu", "in portfolio")
         elif skipped.get(r["tic"]) == "sector":
-            st = L("pominięta: limit sektora", "skipped: sector limit")
+            st = L("limit sektora", "sector limit")
         elif r["rank"] > quint:
             st = L("poza kwintylem", "outside the quintile")
         else:
@@ -105,16 +106,22 @@ def build_md(ctx, S, rows, chosen, skipped, bad, quint, keep, held, prev, initia
     limits = [
         L("Niska zmienność nie gwarantuje wyniku lepszego od WIG20TR; główna korzyść to niższe ryzyko, a w silnych hossach portfel zostaje w tyle (zob. metodologia).",
           "Low volatility does not guarantee beating the WIG20TR; the main benefit is lower risk, and in strong bull markets the portfolio lags (see methodology)."),
-        L("Brak filtra jakości z danych fundamentalnych (zysk, kapitał własny, zadłużenie): w repozytorium ich nie ma. Zastępuje go tylko limit obsunięcia (30%), więc spółka o niskiej zmienności może być spółką w kłopotach.",
-          "No quality filter from fundamental data (earnings, equity, debt): the repository has none. Only the drawdown cap (30%) stands in, so a low-volatility stock can be a stock in trouble."),
-        L("Spółki w wezwaniu lub przymusowym wykupie mają sztucznie niską zmienność: dopisz je do strategie/wykluczenia.json.",
-          "Stocks under a tender offer or squeeze-out have artificially low volatility: add them to strategie/wykluczenia.json."),
+        L("Brak filtra jakości z danych finansowych spółek (zysk, kapitał własny, zadłużenie). Zastępuje go tylko limit obsunięcia (30%), więc spółka o niskiej zmienności może być spółką w kłopotach.",
+          "No quality filter from company financial data (earnings, equity, debt). Only the drawdown cap (30%) stands in, so a low-volatility stock can be a stock in trouble."),
+        L("Spółki w wezwaniu lub przymusowym wykupie mają sztucznie niską zmienność; wykluczamy je ręcznie, gdy o tym wiemy, więc taka spółka może się na liście pojawić.",
+          "Stocks under a tender offer or squeeze-out have artificially low volatility; we exclude them by hand when we know about it, so such a stock may still appear on the list."),
         L("Zmienność liczona z ok. roku danych (nie 3 lat jak w badaniach), więc ranking jest mniej stabilny.",
           "Volatility is computed from about a year of data (not 3 years as in research), so the ranking is less stable."),
     ]
+    note = lib.rank_gap_note(chosen, lang)
+    gap = [note, ""] if note else []
+    thin = [c["tic"] for c in chosen if c["turn"] < LOW_TURNOVER]
+    if thin:
+        gap += [L(f"Niski obrót (mediana z 60 sesji poniżej 0,5 mln zł dziennie): {', '.join(thin)}. Przy takich spółkach prawdziwe zlecenie mogłoby samo przesunąć kurs, więc wynik portfela wirtualnego jest dla nich mniej wiarygodny.",
+                  f"Low turnover (60-session median below PLN 0.5m a day): {', '.join(thin)}. For such stocks a real order could move the price by itself, so the virtual portfolio result is less reliable for them."), ""]
     disc = L("Ćwiczenie przesiewowe według zadanego frameworku, nie porada inwestycyjna.", "Screening exercise under the given framework, not investment advice.")
     md = [title, "", intro, "", "## " + L("Sygnał", "Signal"), "", verdict, "", funnel, "",
-          "## " + L("Portfel docelowy", "Target portfolio"), "", lib.md_table(head, body), "", "<!-- chart -->", ""]
+          "## " + L("Portfel docelowy", "Target portfolio"), "", lib.md_table(head, body), ""] + gap + ["<!-- chart -->", ""]
     if drop_rows:
         md += ["## " + L("Wypadają z portfela", "Dropped from the portfolio"), "", lib.md_table(["Tic", L("Spółka", "Company"), L("Powód", "Reason")], drop_rows), ""]
     md += ["## " + L("Najspokojniejsze spółki", "Calmest stocks"), "", lib.md_table(head, top), "",

@@ -222,12 +222,12 @@ footer{color:var(--muted);font-size:13px;padding-top:26px;padding-bottom:44px;bo
 <p>This page describes the strategy itself. How the virtual portfolio works (capital, costs, order timing) is explained on the Portfolio tab; it is only a forward check of the forecasts from the start date.</p>
 <h2>Hypothesis</h2>
 <p>Winners of recent months tend to stay winners more often than chance would suggest (cross-sectional momentum). On the US market, Jegadeesh and Titman (1993) found that winners of the last 3–12 months beat losers by about 1% a month (a figure from a secondary source). George and Hwang (2004) showed that proximity to the 52-week high predicts returns better than past returns alone. For the GPW the evidence is <strong>mixed</strong>, and this is the least well documented of the five strategies.</p>
-<h2>Rules (as the code computes them)</h2>
+<h2>Rules</h2>
 <ol>
-<li><strong>Universe.</strong> Stocks from our list (data/universe.json) that meet all of these conditions on the signal date: the latest quote is no older than 10 days; at least 12 months of history; a 60-session median daily turnover of at least PLN 0.5m; candles in at least 90% of the last 120 sessions; no daily price change (adjusted for dividends) above 30% in the last ~260 quotes, which could mean a split or a shock. Stocks on the manual exclusion list (strategie/wykluczenia.json) drop out immediately.</li>
-<li><strong>12-1 ranking.</strong> The return from 12 months to 1 month before the signal date, on dividend-adjusted prices (data/dividends). We skip the latest month, following the classic 12-1 construction, because very short-term returns tend to reverse.</li>
+<li><strong>Universe.</strong> Stocks from our watch list of GPW companies that meet all of these conditions on the signal date: the latest quote is no older than 10 days; at least 12 months of history; a 60-session median daily turnover of at least PLN 0.5m; candles in at least 90% of the last 120 sessions; no daily price change (adjusted for dividends) above 30% in the last ~260 quotes, which could mean a split or a shock. Stocks excluded by hand (for example under a tender offer) drop out immediately.</li>
+<li><strong>12-1 ranking.</strong> The return from 12 months to 1 month before the signal date, on dividend-adjusted prices. We skip the latest month, following the classic 12-1 construction, because very short-term returns tend to reverse.</li>
 <li><strong>Trend filter.</strong> The price must be above the 200-session average.</li>
-<li><strong>Holdings.</strong> 12 stocks in equal weights. A stock already in the portfolio stays as long as it is in the top 25 of the ranking, is still above the 200-session average and fits within the sector limit (hysteresis limits turnover). Open slots go to the highest-ranked stocks that meet the trend filter and the limit: at most 3 stocks from one sector (a rough in-house classification in data/sectors.json; the "other" sector has no limit).</li>
+<li><strong>Holdings.</strong> 12 stocks in equal weights. A stock already in the portfolio stays as long as it is in the top 25 of the ranking, is still above the 200-session average and fits within the sector limit (hysteresis limits turnover). Open slots go to the highest-ranked stocks that meet the trend filter and the limit: at most 3 stocks from one sector (a simplified in-house classification; banks and other financial institutions count together; the "other" sector has no limit).</li>
 <li><strong>Regime.</strong> When Compass shows cash, new positions are half the usual size. Positions that stay are neither topped up nor trimmed.</li>
 <li><strong>Timing.</strong> We compute the signal on data from the last session of each month, and the report comes out after the first session of the next month. The first holdings were set on 6 November 2026, outside the cycle.</li>
 </ol>
@@ -246,9 +246,9 @@ footer{color:var(--muted);font-size:13px;padding-top:26px;padding-bottom:44px;bo
 <p>We compare the portfolio with the WIG20, because this forward check is meant to answer whether the strategy beats the WIG20. The WIG20, however, is a price index, without dividends. According to Parkiet (7 May 2024), since the end of 2004 the WIG20 has gained about 25% and the WIG20TR about 155%, which converts to about 1.2% versus about 5.0% a year (our own calculation from these values, about 19.4 years). Comparing with a price index therefore flatters a portfolio that collects dividends. The bar is also low for structural reasons: in 2013–2022 the WIG20TR returned about −4%, the mWIG40TR +114% and the sWIG80TR +119%. Simply not holding the WIG20 can therefore give an edge that is not due to momentum. We do not run an equal-weight portfolio of the whole universe, which would let us tell selection apart from avoiding the WIG20, so the result against the WIG20 has to be read with this in mind.</p>
 <h2>Data and known limitations</h2>
 <ul>
-<li>The repository holds about a year of quotes, so there is no backtest, and a full 12-1 ranking is available only from the end of October 2026.</li>
+<li>We have about a year of quote history, so there is no backtest, and a full 12-1 ranking is available only from the end of October 2026.</li>
 <li>The universe is today's list of stocks, without delisted ones, so it is unsuitable for backtests without a survivorship-bias correction.</li>
-<li>The dividend adjustment comes from data in data/dividends (dates and amounts); missing entries understate the return of dividend payers.</li>
+<li>The dividend adjustment relies on the payout dates and amounts we have collected; missing entries understate the return of dividend payers.</li>
 <li>The sector classification is rough, so the limit of 3 stocks per sector works only approximately.</li>
 <li>Momentum risks crashes on rebounds after market declines and requires frequent trading (turnover costs, 19% tax on realisation outside an IKE or IKZE).</li>
 <li>The same stocks may end up in both Momentum and the swing scanner; we do not measure the overlap of the portfolios.</li>
@@ -258,6 +258,7 @@ footer{color:var(--muted);font-size:13px;padding-top:26px;padding-bottom:44px;bo
 <h2>Rule change history</h2>
 <ul>
 <li>7 November 2026: first version of the rules and the first holdings (6 November 2026).</li>
+<li>7 November 2026 (review before the first trade): banks and other financial institutions count together towards the limit of 3 stocks per sector. Previously they were two separate labels with separate limits, so financials could take up to 6 of the 12 slots. We recalculated the first holdings under this rule before the virtual portfolio placed its first orders (the open of 9 November 2026).</li>
 </ul>
 <h2>Sources</h2>
 <ul>

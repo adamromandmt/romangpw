@@ -8,7 +8,7 @@ Ta strona opisuje samą strategię. Jak działa wirtualny portfel (kapitał, kos
 
 Trendy w cenach utrzymują się przez miesiące, a prosty filtr trendu ogranicza straty w długich spadkach. Rotacja między segmentami dodaje drugą korzyść: nie siedzimy w najsłabszym z nich. Na GPW ma to lokalne uzasadnienie. W latach 2013–2022 WIG20TR dał według Parkietu ok. −4%, mWIG40TR +114%, a sWIG80TR +119%.
 
-## Reguły (tak liczy je kod)
+## Reguły
 
 1. Po ostatniej sesji miesiąca liczymy dla WIG20, mWIG40 i sWIG80 zwrot z 6 i z 12 miesięcy (zamknięcia wskaźników cenowych). **Momentum** to średnia tych dwóch zwrotów.
 2. Wybieramy indeks o najwyższym momentum.
@@ -21,7 +21,7 @@ Raport pokazuje też informacyjnie wariant Fabera: które z trzech indeksów le�
 
 Okna 6, 12 i 10 miesięcy są klasyczne (10 miesięcy pochodzi od Fabera), ale to wartości startowe, nie wynik optymalizacji na danych GPW. Nie testowaliśmy innych okien. CXO Advisory ostrzega, że wybór dokładnie 10 miesięcy może być efektem data snoopingu, choć okna 3, 6, 9 i 12 miesięcy też biły kup-i-trzymaj pod względem wskaźnika Sharpe'a (brutto).
 
-Reguła jest hybrydą dwóch wariantów z naszego opracowania: wybór indeksu jak w dual momentum, a test bezwzględny jak u Fabera (średnia 10-miesięczna). Wersji z porównaniem zwrotu 12M z zwrotem gotówki nie użyliśmy, bo w repozytorium nie ma stopy gotówki.
+Reguła jest hybrydą dwóch wariantów z naszego opracowania: wybór indeksu jak w dual momentum, a test bezwzględny jak u Fabera (średnia 10-miesięczna). Wersji z porównaniem zwrotu 12M z zwrotem gotówki nie użyliśmy, bo nie mamy w danych stopy zwrotu z gotówki.
 
 ## Dowody i ich granice
 
@@ -32,12 +32,12 @@ Reguła jest hybrydą dwóch wariantów z naszego opracowania: wybór indeksu ja
 
 ## Wzorzec porównania
 
-Portfel porównujemy z WIG20, bo na pytanie „czy strategia bije WIG20” ma odpowiedzieć ten sprawdzian. Kompas trzyma w modelu jednostki indeksów cenowych, które tak jak WIG20 nie zbierają dywidend, więc samo porównanie jest spójne. Jest jednak zaniżone względem ETF-ów na indeksy TR i względem właściwego wzorca, czyli WIG20TR. Według Parkietu (7 maja 2024) od końca 2004 r. WIG20 zyskał ok. 25%, a WIG20TR ok. 155%; w przeliczeniu na stopę roczną (własny rachunek z tych wartości, ok. 19,4 roku) to ok. 1,2% wobec ok. 5,0% rocznie. W repozytorium nie ma notowań indeksów TR ani ETF-ów, więc porównania z WIG20TR nie liczymy.
+Portfel porównujemy z WIG20, bo na pytanie „czy strategia bije WIG20” ma odpowiedzieć ten sprawdzian. Kompas trzyma w modelu jednostki indeksów cenowych, które tak jak WIG20 nie zbierają dywidend, więc samo porównanie jest spójne. Jest jednak zaniżone względem ETF-ów na indeksy TR i względem właściwego wzorca, czyli WIG20TR. Według Parkietu (7 maja 2024) od końca 2004 r. WIG20 zyskał ok. 25%, a WIG20TR ok. 155%; w przeliczeniu na stopę roczną (własny rachunek z tych wartości, ok. 19,4 roku) to ok. 1,2% wobec ok. 5,0% rocznie. Nie mamy notowań indeksów TR ani ETF-ów, więc porównania z WIG20TR nie liczymy.
 
 ## Dane i znane ograniczenia
 
 - Sygnał liczymy na wskaźnikach cenowych z archiwum GPW, bez dywidend. Ich udział w zwrocie bywa różny w różnych segmentach, więc ranking oparty na indeksach TR mógłby wyglądać inaczej.
-- Repozytorium ma ok. roku notowań, więc nie ma testu wstecznego tej reguły na danych GPW. To sprawdzian prognoz od dnia startu, nie dowód skuteczności.
+- Mamy ok. roku historii notowań (minimum potrzebne do średniej z 10 zamknięć miesięcznych i zwrotu 12M), więc nie ma testu wstecznego tej reguły na danych GPW. To sprawdzian prognoz od dnia startu, nie dowód skuteczności.
 - Rotacja bywa zawodna w trendzie bocznym (kolejne fałszywe przełączenia). Zmiana pozycji oznacza w praktyce realizację zysku i podatek 19% poza IKE i IKZE.
 - ETF-y na indeksy TR (np. ETFBW20TR, ETFBM40TR, ETFBS80TR) są tu tylko wskazówką do sprawdzenia u brokera. Ich płynność, opłaty i możliwość kupna w IKE i IKZE trzeba zweryfikować samodzielnie.
 - Pominęliśmy nakładkę sezonową (półrocze zimowe XI–IV wobec letniego V–X). Analiza Strefy Inwestorów z 2019 r. opiera się na małych próbach (9–14 półroczy), kończy się w 2019 r., nie uwzględnia kosztów ani podatków, a przyczyna zjawiska jest nieznana.
@@ -49,6 +49,7 @@ Kompas jest przełącznikiem reżimu. Pęd używa go jako filtra: gdy Kompas pok
 ## Historia zmian reguł
 
 - 7 listopada 2026: pierwsza wersja reguł i pierwszy sygnał (6 listopada 2026).
+- 7 listopada 2026 (przegląd przed pierwszą transakcją): reguły bez zmian; doprecyzowaliśmy opis ograniczeń (indeksy cenowe zamiast dochodowych, długość historii).
 
 ## Źródła
 

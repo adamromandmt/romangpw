@@ -8,7 +8,7 @@ This page describes the strategy itself. How the virtual portfolio works (capita
 
 Price trends persist for months, and a simple trend filter limits losses in long declines. Rotating across segments adds a second benefit: we do not sit in the weakest one. On the GPW this has a local rationale. In 2013–2022, according to Parkiet, the WIG20TR returned about −4%, the mWIG40TR +114% and the sWIG80TR +119%.
 
-## Rules (as the code computes them)
+## Rules
 
 1. After the last session of the month, for the WIG20, mWIG40 and sWIG80 we compute the 6- and 12-month return (closing levels of the price indices). **Momentum** is the average of these two returns.
 2. We pick the index with the highest momentum.
@@ -21,7 +21,7 @@ The report also shows, for information, the Faber variant: which of the three in
 
 The 6-, 12- and 10-month windows are classic (the 10 months come from Faber), but they are starting values, not the result of optimisation on GPW data. We did not test other windows. CXO Advisory warns that choosing exactly 10 months may be a product of data snooping, although windows of 3, 6, 9 and 12 months also beat buy-and-hold on the Sharpe ratio (gross).
 
-The rule is a hybrid of two variants from our study: index selection as in dual momentum, and the absolute test as in Faber (the 10-month average). We did not use the version that compares the 12-month return with the return on cash, because the repository has no cash rate.
+The rule is a hybrid of two variants from our study: index selection as in dual momentum, and the absolute test as in Faber (the 10-month average). We did not use the version that compares the 12-month return with the return on cash, because our data has no return on cash.
 
 ## Evidence and its limits
 
@@ -32,12 +32,12 @@ The rule is a hybrid of two variants from our study: index selection as in dual 
 
 ## Benchmark
 
-We compare the portfolio with the WIG20, because this forward check is meant to answer whether the strategy beats the WIG20. In the model, Compass holds units of price indices, which, like the WIG20, do not collect dividends, so the comparison itself is consistent. It is, however, understated against ETFs on TR indices and against the proper benchmark, the WIG20TR. According to Parkiet (7 May 2024), since the end of 2004 the WIG20 has gained about 25% and the WIG20TR about 155%; converted to an annual rate (our own calculation from these values, about 19.4 years) that is about 1.2% versus about 5.0% a year. The repository has no quotes of TR indices or ETFs, so we do not compute a comparison with the WIG20TR.
+We compare the portfolio with the WIG20, because this forward check is meant to answer whether the strategy beats the WIG20. In the model, Compass holds units of price indices, which, like the WIG20, do not collect dividends, so the comparison itself is consistent. It is, however, understated against ETFs on TR indices and against the proper benchmark, the WIG20TR. According to Parkiet (7 May 2024), since the end of 2004 the WIG20 has gained about 25% and the WIG20TR about 155%; converted to an annual rate (our own calculation from these values, about 19.4 years) that is about 1.2% versus about 5.0% a year. We have no quotes of TR indices or ETFs, so we do not compute a comparison with the WIG20TR.
 
 ## Data and known limitations
 
 - The signal is computed on price indices from the GPW archive, without dividends. Their share of the return can differ across segments, so a ranking based on TR indices could look different.
-- The repository holds about a year of quotes, so this rule has no backtest on GPW data. It is a forward check from the start date, not proof of effectiveness.
+- We have about a year of quote history (the minimum needed for the 10-month average and the 12-month return), so this rule has no backtest on GPW data. It is a forward check from the start date, not proof of effectiveness.
 - Rotation can fail in a sideways market (repeated false switches). A change of position in practice means realising a gain and 19% tax outside an IKE or IKZE account.
 - ETFs on TR indices (e.g. ETFBW20TR, ETFBM40TR, ETFBS80TR) are only a pointer to check with your broker. Their liquidity, fees and whether they can be bought in an IKE or IKZE must be verified independently.
 - We left out the seasonal overlay (winter half-year November–April versus summer May–October). The 2019 Strefa Inwestorów analysis rests on small samples (9–14 half-years), ends in 2019, ignores costs and taxes, and the cause of the effect is unknown.
@@ -49,6 +49,7 @@ Compass is a regime switch. Momentum uses it as a filter: when Compass shows cas
 ## Rule change history
 
 - 7 November 2026: first version of the rules and the first signal (6 November 2026).
+- 7 November 2026 (review before the first trade): rules unchanged; we clarified the limitations (price indices instead of total-return ones, length of history).
 
 ## Sources
 

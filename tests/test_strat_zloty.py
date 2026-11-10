@@ -64,6 +64,14 @@ class MetricsTests(unittest.TestCase):
         self.assertFalse(self.m(net_income=-10_000)["tests"]["roa"])
         self.assertFalse(self.m(cfo=-1.0)["tests"]["cfo"])
 
+    def test_leverage_test_passes_when_debt_ratio_does_not_rise(self):
+        debt_free = zloty.metrics({**CUR, "debt": 0, "fy": 2025}, {**PREV, "debt": 0, "fy": 2024}, 100.0)
+        self.assertTrue(debt_free["tests"]["lever"])                       # spółka bez długu nie traci punktu
+        self.assertEqual(debt_free["f"], 9)
+        same = zloty.metrics({**CUR, "debt": 220_000, "fy": 2025}, {**PREV, "fy": 2024}, 100.0)   # 220/1100 = 200/1000
+        self.assertTrue(same["tests"]["lever"])
+        self.assertFalse(self.m(debt=221_000)["tests"]["lever"])           # wzrost zadłużenia do aktywów: test niezaliczony
+
     def test_net_cash_and_unrankable_cases(self):
         self.assertEqual(self.m(debt=50_000, cash=80_000)["nd_ebitda"], 0.0)               # gotówka netto
         self.assertIsNone(self.m(ebitda=-5_000)["nd_ebitda"])                              # dług przy ujemnym EBITDA: bez wskaźnika
@@ -205,7 +213,7 @@ class ZlotyTests(fx.MarketCase):
         self.assertEqual(sig["headline"], {"pl": "Czeka na dane fundamentalne", "en": "Waiting for fundamental data"})
         self.assertEqual(sig["data"]["status"], "no_data")
         self.assertIn("Czeka na dane fundamentalne", sig["md"]["pl"])
-        self.assertIn("METHOD-ZLOTY-SRODEK.md", sig["md"]["pl"])
+        self.assertNotIn("METHOD-ZLOTY-SRODEK.md", sig["md"]["pl"])                 # instrukcja dla opiekuna nie trafia do raportu
         self.assertIn("Waiting for fundamental data", sig["md"]["en"])
         for text in ("Ćwiczenie przesiewowe według zadanego frameworku, nie porada inwestycyjna.",):
             self.assertIn(text, sig["md"]["pl"])

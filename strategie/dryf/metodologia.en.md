@@ -1,6 +1,6 @@
 # Drift — methodology
 
-Drift catches, in reporting seasons, stocks that open with a clear gap up on heavy volume, and holds them for up to 40 sessions. It is an approximation of post-earnings-announcement drift (PEAD) computed from prices and volume, because the repository has no data on results, consensus or company filings.
+Drift catches, in reporting seasons, stocks that open with a clear gap up on heavy volume, and holds them for up to 40 sessions. It is an approximation of post-earnings-announcement drift (PEAD) computed from prices and volume, because we do not use data on results, consensus or company filings.
 
 This page describes the strategy itself. How the virtual portfolio works (capital, costs, order timing) is explained on the Portfolio tab; it is only a forward check of the forecasts from the start date.
 
@@ -8,7 +8,7 @@ This page describes the strategy itself. How the virtual portfolio works (capita
 
 Prices drift in the direction of the earnings surprise for weeks, even months, after the announcement (Ball and Brown 1968, Bernard and Thomas 1989). If the market reacts to good results gradually, buying after the first reaction can still earn something. For the GPW the evidence is **mixed**, and the samples are small.
 
-## Rules (as the code computes them)
+## Rules
 
 1. **Scan windows.** We look for events only in the windows when reports are published: 1 February – 30 April, 1–20 May, 15 August – 30 September and 1–20 November. Without ESPI data we treat a move in these windows as a proxy for the reaction to results. Outside the windows we do not look for new events, but open positions are still managed.
 2. **Positive event** (day E): a stock with a 60-session median daily turnover of at least PLN 1m whose opening gap versus the previous close is at least +2% (adjusted for the ex-dividend date), whose day gain (price adjusted for dividends) is between +4% and +30%, whose volume is at least 2.5 times the median of the previous 20 sessions, and whose close is in the upper half of the day's range. We reject moves above 30% as possible share consolidations. The previous session must have a quote.
@@ -22,7 +22,7 @@ Prices drift in the direction of the earnings surprise for weeks, even months, a
 
 All thresholds (gap 2%, gain 4%, volume 2.5 times, turnover PLN 1m, the windows, 40 sessions, PLN 10,000 per position, 10 positions) are starting values, not research results or optimisation. The study on which we based the strategy assumed holding for 40–60 sessions and entering on a surprise in the top quintile; we chose 40 sessions and a price-and-volume event.
 
-We set the thresholds by the number of events, not by how prices behaved after them. In the quote history in the repository (from 23 October 2025 to 6 November 2026) these conditions were met by 35 positive events (20 inside the reporting windows) and 20 negative ones (10 inside the windows).
+We set the thresholds by the number of events, not by how prices behaved after them. In our quote history (from 23 October 2025 to 6 November 2026) these conditions were met by 35 positive events (20 inside the reporting windows) and 20 negative ones (10 inside the windows).
 
 ## Evidence and its limits
 
@@ -32,7 +32,7 @@ We set the thresholds by the number of events, not by how prices behaved after t
 - **Conclusion:** the best documented effect on the GPW is the negative surprise, hence the "do not buy" list. The long side is supported by Sojka but not by Jagliński, so the result depends on the surprise measure and the period.
 - **Haircut:** McLean and Pontiff (97 predictors, 80 publications): out of sample, before publication, returns were 26% lower, and after publication 58% lower. We assume the real edge is at most half of that in a backtest.
 
-Our study also describes reinforcements that this version does not have: a surprise computed from financial data or consensus, insider purchases (MAR notifications) and announcements of share buybacks. The repository has no data for them.
+Our study also describes reinforcements that this version does not have: a surprise computed from financial data or consensus, insider purchases (MAR notifications) and announcements of share buybacks. We have no data for them.
 
 ## Example of an event (an illustration, not proof)
 
@@ -48,7 +48,7 @@ We compare the portfolio with the WIG20, but the WIG20 is a price index, without
 
 - A price-and-volume event is not the same as a surprise in results: a move inside a reporting window may have another cause, and companies publish reports on different days, including outside our windows.
 - The information may already be priced in on the day of the report, and we buy only after the gap. Price gaps and liquidity increase the risk of slippage.
-- The samples are small and the research results contradict each other (Sojka and Jagliński). The repository holds about a year of quotes, so there is no backtest.
+- The samples are small and the research results contradict each other (Sojka and Jagliński). We have about a year of quote history, so there is no backtest.
 - The universe is today's list of stocks, without delisted ones (survivorship bias).
 - Frequent trading in an ordinary account means 19% tax on every realised gain, which eats the edge; IKE and IKZE accounts would suit it better.
 
@@ -59,6 +59,7 @@ Complementary in the calendar: the swing scanner treats a report within the next
 ## Rule change history
 
 - 7 November 2026: first version of the rules and the first scan (6 November 2026).
+- 7 November 2026 (review before the first trade): rules unchanged; we clarified that the amount per position is fixed (PLN 10,000, i.e. 10% of the starting capital) and does not grow or shrink with the portfolio value.
 
 ## Sources
 

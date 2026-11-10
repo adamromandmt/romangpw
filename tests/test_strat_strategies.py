@@ -157,8 +157,8 @@ class PedTests(fx.MarketCase):
         self.assertEqual(list(sig["exit_reasons"]), ["P30"])
         self.assertIn("12 spółek", sig["headline"]["pl"])
         self.assertIn("Reżim: sprzyjający", sig["md"]["pl"])
-        self.assertIn("pominięta: poniżej SMA200", sig["md"]["pl"])                        # CRASH w tabeli rankingu
-        self.assertIn("skipped: sector limit", sig["md"]["en"])
+        self.assertIn("poniżej SMA200", sig["md"]["pl"])                        # CRASH w tabeli rankingu
+        self.assertIn("sector limit", sig["md"]["en"])
         for lang, text in (("pl", DISCLAIMER_PL), ("en", DISCLAIMER_EN)):
             self.assertIn(text, sig["md"][lang])
 
@@ -330,3 +330,37 @@ class DryfTests(fx.MarketCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class FinanceGroupTests(fx.MarketCase):
+    """Banki i pozostałe instytucje finansowe liczą się razem do limitu sektora (Pęd: 3, Przystań: 4)."""
+
+    def test_momentum_counts_banks_and_financials_together(self):
+        self.three_indices()
+        for i in range(1, 21):                                  # P01-P02 banki, P03-P05 finanse, reszta bez sektora; momentum maleje z numerem
+            self.add_stock(f"P{i:02d}", fx.path(self.days, 100.0, 2.0 - 0.045 * (i - 1)), sector="banki" if i <= 2 else "fin" if i <= 5 else None)
+        rows, chosen, skipped, bad = ped.evaluate(self.ctx(), fx.LAST, set())
+        names = [c["tic"] for c in chosen]
+        self.assertEqual(names[:3], ["P01", "P02", "P03"])       # dwa banki i jedna spółka finansowa wyczerpują limit 3
+        self.assertEqual({t: skipped.get(t) for t in ("P04", "P05")}, {"P04": "sector", "P05": "sector"})
+        self.assertEqual(len(chosen), ped.N)
+
+    def test_harbor_counts_banks_and_financials_together(self):
+        self.three_indices()
+        for i in range(1, 31):                                  # H01-H03 banki, H04-H06 finanse; zmienność rośnie z numerem
+            self.add_stock(f"H{i:02d}", fx.path(self.days, 100.0, 0.05, 0.004 + 0.002 * (i - 1)), sector="banki" if i <= 3 else "fin" if i <= 6 else None)
+        rows, chosen, skipped, bad, quint, keep = przystan.evaluate(self.ctx(), fx.LAST, set())
+        self.assertEqual([c["tic"] for c in chosen], ["H01", "H02", "H03", "H04"])   # kwintyl to 6 spółek, wszystkie z finansów: limit 4
+        self.assertEqual(skipped, {"H05": "sector", "H06": "sector"})
+
+    def test_limit_sector_keeps_other_sectors_apart(self):
+        self.assertEqual(lib.limit_sector("banki"), lib.limit_sector("fin"))
+        self.assertEqual((lib.limit_sector("it"), lib.limit_sector("inne")), ("it", "inne"))
+
+
+class RankGapNoteTests(unittest.TestCase):
+    def test_note_only_when_ranks_skip(self):
+        self.assertEqual(lib.rank_gap_note([{"rank": 1}, {"rank": 2}], "pl"), "")
+        self.assertEqual(lib.rank_gap_note([], "pl"), "")
+        self.assertIn("Przeskoki", lib.rank_gap_note([{"rank": 1}, {"rank": 3}], "pl"))
+        self.assertIn("Gaps", lib.rank_gap_note([{"rank": 2}], "en"))

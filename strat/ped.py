@@ -3,7 +3,7 @@
 Reguła: z płynnych spółek (mediana obrotu z 60 sesji co najmniej 500 tys. zł) bierzemy te, których kurs skorygowany o dywidendy
 rośnie najmocniej w ostatnich 12 miesiącach z pominięciem ostatniego (ranking 12-1), pod warunkiem że kurs leży nad średnią
 z 200 sesji. Portfel: 12 spółek o równych wagach, histereza (spółka zostaje, dopóki jest w czołowej 25), maksymalnie 3 spółki
-z jednego sektora. Gdy Kompas pokazuje gotówkę, nowe pozycje mają połowę wielkości.
+z jednego sektora (banki i pozostałe instytucje finansowe liczą się razem). Gdy Kompas pokazuje gotówkę, nowe pozycje mają połowę wielkości.
 """
 import datetime as dt
 
@@ -35,7 +35,7 @@ def evaluate(ctx, S, held):
     rows.sort(key=lambda r: -r["mom"])
     for i, r in enumerate(rows, 1):
         r["rank"] = i
-    chosen, skipped = lib.pick(rows, held, N, None, KEEP_RANK, SECTOR_CAP, lambda x: x["above"], ctx.sector)
+    chosen, skipped = lib.pick(rows, held, N, None, KEEP_RANK, SECTOR_CAP, lambda x: x["above"], lambda t: lib.limit_sector(ctx.sector(t)))
     return rows, chosen, skipped, bad
 
 
@@ -51,11 +51,11 @@ def build_md(ctx, S, rows, chosen, skipped, bad, held, risk_on, prev, initial, l
     title = f"# {L('Pęd', 'Momentum')} — {L('sygnał po sesji', 'signal after the session of')} {lib.weekday(S, lang)} {lib.date_pl(S, lang)}"
     intro = L(
         f"Dane: notowania {len(ctx.tickers)} spółek z archiwum GPW ({len(ctx.sessions)} sesji, do {lib.date_pl(S, lang)}), ceny skorygowane o dywidendy "
-        "(z data/dividends). Uniwersum: spółki z medianą obrotu z 60 sesji co najmniej 0,5 mln zł dziennie. Ranking 12-1: zwrot od 12 miesięcy do 1 miesiąca temu "
-        "(ostatni miesiąc pomijamy). Sektory: robocza klasyfikacja własna (data/sectors.json).",
+        "(wypłaty z komunikatów spółek). Uniwersum: spółki z medianą obrotu z 60 sesji co najmniej 0,5 mln zł dziennie. Ranking 12-1: zwrot od 12 miesięcy do 1 miesiąca temu "
+        "(ostatni miesiąc pomijamy). Sektory: uproszczona klasyfikacja własna; do limitu banki i pozostałe instytucje finansowe liczą się razem.",
         f"Data: quotes of {len(ctx.tickers)} stocks from the GPW archive ({len(ctx.sessions)} sessions, through {lib.date_pl(S, lang)}), prices adjusted for dividends "
-        "(from data/dividends). Universe: stocks with a 60-session median turnover of at least PLN 0.5m a day. 12-1 ranking: return from 12 months to 1 month ago "
-        "(the latest month is skipped). Sectors: a rough in-house classification (data/sectors.json).")
+        "(payouts from company announcements). Universe: stocks with a 60-session median turnover of at least PLN 0.5m a day. 12-1 ranking: return from 12 months to 1 month ago "
+        "(the latest month is skipped). Sectors: a simplified in-house classification; banks and other financial institutions count together towards the limit.")
     if initial:
         intro += L(" **Raport startowy:** pierwszy skład portfela wirtualnego, poza cyklem miesięcznym (kolejne: ostatnia sesja każdego miesiąca).",
                    " **Starting report:** the first holdings of the virtual portfolio, outside the monthly cycle (next ones: the last session of each month).")
@@ -82,9 +82,9 @@ def build_md(ctx, S, rows, chosen, skipped, bad, held, risk_on, prev, initial, l
         if r["tic"] in cset:
             st = L("w portfelu", "in portfolio")
         elif skipped.get(r["tic"]) == "filter" or not r["above"]:
-            st = L("pominięta: poniżej SMA200", "skipped: below SMA200")
+            st = L("poniżej SMA200", "below SMA200")
         elif skipped.get(r["tic"]) == "sector":
-            st = L("pominięta: limit sektora", "skipped: sector limit")
+            st = L("limit sektora", "sector limit")
         else:
             st = L("poza portfelem", "not selected")
         top.append(row(r, st))
@@ -111,15 +111,17 @@ def build_md(ctx, S, rows, chosen, skipped, bad, held, risk_on, prev, initial, l
           "Momentum on the GPW is weakly and ambiguously documented in research (see methodology). This is a forward check from the start date, not proof of effectiveness."),
         L("Uniwersum to dzisiejsza lista spółek (bez wycofanych z obrotu), więc nie nadaje się do testów wstecznych bez korekty o survivorship bias.",
           "The universe is today's list of stocks (without delisted ones), so it is unsuitable for backtests without a survivorship-bias correction."),
-        L("Korekta o dywidendy wynika z danych w data/dividends (daty i kwoty); brakujące wpisy zaniżają zwrot spółek dywidendowych.",
-          "The dividend adjustment comes from data/dividends (dates and amounts); missing entries understate the return of dividend payers."),
+        L("Korekta o dywidendy opiera się na zebranych przez nas datach i kwotach wypłat; brakujące wpisy zaniżają zwrot spółek dywidendowych.",
+          "The dividend adjustment relies on the payout dates and amounts we have collected; missing entries understate the return of dividend payers."),
     ]
     if jumps:
         limits.append(L(f"Pominięte z powodu dziennego skoku powyżej 30% w ostatnich 12 miesiącach (możliwy split): {', '.join(jumps)}.",
                         f"Skipped because of a daily jump above 30% in the last 12 months (possible split): {', '.join(jumps)}."))
+    note = lib.rank_gap_note(chosen, lang)
+    gap = [note, ""] if note else []
     disc = L("Ćwiczenie przesiewowe według zadanego frameworku, nie porada inwestycyjna.", "Screening exercise under the given framework, not investment advice.")
     md = [title, "", intro, "", "## " + L("Sygnał", "Signal"), "", verdict, "", regime, "", funnel, "",
-          "## " + L("Portfel docelowy", "Target portfolio"), "", lib.md_table(head, body), "", "<!-- chart -->", ""]
+          "## " + L("Portfel docelowy", "Target portfolio"), "", lib.md_table(head, body), ""] + gap + ["<!-- chart -->", ""]
     if drop_rows:
         md += ["## " + L("Wypadają z portfela", "Dropped from the portfolio"), "", lib.md_table(["Tic", L("Spółka", "Company"), L("Powód", "Reason")], drop_rows), ""]
     md += ["## " + L("Ranking 12-1 (25 najlepszych)", "12-1 ranking (top 25)"), "", lib.md_table(head, top), "",

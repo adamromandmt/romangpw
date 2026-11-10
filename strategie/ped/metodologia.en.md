@@ -8,12 +8,12 @@ This page describes the strategy itself. How the virtual portfolio works (capita
 
 Winners of recent months tend to stay winners more often than chance would suggest (cross-sectional momentum). On the US market, Jegadeesh and Titman (1993) found that winners of the last 3–12 months beat losers by about 1% a month (a figure from a secondary source). George and Hwang (2004) showed that proximity to the 52-week high predicts returns better than past returns alone. For the GPW the evidence is **mixed**, and this is the least well documented of the five strategies.
 
-## Rules (as the code computes them)
+## Rules
 
-1. **Universe.** Stocks from our list (data/universe.json) that meet all of these conditions on the signal date: the latest quote is no older than 10 days; at least 12 months of history; a 60-session median daily turnover of at least PLN 0.5m; candles in at least 90% of the last 120 sessions; no daily price change (adjusted for dividends) above 30% in the last ~260 quotes, which could mean a split or a shock. Stocks on the manual exclusion list (strategie/wykluczenia.json) drop out immediately.
-2. **12-1 ranking.** The return from 12 months to 1 month before the signal date, on dividend-adjusted prices (data/dividends). We skip the latest month, following the classic 12-1 construction, because very short-term returns tend to reverse.
+1. **Universe.** Stocks from our watch list of GPW companies that meet all of these conditions on the signal date: the latest quote is no older than 10 days; at least 12 months of history; a 60-session median daily turnover of at least PLN 0.5m; candles in at least 90% of the last 120 sessions; no daily price change (adjusted for dividends) above 30% in the last ~260 quotes, which could mean a split or a shock. Stocks excluded by hand (for example under a tender offer) drop out immediately.
+2. **12-1 ranking.** The return from 12 months to 1 month before the signal date, on dividend-adjusted prices. We skip the latest month, following the classic 12-1 construction, because very short-term returns tend to reverse.
 3. **Trend filter.** The price must be above the 200-session average.
-4. **Holdings.** 12 stocks in equal weights. A stock already in the portfolio stays as long as it is in the top 25 of the ranking, is still above the 200-session average and fits within the sector limit (hysteresis limits turnover). Open slots go to the highest-ranked stocks that meet the trend filter and the limit: at most 3 stocks from one sector (a rough in-house classification in data/sectors.json; the "other" sector has no limit).
+4. **Holdings.** 12 stocks in equal weights. A stock already in the portfolio stays as long as it is in the top 25 of the ranking, is still above the 200-session average and fits within the sector limit (hysteresis limits turnover). Open slots go to the highest-ranked stocks that meet the trend filter and the limit: at most 3 stocks from one sector (a simplified in-house classification; banks and other financial institutions count together; the "other" sector has no limit).
 5. **Regime.** When Compass shows cash, new positions are half the usual size. Positions that stay are neither topped up nor trimmed.
 6. **Timing.** We compute the signal on data from the last session of each month, and the report comes out after the first session of the next month. The first holdings were set on 6 November 2026, outside the cycle.
 
@@ -37,9 +37,9 @@ We compare the portfolio with the WIG20, because this forward check is meant to 
 
 ## Data and known limitations
 
-- The repository holds about a year of quotes, so there is no backtest, and a full 12-1 ranking is available only from the end of October 2026.
+- We have about a year of quote history, so there is no backtest, and a full 12-1 ranking is available only from the end of October 2026.
 - The universe is today's list of stocks, without delisted ones, so it is unsuitable for backtests without a survivorship-bias correction.
-- The dividend adjustment comes from data in data/dividends (dates and amounts); missing entries understate the return of dividend payers.
+- The dividend adjustment relies on the payout dates and amounts we have collected; missing entries understate the return of dividend payers.
 - The sector classification is rough, so the limit of 3 stocks per sector works only approximately.
 - Momentum risks crashes on rebounds after market declines and requires frequent trading (turnover costs, 19% tax on realisation outside an IKE or IKZE).
 - The same stocks may end up in both Momentum and the swing scanner; we do not measure the overlap of the portfolios.
@@ -51,6 +51,7 @@ We compare the portfolio with the WIG20, because this forward check is meant to 
 ## Rule change history
 
 - 7 November 2026: first version of the rules and the first holdings (6 November 2026).
+- 7 November 2026 (review before the first trade): banks and other financial institutions count together towards the limit of 3 stocks per sector. Previously they were two separate labels with separate limits, so financials could take up to 6 of the 12 slots. We recalculated the first holdings under this rule before the virtual portfolio placed its first orders (the open of 9 November 2026).
 
 ## Sources
 

@@ -219,16 +219,17 @@ footer{color:var(--muted);font-size:13px;padding-top:26px;padding-bottom:44px;bo
 <main id="main" tabindex="-1">
 <div class="banner">Report dated <strong>Friday 6 November 2026</strong> · <a href="../golden-mean-archive.html">archive</a> · <a href="../portfolio-golden-mean.html">Portfolio</a> · <a href="../methodology-golden-mean.html">Methodology</a></div>
 <h1 id="golden-mean-signal-after-the-session-of-friday-6-november-2026">Golden Mean — signal after the session of Friday 6 November 2026</h1>
-<p>Data: quotes from the GPW archive and annual statements of non-financial companies from data/fundamentals.csv (amounts in PLN thousand). A statement counts only from its publication date (no look-ahead). Banks and insurers are outside the scope of this version. Sectors: a rough in-house classification (data/sectors.json). <strong>Starting report:</strong> the first signal of the virtual portfolio, outside the half-yearly cycle (next ones: the last session of May and October).</p>
+<p>Data: quotes from the GPW archive and annual financial statements of non-financial companies. A statement counts only from its publication date (no look-ahead). Banks and insurers are outside the scope of this version. Sectors: a simplified in-house classification. <strong>Starting report:</strong> the first signal of the virtual portfolio, outside the half-yearly cycle (next ones: the last session of May and October).</p>
 <h2 id="signal">Signal</h2>
-<p><strong>Waiting for fundamental data.</strong> data/fundamentals.csv holds no statements available on this date, so the strategy names no stocks and the virtual portfolio stays in cash.</p>
+<p><strong>Waiting for fundamental data.</strong> We have not yet collected company financial statements available on this date, so the strategy names no stocks and the virtual portfolio stays in cash.</p>
 <h2 id="what-next">What next</h2>
 <ul>
-<li>How to supply data: see METHOD-ZLOTY-SRODEK.md (columns, units, the publication-date rule). After filling the file run <code>python3 -m strat daily --only zloty-srodek --force</code>.</li>
+<li>The first holdings will appear in the report published once annual statements for two consecutive years have been collected for liquid non-financial companies.</li>
+<li>Until then the virtual portfolio sits in cash, so its result is zero and says nothing about the strategy.</li>
 </ul>
 <h2 id="limitations">Limitations</h2>
 <ul>
-<li>The hardest strategy to automate: it needs fundamental data that is filled in separately in the repository and must be checked by hand.</li>
+<li>The hardest strategy to automate: it needs data from financial statements, which we collect separately and check by hand.</li>
 <li>Banks and insurers are not assessed (they need P/B, ROE and capital buffers), and the shareholder-yield bonus (dividends and buybacks) is not in the ranking: the dividend column is informational.</li>
 <li>Cheap stocks are often cheap for political or regulatory reasons (value traps); the cap of 8 stocks from regulation-sensitive sectors is only partial protection.</li>
 <li>The model reads annual statements only, so the October signal mainly refreshes the valuation (the price), not the quality; half-year results do not enter the assessment.</li>

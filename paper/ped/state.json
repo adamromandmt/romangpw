@@ -10,7 +10,7 @@
   "max_hold_sessions": 40
  },
  "start_date": "2026-11-06",
- "cash": 3755.5553200000068,
+ "cash": 4509.359920000011,
  "processed_through": "2026-11-09",
  "pending": null,
  "orders": [],
@@ -133,19 +133,6 @@
    "sector": "media"
   },
   {
-   "tic": "GPW",
-   "name": "GPW",
-   "shares": 85,
-   "entry": 97.1,
-   "entry_date": "2026-11-09",
-   "cost": 8270.007,
-   "last_close": 96.5,
-   "last_date": "2026-11-09",
-   "divs": 0.0,
-   "stop": null,
-   "sector": "fin"
-  },
-  {
    "tic": "PCO",
    "name": "PEPCO",
    "shares": 172,
@@ -159,17 +146,30 @@
    "sector": "handel"
   },
   {
-   "tic": "BNP",
-   "name": "BNPPPL",
-   "shares": 48,
-   "entry": 172.6,
+   "tic": "ALE",
+   "name": "ALLEGRO",
+   "shares": 138,
+   "entry": 60.0,
    "entry_date": "2026-11-09",
-   "cost": 8301.3696,
-   "last_close": 179.6,
+   "cost": 8296.56,
+   "last_close": 60.2,
    "last_date": "2026-11-09",
    "divs": 0.0,
    "stop": null,
-   "sector": "banki"
+   "sector": "handel"
+  },
+  {
+   "tic": "KTY",
+   "name": "KETY",
+   "shares": 6,
+   "entry": 1251.0,
+   "entry_date": "2026-11-09",
+   "cost": 7521.012,
+   "last_close": 1270.0,
+   "last_date": "2026-11-09",
+   "divs": 0.0,
+   "stop": null,
+   "sector": "przemysl"
   }
  ],
  "closed": [],
@@ -183,17 +183,17 @@
   },
   {
    "date": "2026-11-09",
-   "equity": 100262.37,
-   "cash": 3755.56,
-   "invested": 96506.81,
+   "equity": 100120.47,
+   "cash": 4509.36,
+   "invested": 95611.11,
    "bench": 4165.3
   }
  ],
  "log": [
   {
    "date": "2026-11-06",
-   "pl": "Sygnał: docelowy skład ASB, DIG, XTB, BFT, APR, EBP, CAR, PKO, OPL, GPW, PCO, BNP",
-   "en": "Signal: target holdings ASB, DIG, XTB, BFT, APR, EBP, CAR, PKO, OPL, GPW, PCO, BNP"
+   "pl": "Sygnał: docelowy skład ASB, DIG, XTB, BFT, APR, EBP, CAR, PKO, OPL, PCO, ALE, KTY",
+   "en": "Signal: target holdings ASB, DIG, XTB, BFT, APR, EBP, CAR, PKO, OPL, PCO, ALE, KTY"
   },
   {
    "date": "2026-11-09",
@@ -242,18 +242,18 @@
   },
   {
    "date": "2026-11-09",
-   "pl": "Kupno GPW: 85 szt. po 97.1",
-   "en": "Bought GPW: 85 units at 97.1"
-  },
-  {
-   "date": "2026-11-09",
    "pl": "Kupno PCO: 172 szt. po 48.27",
    "en": "Bought PCO: 172 units at 48.27"
   },
   {
    "date": "2026-11-09",
-   "pl": "Kupno BNP: 48 szt. po 172.6",
-   "en": "Bought BNP: 48 units at 172.6"
+   "pl": "Kupno ALE: 138 szt. po 60",
+   "en": "Bought ALE: 138 units at 60"
+  },
+  {
+   "date": "2026-11-09",
+   "pl": "Kupno KTY: 6 szt. po 1251",
+   "en": "Bought KTY: 6 units at 1251"
   }
  ],
  "next_id": 1

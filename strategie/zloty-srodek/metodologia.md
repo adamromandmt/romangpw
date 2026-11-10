@@ -8,19 +8,19 @@ Ta strona opisuje samą strategię. Jak działa wirtualny portfel (kapitał, kos
 
 Zyskowność brutto (zysk brutto do aktywów) przewiduje stopy zwrotu mniej więcej tak dobrze jak klasyczne wskaźniki wyceny, a jest z nimi silnie ujemnie skorelowana, więc połączenie obu sygnałów poprawia wynik względem samej wyceny (Novy-Marx). Proste testy rentowności, dźwigni i efektywności (F-score Piotroskiego) pomagają odsiać spółki tanie z powodu pogarszającej się kondycji. Podobne połączenie jakości z ceną stoi za Magic Formula Greenblatta i za czynnikiem „jakość minus śmieci” (Asness, Frazzini i Pedersen). Na GPW dodajemy ograniczenie ryzyka politycznego: limit spółek z sektorów wrażliwych regulacyjnie.
 
-## Reguły (tak liczy je kod)
+## Reguły
 
-1. **Dane.** Roczne sprawozdania spółek niefinansowych z pliku data/fundamentals.csv (kwoty w tys. zł, liczba akcji w sztukach). Plik wypełnia się osobno z publicznych sprawozdań; kolumny i zasady opisuje METHOD-ZLOTY-SRODEK.md w repozytorium. Sprawozdanie liczy się dopiero od dnia publikacji (gdy brak daty: koniec okresu plus 120 dni), żeby nie wyprzedzać faktów. Dopóki plik jest pusty, strategia nie wskazuje spółek, a portfel wirtualny stoi w gotówce.
-2. **Uniwersum.** Spółki z naszej listy (data/universe.json) poza bankami i spółkami finansowymi, które w dniu sygnału spełniają warunki: ostatnie notowanie nie starsze niż 10 dni; historia co najmniej 12 miesięcy; mediana dziennego obrotu z 60 sesji co najmniej 0,3 mln zł; świece w co najmniej 90% z ostatnich 120 sesji; brak dziennej zmiany ceny powyżej 30% w ostatnich ok. 260 notowaniach. Potrzebne są sprawozdania z dwóch kolejnych lat. Banki i ubezpieczyciele wymagają innych mierników (P/B, ROE, bufory kapitałowe) i są poza zakresem tej wersji.
+1. **Dane.** Roczne sprawozdania finansowe spółek niefinansowych, zbierane osobno z publicznych raportów rocznych. Sprawozdanie liczy się dopiero od dnia publikacji (gdy brak daty: koniec okresu plus 120 dni), żeby nie wyprzedzać faktów. Dopóki nie zbierzemy sprawozdań, strategia nie wskazuje spółek, a portfel wirtualny stoi w gotówce.
+2. **Uniwersum.** Spółki z naszej listy obserwowanych spółek GPW poza bankami i spółkami finansowymi, które w dniu sygnału spełniają warunki: ostatnie notowanie nie starsze niż 10 dni; historia co najmniej 12 miesięcy; mediana dziennego obrotu z 60 sesji co najmniej 0,3 mln zł; świece w co najmniej 90% z ostatnich 120 sesji; brak dziennej zmiany ceny powyżej 30% w ostatnich ok. 260 notowaniach. Potrzebne są sprawozdania z dwóch kolejnych lat. Banki i ubezpieczyciele wymagają innych mierników (P/B, ROE, bufory kapitałowe) i są poza zakresem tej wersji.
 3. **Wskaźniki.** Dla każdej spółki liczymy F-score (uproszczony Piotroski), wolny przepływ pieniężny, dług netto do EBITDA, EV/EBIT i zyskowność brutto do aktywów. Definicje są w sekcji „Wskaźniki” poniżej.
 4. **Progi wejścia** (dla spółek spoza portfela): F-score co najmniej 7, dodatni FCF, dług netto do EBITDA do 3.
 5. **Ranking.** Suma pozycji w rankingu EV/EBIT (im taniej, tym lepiej) i w rankingu zyskowności brutto (im wyżej, tym lepiej); niższa suma oznacza wyższe miejsce. Remisy rozstrzyga wyższy F-score, potem niższe EV/EBIT.
-6. **Skład.** 20 spółek o równych wagach. Spółka dotychczas w portfelu zostaje, dopóki ma F-score co najmniej 5, dług netto do EBITDA do 4 i miejsce w czołowych 30 rankingu. Maksymalnie 4 spółki z jednego sektora (robocza klasyfikacja własna w data/sectors.json; sektor „inne” nie ma limitu) i 8 łącznie z sektorów wrażliwych regulacyjnie (energetyka, paliwa), czyli 40% portfela.
+6. **Skład.** 20 spółek o równych wagach. Spółka dotychczas w portfelu zostaje, dopóki ma F-score co najmniej 5, dług netto do EBITDA do 4 i miejsce w czołowych 30 rankingu. Maksymalnie 4 spółki z jednego sektora (uproszczona klasyfikacja własna; sektor „inne” nie ma limitu) i 8 łącznie z sektorów wrażliwych regulacyjnie (energetyka, paliwa), czyli 40% portfela.
 7. **Rytm.** Sygnał liczymy na danych z ostatniej sesji maja i października, a raport ukazuje się po pierwszej sesji następnego miesiąca. Pierwszy sygnał powstał 6 listopada 2026, poza cyklem.
 
 ## Wskaźniki
 
-- **F-score** (uproszczona wersja Piotroskiego, 9 testów po 1 punkcie): dodatnia ROA; dodatni przepływ operacyjny; wzrost ROA rok do roku; przepływ operacyjny do aktywów wyższy niż ROA; spadek zadłużenia do aktywów; wzrost wskaźnika bieżącej płynności; liczba akcji nie wzrosła o więcej niż 0,5%; wzrost marży brutto; wzrost rotacji aktywów.
+- **F-score** (uproszczona wersja Piotroskiego, 9 testów po 1 punkcie): dodatnia ROA; dodatni przepływ operacyjny; wzrost ROA rok do roku; przepływ operacyjny do aktywów wyższy niż ROA; zadłużenie do aktywów nie wzrosło; wzrost wskaźnika bieżącej płynności; liczba akcji nie wzrosła o więcej niż 0,5%; wzrost marży brutto; wzrost rotacji aktywów.
 - **Wolny przepływ pieniężny** (FCF): przepływ operacyjny minus nakłady inwestycyjne.
 - **Dług netto do EBITDA**: dług minus gotówka, podzielone przez EBITDA. Spółka z gotówką netto ma 0, a spółka z długiem netto i niedodatnią EBITDA nie przechodzi.
 - **EV/EBIT**: wartość przedsiębiorstwa (kapitalizacja z ostatniego kursu zamknięcia plus dług netto) do EBIT. Wymaga dodatniego EBIT, dodatniego EV i dodatniego kapitału własnego.
@@ -48,7 +48,7 @@ Portfel porównujemy z WIG20, ale WIG20 jest indeksem cenowym, bez dywidend. Wed
 - Dane wejściowe to sprawozdania roczne. Sygnał październikowy odświeża więc głównie wycenę (kurs), a nie jakość; wyniki półroczne nie wchodzą do ocen.
 - Tanie spółki bywają tanie z powodów politycznych lub regulacyjnych (pułapki wartości).
 - Bonus za zwrot dla akcjonariuszy (dywidendy i skupy), który opisuje opracowanie, nie wchodzi do rankingu; dywidenda z ostatnich 12 miesięcy jest w raporcie tylko informacją.
-- Rzadki rebalans (dwa razy w roku) oznacza długie trwanie w złym reżimie. Repozytorium ma ok. roku notowań, więc nie ma testu wstecznego tej reguły na danych GPW.
+- Rzadki rebalans (dwa razy w roku) oznacza długie trwanie w złym reżimie. Mamy ok. roku historii notowań, więc nie ma testu wstecznego tej reguły na danych GPW.
 - Uniwersum to dzisiejsza lista spółek, bez wycofanych z obrotu (survivorship bias), a klasyfikacja sektorów jest robocza.
 - Zmiana składu oznacza realizację zysku i podatek 19% poza IKE i IKZE.
 
@@ -59,6 +59,7 @@ Powolny rdzeń z decyzjami dwa razy w roku. Źródło zysku (rewaluacja i wzrost
 ## Historia zmian reguł
 
 - 7 listopada 2026: pierwsza wersja reguł i pierwszy sygnał (6 listopada 2026).
+- 7 listopada 2026 (przegląd przed pierwszą transakcją): test dźwigni w F-score (zadłużenie do aktywów nie wzrosło rok do roku) zalicza teraz także spółki, których zadłużenie się nie zmieniło, w tym spółki bez długu. Wcześniej wymagał spadku, więc spółka bez długu traciła punkt.
 
 ## Źródła
 

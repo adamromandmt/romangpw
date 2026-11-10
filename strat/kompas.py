@@ -116,10 +116,10 @@ def build_md(ctx, S, rows, best, hold, prev, initial, lang):
           "The signal changes rarely and can fail in a sideways market (repeated false switches)."),
     ]
     limits = [
-        L("Brak notowań ETF-ów i indeksów TR w repozytorium: wynik portfela wirtualnego pomija dywidendy, a ich udział w zwrocie bywa różny w różnych segmentach, więc ranking oparty na indeksach TR mógłby wyglądać inaczej.",
-          "No ETF or TR-index quotes in the repository: the virtual portfolio result omits dividends, and their share of the return can differ across segments, so a ranking based on TR indices could look different."),
-        L("Historia w repozytorium to ok. roku, więc nie ma testu wstecznego tej reguły na danych GPW. To sprawdzian prognoz od dnia startu, nie dowód skuteczności.",
-          "The repository holds about a year of history, so this rule has no backtest on GPW data. This is a forward check from the start date, not proof of effectiveness."),
+        L("Liczymy na indeksach cenowych, bez notowań ETF-ów i indeksów dochodowych (TR): wynik portfela wirtualnego pomija dywidendy, a ich udział w zwrocie bywa różny w różnych segmentach, więc ranking oparty na indeksach TR mógłby wyglądać inaczej.",
+          "We use price indices, without quotes of ETFs or total-return (TR) indices: the virtual portfolio result omits dividends, and their share of the return can differ across segments, so a ranking based on TR indices could look different."),
+        L("Mamy ok. roku historii notowań (minimum potrzebne do średniej z 10 zamknięć miesięcznych i zwrotu 12M), więc nie ma testu wstecznego tej reguły na danych GPW. To sprawdzian prognoz od dnia startu, nie dowód skuteczności.",
+          "We have about a year of quote history (the minimum needed for the 10-month average and the 12-month return), so this rule has no backtest on GPW data. This is a forward check from the start date, not proof of effectiveness."),
         L("Gotówka nie przynosi odsetek (w praktyce: fundusz pieniężny lub ETF krótkoterminowych obligacji).",
           "Cash earns no interest (in practice a money-market fund or a short-term bond ETF)."),
     ]

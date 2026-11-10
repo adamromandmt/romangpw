@@ -75,7 +75,7 @@ def metrics(cur, prv, price):
     roa, proa = cur["net_income"] / ta, prv["net_income"] / pta
     tests = {
         "roa": roa > 0, "cfo": cur["cfo"] > 0, "droa": roa > proa, "accrual": cur["cfo"] / ta > roa,
-        "lever": cur["debt"] / ta < prv["debt"] / pta,
+        "lever": cur["debt"] / ta <= prv["debt"] / pta,                 # zadłużenie do aktywów nie wzrosło (spółka bez długu zalicza)
         "liquid": cur["current_assets"] / cur["current_liabilities"] > prv["current_assets"] / prv["current_liabilities"],
         "shares": cur["shares"] <= prv["shares"] * 1.005,
         "margin": cur["gross_profit"] / cur["revenue"] > prv["gross_profit"] / prv["revenue"],
@@ -148,17 +148,17 @@ def build_md(ctx, S, rows, chosen, skipped, info, held, carried, initial, lang):
     cset = {c["tic"] for c in chosen}
     title = f"# {L('Złoty Środek', 'Golden Mean')} — {L('sygnał po sesji', 'signal after the session of')} {lib.weekday(S, lang)} {lib.date_pl(S, lang)}"
     intro = L(
-        "Dane: notowania z archiwum GPW oraz roczne sprawozdania spółek niefinansowych z pliku data/fundamentals.csv (kwoty w tys. zł). Sprawozdanie liczy się dopiero od dnia "
-        "publikacji (bez wyprzedzania). Banki i ubezpieczyciele są poza zakresem tej wersji. Sektory: robocza klasyfikacja własna (data/sectors.json).",
-        "Data: quotes from the GPW archive and annual statements of non-financial companies from data/fundamentals.csv (amounts in PLN thousand). A statement counts only from its "
-        "publication date (no look-ahead). Banks and insurers are outside the scope of this version. Sectors: a rough in-house classification (data/sectors.json).")
+        "Dane: notowania z archiwum GPW oraz roczne sprawozdania finansowe spółek niefinansowych. Sprawozdanie liczy się dopiero od dnia "
+        "publikacji (bez wyprzedzania). Banki i ubezpieczyciele są poza zakresem tej wersji. Sektory: uproszczona klasyfikacja własna.",
+        "Data: quotes from the GPW archive and annual financial statements of non-financial companies. A statement counts only from its "
+        "publication date (no look-ahead). Banks and insurers are outside the scope of this version. Sectors: a simplified in-house classification.")
     if initial:
         intro += L(" **Raport startowy:** pierwszy sygnał portfela wirtualnego, poza cyklem półrocznym (kolejne: ostatnia sesja maja i października).",
                    " **Starting report:** the first signal of the virtual portfolio, outside the half-yearly cycle (next ones: the last session of May and October).")
     disc = L("Ćwiczenie przesiewowe według zadanego frameworku, nie porada inwestycyjna.", "Screening exercise under the given framework, not investment advice.")
     limits = [
-        L("Najtrudniejsza strategia do zautomatyzowania: wymaga danych fundamentalnych, które w repozytorium wypełnia się osobno i które trzeba sprawdzać ręcznie.",
-          "The hardest strategy to automate: it needs fundamental data that is filled in separately in the repository and must be checked by hand."),
+        L("Najtrudniejsza strategia do zautomatyzowania: wymaga danych ze sprawozdań finansowych, które zbieramy osobno i sprawdzamy ręcznie.",
+          "The hardest strategy to automate: it needs data from financial statements, which we collect separately and check by hand."),
         L("Bank i ubezpieczyciel nie są oceniani (potrzebują P/B, ROE i buforów kapitałowych), a bonus za zwrot dla akcjonariuszy (dywidendy i skupy) nie wchodzi do rankingu: kolumna dywidendy jest informacyjna.",
           "Banks and insurers are not assessed (they need P/B, ROE and capital buffers), and the shareholder-yield bonus (dividends and buybacks) is not in the ranking: the dividend column is informational."),
         L("Tanie spółki bywają tanie z powodów politycznych lub regulacyjnych (pułapki wartości); limit 8 spółek z sektorów wrażliwych regulacyjnie jest tylko częściową ochroną.",
@@ -169,10 +169,12 @@ def build_md(ctx, S, rows, chosen, skipped, info, held, carried, initial, lang):
           "A rare rebalance (twice a year) means a long time in a bad regime. There is no backtest on GPW data."),
     ]
     if not rows and not carried:
-        verdict = L("**Czeka na dane fundamentalne.** Plik data/fundamentals.csv nie zawiera sprawozdań dostępnych na ten dzień, więc strategia nie wskazuje spółek, a portfel wirtualny pozostaje w gotówce.",
-                    "**Waiting for fundamental data.** data/fundamentals.csv holds no statements available on this date, so the strategy names no stocks and the virtual portfolio stays in cash.")
-        how = [L("Jak dostarczyć dane: patrz METHOD-ZLOTY-SRODEK.md (kolumny, jednostki, zasada daty publikacji). Po uzupełnieniu pliku uruchom `python3 -m strat daily --only zloty-srodek --force`.",
-                 "How to supply data: see METHOD-ZLOTY-SRODEK.md (columns, units, the publication-date rule). After filling the file run `python3 -m strat daily --only zloty-srodek --force`.")]
+        verdict = L("**Czeka na dane fundamentalne.** Nie mamy jeszcze zebranych sprawozdań finansowych spółek dostępnych na ten dzień, więc strategia nie wskazuje spółek, a portfel wirtualny pozostaje w gotówce.",
+                    "**Waiting for fundamental data.** We have not yet collected company financial statements available on this date, so the strategy names no stocks and the virtual portfolio stays in cash.")
+        how = [L("Pierwszy skład pojawi się w raporcie opublikowanym po zebraniu rocznych sprawozdań z dwóch kolejnych lat dla płynnych spółek niefinansowych.",
+                 "The first holdings will appear in the report published once annual statements for two consecutive years have been collected for liquid non-financial companies."),
+               L("Do tego czasu portfel wirtualny stoi w gotówce, więc jego wynik wynosi zero i nie mówi nic o strategii.",
+                 "Until then the virtual portfolio sits in cash, so its result is zero and says nothing about the strategy.")]
         md = [title, "", intro, "", "## " + L("Sygnał", "Signal"), "", verdict, "", "## " + L("Co dalej", "What next"), ""] + ["- " + x for x in how]
         md += ["", "## " + L("Ograniczenia", "Limitations"), ""] + ["- " + x for x in limits] + ["", disc, ""]
         return "\n".join(md)
@@ -203,7 +205,7 @@ def build_md(ctx, S, rows, chosen, skipped, info, held, carried, initial, lang):
         if r["tic"] in cset:
             st = L("w portfelu", "in portfolio")
         elif skipped.get(r["tic"]) == "sector":
-            st = L("pominięta: limit sektora", "skipped: sector limit")
+            st = L("limit sektora", "sector limit")
         elif not (r["ok_hold"] if r["tic"] in held else r["ok_new"]):
             st = L("nie spełnia progów", "fails the thresholds")
         else:
@@ -222,7 +224,9 @@ def build_md(ctx, S, rows, chosen, skipped, info, held, carried, initial, lang):
         else:
             why = L("limit sektora", "sector limit")
         drop.append([t, names.get(t, t), why])
-    md = [title, "", intro, "", "## " + L("Sygnał", "Signal"), "", verdict, "", funnel, "", "## " + L("Portfel docelowy", "Target portfolio"), "", lib.md_table(head, body), "", "<!-- chart -->", ""]
+    md = [title, "", intro, "", "## " + L("Sygnał", "Signal"), "", verdict, "", funnel, "", "## " + L("Portfel docelowy", "Target portfolio"), "", lib.md_table(head, body), ""]
+    note = lib.rank_gap_note(chosen, lang)
+    md += ([note, ""] if note else []) + ["<!-- chart -->", ""]
     if drop:
         md += ["## " + L("Wypadają z portfela", "Dropped from the portfolio"), "", lib.md_table(["Tic", L("Spółka", "Company"), L("Powód", "Reason")], drop), ""]
     md += ["## " + L(f"Ranking ({KEEP_RANK} najlepszych)", f"Ranking (top {KEEP_RANK})"), "", lib.md_table(head, top), "",

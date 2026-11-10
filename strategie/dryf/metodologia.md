@@ -1,6 +1,6 @@
 # Dryf — metodologia
 
-Dryf wyłapuje w sezonach raportowych spółki, które otwierają się wyraźną luką w górę na dużym wolumenie, i trzyma je do 40 sesji. To przybliżenie dryfu kursu po wynikach (PEAD), liczone z cen i wolumenu, bo repozytorium nie ma danych o wynikach, konsensusie ani komunikatach spółek.
+Dryf wyłapuje w sezonach raportowych spółki, które otwierają się wyraźną luką w górę na dużym wolumenie, i trzyma je do 40 sesji. To przybliżenie dryfu kursu po wynikach (PEAD), liczone z cen i wolumenu, bo nie korzystamy z danych o wynikach, konsensusie ani komunikatach spółek.
 
 Ta strona opisuje samą strategię. Jak działa wirtualny portfel (kapitał, koszty, terminy zleceń), wyjaśnia zakładka Portfel; jest to tylko sprawdzian prognoz od dnia startu.
 
@@ -8,7 +8,7 @@ Ta strona opisuje samą strategię. Jak działa wirtualny portfel (kapitał, kos
 
 Kursy dryfują w kierunku zaskoczenia wynikami przez tygodnie, a nawet miesiące po ogłoszeniu (Ball i Brown 1968, Bernard i Thomas 1989). Jeśli rynek reaguje na dobre wyniki stopniowo, kupno po pierwszej reakcji może jeszcze coś zarobić. Dla GPW dowody są **mieszane**, a próby małe.
 
-## Reguły (tak liczy je kod)
+## Reguły
 
 1. **Okna skanu.** Szukamy zdarzeń tylko w oknach publikacji raportów: 1 lutego – 30 kwietnia, 1–20 maja, 15 sierpnia – 30 września i 1–20 listopada. Bez danych ESPI traktujemy ruch w tych oknach jako przybliżenie reakcji na wyniki. Poza oknami nie szukamy nowych zdarzeń, ale otwarte pozycje są nadal prowadzone.
 2. **Zdarzenie dodatnie** (dzień E): spółka z medianą dziennego obrotu z 60 sesji co najmniej 1 mln zł, której luka otwarcia względem poprzedniego zamknięcia wynosi co najmniej +2% (z korektą o odcięcie dywidendy), wzrost dnia (cena skorygowana o dywidendy) mieści się między +4% a +30%, wolumen jest co najmniej 2,5 raza wyższy niż mediana z 20 poprzednich sesji, a zamknięcie leży w górnej połowie zakresu dnia. Ruchy powyżej 30% odrzucamy jako możliwe scalenia akcji. Poprzednia sesja musi mieć notowanie.
@@ -22,7 +22,7 @@ Kursy dryfują w kierunku zaskoczenia wynikami przez tygodnie, a nawet miesiące
 
 Wszystkie progi (luka 2%, wzrost 4%, wolumen 2,5 raza, obrót 1 mln zł, okna, 40 sesji, 10 tys. zł na pozycję, 10 pozycji) to wartości startowe, nie wyniki badań ani optymalizacji. Opracowanie, na którym oparliśmy strategię, zakładało trzymanie 40–60 sesji i wejście przy zaskoczeniu w górnym kwintylu; my wybraliśmy 40 sesji i zdarzenie cenowo-wolumenowe.
 
-Progi ustawiliśmy według liczby zdarzeń, nie według tego, jak kursy zachowały się po nich. W historii notowań z repozytorium (od 23 października 2025 do 6 listopada 2026) takie warunki spełniło 35 zdarzeń dodatnich (20 w oknach raportowych) i 20 ujemnych (10 w oknach).
+Progi ustawiliśmy według liczby zdarzeń, nie według tego, jak kursy zachowały się po nich. W naszej historii notowań (od 23 października 2025 do 6 listopada 2026) takie warunki spełniło 35 zdarzeń dodatnich (20 w oknach raportowych) i 20 ujemnych (10 w oknach).
 
 ## Dowody i ich granice
 
@@ -32,7 +32,7 @@ Progi ustawiliśmy według liczby zdarzeń, nie według tego, jak kursy zachowa�
 - **Wniosek:** najlepiej udokumentowane na GPW jest ujemne zaskoczenie, stąd lista „nie kupuj”. Strona długa ma poparcie u Sojki, ale nie u Jaglińskiego, więc wynik zależy od miary zaskoczenia i okresu.
 - **Haircut:** McLean i Pontiff (97 predyktorów, 80 publikacji): poza próbą, przed publikacją, zwroty były o 26% niższe, a po publikacji o 58% niższe. Zakładamy, że realna przewaga to najwyżej połowa tej z backtestu.
 
-Opracowanie opisuje też wzmocnienia, których ta wersja nie ma: zaskoczenie liczone z danych finansowych lub konsensusu, zakupy insiderów (zawiadomienia MAR) i ogłoszenia skupu akcji własnych. Brakuje do nich danych w repozytorium.
+Opracowanie opisuje też wzmocnienia, których ta wersja nie ma: zaskoczenie liczone z danych finansowych lub konsensusu, zakupy insiderów (zawiadomienia MAR) i ogłoszenia skupu akcji własnych. Nie mamy do nich danych.
 
 ## Przykład zdarzenia (ilustracja, nie dowód)
 
@@ -48,7 +48,7 @@ Portfel porównujemy z WIG20, ale WIG20 jest indeksem cenowym, bez dywidend. Wed
 
 - Zdarzenie cenowo-wolumenowe to nie to samo co zaskoczenie wynikami: ruch w oknie raportowym może mieć inną przyczynę, a spółki publikują raporty w różnych dniach, także poza naszymi oknami.
 - Informacja może być wyceniona już w dniu raportu, a kupujemy dopiero po luce. Luki cenowe i płynność zwiększają ryzyko poślizgu.
-- Próby są małe, a wyniki badań sprzeczne (Sojka i Jagliński). Repozytorium ma ok. roku notowań, więc nie ma testu wstecznego.
+- Próby są małe, a wyniki badań sprzeczne (Sojka i Jagliński). Mamy ok. roku historii notowań, więc nie ma testu wstecznego.
 - Uniwersum to dzisiejsza lista spółek, bez wycofanych z obrotu (survivorship bias).
 - Częste transakcje na zwykłym rachunku oznaczają podatek 19% przy każdej realizacji zysku, co zjada przewagę; pasowałyby tu raczej konta IKE i IKZE.
 
@@ -59,6 +59,7 @@ Komplementarna w kalendarzu: skaner swing traktuje raport w ciągu najbliższych
 ## Historia zmian reguł
 
 - 7 listopada 2026: pierwsza wersja reguł i pierwszy skan (6 listopada 2026).
+- 7 listopada 2026 (przegląd przed pierwszą transakcją): reguły bez zmian; doprecyzowaliśmy, że kwota na pozycję jest stała (10 000 zł, czyli 10% kapitału startowego) i nie rośnie ani nie maleje z wartością portfela.
 
 ## Źródła
 

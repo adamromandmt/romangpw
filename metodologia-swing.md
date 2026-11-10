@@ -1,6 +1,6 @@
 # Swing Metodologia — jak działa monitor
 
-*Opis dla osób, które dopiero zaczynają. Ta strona wyjaśnia, co robi codzienny skaner swing GPW, krok po kroku i dlaczego. Szczegółowa instrukcja techniczna (dla automatu) jest w pliku `METHOD.md` w repozytorium. Gdy zmienia się sposób przygotowywania porannego raportu, ta strona jest aktualizowana razem z nim.*
+*Opis dla osób, które dopiero zaczynają. Ta strona wyjaśnia, co robi codzienny skaner swing GPW, krok po kroku i dlaczego. Gdy zmienia się sposób przygotowywania porannego raportu, ta strona jest aktualizowana razem z nim.*
 
 ## Po co to wszystko
 
@@ -66,7 +66,7 @@ Spółki w długim spadku, po załamaniu trendu, bez korekty (zbyt wykupione), n
 Sprawdza, co się stało z poprzednimi propozycjami: czy strefa wejścia została dotknięta, czy zadziałał trigger, czy cena doszła do celu albo do stopu. **Dlaczego:** uczciwa weryfikacja pokazuje, co naprawdę działa.
 
 ### 15. Publikuje raport
-Powstaje plik raportu, strona jest generowana i trafia na gpwradar.pl. Raport ma stałą kolejność sekcji: reżim rynkowy, ranking (10–15 spółek), TOP 3, szczegółowa analiza TOP 5, watchlista na 1–3 tygodnie, odrzucone, rozliczenie, metoda i zastrzeżenia.
+Powstaje raport, strona jest generowana i trafia na gpwradar.pl. Raport ma stałą kolejność sekcji: reżim rynkowy, ranking (10–15 spółek), TOP 3, szczegółowa analiza TOP 5, watchlista na 1–3 tygodnie, odrzucone, rozliczenie, metoda i zastrzeżenia.
 
 ## Jak czytać raport
 

@@ -1,6 +1,6 @@
 # Swing Methodology — how the monitor works
 
-*A description for people who are just getting started. This page explains what the daily GPW swing scanner does, step by step and why. The detailed technical instructions (for the automation) are in the `METHOD.md` file in the repository. Whenever the way the morning report is prepared changes, this page is updated together with it.*
+*A description for people who are just getting started. This page explains what the daily GPW swing scanner does, step by step and why. Whenever the way the morning report is prepared changes, this page is updated together with it.*
 
 ## Why all this
 
@@ -66,7 +66,7 @@ Companies in a long decline, after a trend breakdown, without a correction (too 
 It checks what happened to the previous suggestions: whether the entry zone was touched, whether the trigger fired, whether the price reached the target or the stop. **Why:** an honest review shows what really works.
 
 ### 15. Publishes the report
-A report file is created, the page is generated and goes to gpwradar.pl. The report has a fixed order of sections: market regime, ranking (10–15 companies), TOP 3, detailed analysis of the TOP 5, watchlist for 1–3 weeks, rejected, review, method and disclaimers.
+A report is created, the page is generated and goes to gpwradar.pl. The report has a fixed order of sections: market regime, ranking (10–15 companies), TOP 3, detailed analysis of the TOP 5, watchlist for 1–3 weeks, rejected, review, method and disclaimers.
 
 ## How to read the report
 

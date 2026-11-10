@@ -8,12 +8,12 @@ Ta strona opisuje samą strategię. Jak działa wirtualny portfel (kapitał, kos
 
 Zwycięzcy ostatnich miesięcy częściej pozostają zwycięzcami, niż wynikałoby z przypadku (momentum przekrojowe). Jegadeesh i Titman (1993) znaleźli na rynku USA, że zwycięzcy z ostatnich 3–12 miesięcy biją przegranych o ok. 1% miesięcznie (liczba z opracowania wtórnego). George i Hwang (2004) pokazali, że bliskość 52-tygodniowego maksimum prognozuje stopy zwrotu lepiej niż same przeszłe zwroty. Dla GPW dowody są **mieszane** i to najsłabiej udokumentowana strategia z pięciu.
 
-## Reguły (tak liczy je kod)
+## Reguły
 
-1. **Uniwersum.** Spółki z naszej listy (data/universe.json), które w dniu sygnału spełniają wszystkie warunki: ostatnie notowanie nie starsze niż 10 dni; historia co najmniej 12 miesięcy; mediana dziennego obrotu z 60 sesji co najmniej 0,5 mln zł; świece w co najmniej 90% z ostatnich 120 sesji; brak dziennej zmiany ceny (skorygowanej o dywidendy) powyżej 30% w ostatnich ok. 260 notowaniach, co może oznaczać split lub szok. Spółki z listy ręcznych wykluczeń (strategie/wykluczenia.json) odpadają od razu.
-2. **Ranking 12-1.** Zwrot od 12 miesięcy do 1 miesiąca przed dniem sygnału, na cenach skorygowanych o dywidendy (data/dividends). Ostatni miesiąc pomijamy, zgodnie z klasyczną konstrukcją 12-1, bo bardzo krótkie zwroty bywają odwracane.
+1. **Uniwersum.** Spółki z naszej listy obserwowanych spółek GPW, które w dniu sygnału spełniają wszystkie warunki: ostatnie notowanie nie starsze niż 10 dni; historia co najmniej 12 miesięcy; mediana dziennego obrotu z 60 sesji co najmniej 0,5 mln zł; świece w co najmniej 90% z ostatnich 120 sesji; brak dziennej zmiany ceny (skorygowanej o dywidendy) powyżej 30% w ostatnich ok. 260 notowaniach, co może oznaczać split lub szok. Spółki wykluczone ręcznie (np. w wezwaniu) odpadają od razu.
+2. **Ranking 12-1.** Zwrot od 12 miesięcy do 1 miesiąca przed dniem sygnału, na cenach skorygowanych o dywidendy. Ostatni miesiąc pomijamy, zgodnie z klasyczną konstrukcją 12-1, bo bardzo krótkie zwroty bywają odwracane.
 3. **Filtr trendu.** Kurs musi leżeć nad średnią z 200 sesji.
-4. **Skład.** 12 spółek o równych wagach. Spółka dotychczas w portfelu zostaje, dopóki jest w czołowej 25 rankingu, nadal leży nad średnią z 200 sesji i mieści się w limicie sektora (histereza ogranicza obrót). Wolne miejsca zajmują najwyżej sklasyfikowane spółki, które spełniają filtr trendu i limit: maksymalnie 3 spółki z jednego sektora (robocza klasyfikacja własna w data/sectors.json; sektor „inne” nie ma limitu).
+4. **Skład.** 12 spółek o równych wagach. Spółka dotychczas w portfelu zostaje, dopóki jest w czołowej 25 rankingu, nadal leży nad średnią z 200 sesji i mieści się w limicie sektora (histereza ogranicza obrót). Wolne miejsca zajmują najwyżej sklasyfikowane spółki, które spełniają filtr trendu i limit: maksymalnie 3 spółki z jednego sektora (uproszczona klasyfikacja własna; banki i pozostałe instytucje finansowe liczą się razem; sektor „inne” nie ma limitu).
 5. **Reżim.** Gdy Kompas pokazuje gotówkę, nowe pozycje mają połowę zwykłej wielkości. Pozycji, które zostają, nie dokupujemy ani nie obcinamy.
 6. **Rytm.** Sygnał liczymy na danych z ostatniej sesji każdego miesiąca, a raport ukazuje się po pierwszej sesji następnego miesiąca. Pierwszy skład powstał 6 listopada 2026, poza cyklem.
 
@@ -37,9 +37,9 @@ Portfel porównujemy z WIG20, bo na pytanie „czy strategia bije WIG20” ma od
 
 ## Dane i znane ograniczenia
 
-- Repozytorium ma ok. roku notowań, więc nie ma testu wstecznego, a pełny ranking 12-1 jest dostępny dopiero od końca października 2026.
+- Mamy ok. roku historii notowań, więc nie ma testu wstecznego, a pełny ranking 12-1 jest dostępny dopiero od końca października 2026.
 - Uniwersum to dzisiejsza lista spółek, bez wycofanych z obrotu, więc nie nadaje się do testów wstecznych bez korekty o survivorship bias.
-- Korekta o dywidendy wynika z danych w data/dividends (daty i kwoty); brakujące wpisy zaniżają zwrot spółek dywidendowych.
+- Korekta o dywidendy opiera się na zebranych przez nas datach i kwotach wypłat; brakujące wpisy zaniżają zwrot spółek dywidendowych.
 - Klasyfikacja sektorów jest robocza, więc limit 3 spółek na sektor działa tylko w przybliżeniu.
 - Momentum ma ryzyko załamań na odbiciach po spadkach rynku i wymaga częstych transakcji (koszty rotacji, podatek 19% przy realizacji poza IKE i IKZE).
 - Te same spółki mogą trafić do Pędu i do skanera swing; nakładania się portfeli nie mierzymy.
@@ -51,6 +51,7 @@ Portfel porównujemy z WIG20, bo na pytanie „czy strategia bije WIG20” ma od
 ## Historia zmian reguł
 
 - 7 listopada 2026: pierwsza wersja reguł i pierwszy skład (6 listopada 2026).
+- 7 listopada 2026 (przegląd przed pierwszą transakcją): banki i pozostałe instytucje finansowe liczą się razem do limitu 3 spółek z sektora. Wcześniej były to dwie osobne etykiety z osobnymi limitami, więc finanse mogły zająć do 6 z 12 miejsc. Pierwszy skład przeliczyliśmy według tej reguły, zanim portfel wirtualny złożył pierwsze zlecenia (otwarcie 9 listopada 2026).
 
 ## Źródła
 
