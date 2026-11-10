@@ -103,7 +103,7 @@ Portfel Swing (wirtualny sprawdzian prognoz: kapitał 100 000 PLN, pozycja do 5 
 
 ## Newsy dnia (po opublikowaniu raportu swing)
 
-Po tym, jak raport swing jest już opublikowany (push zakończony), wykonaj osobny krok „Newsy dnia" według `NEWS-METHOD.md` (kryteria, język bez emocji, format) i `newsy/sources.json` (źródła, progi). Zakładka nie ma stałego terminu wydań: **jeżeli żadna wiadomość nie przekracza progu `min_score`, nie twórz pliku ani commita** i napisz o tym w podsumowaniu. Gdy są istotne wiadomości: zapisz `newsy/RRRR-MM-DD.md`, przetłumacz na `newsy-en/RRRR-MM-DD.md`, `python3 build.py`, sprawdź `newsy.html` i `en/news.html`, osobny commit „Newsy dnia RRRR-MM-DD" i push (po `git pull --rebase origin main`). Błąd lub brak źródeł w tym kroku nie może blokować ani cofać raportu swing.
+Po tym, jak raport swing jest już opublikowany (push zakończony), wykonaj osobny krok „Newsy dnia" według `NEWS-METHOD.md` (kryteria, język bez emocji, format) i `newsy/sources.json` (źródła, progi). **Wydanie newsów powstaje zawsze, razem z każdym raportem swing** (decyzja właściciela z 10.11.2026): raport bez newsów z tą samą datą jest niekompletny. Gdy żadna wiadomość nie przekracza progu `min_score`, publikujesz krótkie wydanie według sekcji „Gdy nic nie przekracza progu" w `NEWS-METHOD.md`. Kolejność: zapisz `newsy/RRRR-MM-DD.md`, przetłumacz na `newsy-en/RRRR-MM-DD.md`, `python3 build.py`, sprawdź `newsy.html` i `en/news.html`, osobny commit „Newsy dnia RRRR-MM-DD" i push (po `git pull --rebase origin main`). Błąd lub brak źródeł w tym kroku nie może blokować ani cofać raportu swing.
 
 ## Strona „Swing Metodologia" (utrzymywanie)
 

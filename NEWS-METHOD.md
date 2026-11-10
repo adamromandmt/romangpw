@@ -1,6 +1,6 @@
 # NEWS-METHOD — zakładka „Newsy dnia” (GPW)
 
-Instrukcja dla codziennego zadania (patrz `METHOD.md`, krok „Newsy dnia”). Zakładka ma pokazywać **tylko istotne i ciekawe informacje, w neutralnym tonie**. Jeżeli danego dnia nic nie przekracza progu, **nie tworzysz wydania** (zakładka dalej pokazuje ostatnie istniejące). Źródła i progi zmieniamy w `newsy/sources.json`, kryteria w tym pliku — bez zmian w kodzie.
+Instrukcja dla codziennego zadania (patrz `METHOD.md`, krok „Newsy dnia”). Zakładka ma pokazywać **tylko istotne i ciekawe informacje, w neutralnym tonie**. **Wydanie powstaje zawsze razem z raportem swing** (decyzja właściciela z 10.11.2026): każdy opublikowany raport ma swoje wydanie newsów z tą samą datą. Gdy nic nie przekracza progu, wydanie jest krótkie (patrz niżej). Źródła i progi zmieniamy w `newsy/sources.json`, kryteria w tym pliku — bez zmian w kodzie.
 
 ## Źródła
 Używaj wyłącznie źródeł z `newsy/sources.json` z `enabled: true`, w kolejności `priority`. Dane pobieraj WebFetch (po jednym zapytaniu naraz, najwyżej 3 równolegle). Wiadomość opieraj na treści artykułu lub komunikatu, a nie na samym nagłówku. Fakt liczbowy potwierdź w tekście; jeśli dwa źródła podają różne liczby, wybierz źródło pierwotne (komunikat spółki) albo pomiń, albo napisz, że liczby się różnią. Nie czytaj i nie omijaj źródeł zablokowanych (robots, paywall).
@@ -39,7 +39,7 @@ Na końcu sekcja `## Poniżej progu` (jedna linia: tytuły pominiętych wiadomo�
 Przetłumacz wydanie do `newsy-en/RRRR-MM-DD.md` (ta sama struktura, tytuł `# News of the day — Friday 6 November 2026`, sekcje `## Market and macro`, `## Companies`, `## Below the threshold`, liczby w formacie angielskim; ostatnia linia: `Information collected automatically from public sources, not investment advice.`).
 
 ## Gdy nic nie przekracza progu
-Nie twórz pliku ani commita dla newsów, w podsumowaniu zadania napisz „Newsy dnia: brak wydania (nic powyżej progu)”.
+Wydanie i tak powstaje (ustawienie `publish_when_empty: true` w `newsy/sources.json`). Po nagłówku i linii o przedziale czasu wpisz jedno zdanie: „W tym okresie żadna wiadomość nie przekroczyła progu istotności.”, pomiń sekcje „Rynek i makro” i „Spółki”, a zostaw „Poniżej progu” (jeśli coś było), linię o sprawdzonych źródłach i linię końcową. Nie obniżaj progu i nie dopisuj mniej istotnych wiadomości jako pełnych pozycji tylko po to, żeby wydanie było dłuższe. Tak samo postępuj, gdy żadne źródło nie odpowiada: wydanie z jednym zdaniem o braku dostępu do źródeł.
 
 ## Dostrajanie
 Po każdym wydaniu użytkownik może poprosić o zmianę źródeł (`newsy/sources.json`), progu (`min_score`), liczby pozycji albo kryteriów (ten plik). Zmiany wprowadzaj w tych plikach, nie w kodzie. Sekcja „Poniżej progu” pokazuje, co zostało odrzucone.

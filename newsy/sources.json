@@ -5,7 +5,7 @@
     "max_items": 8,
     "max_age_hours": 36,
     "dedup_last_issues": 3,
-    "publish_when_empty": false
+    "publish_when_empty": true
   },
   "sources": [
     {"id": "strefainwestorow", "name": "Strefa Inwestorów (depesze PAP Biznes)", "url": "https://strefainwestorow.pl/", "type": "depesze", "priority": 1, "enabled": true, "access": "ok",
