@@ -1,0 +1,70 @@
+name: Strategie uzupełniające
+
+# Po każdym udanym pobraniu notowań (workflow "Notowania GPW") liczy sygnały strategii Kompas, Pęd, Złoty Środek, Przystań i Dryf,
+# przesuwa ich portfele wirtualne do ostatniej sesji, buduje stronę i commituje wyniki (strategie/, paper/ i wygenerowane HTML).
+# Logika jest w pakiecie strat/ (python3 -m strat daily). Nadrabianie zaległych sygnałów jest idempotentne, więc nieudany dzień
+# naprawia się sam przy następnym uruchomieniu. Ręcznie: Actions -> Strategie uzupełniające -> Run workflow (np. only=zloty-srodek
+# i force=true po uzupełnieniu data/fundamentals.csv, zob. METHOD-ZLOTY-SRODEK.md).
+on:
+  workflow_run:
+    workflows: ["Notowania GPW"]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "Tylko te strategie (slugi po przecinku, np. zloty-srodek); puste = wszystkie"
+        required: false
+        default: ""
+      force:
+        description: "Policz sygnał na ostatnią sesję mimo że nie przypada w kalendarzu (po uzupełnieniu danych)"
+        type: boolean
+        default: false
+        required: false
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: strategies
+  cancel-in-progress: false
+
+jobs:
+  strategies:
+    # Po automatycznym pobraniu notowań tylko wtedy, gdy się udało (przy niepełnych danych strat i tak pomija obliczenia).
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Policz sygnały i portfele
+        env:
+          ONLY: ${{ inputs.only }}
+          FORCE: ${{ inputs.force && '1' || '' }}
+        run: python3 -m strat daily ${ONLY:+--only "$ONLY"} ${FORCE:+--force}
+      - name: Zbuduj stronę
+        run: python3 build.py
+      - name: Commit
+        id: commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then echo "Bez zmian"; echo "changed=0" >> "$GITHUB_OUTPUT"; exit 0; fi
+          git commit -m "Strategie uzupełniające $(date -u +%F)"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+          echo "changed=1" >> "$GITHUB_OUTPUT"
+      # Pushe wykonane tokenem GITHUB_TOKEN mogą nie uruchamiać budowy GitHub Pages, więc prosimy o nią wprost.
+      # Krok nie jest krytyczny: gdy Pages publikuje inaczej (np. przez Actions), błąd jest pomijany.
+      - name: Poproś o przebudowę GitHub Pages
+        if: steps.commit.outputs.changed == '1'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "repos/${GITHUB_REPOSITORY}/pages/builds"

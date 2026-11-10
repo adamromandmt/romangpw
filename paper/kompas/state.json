@@ -1,0 +1,62 @@
+{
+ "kind": "targets",
+ "config": {
+  "start_capital": 100000.0,
+  "fee_pct": 0.2,
+  "fractional": true,
+  "max_wait_sessions": 5,
+  "position_value": 5000.0,
+  "max_open": 20,
+  "max_hold_sessions": 40
+ },
+ "start_date": "2026-11-06",
+ "cash": 0.3600191979930969,
+ "processed_through": "2026-11-09",
+ "pending": null,
+ "orders": [],
+ "positions": [
+  {
+   "tic": "WIG20",
+   "name": "WIG20",
+   "shares": 24.1053,
+   "entry": 4140.17,
+   "entry_date": "2026-11-09",
+   "cost": 99999.639980802,
+   "last_close": 4165.3,
+   "last_date": "2026-11-09",
+   "divs": 0.0,
+   "stop": null,
+   "sector": null
+  }
+ ],
+ "closed": [],
+ "equity": [
+  {
+   "date": "2026-11-06",
+   "equity": 100000.0,
+   "cash": 100000.0,
+   "invested": 0.0,
+   "bench": 4131.37
+  },
+  {
+   "date": "2026-11-09",
+   "equity": 100406.17,
+   "cash": 0.36,
+   "invested": 100405.81,
+   "bench": 4165.3
+  }
+ ],
+ "log": [
+  {
+   "date": "2026-11-06",
+   "pl": "Sygnał: docelowy skład WIG20",
+   "en": "Signal: target holdings WIG20"
+  },
+  {
+   "date": "2026-11-09",
+   "pl": "Kupno WIG20: 24.1053 szt. po 4140.17",
+   "en": "Bought WIG20: 24.1053 units at 4140.17"
+  }
+ ],
+ "next_id": 1
+}

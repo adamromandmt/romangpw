@@ -1,0 +1,161 @@
+{
+ "date": "2026-11-06",
+ "initial": true,
+ "targets": [
+  {
+   "tic": "ASB",
+   "name": "ASBIS",
+   "weight": 1.0,
+   "sector": "it"
+  },
+  {
+   "tic": "DIG",
+   "name": "DIGITANET",
+   "weight": 1.0,
+   "sector": "uslugi"
+  },
+  {
+   "tic": "XTB",
+   "name": "XTB",
+   "weight": 1.0,
+   "sector": "fin"
+  },
+  {
+   "tic": "BFT",
+   "name": "BENEFIT",
+   "weight": 1.0,
+   "sector": "uslugi"
+  },
+  {
+   "tic": "APR",
+   "name": "AUTOPARTN",
+   "weight": 1.0,
+   "sector": "motoryzacja"
+  },
+  {
+   "tic": "EBP",
+   "name": "ERSTEPL",
+   "weight": 1.0,
+   "sector": "banki"
+  },
+  {
+   "tic": "CAR",
+   "name": "INTERCARS",
+   "weight": 1.0,
+   "sector": "motoryzacja"
+  },
+  {
+   "tic": "PKO",
+   "name": "PKOBP",
+   "weight": 1.0,
+   "sector": "banki"
+  },
+  {
+   "tic": "OPL",
+   "name": "ORANGEPL",
+   "weight": 1.0,
+   "sector": "media"
+  },
+  {
+   "tic": "GPW",
+   "name": "GPW",
+   "weight": 1.0,
+   "sector": "fin"
+  },
+  {
+   "tic": "PCO",
+   "name": "PEPCO",
+   "weight": 1.0,
+   "sector": "handel"
+  },
+  {
+   "tic": "BNP",
+   "name": "BNPPPL",
+   "weight": 1.0,
+   "sector": "banki"
+  }
+ ],
+ "size_factor": 1.0,
+ "chips": [
+  "ASB",
+  "DIG",
+  "XTB",
+  "BFT",
+  "APR",
+  "EBP"
+ ],
+ "headline": {
+  "pl": "12 spółek, najsilniejsze: ASB, DIG, XTB",
+  "en": "12 stocks, strongest: ASB, DIG, XTB"
+ },
+ "why": {
+  "pl": "Sygnał Pędu",
+  "en": "Momentum signal"
+ },
+ "exit_reasons": {},
+ "chart": {
+  "unit": "%",
+  "rows": [
+   [
+    "ASB",
+    592.9
+   ],
+   [
+    "DIG",
+    273.7
+   ],
+   [
+    "XTB",
+    100.7
+   ],
+   [
+    "BFT",
+    79.9
+   ],
+   [
+    "APR",
+    75.2
+   ],
+   [
+    "EBP",
+    73.0
+   ],
+   [
+    "CAR",
+    72.3
+   ],
+   [
+    "PKO",
+    69.2
+   ],
+   [
+    "OPL",
+    69.2
+   ],
+   [
+    "GPW",
+    64.0
+   ],
+   [
+    "PCO",
+    62.9
+   ],
+   [
+    "BNP",
+    62.4
+   ]
+  ],
+  "title": {
+   "pl": "Momentum 12-1 spółek w portfelu",
+   "en": "12-1 momentum of portfolio stocks"
+  },
+  "sub": {
+   "pl": "Zwrot od 12 do 1 miesiąca temu, ceny skorygowane o dywidendy.",
+   "en": "Return from 12 to 1 month ago, dividend-adjusted prices."
+  }
+ },
+ "data": {
+  "ranked": 63,
+  "eligible": 63
+ }
+}

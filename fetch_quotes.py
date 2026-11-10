@@ -19,13 +19,16 @@ sesje i dni bez sesji) oraz _names.json (mapa ISIN/nazwa -> ticker). Pobieranie 
 najpierw, zaległe w kolejnych przebiegach.
 
 Użycie: python3 fetch_quotes.py [--days 380] [--history 520] [--budget 1500] [--pause 0.6] [--today RRRR-MM-DD]
-                                [--only-dates 2026-11-06,...]
+                                [--only-dates 2026-11-06,...] [--refetch]
+--refetch pobiera od nowa wszystkie sesje z okna --days (ok. 20 minut), także już znane. Potrzebne po dopisaniu
+spółki do data/universe.json, bo zwykły przebieg dopisuje tylko nowe sesje i nie uzupełnia historii nowego symbolu.
 Kod wyjścia: 0, gdy najnowsza sesja jest świeża i obejmuje >= 85% rozpoznanych spółek z universe, a ostatnie sesje
 nie zakończyły się błędem; 1 w przeciwnym razie.
 """
 import csv
 import datetime as dt
 import html
+import http.client
 import json
 import re
 import sys
@@ -65,7 +68,7 @@ def http_get(url, timeout=40, tries=3):
             last = e
             if e.code < 500 and e.code != 429:
                 raise
-        except (urllib.error.URLError, TimeoutError, OSError) as e:
+        except (urllib.error.URLError, TimeoutError, OSError, http.client.HTTPException) as e:   # także IncompleteRead (urwana odpowiedź)
             last = e
         time.sleep(RETRY_DELAY * (attempt + 1))
     raise last
@@ -192,6 +195,7 @@ def main(argv):
         return type(default)(argv[argv.index(name) + 1]) if name in argv else default
     days, history, budget, pause = opt("--days", 380), opt("--history", 520), opt("--budget", 1500), opt("--pause", 0.6)
     only = argv[argv.index("--only-dates") + 1].split(",") if "--only-dates" in argv else None
+    refetch = "--refetch" in argv
     today = dt.date.fromisoformat(opt("--today", "")) if "--today" in argv else dt.date.today()
     OUT.mkdir(parents=True, exist_ok=True)
     t_start = time.time()
@@ -224,7 +228,7 @@ def main(argv):
     cands = [d.isoformat() for d in weekdays(today - dt.timedelta(days=days), today)]
     recent = {(today - dt.timedelta(days=k)).isoformat() for k in range(RECHECK_DAYS + 1)}
     latest_known = max(have) if have else None
-    needed = only or [d for d in reversed(cands) if (d not in have and (d not in closed or d in recent)) or d == latest_known]
+    needed = only or [d for d in reversed(cands) if refetch or (d not in have and (d not in closed or d in recent)) or d == latest_known]
     print(f"sesje do pobrania: {len(needed)} (znane {len(have)}, dni bez sesji {len(closed)}); budżet {budget}s", flush=True)
 
     rows_s, rows_i = {}, {}          # {ticker|indeks: {data: (o,h,l,c,v)}} jeszcze niezapisane
@@ -310,7 +314,7 @@ def main(argv):
         if rows:
             ds = sorted(rows)
             last_date[tic], n_rows[tic] = ds[-1], len(ds)
-            for a, b in zip(ds[-60:], ds[-59:]):
+            for a, b in zip(ds, ds[1:]):          # cała zapisana historia (ok. roku): SMA200 i szczyt 52-tyg. obejmują ją całą
                 if rows[a][3] and abs(rows[b][3] / rows[a][3] - 1) > 0.30:
                     jumps.setdefault(tic, []).append([b, round((rows[b][3] / rows[a][3] - 1) * 100, 1)])
     ok = sorted(t for t, d in last_date.items() if d == latest)

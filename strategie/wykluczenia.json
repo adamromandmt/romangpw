@@ -1,0 +1,4 @@
+{
+ "uwaga": "Ręczna lista tickerów pomijanych przez strategie (np. spółki w wezwaniu lub przymusowym wykupie, których zmienność jest sztucznie niska).",
+ "tickers": []
+}

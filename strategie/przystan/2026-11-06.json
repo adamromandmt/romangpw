@@ -1,0 +1,151 @@
+{
+ "date": "2026-11-06",
+ "initial": true,
+ "targets": [
+  {
+   "tic": "1AT",
+   "name": "ATAL",
+   "weight": 1.0,
+   "sector": "deweloperzy"
+  },
+  {
+   "tic": "PZU",
+   "name": "PZU",
+   "weight": 1.0,
+   "sector": "fin"
+  },
+  {
+   "tic": "BHW",
+   "name": "HANDLOWY",
+   "weight": 1.0,
+   "sector": "banki"
+  },
+  {
+   "tic": "MBR",
+   "name": "MOBRUK",
+   "weight": 1.0,
+   "sector": "budownictwo"
+  },
+  {
+   "tic": "FRO",
+   "name": "FERRO",
+   "weight": 1.0,
+   "sector": "przemysl"
+  },
+  {
+   "tic": "PLW",
+   "name": "PLAYWAY",
+   "weight": 1.0,
+   "sector": "gry"
+  },
+  {
+   "tic": "DOM",
+   "name": "DOMDEV",
+   "weight": 1.0,
+   "sector": "deweloperzy"
+  },
+  {
+   "tic": "PCR",
+   "name": "PCCROKITA",
+   "weight": 1.0,
+   "sector": "chemia"
+  },
+  {
+   "tic": "VOT",
+   "name": "VOTUM",
+   "weight": 1.0,
+   "sector": "fin"
+  },
+  {
+   "tic": "OPN",
+   "name": "OPONEO.PL",
+   "weight": 1.0,
+   "sector": "handel"
+  },
+  {
+   "tic": "DVL",
+   "name": "DEVELIA",
+   "weight": 1.0,
+   "sector": "deweloperzy"
+  }
+ ],
+ "size_factor": 1.0,
+ "chips": [
+  "1AT",
+  "PZU",
+  "BHW",
+  "MBR",
+  "FRO",
+  "PLW"
+ ],
+ "headline": {
+  "pl": "11 spółek o najniższej zmienności: 1AT, PZU, BHW…",
+  "en": "11 stocks with the lowest volatility: 1AT, PZU, BHW…"
+ },
+ "why": {
+  "pl": "Sygnał Przystani",
+  "en": "Harbor signal"
+ },
+ "exit_reasons": {},
+ "chart": {
+  "unit": "%",
+  "rows": [
+   [
+    "1AT",
+    19.6
+   ],
+   [
+    "PZU",
+    20.4
+   ],
+   [
+    "BHW",
+    20.9
+   ],
+   [
+    "MBR",
+    22.3
+   ],
+   [
+    "FRO",
+    23.3
+   ],
+   [
+    "PLW",
+    23.5
+   ],
+   [
+    "DOM",
+    23.8
+   ],
+   [
+    "PCR",
+    24.4
+   ],
+   [
+    "VOT",
+    25.2
+   ],
+   [
+    "OPN",
+    25.7
+   ],
+   [
+    "DVL",
+    26.0
+   ]
+  ],
+  "title": {
+   "pl": "Roczna zmienność spółek w portfelu",
+   "en": "Annual volatility of portfolio stocks"
+  },
+  "sub": {
+   "pl": "Odchylenie standardowe dziennych zwrotów × √252; im niżej, tym spokojniej.",
+   "en": "Standard deviation of daily returns × √252; the lower, the calmer."
+  }
+ },
+ "data": {
+  "eligible": 52,
+  "quintile": 11
+ }
+}
