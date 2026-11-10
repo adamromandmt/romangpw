@@ -1,5 +1,5 @@
 {
- "asof": "2026-11-06",
+ "asof": "2026-11-09",
  "cash": 100000.0,
  "closed": [],
  "config": {
@@ -8,20 +8,40 @@
   "start_capital": 100000.0,
   "start_date": "2026-11-06"
  },
- "decisions": [],
+ "decisions": [
+  {
+   "date": "2026-11-09",
+   "missing": [
+    {
+     "code": "fund"
+    }
+   ],
+   "status": "waiting",
+   "targets": {}
+  }
+ ],
  "equity": [
   {
    "date": "2026-11-06",
    "equity": 100000.0
+  },
+  {
+   "date": "2026-11-09",
+   "equity": 100000.0
   }
  ],
  "key": "zloty-srodek",
- "log": [],
+ "log": [
+  {
+   "date": "2026-11-09",
+   "text": "WAIT|fund"
+  }
+ ],
  "orders": [],
  "positions": [],
- "processed": "2026-11-06",
+ "processed": "2026-11-09",
  "report": {
-  "asof": "2026-11-06",
+  "asof": "2026-11-09",
   "half": false,
   "missing": [
    {
@@ -34,6 +54,6 @@
   "status": "waiting",
   "tables": []
  },
- "sessions": 407,
+ "sessions": 408,
  "status": "waiting"
 }
