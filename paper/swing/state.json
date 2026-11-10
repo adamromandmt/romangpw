@@ -18,8 +18,8 @@
   "partial_frac": 0.5
  },
  "start_date": "2026-11-06",
- "cash": 100000.0,
- "processed_through": null,
+ "cash": 99942.87539999999,
+ "processed_through": "2026-11-10",
  "orders": [
   {
    "id": 1,
@@ -56,30 +56,132 @@
    "checked_through": null
   },
   {
-   "id": 3,
-   "tic": "DNP",
-   "name": "Dino Polska",
-   "shares": 127,
-   "limit": 39.2,
-   "zone_lo": 38.6,
-   "stop": 37.3,
-   "c1": 41.5,
-   "c2": 43.4,
-   "score": 61.0,
+   "id": 4,
+   "tic": "PEO",
+   "name": "Bank Pekao",
+   "shares": 18,
+   "limit": 268.0,
+   "zone_lo": 263.0,
+   "stop": 257.5,
+   "c1": 279.0,
+   "c2": 286.0,
+   "score": 69.0,
    "cls": "B",
-   "report": "2026-11-06",
-   "valid_from": "2026-11-09",
-   "expires": "2026-11-15",
+   "report": "2026-11-10",
+   "valid_from": "2026-11-10",
+   "expires": "2026-11-16",
+   "checked_through": null
+  },
+  {
+   "id": 5,
+   "tic": "PKO",
+   "name": "PKO BP",
+   "shares": 42,
+   "limit": 116.5,
+   "zone_lo": 114.5,
+   "stop": 112.5,
+   "c1": 121.0,
+   "c2": 125.5,
+   "score": 67.0,
+   "cls": "B",
+   "report": "2026-11-10",
+   "valid_from": "2026-11-10",
+   "expires": "2026-11-16",
+   "checked_through": null
+  },
+  {
+   "id": 6,
+   "tic": "PZU",
+   "name": "PZU",
+   "shares": 67,
+   "limit": 74.2,
+   "zone_lo": 73.2,
+   "stop": 72.3,
+   "c1": 77.2,
+   "c2": 79.5,
+   "score": 65.0,
+   "cls": "B",
+   "report": "2026-11-10",
+   "valid_from": "2026-11-10",
+   "expires": "2026-11-16",
+   "checked_through": null
+  },
+  {
+   "id": 7,
+   "tic": "KTY",
+   "name": "Grupa Kęty",
+   "shares": 3,
+   "limit": 1282.0,
+   "zone_lo": 1262.0,
+   "stop": 1235.0,
+   "c1": 1317.0,
+   "c2": 1362.0,
+   "score": 63.0,
+   "cls": "B",
+   "report": "2026-11-10",
+   "valid_from": "2026-11-10",
+   "expires": "2026-11-16",
+   "checked_through": null
+  },
+  {
+   "id": 8,
+   "tic": "ING",
+   "name": "ING Bank Śląski",
+   "shares": 10,
+   "limit": 472.0,
+   "zone_lo": 462.0,
+   "stop": 452.0,
+   "c1": 490.8,
+   "c2": 510.0,
+   "score": 62.0,
+   "cls": "B",
+   "report": "2026-11-10",
+   "valid_from": "2026-11-10",
+   "expires": "2026-11-16",
    "checked_through": null
   }
  ],
  "positions": [],
- "closed": [],
+ "closed": [
+  {
+   "tic": "DNP",
+   "name": "Dino Polska",
+   "shares": 127,
+   "entry": 37.6,
+   "entry_date": "2026-11-09",
+   "exit_date": "2026-11-09",
+   "exit_reason": "stop",
+   "stop0": 37.3,
+   "c1": 41.5,
+   "c2": 43.4,
+   "pnl": -57.12,
+   "pnl_pct": -1.19,
+   "r": -1.5,
+   "days": 0,
+   "legs": [
+    {
+     "date": "2026-11-09",
+     "qty": 127,
+     "price": 37.3,
+     "reason": "stop"
+    }
+   ],
+   "score": 61.0,
+   "cls": "B",
+   "report": "2026-11-06"
+  }
+ ],
  "equity": [
   {
    "date": "2026-11-06",
    "equity": 100000.0,
    "cash": 100000.0,
+   "invested": 0
+  },
+  {
+   "date": "2026-11-10",
+   "equity": 99942.88,
+   "cash": 99942.88,
    "invested": 0
   }
  ],
@@ -95,7 +197,35 @@
   {
    "date": "2026-11-06",
    "text": "Zlecenie kupna DNP: 127 szt., limit 39.2, stop 37.3, C1 41.5, C2 43.4 (suma 61, klasa B)"
+  },
+  {
+   "date": "2026-11-09",
+   "text": "Kupno DNP: 127 szt. po 37.6 (limit 39.2, stop 37.3)"
+  },
+  {
+   "date": "2026-11-09",
+   "text": "Sprzedaż DNP: 127 szt. po 37.3 (stop)"
+  },
+  {
+   "date": "2026-11-10",
+   "text": "Zlecenie kupna PEO: 18 szt., limit 268, stop 257.5, C1 279, C2 286 (suma 69, klasa B)"
+  },
+  {
+   "date": "2026-11-10",
+   "text": "Zlecenie kupna PKO: 42 szt., limit 116.5, stop 112.5, C1 121, C2 125.5 (suma 67, klasa B)"
+  },
+  {
+   "date": "2026-11-10",
+   "text": "Zlecenie kupna PZU: 67 szt., limit 74.2, stop 72.3, C1 77.2, C2 79.5 (suma 65, klasa B)"
+  },
+  {
+   "date": "2026-11-10",
+   "text": "Zlecenie kupna KTY: 3 szt., limit 1282, stop 1235, C1 1317, C2 1362 (suma 63, klasa B)"
+  },
+  {
+   "date": "2026-11-10",
+   "text": "Zlecenie kupna ING: 10 szt., limit 472, stop 452, C1 490.8, C2 510 (suma 62, klasa B)"
   }
  ],
- "next_id": 4
+ "next_id": 9
 }
