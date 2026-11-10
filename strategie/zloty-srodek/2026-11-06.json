@@ -1,0 +1,36 @@
+{
+ "date": "2026-11-06",
+ "initial": true,
+ "targets": [],
+ "size_factor": 1.0,
+ "chips": [
+  "GOTÓWKA"
+ ],
+ "headline": {
+  "pl": "Czeka na dane fundamentalne",
+  "en": "Waiting for fundamental data"
+ },
+ "why": {
+  "pl": "Sygnał Złotego Środka",
+  "en": "Golden Mean signal"
+ },
+ "exit_reasons": {},
+ "chart": {
+  "unit": "×",
+  "rows": [],
+  "title": {
+   "pl": "Wycena EV/EBIT spółek w portfelu",
+   "en": "EV/EBIT of portfolio stocks"
+  },
+  "sub": {
+   "pl": "Im niżej, tym taniej względem zysku operacyjnego.",
+   "en": "The lower the bar, the cheaper relative to operating profit."
+  }
+ },
+ "data": {
+  "with_data": 0,
+  "ranked": 0,
+  "fund_rows": 0,
+  "status": "no_data"
+ }
+}

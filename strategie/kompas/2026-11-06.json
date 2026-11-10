@@ -1,0 +1,101 @@
+{
+ "date": "2026-11-06",
+ "initial": true,
+ "targets": [
+  {
+   "tic": "WIG20",
+   "name": "WIG20",
+   "weight": 1.0
+  }
+ ],
+ "chips": [
+  "WIG20"
+ ],
+ "headline": {
+  "pl": "Pozycja: WIG20",
+  "en": "Position: WIG20"
+ },
+ "why": {
+  "pl": "Sygnał Kompasu",
+  "en": "Compass signal"
+ },
+ "exit_reasons": {
+  "WIG20": {
+   "pl": "zmiana sygnału Kompasu",
+   "en": "Compass signal change"
+  },
+  "MWIG40": {
+   "pl": "zmiana sygnału Kompasu",
+   "en": "Compass signal change"
+  },
+  "SWIG80": {
+   "pl": "zmiana sygnału Kompasu",
+   "en": "Compass signal change"
+  }
+ },
+ "chart": {
+  "unit": "%",
+  "rows": [
+   [
+    "WIG20",
+    25.6
+   ],
+   [
+    "mWIG40",
+    22.7
+   ],
+   [
+    "sWIG80",
+    -5.0
+   ]
+  ],
+  "title": {
+   "pl": "Momentum indeksów (śr. 6M i 12M)",
+   "en": "Index momentum (avg 6M and 12M)"
+  },
+  "sub": {
+   "pl": "Im wyżej, tym silniejszy segment rynku.",
+   "en": "The higher the bar, the stronger the market segment."
+  }
+ },
+ "data": {
+  "rows": [
+   {
+    "key": "WIG20",
+    "name": "WIG20",
+    "etf": "ETFBW20TR",
+    "close": 4131.37,
+    "r6": 0.1382532917122412,
+    "r12": 0.3741094532658369,
+    "mom": 0.25618137248903905,
+    "sma10": 3798.042,
+    "vs_sma": 0.08776311583705487,
+    "trend_ok": true
+   },
+   {
+    "key": "MWIG40",
+    "name": "mWIG40",
+    "etf": "ETFBM40TR",
+    "close": 10594.92,
+    "r6": 0.14394487428928038,
+    "r12": 0.3105063948742053,
+    "mom": 0.22722563458174283,
+    "sma10": 9813.293,
+    "vs_sma": 0.07964981785421066,
+    "trend_ok": true
+   },
+   {
+    "key": "SWIG80",
+    "name": "sWIG80",
+    "etf": "ETFBS80TR",
+    "close": 29016.68,
+    "r6": -0.06999191678584227,
+    "r12": -0.02921260200790632,
+    "mom": -0.04960225939687429,
+    "sma10": 30584.915,
+    "vs_sma": -0.051274786933362404,
+    "trend_ok": false
+   }
+  ]
+ }
+}

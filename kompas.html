@@ -9,16 +9,17 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-<title>Kompas — Raport · GPW Radar</title>
-<meta name="description" content="Rotacja WIG20 / mWIG40 / sWIG80 z filtrem trendu: najsilniejszy indeks albo gotówka.">
+<title>Kompas Raport 6.11.2026 · GPW Radar</title>
+<meta name="description" content="Kompas z 6.11.2026: Pozycja: WIG20. Który segment GPW prowadzi? Rotacja WIG20, mWIG40 i sWIG80 z filtrem trendu.">
 <link rel="canonical" href="https://www.gpwradar.pl/kompas.html">
 <link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/kompas.html">
-<link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/kompas.html">
+<link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/compass.html">
 <link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/kompas.html">
+<link rel="alternate" type="application/atom+xml" title="GPW Radar" href="https://www.gpwradar.pl/feed.xml">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="GPW Radar">
-<meta property="og:title" content="Kompas — Raport · GPW Radar">
-<meta property="og:description" content="Rotacja WIG20 / mWIG40 / sWIG80 z filtrem trendu: najsilniejszy indeks albo gotówka.">
+<meta property="og:title" content="Kompas Raport 6.11.2026 · GPW Radar">
+<meta property="og:description" content="Kompas z 6.11.2026: Pozycja: WIG20. Który segment GPW prowadzi? Rotacja WIG20, mWIG40 i sWIG80 z filtrem trendu.">
 <meta property="og:url" content="https://www.gpwradar.pl/kompas.html">
 <meta property="og:locale" content="pl_PL">
 <meta property="og:locale:alternate" content="en_US">
@@ -203,21 +204,93 @@ footer{color:var(--muted);font-size:13px;padding-top:26px;padding-bottom:44px;bo
 .rules li{margin:4px 0}
 .chart-card svg .eq{fill:none;stroke:var(--up);stroke-width:2.4;stroke-linejoin:round}
 .chart-card svg .base{stroke:var(--warn);stroke-dasharray:5 4;stroke-width:1.3}
+.chart-card svg .bm{fill:none;stroke:var(--violet);stroke-width:2;stroke-dasharray:6 4;stroke-linejoin:round}
+.note{margin:12px 0;padding:10px 14px;border:1px solid var(--line);border-left:3px solid var(--warn);border-radius:8px;background:rgba(255,179,71,.06);color:var(--fg);font-size:14px}
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Przejdź do treści</a>
 <header>
 <svg class="deco" viewBox="0 0 520 140" preserveAspectRatio="xMaxYMid meet" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="fadeg" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#000"/><stop offset=".5" stop-color="#fff"/></linearGradient><mask id="fadem"><rect width="520" height="140" fill="url(#fadeg)"/></mask></defs><g mask="url(#fadem)"><line x1="31" y1="106.5" x2="31" y2="124.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="24" y="114.0" width="14" height="3.0" rx="2" fill="#2BFF88"/><line x1="62" y1="106.5" x2="62" y2="127.5" stroke="#FF5C7A" stroke-width="1.5"/><rect x="55" y="114.0" width="14" height="6.0" rx="2" fill="#FF5C7A"/><line x1="93" y1="100.5" x2="93" y2="127.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="86" y="108.0" width="14" height="12.0" rx="2" fill="#2BFF88"/><line x1="124" y1="100.5" x2="124" y2="124.5" stroke="#FF5C7A" stroke-width="1.5"/><rect x="117" y="108.0" width="14" height="9.0" rx="2" fill="#FF5C7A"/><line x1="155" y1="97.5" x2="155" y2="124.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="148" y="105.0" width="14" height="12.0" rx="2" fill="#2BFF88"/><line x1="186" y1="88.5" x2="186" y2="112.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="179" y="96.0" width="14" height="9.0" rx="2" fill="#2BFF88"/><line x1="217" y1="88.5" x2="217" y2="111.0" stroke="#FF5C7A" stroke-width="1.5"/><rect x="210" y="96.0" width="14" height="7.5" rx="2" fill="#FF5C7A"/><line x1="248" y1="82.5" x2="248" y2="111.0" stroke="#2BFF88" stroke-width="1.5"/><rect x="241" y="90.0" width="14" height="13.5" rx="2" fill="#2BFF88"/><line x1="279" y1="76.5" x2="279" y2="97.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="272" y="84.0" width="14" height="6.0" rx="2" fill="#2BFF88"/><line x1="310" y1="76.5" x2="310" y2="100.5" stroke="#FF5C7A" stroke-width="1.5"/><rect x="303" y="84.0" width="14" height="9.0" rx="2" fill="#FF5C7A"/><line x1="341" y1="70.5" x2="341" y2="100.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="334" y="78.0" width="14" height="15.0" rx="2" fill="#2BFF88"/><line x1="372" y1="61.5" x2="372" y2="85.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="365" y="69.0" width="14" height="9.0" rx="2" fill="#2BFF88"/><line x1="403" y1="61.5" x2="403" y2="84.0" stroke="#FF5C7A" stroke-width="1.5"/><rect x="396" y="69.0" width="14" height="7.5" rx="2" fill="#FF5C7A"/><line x1="434" y1="55.5" x2="434" y2="84.0" stroke="#2BFF88" stroke-width="1.5"/><rect x="427" y="63.0" width="14" height="13.5" rx="2" fill="#2BFF88"/><line x1="465" y1="48.0" x2="465" y2="70.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="458" y="55.5" width="14" height="7.5" rx="2" fill="#2BFF88"/><line x1="496" y1="37.5" x2="496" y2="63.0" stroke="#2BFF88" stroke-width="1.5"/><rect x="489" y="45.0" width="14" height="10.5" rx="2" fill="#2BFF88"/><polyline points="31,114.0 62,120.0 93,108.0 124,117.0 155,105.0 186,96.0 217,103.5 248,90.0 279,84.0 310,93.0 341,78.0 372,69.0 403,76.5 434,63.0 465,55.5 496,45.0" fill="none" stroke="#66FCF1" stroke-width="2" opacity=".8"/></g></svg>
-<div class="topbar"><div class="lang" role="group" aria-label="Język"><span class="cur">PL</span><a href="en/kompas.html" hreflang="en" lang="en" title="English">EN</a></div></div>
+<div class="topbar"><div class="lang" role="group" aria-label="Język"><span class="cur">PL</span><a href="en/compass.html" hreflang="en" lang="en" title="English">EN</a></div></div>
 <a class="brand" href="index.html" aria-label="GPW Radar — skaner GPW" title="GPW Radar"><svg class="logo" viewBox="0 0 48 48" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8DF2B8"/><stop offset="1" stop-color="#4FA7AB"/></linearGradient></defs><rect x="1.5" y="1.5" width="45" height="45" rx="13" fill="#0F1614" stroke="url(#lg)" stroke-width="2"/><circle cx="24" cy="25" r="14" fill="none" stroke="url(#lg)" stroke-width="2.2" opacity=".55"/><circle cx="24" cy="25" r="7.5" fill="none" stroke="url(#lg)" stroke-width="2.2" opacity=".8"/><path d="M24 25 L24 11 A14 14 0 0 1 36.1 18 Z" fill="url(#lg)" opacity=".32"/><line x1="24" y1="25" x2="36.1" y2="18" stroke="url(#lg)" stroke-width="3" stroke-linecap="round"/><circle cx="24" cy="25" r="2.6" fill="#8DF2B8"/><circle cx="19" cy="15.5" r="2.8" fill="#8DF2B8"/></svg><span class="wm">GPW <b>Radar</b></span></a>
-<nav aria-label="Główna nawigacja"><a href="newsy.html">Newsy dnia</a><div class="dd"><button type="button" class="dd-b" aria-expanded="false" aria-controls="dd-swing">Swing<svg class="dd-c" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="dd-m" id="dd-swing"><li><a href="index.html">Swing Raport</a></li><li><a href="portfel-swing.html">Portfel Swing</a></li><li><a href="metodologia-swing.html">Swing Metodologia</a></li><li><a href="archiwum.html">Archiwum</a></li></ul></div><div class="dd on"><button type="button" class="dd-b" aria-expanded="false" aria-controls="dd-kompas">Kompas<svg class="dd-c" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="dd-m" id="dd-kompas"><li><a href="kompas.html" aria-current="page">Raport</a></li><li><a href="portfel-kompas.html">Portfel</a></li><li><a href="metodologia-kompas.html">Metodologia</a></li><li><a href="archiwum-kompas.html">Archiwum</a></li></ul></div><div class="dd"><button type="button" class="dd-b" aria-expanded="false" aria-controls="dd-ped">Pęd<svg class="dd-c" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="dd-m" id="dd-ped"><li><a href="ped.html">Raport</a></li><li><a href="portfel-ped.html">Portfel</a></li><li><a href="metodologia-ped.html">Metodologia</a></li><li><a href="archiwum-ped.html">Archiwum</a></li></ul></div><div class="dd"><button type="button" class="dd-b" aria-expanded="false" aria-controls="dd-zloty-srodek">Złoty Środek<svg class="dd-c" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="dd-m" id="dd-zloty-srodek"><li><a href="zloty-srodek.html">Raport</a></li><li><a href="portfel-zloty-srodek.html">Portfel</a></li><li><a href="metodologia-zloty-srodek.html">Metodologia</a></li><li><a href="archiwum-zloty-srodek.html">Archiwum</a></li></ul></div><div class="dd"><button type="button" class="dd-b" aria-expanded="false" aria-controls="dd-przystan">Przystań<svg class="dd-c" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="dd-m" id="dd-przystan"><li><a href="przystan.html">Raport</a></li><li><a href="portfel-przystan.html">Portfel</a></li><li><a href="metodologia-przystan.html">Metodologia</a></li><li><a href="archiwum-przystan.html">Archiwum</a></li></ul></div><div class="dd"><button type="button" class="dd-b" aria-expanded="false" aria-controls="dd-dryf">Dryf<svg class="dd-c" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="dd-m" id="dd-dryf"><li><a href="dryf.html">Raport</a></li><li><a href="portfel-dryf.html">Portfel</a></li><li><a href="metodologia-dryf.html">Metodologia</a></li><li><a href="archiwum-dryf.html">Archiwum</a></li></ul></div><a href="dywidendy.html">Dywidendy</a></nav>
+<nav aria-label="Główna nawigacja"><a href="newsy.html">Newsy dnia</a><div class="dd"><button type="button" class="dd-b" aria-expanded="false" aria-controls="dd-swing">Swing<svg class="dd-c" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="dd-m" id="dd-swing"><li><a href="index.html">Swing Raport</a></li><li><a href="portfel-swing.html">Portfel Swing</a></li><li><a href="metodologia-swing.html">Swing Metodologia</a></li><li><a href="archiwum.html">Archiwum</a></li></ul></div><div class="dd on"><button type="button" class="dd-b" aria-expanded="false" aria-controls="dd-kompas">Kompas<svg class="dd-c" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="dd-m" id="dd-kompas"><li><a href="kompas.html" aria-current="page">Kompas Raport</a></li><li><a href="portfel-kompas.html">Portfel Kompas</a></li><li><a href="metodologia-kompas.html">Kompas Metodologia</a></li><li><a href="kompas-archiwum.html">Kompas Archiwum</a></li></ul></div><div class="dd"><button type="button" class="dd-b" aria-expanded="false" aria-controls="dd-ped">Pęd<svg class="dd-c" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="dd-m" id="dd-ped"><li><a href="ped.html">Pęd Raport</a></li><li><a href="portfel-ped.html">Portfel Pęd</a></li><li><a href="metodologia-ped.html">Pęd Metodologia</a></li><li><a href="ped-archiwum.html">Pęd Archiwum</a></li></ul></div><div class="dd"><button type="button" class="dd-b" aria-expanded="false" aria-controls="dd-zloty-srodek">Złoty Środek<svg class="dd-c" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="dd-m" id="dd-zloty-srodek"><li><a href="zloty-srodek.html">Złoty Środek Raport</a></li><li><a href="portfel-zloty-srodek.html">Portfel Złoty Środek</a></li><li><a href="metodologia-zloty-srodek.html">Złoty Środek Metodologia</a></li><li><a href="zloty-srodek-archiwum.html">Złoty Środek Archiwum</a></li></ul></div><div class="dd"><button type="button" class="dd-b" aria-expanded="false" aria-controls="dd-przystan">Przystań<svg class="dd-c" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="dd-m" id="dd-przystan"><li><a href="przystan.html">Przystań Raport</a></li><li><a href="portfel-przystan.html">Portfel Przystań</a></li><li><a href="metodologia-przystan.html">Przystań Metodologia</a></li><li><a href="przystan-archiwum.html">Przystań Archiwum</a></li></ul></div><div class="dd"><button type="button" class="dd-b" aria-expanded="false" aria-controls="dd-dryf">Dryf<svg class="dd-c" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="dd-m" id="dd-dryf"><li><a href="dryf.html">Dryf Raport</a></li><li><a href="portfel-dryf.html">Portfel Dryf</a></li><li><a href="metodologia-dryf.html">Dryf Metodologia</a></li><li><a href="dryf-archiwum.html">Dryf Archiwum</a></li></ul></div><a href="dywidendy.html">Dywidendy</a></nav>
 </header>
 <main id="main" tabindex="-1">
-<h1>Kompas — Raport</h1>
-<div class="banner">Rotacja WIG20 / mWIG40 / sWIG80 z filtrem trendu: najsilniejszy indeks albo gotówka. Rytm: <strong>miesięcznie</strong>. Dane do: <strong>2026-11-09</strong>. Ćwiczenie przesiewowe, nie porada inwestycyjna.</div>
-<h2>Momentum indeksów</h2><div class="tw" role="region" aria-label="Momentum indeksów — tabela" tabindex="0"><table><thead><tr><th scope="col">Indeks</th><th scope="col">6M</th><th scope="col">12M</th><th scope="col">Średnia 6M/12M</th><th scope="col">Zamknięcie</th><th scope="col">Średnia 10 miesięcy</th></tr></thead><tbody><tr><td><strong>WIG20</strong></td><td>+13,0%</td><td>+38,8%</td><td>+25,9%</td><td>4 165,30</td><td>3 801,43</td></tr><tr><td><strong>mWIG40</strong></td><td>+10,8%</td><td>+32,2%</td><td>+21,5%</td><td>10 662,74</td><td>9 820,08</td></tr><tr><td><strong>sWIG80</strong></td><td>−9,1%</td><td>−0,2%</td><td>−4,7%</td><td>29 250,83</td><td>30 608,33</td></tr></tbody></table></div>
-<p><strong>Decyzja:</strong> WIG20</p>
+<div class="banner"><strong>Kompas</strong>: Który segment GPW prowadzi? Rotacja WIG20, mWIG40 i sWIG80 z filtrem trendu. Rytm: raz w miesiącu. Najnowszy raport: <strong>piątek 6.11.2026</strong>. <a href="kompas-archiwum.html">Poprzednie raporty</a> · <a href="portfel-kompas.html">Portfel</a> · <a href="metodologia-kompas.html">Metodologia</a></div>
+<h1 id="kompas-sygna-po-sesji-piatek-6-listopada-2026">Kompas — sygnał po sesji piątek 6 listopada 2026</h1>
+<p>Dane: zamknięcia wskaźników cenowych WIG20, mWIG40 i sWIG80 z archiwum GPW (261 sesji, do 6 listopada 2026). Wskaźniki cenowe nie zawierają dywidend, a ETF-y na indeksy TR (np. ETFBW20TR, ETFBM40TR, ETFBS80TR) nie mają tu notowań, więc sygnał jest przybliżeniem. Gotówka w modelu nie przynosi odsetek. <strong>Raport startowy:</strong> pierwszy sygnał portfela wirtualnego, poza cyklem miesięcznym (kolejne: ostatnia sesja każdego miesiąca).</p>
+<nav class="toc" aria-label="Skróty do sekcji"><a href="#sygna" title="Sygnał">Sygnał</a><a href="#indeksy" title="Indeksy">Indeksy</a><a href="#jak-czytac" title="Jak czytać">Jak czytać</a><a href="#ograniczenia-danych" title="Ograniczenia danych">Ograniczenia danych</a></nav>
+<h2 id="sygna">Sygnał</h2>
+<p><strong>Pozycja: WIG20.</strong> Najwyższe średnie momentum z 6 i 12 miesięcy (+25,6%), kurs leży 8,8% nad średnią z 10 zamknięć miesięcznych, czyli filtr trendu jest spełniony. Odpowiednik ETF (do sprawdzenia u brokera): ETFBW20TR.</p>
+<p>Pierwszy sygnał: WIG20. Transakcja na otwarciu najbliższej sesji.</p>
+<h2 id="indeksy">Indeksy</h2>
+<div class="tw" role="region" aria-label="Indeksy — tabela" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">Indeks</th>
+<th scope="col">Zamknięcie</th>
+<th scope="col">6M</th>
+<th scope="col">12M</th>
+<th scope="col">Momentum (śr. 6M i 12M)</th>
+<th scope="col">Średnia 10 zamknięć mies.</th>
+<th scope="col">Kurs vs średnia</th>
+<th scope="col">Filtr trendu</th>
+<th scope="col">Decyzja</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WIG20</td>
+<td>4 131</td>
+<td class="up">+13,8%</td>
+<td class="up">+37,4%</td>
+<td class="up">+25,6%</td>
+<td>3 798</td>
+<td class="up">+8,8%</td>
+<td>tak</td>
+<td><strong>trzymamy</strong></td>
+</tr>
+<tr>
+<td>mWIG40</td>
+<td>10 595</td>
+<td class="up">+14,4%</td>
+<td class="up">+31,1%</td>
+<td class="up">+22,7%</td>
+<td>9 813</td>
+<td class="up">+8,0%</td>
+<td>tak</td>
+<td>—</td>
+</tr>
+<tr>
+<td>sWIG80</td>
+<td>29 017</td>
+<td class="down">−7,0%</td>
+<td class="down">−2,9%</td>
+<td class="down">−5,0%</td>
+<td>30 585</td>
+<td class="down">−5,1%</td>
+<td>nie</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p>Wariant Fabera (informacyjnie): powyżej 10-miesięcznej średniej są: WIG20, mWIG40.</p>
+<div class="chart-card"><h2 class="ch">Momentum indeksów (śr. 6M i 12M)</h2><p class="sub">Im wyżej, tym silniejszy segment rynku.</p><div class="cv-d"><svg viewBox="0 0 800 118" role="img" aria-label="Momentum indeksów (śr. 6M i 12M)" xmlns="http://www.w3.org/2000/svg"><line class="grid" x1="150.0" y1="16" x2="150.0" y2="114"/><text class="tick" x="150.0" y="12" text-anchor="middle">−6,2%</text><line class="grid" x1="288.5" y1="16" x2="288.5" y2="114"/><text class="tick" x="288.5" y="12" text-anchor="middle">2,0%</text><line class="grid" x1="427.0" y1="16" x2="427.0" y2="114"/><text class="tick" x="427.0" y="12" text-anchor="middle">10,3%</text><line class="grid" x1="565.5" y1="16" x2="565.5" y2="114"/><text class="tick" x="565.5" y="12" text-anchor="middle">18,6%</text><line class="grid" x1="704.0" y1="16" x2="704.0" y2="114"/><text class="tick" x="704.0" y="12" text-anchor="middle">26,8%</text><text class="lbl" x="140" y="43" text-anchor="end">WIG20</text><g><title>WIG20: +25,6%</title><rect x="254.3" y="31" width="429.1" height="16" rx="3" style="fill:var(--up)"/></g><text class="val" x="691.5" y="44" text-anchor="start">+25,6%</text><text class="lbl" x="140" y="71" text-anchor="end">mWIG40</text><g><title>mWIG40: +22,7%</title><rect x="254.3" y="59" width="380.5" height="16" rx="3" style="fill:var(--up)"/></g><text class="val" x="642.9" y="72" text-anchor="start">+22,7%</text><text class="lbl" x="140" y="99" text-anchor="end">sWIG80</text><g><title>sWIG80: −5,0%</title><rect x="170.5" y="87" width="83.8" height="16" rx="3" style="fill:var(--down)"/></g><text class="val" x="162.5" y="100" text-anchor="end">−5,0%</text><line x1="254.3" y1="16" x2="254.3" y2="114" style="stroke:var(--muted);stroke-width:1.2"/></svg></div><div class="cv-c"><svg class="c" viewBox="0 0 400 118" role="img" aria-label="Momentum indeksów (śr. 6M i 12M)" xmlns="http://www.w3.org/2000/svg"><line class="grid" x1="88.0" y1="16" x2="88.0" y2="114"/><text class="tick" x="88.0" y="12" text-anchor="middle">−6,2%</text><line class="grid" x1="152.0" y1="16" x2="152.0" y2="114"/><text class="tick" x="152.0" y="12" text-anchor="middle">2,0%</text><line class="grid" x1="216.0" y1="16" x2="216.0" y2="114"/><text class="tick" x="216.0" y="12" text-anchor="middle">10,3%</text><line class="grid" x1="280.0" y1="16" x2="280.0" y2="114"/><text class="tick" x="280.0" y="12" text-anchor="middle">18,6%</text><line class="grid" x1="344.0" y1="16" x2="344.0" y2="114"/><text class="tick" x="344.0" y="12" text-anchor="middle">26,8%</text><text class="lbl" x="78" y="43" text-anchor="end">WIG20</text><g><title>WIG20: +25,6%</title><rect x="136.2" y="31" width="198.3" height="16" rx="3" style="fill:var(--up)"/></g><text class="val" x="342.5" y="44" text-anchor="start">+25,6%</text><text class="lbl" x="78" y="71" text-anchor="end">mWIG40</text><g><title>mWIG40: +22,7%</title><rect x="136.2" y="59" width="175.8" height="16" rx="3" style="fill:var(--up)"/></g><text class="val" x="320.1" y="72" text-anchor="start">+22,7%</text><text class="lbl" x="78" y="99" text-anchor="end">sWIG80</text><g><title>sWIG80: −5,0%</title><rect x="97.5" y="87" width="38.7" height="16" rx="3" style="fill:var(--down)"/></g><text class="val" x="89.5" y="100" text-anchor="end">−5,0%</text><line x1="136.2" y1="16" x2="136.2" y2="114" style="stroke:var(--muted);stroke-width:1.2"/></svg></div></div>
+
+<h2 id="jak-czytac">Jak czytać</h2>
+<ul>
+<li><strong>Momentum</strong> to średni zwrot z ostatnich 6 i 12 miesięcy. Wygrywa segment, który rośnie najmocniej.</li>
+<li><strong>Filtr trendu</strong>: kurs musi leżeć nad średnią z 10 ostatnich zamknięć miesięcznych. Jeśli nie, zamiast akcji jest gotówka.</li>
+<li>Sygnał zmienia się rzadko i może zawieść w trendzie bocznym (kolejne fałszywe przełączenia).</li>
+</ul>
+<h2 id="ograniczenia-danych">Ograniczenia danych</h2>
+<ul>
+<li>Brak notowań ETF-ów i indeksów TR w repozytorium: wynik portfela wirtualnego pomija dywidendy, a ich udział w zwrocie bywa różny w różnych segmentach, więc ranking oparty na indeksach TR mógłby wyglądać inaczej.</li>
+<li>Historia w repozytorium to ok. roku, więc nie ma testu wstecznego tej reguły na danych GPW. To sprawdzian prognoz od dnia startu, nie dowód skuteczności.</li>
+<li>Gotówka nie przynosi odsetek (w praktyce: fundusz pieniężny lub ETF krótkoterminowych obligacji).</li>
+</ul>
+<p>Ćwiczenie przesiewowe według zadanego frameworku, nie porada inwestycyjna.</p>
 </main>
 <footer>Ćwiczenie przesiewowe według zadanego frameworku, nie porada inwestycyjna.<br>Dane z publicznych źródeł (m.in. biznesradar.pl, bankier.pl), mogą zawierać błędy lub opóźnienia. Raporty generowane automatycznie.</footer>
 <script>(function(){

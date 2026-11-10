@@ -1,0 +1,63 @@
+{
+ "date": "2026-11-09",
+ "initial": false,
+ "targets": [],
+ "orders": [],
+ "chips": [],
+ "headline": {
+  "pl": "Brak nowych zdarzeń",
+  "en": "No new events"
+ },
+ "why": {
+  "pl": "Sygnał Dryfu",
+  "en": "Drift signal"
+ },
+ "exit_reasons": {},
+ "chart": {
+  "unit": "%",
+  "rows": [
+   [
+    "EUR 11-03",
+    12.0
+   ],
+   [
+    "DNP 11-06",
+    -6.1
+   ]
+  ],
+  "title": {
+   "pl": "Zmiana dnia przy zdarzeniach z ostatnich 10 sesji",
+   "en": "Day change on events of the last 10 sessions"
+  },
+  "sub": {
+   "pl": "Dodatnie i ujemne zdarzenia w oknach raportowych (etykieta: ticker i data).",
+   "en": "Positive and negative events inside reporting windows (label: ticker and date)."
+  }
+ },
+ "data": {
+  "in_window": true,
+  "today": [],
+  "nobuy": [
+   {
+    "tic": "DNP",
+    "date": "2026-11-06"
+   },
+   {
+    "tic": "RBW",
+    "date": "2026-09-25"
+   },
+   {
+    "tic": "ELT",
+    "date": "2026-09-15"
+   },
+   {
+    "tic": "XTB",
+    "date": "2026-09-03"
+   },
+   {
+    "tic": "TXT",
+    "date": "2026-08-31"
+   }
+  ]
+ }
+}

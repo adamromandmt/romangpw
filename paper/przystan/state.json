@@ -1,0 +1,242 @@
+{
+ "kind": "targets",
+ "config": {
+  "start_capital": 100000.0,
+  "fee_pct": 0.2,
+  "fractional": false,
+  "max_wait_sessions": 5,
+  "position_value": 5000.0,
+  "max_open": 20,
+  "max_hold_sessions": 40
+ },
+ "start_date": "2026-11-06",
+ "cash": 652.802199999991,
+ "processed_through": "2026-11-09",
+ "pending": null,
+ "orders": [],
+ "positions": [
+  {
+   "tic": "1AT",
+   "name": "ATAL",
+   "shares": 148,
+   "entry": 60.9,
+   "entry_date": "2026-11-09",
+   "cost": 9031.2264,
+   "last_close": 60.6,
+   "last_date": "2026-11-09",
+   "divs": 0.0,
+   "stop": null,
+   "sector": "deweloperzy"
+  },
+  {
+   "tic": "PZU",
+   "name": "PZU",
+   "shares": 124,
+   "entry": 73.0,
+   "entry_date": "2026-11-09",
+   "cost": 9070.104,
+   "last_close": 73.54,
+   "last_date": "2026-11-09",
+   "divs": 0.0,
+   "stop": null,
+   "sector": "fin"
+  },
+  {
+   "tic": "BHW",
+   "name": "HANDLOWY",
+   "shares": 73,
+   "entry": 123.0,
+   "entry_date": "2026-11-09",
+   "cost": 8996.958,
+   "last_close": 122.2,
+   "last_date": "2026-11-09",
+   "divs": 0.0,
+   "stop": null,
+   "sector": "banki"
+  },
+  {
+   "tic": "MBR",
+   "name": "MOBRUK",
+   "shares": 22,
+   "entry": 411.0,
+   "entry_date": "2026-11-09",
+   "cost": 9060.084,
+   "last_close": 416.0,
+   "last_date": "2026-11-09",
+   "divs": 0.0,
+   "stop": null,
+   "sector": "budownictwo"
+  },
+  {
+   "tic": "FRO",
+   "name": "FERRO",
+   "shares": 324,
+   "entry": 28.0,
+   "entry_date": "2026-11-09",
+   "cost": 9090.144,
+   "last_close": 28.1,
+   "last_date": "2026-11-09",
+   "divs": 0.0,
+   "stop": null,
+   "sector": "przemysl"
+  },
+  {
+   "tic": "PLW",
+   "name": "PLAYWAY",
+   "shares": 35,
+   "entry": 253.0,
+   "entry_date": "2026-11-09",
+   "cost": 8872.71,
+   "last_close": 252.0,
+   "last_date": "2026-11-09",
+   "divs": 0.0,
+   "stop": null,
+   "sector": "gry"
+  },
+  {
+   "tic": "DOM",
+   "name": "DOMDEV",
+   "shares": 37,
+   "entry": 242.0,
+   "entry_date": "2026-11-09",
+   "cost": 8971.908,
+   "last_close": 247.0,
+   "last_date": "2026-11-09",
+   "divs": 0.0,
+   "stop": null,
+   "sector": "deweloperzy"
+  },
+  {
+   "tic": "PCR",
+   "name": "PCCROKITA",
+   "shares": 143,
+   "entry": 63.2,
+   "entry_date": "2026-11-09",
+   "cost": 9055.6752,
+   "last_close": 63.6,
+   "last_date": "2026-11-09",
+   "divs": 0.0,
+   "stop": null,
+   "sector": "chemia"
+  },
+  {
+   "tic": "VOT",
+   "name": "VOTUM",
+   "shares": 235,
+   "entry": 38.5,
+   "entry_date": "2026-11-09",
+   "cost": 9065.595,
+   "last_close": 38.8,
+   "last_date": "2026-11-09",
+   "divs": 0.0,
+   "stop": null,
+   "sector": "fin"
+  },
+  {
+   "tic": "OPN",
+   "name": "OPONEO.PL",
+   "shares": 89,
+   "entry": 101.4,
+   "entry_date": "2026-11-09",
+   "cost": 9042.6492,
+   "last_close": 103.0,
+   "last_date": "2026-11-09",
+   "divs": 0.0,
+   "stop": null,
+   "sector": "handel"
+  },
+  {
+   "tic": "DVL",
+   "name": "DEVELIA",
+   "shares": 1134,
+   "entry": 8.0,
+   "entry_date": "2026-11-09",
+   "cost": 9090.144,
+   "last_close": 8.0,
+   "last_date": "2026-11-09",
+   "divs": 0.0,
+   "stop": null,
+   "sector": "deweloperzy"
+  }
+ ],
+ "closed": [],
+ "equity": [
+  {
+   "date": "2026-11-06",
+   "equity": 100000.0,
+   "cash": 100000.0,
+   "invested": 0.0,
+   "bench": 4131.37
+  },
+  {
+   "date": "2026-11-09",
+   "equity": 100328.36,
+   "cash": 652.8,
+   "invested": 99675.56,
+   "bench": 4165.3
+  }
+ ],
+ "log": [
+  {
+   "date": "2026-11-06",
+   "pl": "Sygnał: docelowy skład 1AT, PZU, BHW, MBR, FRO, PLW, DOM, PCR, VOT, OPN, DVL",
+   "en": "Signal: target holdings 1AT, PZU, BHW, MBR, FRO, PLW, DOM, PCR, VOT, OPN, DVL"
+  },
+  {
+   "date": "2026-11-09",
+   "pl": "Kupno 1AT: 148 szt. po 60.9",
+   "en": "Bought 1AT: 148 units at 60.9"
+  },
+  {
+   "date": "2026-11-09",
+   "pl": "Kupno PZU: 124 szt. po 73",
+   "en": "Bought PZU: 124 units at 73"
+  },
+  {
+   "date": "2026-11-09",
+   "pl": "Kupno BHW: 73 szt. po 123",
+   "en": "Bought BHW: 73 units at 123"
+  },
+  {
+   "date": "2026-11-09",
+   "pl": "Kupno MBR: 22 szt. po 411",
+   "en": "Bought MBR: 22 units at 411"
+  },
+  {
+   "date": "2026-11-09",
+   "pl": "Kupno FRO: 324 szt. po 28",
+   "en": "Bought FRO: 324 units at 28"
+  },
+  {
+   "date": "2026-11-09",
+   "pl": "Kupno PLW: 35 szt. po 253",
+   "en": "Bought PLW: 35 units at 253"
+  },
+  {
+   "date": "2026-11-09",
+   "pl": "Kupno DOM: 37 szt. po 242",
+   "en": "Bought DOM: 37 units at 242"
+  },
+  {
+   "date": "2026-11-09",
+   "pl": "Kupno PCR: 143 szt. po 63.2",
+   "en": "Bought PCR: 143 units at 63.2"
+  },
+  {
+   "date": "2026-11-09",
+   "pl": "Kupno VOT: 235 szt. po 38.5",
+   "en": "Bought VOT: 235 units at 38.5"
+  },
+  {
+   "date": "2026-11-09",
+   "pl": "Kupno OPN: 89 szt. po 101.4",
+   "en": "Bought OPN: 89 units at 101.4"
+  },
+  {
+   "date": "2026-11-09",
+   "pl": "Kupno DVL: 1134 szt. po 8",
+   "en": "Bought DVL: 1134 units at 8"
+  }
+ ],
+ "next_id": 1
+}

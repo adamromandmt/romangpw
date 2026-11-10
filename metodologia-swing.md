@@ -18,13 +18,13 @@ To jest ćwiczenie przesiewowe według ustalonych zasad, **nie porada inwestycyj
 GPW nie handluje w weekendy i święta (np. 1 i 11 listopada, 6 stycznia, Wielkanoc). W takie dni raportu nie ma. **Dlaczego:** dane z dnia bez sesji nic by nie wniosły.
 
 ### 2. Pobiera notowania
-Dla każdej spółki z uniwersum pobiera ok. 50 ostatnich sesji: cenę otwarcia, najwyższą, najniższą, zamknięcia i wolumen (liczbę handlowanych akcji). Raport przed otwarciem opiera się na **zamknięciu poprzedniej sesji**, bo poranne kursy są jeszcze nieaktualne. **Dlaczego:** wszystko dalej to matematyka na tych świecach; jeśli dane są stare lub niekompletne, raport mówi to wprost.
+Dla każdej spółki z uniwersum korzysta z dziennych notowań z oficjalnego archiwum GPW (ok. roku sesji, uzupełnianych automatycznie każdej nocy): cena otwarcia, najwyższa, najniższa, zamknięcia i wolumen (liczba handlowanych akcji). Ceny są surowe, czyli nie uwzględniają dywidend ani splitów, a dzień bez obrotu nie daje świecy. Raport przed otwarciem opiera się na **zamknięciu poprzedniej sesji**, bo poranne kursy są jeszcze nieaktualne. **Dlaczego:** wszystko dalej to matematyka na tych świecach; jeśli dane są stare lub niekompletne, raport mówi to wprost.
 
 ### 3. Ocenia rynek jako całość (reżim rynkowy)
 Zanim wybierze spółki, patrzy na tło: indeksy WIG20, WIG, mWIG40 i sWIG80, szerokość rynku (ile spółek jest w trendzie), sektory, rynek USA (S&P 500, Nasdaq, indeks strachu VIX), rentowność obligacji, ropę, miedź, kursy złotego oraz kalendarz (decyzje RPP, Fed, dane o inflacji). **Dlaczego:** nawet świetna spółka potrafi spaść razem z rynkiem. Gdy otoczenie jest złe, raport mówi to wprost, zmniejsza liczbę kandydatów i sugeruje mniejsze pozycje albo czekanie.
 
 ### 4. Szuka spółek w trendzie wzrostowym
-Używa średnich kroczących, czyli „uśrednionej ceny z ostatnich N dni": **EMA20** (ok. 1 miesiąc, reaguje szybko), **SMA50** (ok. 2,5 miesiąca). Dobry trend to taki, w którym cena jest nad średnimi, a krótsza średnia leży nad dłuższą, do tego wyższe szczyty i wyższe dołki oraz przewaga nad indeksem WIG (tzw. siła relatywna). **Dlaczego:** statystycznie łatwiej kupować to, co już rośnie, niż to, co spada.
+Używa średnich kroczących, czyli „uśrednionej ceny z ostatnich N dni": **EMA20** (ok. 1 miesiąc, reaguje szybko), **SMA50** (ok. 2,5 miesiąca) oraz, dla spółek z co najmniej 200 sesjami w danych, **SMA100** i **SMA200** (ok. pół roku i rok). Dobry trend to taki, w którym cena jest nad średnimi, a krótsza średnia leży nad dłuższą, do tego wyższe szczyty i wyższe dołki oraz przewaga nad indeksem WIG (tzw. siła relatywna). **Dlaczego:** statystycznie łatwiej kupować to, co już rośnie, niż to, co spada.
 
 ### 5. Szuka zdrowej korekty
 Interesuje go cofnięcie ok. **5–20% od niedawnego szczytu**, które wygląda na normalną realizację zysków albo ruch całego rynku, a nie na załamanie spółki. Dobra korekta jest uporządkowana, a **wolumen maleje** (sprzedających ubywa). Zła korekta to spadek na rosnącym wolumenie albo po złych wynikach. **Dlaczego:** korekta w silnym trendzie to okazja, a załamanie trendu to ryzyko.
@@ -80,8 +80,8 @@ Powstaje plik raportu, strona jest generowana i trafia na gpwradar.pl. Raport ma
 
 ## Ograniczenia, o których warto wiedzieć
 
-- Dane pochodzą z publicznych źródeł (m.in. biznesradar.pl, bankier.pl, serwisy z komunikatami spółek). Czasem są opóźnione, niekompletne albo zawierają błędy. Raport zaznacza, kiedy czegoś nie udało się zweryfikować.
-- Dla spółek z GPW nie ma w darmowych źródłach średnich SMA100 i SMA200, więc nie są podawane.
+- Notowania pochodzą z oficjalnego archiwum GPW, a wiadomości, komunikaty i terminy raportów z publicznych źródeł (m.in. bankier.pl, biznesradar.pl, serwisy z komunikatami spółek). Dane bywają opóźnione, niekompletne albo zawierają błędy. Raport zaznacza, kiedy czegoś nie udało się zweryfikować.
+- Średnie SMA100 i SMA200 są liczone tylko dla spółek, które mają w danych co najmniej 200 sesji; dla pozostałych raport ich nie podaje.
 - Ceny, wskaźniki i daty raportów nie są wymyślane. Jeśli czegoś brakuje, raport mówi to wprost i nie zgaduje.
 - Metoda nie zna przyszłości. Stop-loss i niewielka pozycja ograniczają ryzyko, ale go nie eliminują.
 

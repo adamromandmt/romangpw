@@ -9,16 +9,17 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-<title>Przystań — Raport · GPW Radar</title>
-<meta name="description" content="16 spółek z najniższą zmiennością 12M (kwintyl), maks. 4 z sektora, obsunięcie ≤ 30%.">
+<title>Przystań Raport 6.11.2026 · GPW Radar</title>
+<meta name="description" content="Przystań z 6.11.2026: 11 spółek o najniższej zmienności: 1AT, PZU, BHW…. Spokojny port na wzburzonym rynku: spółki o najniższej zmienności.">
 <link rel="canonical" href="https://www.gpwradar.pl/przystan.html">
 <link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/przystan.html">
-<link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/przystan.html">
+<link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/harbor.html">
 <link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/przystan.html">
+<link rel="alternate" type="application/atom+xml" title="GPW Radar" href="https://www.gpwradar.pl/feed.xml">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="GPW Radar">
-<meta property="og:title" content="Przystań — Raport · GPW Radar">
-<meta property="og:description" content="16 spółek z najniższą zmiennością 12M (kwintyl), maks. 4 z sektora, obsunięcie ≤ 30%.">
+<meta property="og:title" content="Przystań Raport 6.11.2026 · GPW Radar">
+<meta property="og:description" content="Przystań z 6.11.2026: 11 spółek o najniższej zmienności: 1AT, PZU, BHW…. Spokojny port na wzburzonym rynku: spółki o najniższej zmienności.">
 <meta property="og:url" content="https://www.gpwradar.pl/przystan.html">
 <meta property="og:locale" content="pl_PL">
 <meta property="og:locale:alternate" content="en_US">
@@ -203,20 +204,506 @@ footer{color:var(--muted);font-size:13px;padding-top:26px;padding-bottom:44px;bo
 .rules li{margin:4px 0}
 .chart-card svg .eq{fill:none;stroke:var(--up);stroke-width:2.4;stroke-linejoin:round}
 .chart-card svg .base{stroke:var(--warn);stroke-dasharray:5 4;stroke-width:1.3}
+.chart-card svg .bm{fill:none;stroke:var(--violet);stroke-width:2;stroke-dasharray:6 4;stroke-linejoin:round}
+.note{margin:12px 0;padding:10px 14px;border:1px solid var(--line);border-left:3px solid var(--warn);border-radius:8px;background:rgba(255,179,71,.06);color:var(--fg);font-size:14px}
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Przejdź do treści</a>
 <header>
 <svg class="deco" viewBox="0 0 520 140" preserveAspectRatio="xMaxYMid meet" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="fadeg" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#000"/><stop offset=".5" stop-color="#fff"/></linearGradient><mask id="fadem"><rect width="520" height="140" fill="url(#fadeg)"/></mask></defs><g mask="url(#fadem)"><line x1="31" y1="106.5" x2="31" y2="124.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="24" y="114.0" width="14" height="3.0" rx="2" fill="#2BFF88"/><line x1="62" y1="106.5" x2="62" y2="127.5" stroke="#FF5C7A" stroke-width="1.5"/><rect x="55" y="114.0" width="14" height="6.0" rx="2" fill="#FF5C7A"/><line x1="93" y1="100.5" x2="93" y2="127.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="86" y="108.0" width="14" height="12.0" rx="2" fill="#2BFF88"/><line x1="124" y1="100.5" x2="124" y2="124.5" stroke="#FF5C7A" stroke-width="1.5"/><rect x="117" y="108.0" width="14" height="9.0" rx="2" fill="#FF5C7A"/><line x1="155" y1="97.5" x2="155" y2="124.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="148" y="105.0" width="14" height="12.0" rx="2" fill="#2BFF88"/><line x1="186" y1="88.5" x2="186" y2="112.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="179" y="96.0" width="14" height="9.0" rx="2" fill="#2BFF88"/><line x1="217" y1="88.5" x2="217" y2="111.0" stroke="#FF5C7A" stroke-width="1.5"/><rect x="210" y="96.0" width="14" height="7.5" rx="2" fill="#FF5C7A"/><line x1="248" y1="82.5" x2="248" y2="111.0" stroke="#2BFF88" stroke-width="1.5"/><rect x="241" y="90.0" width="14" height="13.5" rx="2" fill="#2BFF88"/><line x1="279" y1="76.5" x2="279" y2="97.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="272" y="84.0" width="14" height="6.0" rx="2" fill="#2BFF88"/><line x1="310" y1="76.5" x2="310" y2="100.5" stroke="#FF5C7A" stroke-width="1.5"/><rect x="303" y="84.0" width="14" height="9.0" rx="2" fill="#FF5C7A"/><line x1="341" y1="70.5" x2="341" y2="100.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="334" y="78.0" width="14" height="15.0" rx="2" fill="#2BFF88"/><line x1="372" y1="61.5" x2="372" y2="85.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="365" y="69.0" width="14" height="9.0" rx="2" fill="#2BFF88"/><line x1="403" y1="61.5" x2="403" y2="84.0" stroke="#FF5C7A" stroke-width="1.5"/><rect x="396" y="69.0" width="14" height="7.5" rx="2" fill="#FF5C7A"/><line x1="434" y1="55.5" x2="434" y2="84.0" stroke="#2BFF88" stroke-width="1.5"/><rect x="427" y="63.0" width="14" height="13.5" rx="2" fill="#2BFF88"/><line x1="465" y1="48.0" x2="465" y2="70.5" stroke="#2BFF88" stroke-width="1.5"/><rect x="458" y="55.5" width="14" height="7.5" rx="2" fill="#2BFF88"/><line x1="496" y1="37.5" x2="496" y2="63.0" stroke="#2BFF88" stroke-width="1.5"/><rect x="489" y="45.0" width="14" height="10.5" rx="2" fill="#2BFF88"/><polyline points="31,114.0 62,120.0 93,108.0 124,117.0 155,105.0 186,96.0 217,103.5 248,90.0 279,84.0 310,93.0 341,78.0 372,69.0 403,76.5 434,63.0 465,55.5 496,45.0" fill="none" stroke="#66FCF1" stroke-width="2" opacity=".8"/></g></svg>
-<div class="topbar"><div class="lang" role="group" aria-label="Język"><span class="cur">PL</span><a href="en/przystan.html" hreflang="en" lang="en" title="English">EN</a></div></div>
+<div class="topbar"><div class="lang" role="group" aria-label="Język"><span class="cur">PL</span><a href="en/harbor.html" hreflang="en" lang="en" title="English">EN</a></div></div>
 <a class="brand" href="index.html" aria-label="GPW Radar — skaner GPW" title="GPW Radar"><svg class="logo" viewBox="0 0 48 48" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8DF2B8"/><stop offset="1" stop-color="#4FA7AB"/></linearGradient></defs><rect x="1.5" y="1.5" width="45" height="45" rx="13" fill="#0F1614" stroke="url(#lg)" stroke-width="2"/><circle cx="24" cy="25" r="14" fill="none" stroke="url(#lg)" stroke-width="2.2" opacity=".55"/><circle cx="24" cy="25" r="7.5" fill="none" stroke="url(#lg)" stroke-width="2.2" opacity=".8"/><path d="M24 25 L24 11 A14 14 0 0 1 36.1 18 Z" fill="url(#lg)" opacity=".32"/><line x1="24" y1="25" x2="36.1" y2="18" stroke="url(#lg)" stroke-width="3" stroke-linecap="round"/><circle cx="24" cy="25" r="2.6" fill="#8DF2B8"/><circle cx="19" cy="15.5" r="2.8" fill="#8DF2B8"/></svg><span class="wm">GPW <b>Radar</b></span></a>
-<nav aria-label="Główna nawigacja"><a href="newsy.html">Newsy dnia</a><div class="dd"><button type="button" class="dd-b" aria-expanded="false" aria-controls="dd-swing">Swing<svg class="dd-c" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="dd-m" id="dd-swing"><li><a href="index.html">Swing Raport</a></li><li><a href="portfel-swing.html">Portfel Swing</a></li><li><a href="metodologia-swing.html">Swing Metodologia</a></li><li><a href="archiwum.html">Archiwum</a></li></ul></div><div class="dd"><button type="button" class="dd-b" aria-expanded="false" aria-controls="dd-kompas">Kompas<svg class="dd-c" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="dd-m" id="dd-kompas"><li><a href="kompas.html">Raport</a></li><li><a href="portfel-kompas.html">Portfel</a></li><li><a href="metodologia-kompas.html">Metodologia</a></li><li><a href="archiwum-kompas.html">Archiwum</a></li></ul></div><div class="dd"><button type="button" class="dd-b" aria-expanded="false" aria-controls="dd-ped">Pęd<svg class="dd-c" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="dd-m" id="dd-ped"><li><a href="ped.html">Raport</a></li><li><a href="portfel-ped.html">Portfel</a></li><li><a href="metodologia-ped.html">Metodologia</a></li><li><a href="archiwum-ped.html">Archiwum</a></li></ul></div><div class="dd"><button type="button" class="dd-b" aria-expanded="false" aria-controls="dd-zloty-srodek">Złoty Środek<svg class="dd-c" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="dd-m" id="dd-zloty-srodek"><li><a href="zloty-srodek.html">Raport</a></li><li><a href="portfel-zloty-srodek.html">Portfel</a></li><li><a href="metodologia-zloty-srodek.html">Metodologia</a></li><li><a href="archiwum-zloty-srodek.html">Archiwum</a></li></ul></div><div class="dd on"><button type="button" class="dd-b" aria-expanded="false" aria-controls="dd-przystan">Przystań<svg class="dd-c" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="dd-m" id="dd-przystan"><li><a href="przystan.html" aria-current="page">Raport</a></li><li><a href="portfel-przystan.html">Portfel</a></li><li><a href="metodologia-przystan.html">Metodologia</a></li><li><a href="archiwum-przystan.html">Archiwum</a></li></ul></div><div class="dd"><button type="button" class="dd-b" aria-expanded="false" aria-controls="dd-dryf">Dryf<svg class="dd-c" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="dd-m" id="dd-dryf"><li><a href="dryf.html">Raport</a></li><li><a href="portfel-dryf.html">Portfel</a></li><li><a href="metodologia-dryf.html">Metodologia</a></li><li><a href="archiwum-dryf.html">Archiwum</a></li></ul></div><a href="dywidendy.html">Dywidendy</a></nav>
+<nav aria-label="Główna nawigacja"><a href="newsy.html">Newsy dnia</a><div class="dd"><button type="button" class="dd-b" aria-expanded="false" aria-controls="dd-swing">Swing<svg class="dd-c" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="dd-m" id="dd-swing"><li><a href="index.html">Swing Raport</a></li><li><a href="portfel-swing.html">Portfel Swing</a></li><li><a href="metodologia-swing.html">Swing Metodologia</a></li><li><a href="archiwum.html">Archiwum</a></li></ul></div><div class="dd"><button type="button" class="dd-b" aria-expanded="false" aria-controls="dd-kompas">Kompas<svg class="dd-c" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="dd-m" id="dd-kompas"><li><a href="kompas.html">Kompas Raport</a></li><li><a href="portfel-kompas.html">Portfel Kompas</a></li><li><a href="metodologia-kompas.html">Kompas Metodologia</a></li><li><a href="kompas-archiwum.html">Kompas Archiwum</a></li></ul></div><div class="dd"><button type="button" class="dd-b" aria-expanded="false" aria-controls="dd-ped">Pęd<svg class="dd-c" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="dd-m" id="dd-ped"><li><a href="ped.html">Pęd Raport</a></li><li><a href="portfel-ped.html">Portfel Pęd</a></li><li><a href="metodologia-ped.html">Pęd Metodologia</a></li><li><a href="ped-archiwum.html">Pęd Archiwum</a></li></ul></div><div class="dd"><button type="button" class="dd-b" aria-expanded="false" aria-controls="dd-zloty-srodek">Złoty Środek<svg class="dd-c" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="dd-m" id="dd-zloty-srodek"><li><a href="zloty-srodek.html">Złoty Środek Raport</a></li><li><a href="portfel-zloty-srodek.html">Portfel Złoty Środek</a></li><li><a href="metodologia-zloty-srodek.html">Złoty Środek Metodologia</a></li><li><a href="zloty-srodek-archiwum.html">Złoty Środek Archiwum</a></li></ul></div><div class="dd on"><button type="button" class="dd-b" aria-expanded="false" aria-controls="dd-przystan">Przystań<svg class="dd-c" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="dd-m" id="dd-przystan"><li><a href="przystan.html" aria-current="page">Przystań Raport</a></li><li><a href="portfel-przystan.html">Portfel Przystań</a></li><li><a href="metodologia-przystan.html">Przystań Metodologia</a></li><li><a href="przystan-archiwum.html">Przystań Archiwum</a></li></ul></div><div class="dd"><button type="button" class="dd-b" aria-expanded="false" aria-controls="dd-dryf">Dryf<svg class="dd-c" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="dd-m" id="dd-dryf"><li><a href="dryf.html">Dryf Raport</a></li><li><a href="portfel-dryf.html">Portfel Dryf</a></li><li><a href="metodologia-dryf.html">Dryf Metodologia</a></li><li><a href="dryf-archiwum.html">Dryf Archiwum</a></li></ul></div><a href="dywidendy.html">Dywidendy</a></nav>
 </header>
 <main id="main" tabindex="-1">
-<h1>Przystań — Raport</h1>
-<div class="banner">16 spółek z najniższą zmiennością 12M (kwintyl), maks. 4 z sektora, obsunięcie ≤ 30%. Rytm: <strong>kwartalnie (mar, cze, wrz, gru)</strong>. Dane do: <strong>2026-11-09</strong>. Ćwiczenie przesiewowe, nie porada inwestycyjna.</div>
-<h2>Najspokojniejsze spółki</h2><div class="tw stk2" role="region" aria-label="Najspokojniejsze spółki — tabela" tabindex="0"><table><thead><tr><th scope="col">#</th><th scope="col">Tic</th><th scope="col">Zmienność 12M</th><th scope="col">Maks. obsunięcie</th></tr></thead><tbody><tr><td>1</td><td><strong>DBC</strong></td><td>14,2%</td><td>18,1%</td></tr><tr><td>2</td><td><strong>ATG</strong></td><td>15,1%</td><td>18,9%</td></tr><tr><td>3</td><td><strong>DEL</strong></td><td>18,0%</td><td>29,7%</td></tr><tr><td>4</td><td><strong>INK</strong></td><td>18,4%</td><td>17,9%</td></tr><tr><td>5</td><td><strong>SNK</strong></td><td>18,9%</td><td>18,5%</td></tr><tr><td>6</td><td><strong>STP</strong></td><td>19,8%</td><td>24,1%</td></tr><tr><td>7</td><td><strong>1AT</strong></td><td>20,2%</td><td>15,7%</td></tr><tr><td>8</td><td><strong>TAR</strong></td><td>20,5%</td><td>11,0%</td></tr><tr><td>9</td><td><strong>AMB</strong></td><td>20,6%</td><td>13,3%</td></tr><tr><td>10</td><td><strong>BIO</strong></td><td>20,8%</td><td>23,7%</td></tr><tr><td>11</td><td><strong>WWL</strong></td><td>21,2%</td><td>21,6%</td></tr><tr><td>12</td><td><strong>APN</strong></td><td>21,3%</td><td>16,2%</td></tr><tr><td>13</td><td><strong>PZU</strong></td><td>21,3%</td><td>14,4%</td></tr><tr><td>14</td><td><strong>STF</strong></td><td>21,4%</td><td>17,6%</td></tr><tr><td>15</td><td><strong>EAH</strong></td><td>21,8%</td><td>25,0%</td></tr><tr><td>16</td><td><strong>KRK</strong></td><td>22,5%</td><td>10,4%</td></tr></tbody></table></div>
+<div class="banner"><strong>Przystań</strong>: Spokojny port na wzburzonym rynku: spółki o najniższej zmienności. Rytm: raz na kwartał. Najnowszy raport: <strong>piątek 6.11.2026</strong>. <a href="przystan-archiwum.html">Poprzednie raporty</a> · <a href="portfel-przystan.html">Portfel</a> · <a href="metodologia-przystan.html">Metodologia</a></div>
+<h1 id="przystan-sygna-po-sesji-piatek-6-listopada-2026">Przystań — sygnał po sesji piątek 6 listopada 2026</h1>
+<p>Dane: notowania 156 spółek z archiwum GPW (261 sesji, do 6 listopada 2026), ceny skorygowane o dywidendy. Zmienność roczna = odchylenie standardowe dziennych zwrotów z ostatnich ok. 250 sesji × √252. Uniwersum: mediana obrotu z 60 sesji co najmniej 0,3 mln zł dziennie, notowania w co najmniej 90% sesji (spółki rzadko notowane mają sztucznie niską zmienność), maksymalne obsunięcie z 12 miesięcy nie głębsze niż 30% (zastępczy bezpiecznik jakości). <strong>Raport startowy:</strong> pierwszy skład portfela wirtualnego, poza cyklem kwartalnym (kolejne: ostatnia sesja marca, czerwca, września i grudnia).</p>
+<nav class="toc" aria-label="Skróty do sekcji"><a href="#sygna" title="Sygnał">Sygnał</a><a href="#portfel-docelowy" title="Portfel docelowy">Portfel docelowy</a><a href="#najspokojniejsze-spoki" title="Najspokojniejsze spółki">Najspokojniejsze spółki</a><a href="#ograniczenia" title="Ograniczenia">Ograniczenia</a></nav>
+<h2 id="sygna">Sygnał</h2>
+<p><strong>Docelowy skład: 11 spółek</strong> (11 nowych, 0 zostaje, 0 wypada). Średnia zmienność portfela 23,2% wobec mediany uniwersum 30,7%.</p>
+<p>Lejek: 156 spółek w uniwersum → 52 z płynnością i danymi → najspokojniejszy kwintyl to pierwsze 11 pozycji (próg zostawania: 21) → 11 w portfelu.</p>
+<h2 id="portfel-docelowy">Portfel docelowy</h2>
+<div class="tw stk2" role="region" aria-label="Portfel docelowy — tabela" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">#</th>
+<th scope="col">Tic</th>
+<th scope="col">Spółka</th>
+<th scope="col">Sektor</th>
+<th scope="col">Kurs</th>
+<th scope="col">Zmienność roczna</th>
+<th scope="col">Zwrot 12M</th>
+<th scope="col">Maks. obsunięcie 12M</th>
+<th scope="col">Obrót (mln zł)</th>
+<th scope="col">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1AT</td>
+<td>ATAL</td>
+<td>Deweloperzy i nieruchomości</td>
+<td>60,50</td>
+<td>19,6%</td>
+<td class="up">+10,4%</td>
+<td class="down">−13,7%</td>
+<td>0,6</td>
+<td>nowa</td>
+</tr>
+<tr>
+<td>2</td>
+<td>PZU</td>
+<td>PZU</td>
+<td>Finanse i ubezpieczenia</td>
+<td>73,00</td>
+<td>20,4%</td>
+<td class="up">+27,6%</td>
+<td class="down">−14,4%</td>
+<td>107,5</td>
+<td>nowa</td>
+</tr>
+<tr>
+<td>3</td>
+<td>BHW</td>
+<td>HANDLOWY</td>
+<td>Banki</td>
+<td>122,80</td>
+<td>20,9%</td>
+<td class="up">+26,5%</td>
+<td class="down">−9,3%</td>
+<td>3,8</td>
+<td>nowa</td>
+</tr>
+<tr>
+<td>4</td>
+<td>MBR</td>
+<td>MOBRUK</td>
+<td>Budownictwo i materiały</td>
+<td>407,00</td>
+<td>22,3%</td>
+<td class="up">+43,1%</td>
+<td class="down">−10,9%</td>
+<td>1,5</td>
+<td>nowa</td>
+</tr>
+<tr>
+<td>5</td>
+<td>FRO</td>
+<td>FERRO</td>
+<td>Przemysł</td>
+<td>28,10</td>
+<td>23,3%</td>
+<td class="down">−4,7%</td>
+<td class="down">−19,8%</td>
+<td>0,3</td>
+<td>nowa</td>
+</tr>
+<tr>
+<td>6</td>
+<td>PLW</td>
+<td>PLAYWAY</td>
+<td>Gry</td>
+<td>250,00</td>
+<td>23,5%</td>
+<td class="up">+1,8%</td>
+<td class="down">−16,6%</td>
+<td>0,4</td>
+<td>nowa</td>
+</tr>
+<tr>
+<td>7</td>
+<td>DOM</td>
+<td>DOMDEV</td>
+<td>Deweloperzy i nieruchomości</td>
+<td>241,50</td>
+<td>23,8%</td>
+<td>0,0%</td>
+<td class="down">−20,7%</td>
+<td>1,7</td>
+<td>nowa</td>
+</tr>
+<tr>
+<td>8</td>
+<td>PCR</td>
+<td>PCCROKITA</td>
+<td>Chemia</td>
+<td>63,20</td>
+<td>24,4%</td>
+<td class="down">−4,7%</td>
+<td class="down">−15,4%</td>
+<td>0,3</td>
+<td>nowa</td>
+</tr>
+<tr>
+<td>9</td>
+<td>VOT</td>
+<td>VOTUM</td>
+<td>Finanse i ubezpieczenia</td>
+<td>38,70</td>
+<td>25,2%</td>
+<td class="up">+2,3%</td>
+<td class="down">−18,8%</td>
+<td>0,4</td>
+<td>nowa</td>
+</tr>
+<tr>
+<td>10</td>
+<td>OPN</td>
+<td>OPONEO.PL</td>
+<td>Handel i e-commerce</td>
+<td>101,80</td>
+<td>25,7%</td>
+<td class="up">+9,4%</td>
+<td class="down">−20,4%</td>
+<td>0,5</td>
+<td>nowa</td>
+</tr>
+<tr>
+<td>11</td>
+<td>DVL</td>
+<td>DEVELIA</td>
+<td>Deweloperzy i nieruchomości</td>
+<td>7,91</td>
+<td>26,0%</td>
+<td class="up">+1,5%</td>
+<td class="down">−23,6%</td>
+<td>2,2</td>
+<td>nowa</td>
+</tr>
+</tbody>
+</table></div>
+<div class="chart-card"><h2 class="ch">Roczna zmienność spółek w portfelu</h2><p class="sub">Odchylenie standardowe dziennych zwrotów × √252; im niżej, tym spokojniej.</p><div class="cv-d"><svg viewBox="0 0 800 342" role="img" aria-label="Roczna zmienność spółek w portfelu" xmlns="http://www.w3.org/2000/svg"><line class="grid" x1="150.0" y1="16" x2="150.0" y2="338"/><text class="tick" x="150.0" y="12" text-anchor="middle">0,0%</text><line class="grid" x1="288.5" y1="16" x2="288.5" y2="338"/><text class="tick" x="288.5" y="12" text-anchor="middle">6,8%</text><line class="grid" x1="427.0" y1="16" x2="427.0" y2="338"/><text class="tick" x="427.0" y="12" text-anchor="middle">13,5%</text><line class="grid" x1="565.5" y1="16" x2="565.5" y2="338"/><text class="tick" x="565.5" y="12" text-anchor="middle">20,3%</text><line class="grid" x1="704.0" y1="16" x2="704.0" y2="338"/><text class="tick" x="704.0" y="12" text-anchor="middle">27,0%</text><text class="lbl" x="140" y="43" text-anchor="end">1AT</text><g><title>1AT: +19,6%</title><rect x="150.0" y="31" width="401.6" height="16" rx="3" style="fill:var(--up)"/></g><text class="val" x="559.6" y="44" text-anchor="start">+19,6%</text><text class="lbl" x="140" y="71" text-anchor="end">PZU</text><g><title>PZU: +20,4%</title><rect x="150.0" y="59" width="418.0" height="16" rx="3" style="fill:var(--up)"/></g><text class="val" x="576.0" y="72" text-anchor="start">+20,4%</text><text class="lbl" x="140" y="99" text-anchor="end">BHW</text><g><title>BHW: +20,9%</title><rect x="150.0" y="87" width="428.2" height="16" rx="3" style="fill:var(--up)"/></g><text class="val" x="586.2" y="100" text-anchor="start">+20,9%</text><text class="lbl" x="140" y="127" text-anchor="end">MBR</text><g><title>MBR: +22,3%</title><rect x="150.0" y="115" width="456.9" height="16" rx="3" style="fill:var(--up)"/></g><text class="val" x="614.9" y="128" text-anchor="start">+22,3%</text><text class="lbl" x="140" y="155" text-anchor="end">FRO</text><g><title>FRO: +23,3%</title><rect x="150.0" y="143" width="477.4" height="16" rx="3" style="fill:var(--up)"/></g><text class="val" x="635.4" y="156" text-anchor="start">+23,3%</text><text class="lbl" x="140" y="183" text-anchor="end">PLW</text><g><title>PLW: +23,5%</title><rect x="150.0" y="171" width="481.5" height="16" rx="3" style="fill:var(--up)"/></g><text class="val" x="639.5" y="184" text-anchor="start">+23,5%</text><text class="lbl" x="140" y="211" text-anchor="end">DOM</text><g><title>DOM: +23,8%</title><rect x="150.0" y="199" width="487.6" height="16" rx="3" style="fill:var(--up)"/></g><text class="val" x="645.6" y="212" text-anchor="start">+23,8%</text><text class="lbl" x="140" y="239" text-anchor="end">PCR</text><g><title>PCR: +24,4%</title><rect x="150.0" y="227" width="499.9" height="16" rx="3" style="fill:var(--up)"/></g><text class="val" x="657.9" y="240" text-anchor="start">+24,4%</text><text class="lbl" x="140" y="267" text-anchor="end">VOT</text><g><title>VOT: +25,2%</title><rect x="150.0" y="255" width="516.3" height="16" rx="3" style="fill:var(--up)"/></g><text class="val" x="674.3" y="268" text-anchor="start">+25,2%</text><text class="lbl" x="140" y="295" text-anchor="end">OPN</text><g><title>OPN: +25,7%</title><rect x="150.0" y="283" width="526.5" height="16" rx="3" style="fill:var(--up)"/></g><text class="val" x="684.5" y="296" text-anchor="start">+25,7%</text><text class="lbl" x="140" y="323" text-anchor="end">DVL</text><g><title>DVL: +26,0%</title><rect x="150.0" y="311" width="532.7" height="16" rx="3" style="fill:var(--up)"/></g><text class="val" x="690.7" y="324" text-anchor="start">+26,0%</text><line x1="150.0" y1="16" x2="150.0" y2="338" style="stroke:var(--muted);stroke-width:1.2"/></svg></div><div class="cv-c"><svg class="c" viewBox="0 0 400 342" role="img" aria-label="Roczna zmienność spółek w portfelu" xmlns="http://www.w3.org/2000/svg"><line class="grid" x1="88.0" y1="16" x2="88.0" y2="338"/><text class="tick" x="88.0" y="12" text-anchor="middle">0,0%</text><line class="grid" x1="152.0" y1="16" x2="152.0" y2="338"/><text class="tick" x="152.0" y="12" text-anchor="middle">6,8%</text><line class="grid" x1="216.0" y1="16" x2="216.0" y2="338"/><text class="tick" x="216.0" y="12" text-anchor="middle">13,5%</text><line class="grid" x1="280.0" y1="16" x2="280.0" y2="338"/><text class="tick" x="280.0" y="12" text-anchor="middle">20,3%</text><line class="grid" x1="344.0" y1="16" x2="344.0" y2="338"/><text class="tick" x="344.0" y="12" text-anchor="middle">27,0%</text><text class="lbl" x="78" y="43" text-anchor="end">1AT</text><g><title>1AT: +19,6%</title><rect x="88.0" y="31" width="185.6" height="16" rx="3" style="fill:var(--up)"/></g><text class="val" x="281.6" y="44" text-anchor="start">+19,6%</text><text class="lbl" x="78" y="71" text-anchor="end">PZU</text><g><title>PZU: +20,4%</title><rect x="88.0" y="59" width="193.1" height="16" rx="3" style="fill:var(--up)"/></g><text class="val" x="289.1" y="72" text-anchor="start">+20,4%</text><text class="lbl" x="78" y="99" text-anchor="end">BHW</text><g><title>BHW: +20,9%</title><rect x="88.0" y="87" width="197.9" height="16" rx="3" style="fill:var(--up)"/></g><text class="val" x="293.9" y="100" text-anchor="start">+20,9%</text><text class="lbl" x="78" y="127" text-anchor="end">MBR</text><g><title>MBR: +22,3%</title><rect x="88.0" y="115" width="211.1" height="16" rx="3" style="fill:var(--up)"/></g><text class="val" x="307.1" y="128" text-anchor="start">+22,3%</text><text class="lbl" x="78" y="155" text-anchor="end">FRO</text><g><title>FRO: +23,3%</title><rect x="88.0" y="143" width="220.6" height="16" rx="3" style="fill:var(--up)"/></g><text class="val" x="316.6" y="156" text-anchor="start">+23,3%</text><text class="lbl" x="78" y="183" text-anchor="end">PLW</text><g><title>PLW: +23,5%</title><rect x="88.0" y="171" width="222.5" height="16" rx="3" style="fill:var(--up)"/></g><text class="val" x="318.5" y="184" text-anchor="start">+23,5%</text><text class="lbl" x="78" y="211" text-anchor="end">DOM</text><g><title>DOM: +23,8%</title><rect x="88.0" y="199" width="225.3" height="16" rx="3" style="fill:var(--up)"/></g><text class="val" x="321.3" y="212" text-anchor="start">+23,8%</text><text class="lbl" x="78" y="239" text-anchor="end">PCR</text><g><title>PCR: +24,4%</title><rect x="88.0" y="227" width="231.0" height="16" rx="3" style="fill:var(--up)"/></g><text class="val" x="327.0" y="240" text-anchor="start">+24,4%</text><text class="lbl" x="78" y="267" text-anchor="end">VOT</text><g><title>VOT: +25,2%</title><rect x="88.0" y="255" width="238.6" height="16" rx="3" style="fill:var(--up)"/></g><text class="val" x="334.6" y="268" text-anchor="start">+25,2%</text><text class="lbl" x="78" y="295" text-anchor="end">OPN</text><g><title>OPN: +25,7%</title><rect x="88.0" y="283" width="243.3" height="16" rx="3" style="fill:var(--up)"/></g><text class="val" x="339.3" y="296" text-anchor="start">+25,7%</text><text class="lbl" x="78" y="323" text-anchor="end">DVL</text><g><title>DVL: +26,0%</title><rect x="88.0" y="311" width="246.2" height="16" rx="3" style="fill:var(--up)"/></g><text class="val" x="342.2" y="324" text-anchor="start">+26,0%</text><line x1="88.0" y1="16" x2="88.0" y2="338" style="stroke:var(--muted);stroke-width:1.2"/></svg></div></div>
+
+<h2 id="najspokojniejsze-spoki">Najspokojniejsze spółki</h2>
+<div class="tw stk2" role="region" aria-label="Najspokojniejsze spółki — tabela" tabindex="0"><table>
+<thead>
+<tr>
+<th scope="col">#</th>
+<th scope="col">Tic</th>
+<th scope="col">Spółka</th>
+<th scope="col">Sektor</th>
+<th scope="col">Kurs</th>
+<th scope="col">Zmienność roczna</th>
+<th scope="col">Zwrot 12M</th>
+<th scope="col">Maks. obsunięcie 12M</th>
+<th scope="col">Obrót (mln zł)</th>
+<th scope="col">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1AT</td>
+<td>ATAL</td>
+<td>Deweloperzy i nieruchomości</td>
+<td>60,50</td>
+<td>19,6%</td>
+<td class="up">+10,4%</td>
+<td class="down">−13,7%</td>
+<td>0,6</td>
+<td>w portfelu</td>
+</tr>
+<tr>
+<td>2</td>
+<td>PZU</td>
+<td>PZU</td>
+<td>Finanse i ubezpieczenia</td>
+<td>73,00</td>
+<td>20,4%</td>
+<td class="up">+27,6%</td>
+<td class="down">−14,4%</td>
+<td>107,5</td>
+<td>w portfelu</td>
+</tr>
+<tr>
+<td>3</td>
+<td>BHW</td>
+<td>HANDLOWY</td>
+<td>Banki</td>
+<td>122,80</td>
+<td>20,9%</td>
+<td class="up">+26,5%</td>
+<td class="down">−9,3%</td>
+<td>3,8</td>
+<td>w portfelu</td>
+</tr>
+<tr>
+<td>4</td>
+<td>MBR</td>
+<td>MOBRUK</td>
+<td>Budownictwo i materiały</td>
+<td>407,00</td>
+<td>22,3%</td>
+<td class="up">+43,1%</td>
+<td class="down">−10,9%</td>
+<td>1,5</td>
+<td>w portfelu</td>
+</tr>
+<tr>
+<td>5</td>
+<td>FRO</td>
+<td>FERRO</td>
+<td>Przemysł</td>
+<td>28,10</td>
+<td>23,3%</td>
+<td class="down">−4,7%</td>
+<td class="down">−19,8%</td>
+<td>0,3</td>
+<td>w portfelu</td>
+</tr>
+<tr>
+<td>6</td>
+<td>PLW</td>
+<td>PLAYWAY</td>
+<td>Gry</td>
+<td>250,00</td>
+<td>23,5%</td>
+<td class="up">+1,8%</td>
+<td class="down">−16,6%</td>
+<td>0,4</td>
+<td>w portfelu</td>
+</tr>
+<tr>
+<td>7</td>
+<td>DOM</td>
+<td>DOMDEV</td>
+<td>Deweloperzy i nieruchomości</td>
+<td>241,50</td>
+<td>23,8%</td>
+<td>0,0%</td>
+<td class="down">−20,7%</td>
+<td>1,7</td>
+<td>w portfelu</td>
+</tr>
+<tr>
+<td>8</td>
+<td>PCR</td>
+<td>PCCROKITA</td>
+<td>Chemia</td>
+<td>63,20</td>
+<td>24,4%</td>
+<td class="down">−4,7%</td>
+<td class="down">−15,4%</td>
+<td>0,3</td>
+<td>w portfelu</td>
+</tr>
+<tr>
+<td>9</td>
+<td>VOT</td>
+<td>VOTUM</td>
+<td>Finanse i ubezpieczenia</td>
+<td>38,70</td>
+<td>25,2%</td>
+<td class="up">+2,3%</td>
+<td class="down">−18,8%</td>
+<td>0,4</td>
+<td>w portfelu</td>
+</tr>
+<tr>
+<td>10</td>
+<td>OPN</td>
+<td>OPONEO.PL</td>
+<td>Handel i e-commerce</td>
+<td>101,80</td>
+<td>25,7%</td>
+<td class="up">+9,4%</td>
+<td class="down">−20,4%</td>
+<td>0,5</td>
+<td>w portfelu</td>
+</tr>
+<tr>
+<td>11</td>
+<td>DVL</td>
+<td>DEVELIA</td>
+<td>Deweloperzy i nieruchomości</td>
+<td>7,91</td>
+<td>26,0%</td>
+<td class="up">+1,5%</td>
+<td class="down">−23,6%</td>
+<td>2,2</td>
+<td>w portfelu</td>
+</tr>
+<tr>
+<td>12</td>
+<td>NEU</td>
+<td>NEUCA</td>
+<td>Farmacja i medycyna</td>
+<td>695,00</td>
+<td>26,0%</td>
+<td class="down">−9,8%</td>
+<td class="down">−22,9%</td>
+<td>1,4</td>
+<td>poza kwintylem</td>
+</tr>
+<tr>
+<td>13</td>
+<td>CAR</td>
+<td>INTERCARS</td>
+<td>Motoryzacja</td>
+<td>1 060</td>
+<td>26,4%</td>
+<td class="up">+94,1%</td>
+<td class="down">−10,4%</td>
+<td>5,0</td>
+<td>poza kwintylem</td>
+</tr>
+<tr>
+<td>14</td>
+<td>PKO</td>
+<td>PKOBP</td>
+<td>Banki</td>
+<td>114,60</td>
+<td>26,9%</td>
+<td class="up">+57,8%</td>
+<td class="down">−12,3%</td>
+<td>286,3</td>
+<td>poza kwintylem</td>
+</tr>
+<tr>
+<td>15</td>
+<td>PEO</td>
+<td>PEKAO</td>
+<td>Banki</td>
+<td>260,50</td>
+<td>27,0%</td>
+<td class="up">+46,7%</td>
+<td class="down">−11,3%</td>
+<td>150,9</td>
+<td>poza kwintylem</td>
+</tr>
+<tr>
+<td>16</td>
+<td>KTY</td>
+<td>KETY</td>
+<td>Przemysł</td>
+<td>1 251</td>
+<td>27,5%</td>
+<td class="up">+41,3%</td>
+<td class="down">−13,4%</td>
+<td>22,2</td>
+<td>poza kwintylem</td>
+</tr>
+<tr>
+<td>17</td>
+<td>EBP</td>
+<td>ERSTEPL</td>
+<td>Banki</td>
+<td>780,80</td>
+<td>28,1%</td>
+<td class="up">+68,8%</td>
+<td class="down">−10,9%</td>
+<td>54,1</td>
+<td>poza kwintylem</td>
+</tr>
+<tr>
+<td>18</td>
+<td>BFT</td>
+<td>BENEFIT</td>
+<td>Usługi</td>
+<td>6 155</td>
+<td>28,3%</td>
+<td class="up">+105,0%</td>
+<td class="down">−17,4%</td>
+<td>27,7</td>
+<td>poza kwintylem</td>
+</tr>
+<tr>
+<td>19</td>
+<td>ING</td>
+<td>INGBSK</td>
+<td>Banki</td>
+<td>473,00</td>
+<td>28,7%</td>
+<td class="up">+56,4%</td>
+<td class="down">−12,6%</td>
+<td>6,9</td>
+<td>poza kwintylem</td>
+</tr>
+<tr>
+<td>20</td>
+<td>ENT</td>
+<td>ENTER</td>
+<td>Transport i turystyka</td>
+<td>48,25</td>
+<td>29,3%</td>
+<td class="down">−4,4%</td>
+<td class="down">−26,7%</td>
+<td>0,5</td>
+<td>poza kwintylem</td>
+</tr>
+<tr>
+<td>21</td>
+<td>ABE</td>
+<td>ABPL</td>
+<td>IT i oprogramowanie</td>
+<td>135,00</td>
+<td>29,4%</td>
+<td class="up">+48,3%</td>
+<td class="down">−14,8%</td>
+<td>0,9</td>
+<td>poza kwintylem</td>
+</tr>
+<tr>
+<td>22</td>
+<td>GPW</td>
+<td>GPW</td>
+<td>Finanse i ubezpieczenia</td>
+<td>97,10</td>
+<td>29,4%</td>
+<td class="up">+62,5%</td>
+<td class="down">−16,7%</td>
+<td>8,1</td>
+<td>poza kwintylem</td>
+</tr>
+<tr>
+<td>23</td>
+<td>ALR</td>
+<td>ALIOR</td>
+<td>Banki</td>
+<td>137,80</td>
+<td>29,4%</td>
+<td class="up">+44,1%</td>
+<td class="down">−16,0%</td>
+<td>28,5</td>
+<td>poza kwintylem</td>
+</tr>
+<tr>
+<td>24</td>
+<td>HUG</td>
+<td>HUUUGE</td>
+<td>Gry</td>
+<td>24,70</td>
+<td>29,7%</td>
+<td class="up">+2,9%</td>
+<td class="down">−20,0%</td>
+<td>0,4</td>
+<td>poza kwintylem</td>
+</tr>
+<tr>
+<td>25</td>
+<td>ALE</td>
+<td>ALLEGRO</td>
+<td>Handel i e-commerce</td>
+<td>59,80</td>
+<td>30,0%</td>
+<td class="up">+73,2%</td>
+<td class="down">−26,4%</td>
+<td>210,0</td>
+<td>poza kwintylem</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="ograniczenia">Ograniczenia</h2>
+<ul>
+<li>Niska zmienność nie gwarantuje wyniku lepszego od WIG20TR; główna korzyść to niższe ryzyko, a w silnych hossach portfel zostaje w tyle (zob. metodologia).</li>
+<li>Brak filtra jakości z danych fundamentalnych (zysk, kapitał własny, zadłużenie): w repozytorium ich nie ma. Zastępuje go tylko limit obsunięcia (30%), więc spółka o niskiej zmienności może być spółką w kłopotach.</li>
+<li>Spółki w wezwaniu lub przymusowym wykupie mają sztucznie niską zmienność: dopisz je do strategie/wykluczenia.json.</li>
+<li>Zmienność liczona z ok. roku danych (nie 3 lat jak w badaniach), więc ranking jest mniej stabilny.</li>
+</ul>
+<p>Ćwiczenie przesiewowe według zadanego frameworku, nie porada inwestycyjna.</p>
 </main>
 <footer>Ćwiczenie przesiewowe według zadanego frameworku, nie porada inwestycyjna.<br>Dane z publicznych źródeł (m.in. biznesradar.pl, bankier.pl), mogą zawierać błędy lub opóźnienia. Raporty generowane automatycznie.</footer>
 <script>(function(){
