@@ -16,14 +16,14 @@
 </url>
 <url>
 <loc>https://www.gpwradar.pl/dryf-archiwum.html</loc>
-<lastmod>2026-11-09</lastmod>
+<lastmod>2026-11-10</lastmod>
 <xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/dryf-archiwum.html"/>
 <xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/drift-archive.html"/>
 <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/dryf-archiwum.html"/>
 </url>
 <url>
 <loc>https://www.gpwradar.pl/dryf.html</loc>
-<lastmod>2026-11-09</lastmod>
+<lastmod>2026-11-10</lastmod>
 <xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/dryf.html"/>
 <xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/drift.html"/>
 <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/dryf.html"/>
@@ -41,6 +41,13 @@
 <xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/dryf/2026-11-09.html"/>
 <xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/drift/2026-11-09.html"/>
 <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/dryf/2026-11-09.html"/>
+</url>
+<url>
+<loc>https://www.gpwradar.pl/dryf/2026-11-10.html</loc>
+<lastmod>2026-11-10</lastmod>
+<xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/dryf/2026-11-10.html"/>
+<xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/drift/2026-11-10.html"/>
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/dryf/2026-11-10.html"/>
 </url>
 <url>
 <loc>https://www.gpwradar.pl/dywidendy-archiwum.html</loc>
@@ -121,14 +128,14 @@
 </url>
 <url>
 <loc>https://www.gpwradar.pl/en/drift-archive.html</loc>
-<lastmod>2026-11-09</lastmod>
+<lastmod>2026-11-10</lastmod>
 <xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/dryf-archiwum.html"/>
 <xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/drift-archive.html"/>
 <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/dryf-archiwum.html"/>
 </url>
 <url>
 <loc>https://www.gpwradar.pl/en/drift.html</loc>
-<lastmod>2026-11-09</lastmod>
+<lastmod>2026-11-10</lastmod>
 <xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/dryf.html"/>
 <xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/drift.html"/>
 <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/dryf.html"/>
@@ -146,6 +153,13 @@
 <xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/dryf/2026-11-09.html"/>
 <xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/drift/2026-11-09.html"/>
 <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/dryf/2026-11-09.html"/>
+</url>
+<url>
+<loc>https://www.gpwradar.pl/en/drift/2026-11-10.html</loc>
+<lastmod>2026-11-10</lastmod>
+<xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/dryf/2026-11-10.html"/>
+<xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/drift/2026-11-10.html"/>
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/dryf/2026-11-10.html"/>
 </url>
 <url>
 <loc>https://www.gpwradar.pl/en/golden-mean-archive.html</loc>
@@ -262,35 +276,35 @@
 </url>
 <url>
 <loc>https://www.gpwradar.pl/en/portfolio-compass.html</loc>
-<lastmod>2026-11-09</lastmod>
+<lastmod>2026-11-10</lastmod>
 <xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/portfel-kompas.html"/>
 <xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/portfolio-compass.html"/>
 <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/portfel-kompas.html"/>
 </url>
 <url>
 <loc>https://www.gpwradar.pl/en/portfolio-drift.html</loc>
-<lastmod>2026-11-09</lastmod>
+<lastmod>2026-11-10</lastmod>
 <xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/portfel-dryf.html"/>
 <xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/portfolio-drift.html"/>
 <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/portfel-dryf.html"/>
 </url>
 <url>
 <loc>https://www.gpwradar.pl/en/portfolio-golden-mean.html</loc>
-<lastmod>2026-11-09</lastmod>
+<lastmod>2026-11-10</lastmod>
 <xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/portfel-zloty-srodek.html"/>
 <xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/portfolio-golden-mean.html"/>
 <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/portfel-zloty-srodek.html"/>
 </url>
 <url>
 <loc>https://www.gpwradar.pl/en/portfolio-harbor.html</loc>
-<lastmod>2026-11-09</lastmod>
+<lastmod>2026-11-10</lastmod>
 <xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/portfel-przystan.html"/>
 <xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/portfolio-harbor.html"/>
 <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/portfel-przystan.html"/>
 </url>
 <url>
 <loc>https://www.gpwradar.pl/en/portfolio-momentum.html</loc>
-<lastmod>2026-11-09</lastmod>
+<lastmod>2026-11-10</lastmod>
 <xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/portfel-ped.html"/>
 <xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/portfolio-momentum.html"/>
 <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/portfel-ped.html"/>
@@ -424,28 +438,28 @@
 </url>
 <url>
 <loc>https://www.gpwradar.pl/portfel-dryf.html</loc>
-<lastmod>2026-11-09</lastmod>
+<lastmod>2026-11-10</lastmod>
 <xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/portfel-dryf.html"/>
 <xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/portfolio-drift.html"/>
 <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/portfel-dryf.html"/>
 </url>
 <url>
 <loc>https://www.gpwradar.pl/portfel-kompas.html</loc>
-<lastmod>2026-11-09</lastmod>
+<lastmod>2026-11-10</lastmod>
 <xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/portfel-kompas.html"/>
 <xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/portfolio-compass.html"/>
 <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/portfel-kompas.html"/>
 </url>
 <url>
 <loc>https://www.gpwradar.pl/portfel-ped.html</loc>
-<lastmod>2026-11-09</lastmod>
+<lastmod>2026-11-10</lastmod>
 <xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/portfel-ped.html"/>
 <xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/portfolio-momentum.html"/>
 <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/portfel-ped.html"/>
 </url>
 <url>
 <loc>https://www.gpwradar.pl/portfel-przystan.html</loc>
-<lastmod>2026-11-09</lastmod>
+<lastmod>2026-11-10</lastmod>
 <xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/portfel-przystan.html"/>
 <xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/portfolio-harbor.html"/>
 <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/portfel-przystan.html"/>
@@ -459,7 +473,7 @@
 </url>
 <url>
 <loc>https://www.gpwradar.pl/portfel-zloty-srodek.html</loc>
-<lastmod>2026-11-09</lastmod>
+<lastmod>2026-11-10</lastmod>
 <xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/portfel-zloty-srodek.html"/>
 <xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/portfolio-golden-mean.html"/>
 <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/portfel-zloty-srodek.html"/>
