@@ -106,6 +106,12 @@
 <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/kompas/2026-11-06.html"/>
 </url>
 <url>
+<loc>https://www.gpwradar.pl/en/contact.html</loc>
+<xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/kontakt.html"/>
+<xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/contact.html"/>
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/kontakt.html"/>
+</url>
+<url>
 <loc>https://www.gpwradar.pl/en/dividends-archive.html</loc>
 <lastmod>2026-11-05</lastmod>
 <xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/dywidendy-archiwum.html"/>
@@ -378,6 +384,12 @@
 <xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/kompas/2026-11-06.html"/>
 <xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/compass/2026-11-06.html"/>
 <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/kompas/2026-11-06.html"/>
+</url>
+<url>
+<loc>https://www.gpwradar.pl/kontakt.html</loc>
+<xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/kontakt.html"/>
+<xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/contact.html"/>
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/kontakt.html"/>
 </url>
 <url>
 <loc>https://www.gpwradar.pl/metodologia-dryf.html</loc>
