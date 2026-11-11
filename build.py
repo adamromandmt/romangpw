@@ -201,6 +201,33 @@ footer{color:var(--muted);font-size:13px;padding-top:26px;padding-bottom:44px;bo
 
 CSS += portfel.CSS_EXTRA
 
+# Strona Kontakt: formularz pytań i link do profilu LinkedIn.
+CSS += """
+.contact{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:18px;align-items:start;margin:18px 0}
+@media (max-width:760px){.contact{grid-template-columns:1fr}}
+.cbox{background:rgba(15,22,20,.9);border:1px solid var(--line);border-radius:12px;padding:6px 18px 18px;box-shadow:0 0 0 1px rgba(43,255,136,.04),0 10px 24px rgba(0,0,0,.28)}
+.cbox h2{margin:12px 0 10px;padding:0;border:0;font-size:18px;color:var(--strong);text-shadow:none}
+.cbox h2::before{display:none}
+.cform label{display:block;margin:14px 0 5px;color:var(--strong);font-size:14px;font-weight:600}
+.cform input[type=text],.cform input[type=email],.cform textarea{display:block;width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--strong);font:inherit}
+.cform textarea{min-height:170px;resize:vertical}
+.cform input:focus-visible,.cform textarea:focus-visible{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.cform .hp{display:none}
+.cform button{margin-top:16px;padding:10px 22px;border:0;border-radius:999px;background:var(--accent);color:#04120a;font:inherit;font-weight:700;cursor:pointer}
+.cform button:hover{background:#7CF0B0}
+.cform button[disabled]{opacity:.6;cursor:default}
+.cnote{margin:12px 0 0;color:var(--muted);font-size:13px}
+.cstatus{margin:14px 0 0;font-weight:600}
+.cstatus:empty{display:none}
+.cstatus.ok{color:var(--up)}
+.cstatus.err{color:var(--down)}
+.csent{display:none}
+.csent:target{display:block}
+.li-btn{display:inline-flex;align-items:center;gap:10px;margin-top:4px;padding:9px 18px;border:1px solid var(--accent2);border-radius:999px;color:var(--strong);font-weight:600;text-decoration:none}
+.li-btn:hover{border-color:var(--accent);color:var(--accent)}
+.li-btn svg{width:20px;height:20px;flex:none;fill:currentColor}
+"""
+
 PAGE = """<!doctype html>
 <html lang="{lang}">
 <head>
@@ -299,6 +326,7 @@ FILES = {
     "meth": ("metodologia-swing.html", "methodology-swing.html"),
     "arch": ("archiwum.html", "archive.html"),
     "darch": ("dywidendy-archiwum.html", "dividends-archive.html"),
+    "contact": ("kontakt.html", "contact.html"),
 }
 # Podkatalogi z raportami dziennymi: (swing, dywidendy)
 SUBDIRS = {"pl": ("reports", "dywidendy"), "en": ("reports", "dividends")}
@@ -310,7 +338,7 @@ UI = {
         "disclaimer": "Ćwiczenie przesiewowe według zadanego frameworku, nie porada inwestycyjna.",
         "footer": "Dane z publicznych źródeł (m.in. biznesradar.pl, bankier.pl), mogą zawierać błędy lub opóźnienia. Raporty generowane automatycznie.",
         "tabs": {"news": "Newsy dnia", "swing": "Swing Raport", "div": "Dywidendy", "port": "Portfel {n}", "meth": "Swing Metodologia",
-                 "arch": "Archiwum"},
+                 "arch": "Archiwum", "contact": "Kontakt"},
         "groups": {"swing": "Swing"},
         "sub": {"arch": "Swing", "darch": "Dywidendy"},
         "desc_swing": "Dzienny skaner swing GPW — raport przed otwarciem sesji.",
@@ -344,7 +372,7 @@ UI = {
         "disclaimer": "Screening exercise under the given framework, not investment advice.",
         "footer": "Data from public sources (incl. biznesradar.pl, bankier.pl) may contain errors or delays. Reports are generated automatically. Polish is the original language of the reports.",
         "tabs": {"news": "News of the day", "swing": "Swing Report", "div": "Dividends", "port": "{n} Portfolio", "meth": "Swing Methodology",
-                 "arch": "Archive"},
+                 "arch": "Archive", "contact": "Contact"},
         "groups": {"swing": "Swing"},
         "sub": {"arch": "Swing", "darch": "Dividends"},
         "desc_swing": "Daily swing-trading scanner for the Warsaw Stock Exchange (GPW) — a report before the open.",
@@ -385,6 +413,26 @@ for _s in STRATS:
                   f"meth-{_sl}": (f"metodologia-{_sl}.html", f"methodology-{_en}.html"), f"arch-{_sl}": (f"{_sl}-archiwum.html", f"{_en}-archive.html")})
     for _lang in LANGS:
         UI[_lang]["groups"][_sl] = _s["name"][_lang]
+UI["pl"].update({
+    "c_title": "Kontakt", "c_desc": "Kontakt z autorem GPW Radar: formularz do zadawania pytań i profil LinkedIn.",
+    "c_lead": "Masz pytanie o raporty, strategie albo działanie serwisu? Napisz przez formularz, odpowiem na podany adres e-mail.",
+    "c_form": "Zadaj pytanie", "c_name": "Imię", "c_email": "Twój e-mail", "c_msg": "Pytanie", "c_send": "Wyślij",
+    "c_sending": "Wysyłanie…", "c_ok": "Dziękuję, wiadomość została wysłana. Odpowiem na podany adres e-mail.",
+    "c_err": "Nie udało się wysłać wiadomości. Spróbuj ponownie za chwilę albo napisz przez LinkedIn.",
+    "c_privacy": "Imię, adres e-mail i treść pytania służą wyłącznie do udzielenia odpowiedzi. Formularz obsługuje usługa Web3Forms.",
+    "c_subject": "GPW Radar: pytanie z formularza", "c_li": "LinkedIn", "c_li_text": "Autorem serwisu jest Adam Roman. Możesz też napisać przez LinkedIn.",
+    "c_li_btn": "Profil na LinkedIn", "c_only_li": "Formularz jest w przygotowaniu. Do tego czasu napisz przez LinkedIn.",
+})
+UI["en"].update({
+    "c_title": "Contact", "c_desc": "Contact the author of GPW Radar: a form for questions and a LinkedIn profile.",
+    "c_lead": "Do you have a question about the reports, the strategies or how the site works? Use the form and I will reply to the e-mail address you give.",
+    "c_form": "Ask a question", "c_name": "Name", "c_email": "Your e-mail", "c_msg": "Question", "c_send": "Send",
+    "c_sending": "Sending…", "c_ok": "Thank you, your message has been sent. I will reply to the e-mail address you gave.",
+    "c_err": "The message could not be sent. Please try again in a moment or write via LinkedIn.",
+    "c_privacy": "Your name, e-mail address and question are used only to answer you. The form is handled by the Web3Forms service.",
+    "c_subject": "GPW Radar: question from the contact form", "c_li": "LinkedIn", "c_li_text": "The site is run by Adam Roman. You can also write via LinkedIn.",
+    "c_li_btn": "LinkedIn profile", "c_only_li": "The form is in preparation. Until then, please write via LinkedIn.",
+})
 UI["pl"]["tabs"].update({"s_rep": "{n} Raport", "s_port": "Portfel {n}", "s_meth": "{n} Metodologia", "s_arch": "{n} Archiwum"})
 UI["en"]["tabs"].update({"s_rep": "{n} Report", "s_port": "{n} Portfolio", "s_meth": "{n} Methodology", "s_arch": "{n} Archive"})
 UI["pl"].update({
@@ -621,6 +669,7 @@ MENU = [
     ("menu", "swing", ["swing", "port-swing", "meth", "arch"]),
 ] + [("menu", _s["slug"], [f"rep-{_s['slug']}", f"port-{_s['slug']}", f"meth-{_s['slug']}", f"arch-{_s['slug']}"]) for _s in STRATS] + [
     ("link", "div"),
+    ("link", "contact"),
 ]
 NAV_ALIAS = {"darch": "div"}  # archiwum dywidend należy do zakładki Dywidendy (archiwum swing jest w menu Swing)
 
@@ -959,6 +1008,69 @@ def build_strategy(lang, strat):
     return latest
 
 
+# Kontakt: link do profilu LinkedIn i formularz pytań. Strona jest statyczna, więc wiadomości przekazuje usługa Web3Forms
+# (https://web3forms.com): klucz dostępu jest publiczny z założenia i wskazuje skrzynkę, na którą trafiają pytania.
+# Pusty klucz = strona pokazuje tylko link do LinkedIn. Ukryte pole „botcheck" to pułapka na boty.
+LINKEDIN = "https://www.linkedin.com/in/adam-roman-43137293/"
+WEB3FORMS_KEY = ""
+WEB3FORMS_URL = "https://api.web3forms.com/submit"
+LI_ICON = ('<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 '
+           '0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 '
+           '0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 '
+           '24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>')
+CONTACT_JS = """(function(){
+var f=document.getElementById("cform");if(!f||!window.fetch)return;
+var st=document.getElementById("cstatus"),b=f.querySelector("button");
+f.addEventListener("submit",function(e){
+e.preventDefault();
+var d={};new FormData(f).forEach(function(v,k){if(k!=="redirect")d[k]=v});
+b.disabled=true;st.className="cstatus";st.textContent=f.getAttribute("data-sending");
+fetch(f.action,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(d)})
+.then(function(r){return r.json()})
+.then(function(j){if(!j.success)throw new Error();f.reset();st.className="cstatus ok";st.textContent=f.getAttribute("data-ok")})
+.catch(function(){st.className="cstatus err";st.textContent=f.getAttribute("data-err")})
+.then(function(){b.disabled=false});
+});
+})();"""
+
+
+def contact_body(lang):
+    """Treść strony Kontakt. Z JS formularz wysyła się w tle i pokazuje wynik pod przyciskiem; bez JS przeglądarka
+    wysyła go zwykłym POST-em, a usługa odsyła na tę samą stronę z kotwicą #wyslano (blok .csent)."""
+    u = UI[lang]
+    e = lambda k: html.escape(u[k], quote=True)
+    li = (f'<section class="cbox"><h2>{e("c_li")}</h2>\n<p>{e("c_li_text")}</p>\n'
+          f'<a class="li-btn" href="{LINKEDIN}" target="_blank" rel="noopener me">{LI_ICON}{e("c_li_btn")}</a></section>')
+    if not WEB3FORMS_KEY:
+        return f'<h1>{e("c_title")}</h1>\n<p>{e("c_only_li")}</p>\n<div class="contact">{li}</div>\n'
+    back = canon(("" if lang == "pl" else "en/") + fname("contact", lang)) + "#wyslano"
+    form = (
+        f'<section class="cbox"><h2>{e("c_form")}</h2>\n'
+        f'<p class="cstatus ok csent" id="wyslano">{e("c_ok")}</p>\n'
+        f'<form class="cform" id="cform" action="{WEB3FORMS_URL}" method="POST" data-sending="{e("c_sending")}" data-ok="{e("c_ok")}" data-err="{e("c_err")}">\n'
+        f'<input type="hidden" name="access_key" value="{html.escape(WEB3FORMS_KEY, quote=True)}">\n'
+        f'<input type="hidden" name="subject" value="{e("c_subject")}">\n'
+        f'<input type="hidden" name="from_name" value="{BRAND}">\n'
+        f'<input type="hidden" name="redirect" value="{back}">\n'
+        '<input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">\n'
+        f'<label for="c-name">{e("c_name")}</label><input type="text" id="c-name" name="name" autocomplete="name" maxlength="100" required>\n'
+        f'<label for="c-email">{e("c_email")}</label><input type="email" id="c-email" name="email" autocomplete="email" maxlength="200" required>\n'
+        f'<label for="c-msg">{e("c_msg")}</label><textarea id="c-msg" name="message" maxlength="5000" required></textarea>\n'
+        f'<button type="submit">{e("c_send")}</button>\n'
+        '<p class="cstatus" id="cstatus" role="status" aria-live="polite"></p>\n'
+        f'<p class="cnote">{e("c_privacy")}</p>\n</form></section>')
+    return (f'<h1>{e("c_title")}</h1>\n<p>{e("c_lead")}</p>\n<div class="contact">{form}\n{li}</div>\n'
+            f'<script>{CONTACT_JS}</script>\n')
+
+
+def build_contact(lang):
+    u = UI[lang]
+    out_root = ROOT if lang == "pl" else ROOT / "en"
+    (out_root / fname("contact", lang)).write_text(
+        page(u["c_title"], contact_body(lang), lang, "contact", u["c_desc"], counter=(fname("contact", "pl"), fname("contact", "en"))),
+        encoding="utf-8")
+
+
 def write_site_files():
     """sitemap.xml (z hreflang), robots.txt, manifest.webmanifest i 404.html. Adres serwisu bierzemy z pliku CNAME."""
     import json
@@ -1042,6 +1154,7 @@ def main():
             mbody = banner + md_html(mp.read_text(encoding="utf-8"), ("tables", "sane_lists"))
             (out_root / fname("meth", lang)).write_text(
                 page(u["title_meth"], mbody, lang, "meth", u["desc_meth"], counter=(fname("meth", "pl"), fname("meth", "en"))), encoding="utf-8")
+        build_contact(lang)
         sv = {s["slug"]: build_strategy(lang, s) for s in STRATS}
         msg.append(f"{lang}: strategie " + ", ".join(f"{k} {v}" for k, v in sv.items()))
         msg.append(f"{lang}: newsy {len(md_files(NEWS))} (najnowszy {nw}); swing {len(report_files())} (najnowszy {sw})" + (f", dywidendy {len(md_files(DIVS))} (najnowszy {dv})" if dv else ""))

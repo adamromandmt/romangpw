@@ -16,9 +16,13 @@ Dzienny skaner swing GPW, publikowany na https://www.gpwradar.pl (GitHub Pages; 
 Ćwiczenie przesiewowe według zadanego frameworku, nie porada inwestycyjna.
 
 ## Menu w nagłówku
-- Układ: **Newsy dnia** · **Swing ▾** · **Kompas ▾** · **Pęd ▾** · **Złoty Środek ▾** · **Przystań ▾** · **Dryf ▾** · **Dywidendy**. Każda strategia rozwija się w tej samej kolejności: Raport, Portfel, Metodologia, Archiwum. Definicja w `MENU` w `build.py`, nazwy grup w `UI[lang]["groups"]`, style i skrypt rozwijania w `CSS` i `NAV_JS` (klik, najechanie, klawiatura, telefon; bez JS działa `:hover`/`:focus-within`).
+- Układ: **Newsy dnia** · **Swing ▾** · **Kompas ▾** · **Pęd ▾** · **Złoty Środek ▾** · **Przystań ▾** · **Dryf ▾** · **Dywidendy** · **Kontakt**. Każda strategia rozwija się w tej samej kolejności: Raport, Portfel, Metodologia, Archiwum. Definicja w `MENU` w `build.py`, nazwy grup w `UI[lang]["groups"]`, style i skrypt rozwijania w `CSS` i `NAV_JS` (klik, najechanie, klawiatura, telefon; bez JS działa `:hover`/`:focus-within`).
 - Menu pięciu strategii uzupełniających powstaje z rejestru `strat/registry.py` (`STRATEGIES`: slug, nazwa PL/EN, opis), więc nowa strategia z rejestru dostaje zakładkę, strony i wpisy w mapie strony bez zmian w `MENU`. Pozycja Portfel pojawia się w menu tylko wtedy, gdy istnieje `paper/<slug>/state.json` (lista `build.PORTS`). Archiwum dywidend podświetla zakładkę Dywidendy (`NAV_ALIAS`). `tests/test_nav.py` pilnuje kolejności i aktywnej zakładki.
 - Strategia swing (zakładka Swing) nie należy do rejestru: jej menu jest wpisane w `MENU` ręcznie.
+
+## Zakładka Kontakt
+- `kontakt.html` / `en/contact.html` — formularz do zadawania pytań i link do profilu LinkedIn (`build.contact_body`, stałe `LINKEDIN`, `WEB3FORMS_KEY` w `build.py`).
+- Strona jest statyczna, więc pytania przekazuje usługa Web3Forms na skrzynkę przypisaną do klucza dostępu (klucz jest publiczny z założenia). Pusty `WEB3FORMS_KEY` = strona pokazuje sam link do LinkedIn, bez formularza.
 
 ## Zakładka Newsy dnia
 - `NEWS-METHOD.md` — kryteria wyboru newsów (ocena istotności, język bez emocji, format); `newsy/sources.json` — źródła, progi i lista osób (edytowalne bez zmian w kodzie).

@@ -53,7 +53,7 @@ class NavTests(unittest.TestCase):
     def test_order_news_then_swing_then_strategies_then_dividends(self):
         nav = build.nav_html("swing", "pl", "")
         self.assertEqual(links(nav), ["newsy.html", "index.html", "portfel-swing.html", "metodologia-swing.html", "archiwum.html",
-                                      *strategy_links(SLUGS, "pl"), "dywidendy.html"])
+                                      *strategy_links(SLUGS, "pl"), "dywidendy.html", "kontakt.html"])
         # sześć rozwijanych menu (Swing i pięć strategii), pozycje leżą wewnątrz nich
         self.assertEqual(nav.count('<div class="dd'), 6)
         self.assertEqual(links(menu_of(nav, "swing")), ["index.html", "portfel-swing.html", "metodologia-swing.html", "archiwum.html"])
@@ -77,7 +77,8 @@ class NavTests(unittest.TestCase):
         self.assertEqual(re.findall(r">([^<]+)</a>", menu), ["Swing Report", "Swing Portfolio", "Swing Methodology", "Archive"])
         self.assertEqual(links(nav)[1], "index.html")
         self.assertIn("portfolio-swing.html", links(nav))
-        self.assertEqual(links(nav)[5:-1], strategy_links(SLUGS, "en"))
+        self.assertEqual(links(nav)[5:-2], strategy_links(SLUGS, "en"))
+        self.assertEqual(links(nav)[-2:], ["dividends.html", "contact.html"])
 
     def test_group_active_on_every_swing_page(self):
         for key in ("swing", "port-swing", "meth", "arch"):
@@ -119,6 +120,40 @@ class NavTests(unittest.TestCase):
         self.assertEqual([x for x in links(nav) if x.startswith("portfel-")], ["portfel-kompas.html"])
         self.assertEqual(links(menu_of(nav, "kompas")), strategy_links(["kompas"], "pl"))
         self.assertEqual(links(menu_of(nav, "ped")), ["ped.html", "metodologia-ped.html", "ped-archiwum.html"])
+
+
+class ContactTests(unittest.TestCase):
+    """Strona Kontakt: zakładka na końcu menu, link do LinkedIn zawsze, formularz tylko z kluczem usługi."""
+
+    def setUp(self):
+        self._key = build.WEB3FORMS_KEY
+
+    def tearDown(self):
+        build.WEB3FORMS_KEY = self._key
+
+    def test_contact_tab_is_last_and_active(self):
+        for lang, name, label in (("pl", "kontakt.html", "Kontakt"), ("en", "contact.html", "Contact")):
+            nav = build.nav_html("contact", lang, "")
+            self.assertEqual(links(nav)[-1], name)
+            self.assertIn(f'<a href="{name}" class="on" aria-current="page">{label}</a>', nav)
+
+    def test_linkedin_link_without_key_and_no_form(self):
+        build.WEB3FORMS_KEY = ""
+        for lang in ("pl", "en"):
+            body = build.contact_body(lang)
+            self.assertIn('href="https://www.linkedin.com/in/adam-roman-43137293/"', body)
+            self.assertNotIn("<form", body)
+
+    def test_form_with_key(self):
+        build.WEB3FORMS_KEY = "test-key"
+        for lang, back in (("pl", "/kontakt.html#wyslano"), ("en", "/en/contact.html#wyslano")):
+            body = build.contact_body(lang)
+            self.assertIn('action="https://api.web3forms.com/submit" method="POST"', body)
+            self.assertIn('name="access_key" value="test-key"', body)
+            self.assertIn(f'name="redirect" value="{build.SITE}{back}"', body)
+            for field in ('name="name"', 'name="email"', 'name="message"', 'name="botcheck"'):
+                self.assertIn(field, body)
+            self.assertIn('href="https://www.linkedin.com/in/adam-roman-43137293/"', body)
 
 
 if __name__ == "__main__":
