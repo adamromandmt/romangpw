@@ -178,11 +178,13 @@
  "repaired_bars": 0,
  "resolvable": 156,
  "rows_min": 74,
- "run_utc": "2026-11-10T18:56:22Z",
- "sessions_fetched_now": 3,
+ "run_utc": "2026-11-11T02:06:30Z",
+ "sessions_fetched_now": 1,
  "sessions_known": 263,
  "sessions_pending": 0,
- "sessions_without_file_now": [],
+ "sessions_without_file_now": [
+  "2026-11-11"
+ ],
  "short_history_under_200": [
   "KMP",
   "NWA",
