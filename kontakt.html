@@ -242,10 +242,39 @@ footer{color:var(--muted);font-size:13px;padding-top:26px;padding-bottom:44px;bo
 </header>
 <main id="main" tabindex="-1">
 <h1>Kontakt</h1>
-<p>Formularz jest w przygotowaniu. Do tego czasu napisz przez LinkedIn.</p>
-<div class="contact"><section class="cbox"><h2>LinkedIn</h2>
+<p>Masz pytanie o raporty, strategie albo działanie serwisu? Napisz przez formularz, odpowiem na podany adres e-mail.</p>
+<div class="contact"><section class="cbox"><h2>Zadaj pytanie</h2>
+<p class="cstatus ok csent" id="wyslano">Dziękuję, wiadomość została wysłana. Odpowiem na podany adres e-mail.</p>
+<form class="cform" id="cform" action="https://api.web3forms.com/submit" method="POST" data-sending="Wysyłanie…" data-ok="Dziękuję, wiadomość została wysłana. Odpowiem na podany adres e-mail." data-err="Nie udało się wysłać wiadomości. Spróbuj ponownie za chwilę albo napisz przez LinkedIn.">
+<input type="hidden" name="access_key" value="c4d3db4f-c3dc-4f11-9a1c-d79f16ef4a28">
+<input type="hidden" name="subject" value="GPW Radar: pytanie z formularza">
+<input type="hidden" name="from_name" value="GPW Radar">
+<input type="hidden" name="redirect" value="https://www.gpwradar.pl/kontakt.html#wyslano">
+<input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<label for="c-name">Imię</label><input type="text" id="c-name" name="name" autocomplete="name" maxlength="100" required>
+<label for="c-email">Twój e-mail</label><input type="email" id="c-email" name="email" autocomplete="email" maxlength="200" required>
+<label for="c-msg">Pytanie</label><textarea id="c-msg" name="message" maxlength="5000" required></textarea>
+<button type="submit">Wyślij</button>
+<p class="cstatus" id="cstatus" role="status" aria-live="polite"></p>
+<p class="cnote">Imię, adres e-mail i treść pytania służą wyłącznie do udzielenia odpowiedzi. Formularz obsługuje usługa Web3Forms.</p>
+</form></section>
+<section class="cbox"><h2>LinkedIn</h2>
 <p>Autorem serwisu jest Adam Roman. Możesz też napisać przez LinkedIn.</p>
 <a class="li-btn" href="https://www.linkedin.com/in/adam-roman-43137293/" target="_blank" rel="noopener me"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>Profil na LinkedIn</a></section></div>
+<script>(function(){
+var f=document.getElementById("cform");if(!f||!window.fetch)return;
+var st=document.getElementById("cstatus"),b=f.querySelector("button");
+f.addEventListener("submit",function(e){
+e.preventDefault();
+var d={};new FormData(f).forEach(function(v,k){if(k!=="redirect")d[k]=v});
+b.disabled=true;st.className="cstatus";st.textContent=f.getAttribute("data-sending");
+fetch(f.action,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(d)})
+.then(function(r){return r.json()})
+.then(function(j){if(!j.success)throw new Error();f.reset();st.className="cstatus ok";st.textContent=f.getAttribute("data-ok")})
+.catch(function(){st.className="cstatus err";st.textContent=f.getAttribute("data-err")})
+.then(function(){b.disabled=false});
+});
+})();</script>
 
 </main>
 <footer>Ćwiczenie przesiewowe według zadanego frameworku, nie porada inwestycyjna.<br>Dane z publicznych źródeł (m.in. biznesradar.pl, bankier.pl), mogą zawierać błędy lub opóźnienia. Raporty generowane automatycznie.</footer>
