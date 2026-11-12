@@ -139,6 +139,40 @@
    "valid_from": "2026-11-10",
    "expires": "2026-11-16",
    "checked_through": null
+  },
+  {
+   "id": 9,
+   "tic": "BDX",
+   "name": "Budimex",
+   "shares": 6,
+   "limit": 755.0,
+   "zone_lo": 740.0,
+   "stop": 720.0,
+   "c1": 790.0,
+   "c2": 814.0,
+   "score": 62.0,
+   "cls": "B",
+   "report": "2026-11-12",
+   "valid_from": "2026-11-12",
+   "expires": "2026-11-18",
+   "checked_through": null
+  },
+  {
+   "id": 10,
+   "tic": "PCO",
+   "name": "Pepco Group",
+   "shares": 102,
+   "limit": 48.9,
+   "zone_lo": 47.9,
+   "stop": 46.4,
+   "c1": 51.1,
+   "c2": 53.5,
+   "score": 60.0,
+   "cls": "B",
+   "report": "2026-11-12",
+   "valid_from": "2026-11-12",
+   "expires": "2026-11-18",
+   "checked_through": null
   }
  ],
  "positions": [],
@@ -225,7 +259,15 @@
   {
    "date": "2026-11-10",
    "text": "Zlecenie kupna ING: 10 szt., limit 472, stop 452, C1 490.8, C2 510 (suma 62, klasa B)"
+  },
+  {
+   "date": "2026-11-12",
+   "text": "Zlecenie kupna BDX: 6 szt., limit 755, stop 720, C1 790, C2 814 (suma 62, klasa B)"
+  },
+  {
+   "date": "2026-11-12",
+   "text": "Zlecenie kupna PCO: 102 szt., limit 48.9, stop 46.4, C1 51.1, C2 53.5 (suma 60, klasa B)"
   }
  ],
- "next_id": 9
+ "next_id": 11
 }
