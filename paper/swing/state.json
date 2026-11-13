@@ -18,8 +18,8 @@
   "partial_frac": 0.5
  },
  "start_date": "2026-11-06",
- "cash": 99942.87539999999,
- "processed_through": "2026-11-10",
+ "cash": 81379.02179999999,
+ "processed_through": "2026-11-12",
  "orders": [
   {
    "id": 1,
@@ -56,40 +56,6 @@
    "checked_through": null
   },
   {
-   "id": 4,
-   "tic": "PEO",
-   "name": "Bank Pekao",
-   "shares": 18,
-   "limit": 268.0,
-   "zone_lo": 263.0,
-   "stop": 257.5,
-   "c1": 279.0,
-   "c2": 286.0,
-   "score": 69.0,
-   "cls": "B",
-   "report": "2026-11-10",
-   "valid_from": "2026-11-10",
-   "expires": "2026-11-16",
-   "checked_through": null
-  },
-  {
-   "id": 5,
-   "tic": "PKO",
-   "name": "PKO BP",
-   "shares": 42,
-   "limit": 116.5,
-   "zone_lo": 114.5,
-   "stop": 112.5,
-   "c1": 121.0,
-   "c2": 125.5,
-   "score": 67.0,
-   "cls": "B",
-   "report": "2026-11-10",
-   "valid_from": "2026-11-10",
-   "expires": "2026-11-16",
-   "checked_through": null
-  },
-  {
    "id": 6,
    "tic": "PZU",
    "name": "PZU",
@@ -100,23 +66,6 @@
    "c1": 77.2,
    "c2": 79.5,
    "score": 65.0,
-   "cls": "B",
-   "report": "2026-11-10",
-   "valid_from": "2026-11-10",
-   "expires": "2026-11-16",
-   "checked_through": null
-  },
-  {
-   "id": 7,
-   "tic": "KTY",
-   "name": "Grupa Kęty",
-   "shares": 3,
-   "limit": 1282.0,
-   "zone_lo": 1262.0,
-   "stop": 1235.0,
-   "c1": 1317.0,
-   "c2": 1362.0,
-   "score": 63.0,
    "cls": "B",
    "report": "2026-11-10",
    "valid_from": "2026-11-10",
@@ -156,26 +105,94 @@
    "valid_from": "2026-11-12",
    "expires": "2026-11-18",
    "checked_through": null
+  }
+ ],
+ "positions": [
+  {
+   "tic": "PEO",
+   "name": "Bank Pekao",
+   "shares": 18,
+   "shares0": 18,
+   "entry": 268.0,
+   "entry_date": "2026-11-12",
+   "stop": 257.5,
+   "stop0": 257.5,
+   "c1": 279.0,
+   "c2": 286.0,
+   "c1_done": false,
+   "cost": 4833.648,
+   "realized": 0.0,
+   "legs": [],
+   "last_close": 268.5,
+   "last_date": "2026-11-12",
+   "score": 69.0,
+   "cls": "B",
+   "report": "2026-11-10"
   },
   {
-   "id": 10,
+   "tic": "PKO",
+   "name": "PKO BP",
+   "shares": 42,
+   "shares0": 42,
+   "entry": 116.5,
+   "entry_date": "2026-11-12",
+   "stop": 112.5,
+   "stop0": 112.5,
+   "c1": 121.0,
+   "c2": 125.5,
+   "c1_done": false,
+   "cost": 4902.786,
+   "realized": 0.0,
+   "legs": [],
+   "last_close": 117.9,
+   "last_date": "2026-11-12",
+   "score": 67.0,
+   "cls": "B",
+   "report": "2026-11-10"
+  },
+  {
+   "tic": "KTY",
+   "name": "Grupa Kęty",
+   "shares": 3,
+   "shares0": 3,
+   "entry": 1274.0,
+   "entry_date": "2026-11-12",
+   "stop": 1235.0,
+   "stop0": 1235.0,
+   "c1": 1317.0,
+   "c2": 1362.0,
+   "c1_done": false,
+   "cost": 3829.6440000000002,
+   "realized": 0.0,
+   "legs": [],
+   "last_close": 1317.0,
+   "last_date": "2026-11-12",
+   "score": 63.0,
+   "cls": "B",
+   "report": "2026-11-10"
+  },
+  {
    "tic": "PCO",
    "name": "Pepco Group",
    "shares": 102,
-   "limit": 48.9,
-   "zone_lo": 47.9,
+   "shares0": 102,
+   "entry": 48.9,
+   "entry_date": "2026-11-12",
    "stop": 46.4,
+   "stop0": 46.4,
    "c1": 51.1,
    "c2": 53.5,
+   "c1_done": false,
+   "cost": 4997.7756,
+   "realized": 0.0,
+   "legs": [],
+   "last_close": 49.7,
+   "last_date": "2026-11-12",
    "score": 60.0,
    "cls": "B",
-   "report": "2026-11-12",
-   "valid_from": "2026-11-12",
-   "expires": "2026-11-18",
-   "checked_through": null
+   "report": "2026-11-12"
   }
  ],
- "positions": [],
  "closed": [
   {
    "tic": "DNP",
@@ -217,6 +234,12 @@
    "equity": 99942.88,
    "cash": 99942.88,
    "invested": 0
+  },
+  {
+   "date": "2026-11-12",
+   "equity": 100184.22,
+   "cash": 81379.02,
+   "invested": 18805.2
   }
  ],
  "log": [
@@ -267,6 +290,22 @@
   {
    "date": "2026-11-12",
    "text": "Zlecenie kupna PCO: 102 szt., limit 48.9, stop 46.4, C1 51.1, C2 53.5 (suma 60, klasa B)"
+  },
+  {
+   "date": "2026-11-12",
+   "text": "Kupno PEO: 18 szt. po 268 (limit 268, stop 257.5)"
+  },
+  {
+   "date": "2026-11-12",
+   "text": "Kupno PKO: 42 szt. po 116.5 (limit 116.5, stop 112.5)"
+  },
+  {
+   "date": "2026-11-12",
+   "text": "Kupno KTY: 3 szt. po 1274 (limit 1282, stop 1235)"
+  },
+  {
+   "date": "2026-11-12",
+   "text": "Kupno PCO: 102 szt. po 48.9 (limit 48.9, stop 46.4)"
   }
  ],
  "next_id": 11
