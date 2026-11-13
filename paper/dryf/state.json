@@ -11,7 +11,7 @@
  },
  "start_date": "2026-11-06",
  "cash": 100000.0,
- "processed_through": "2026-11-10",
+ "processed_through": "2026-11-12",
  "pending": null,
  "orders": [],
  "positions": [],
@@ -37,6 +37,13 @@
    "cash": 100000.0,
    "invested": 0,
    "bench": 4208.46
+  },
+  {
+   "date": "2026-11-12",
+   "equity": 100000.0,
+   "cash": 100000.0,
+   "invested": 0,
+   "bench": 4279.5
   }
  ],
  "log": [],
