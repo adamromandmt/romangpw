@@ -296,7 +296,7 @@
 </url>
 <url>
 <loc>https://www.gpwradar.pl/en/news.html</loc>
-<lastmod>2026-11-13</lastmod>
+<lastmod>2026-11-16</lastmod>
 <xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/newsy.html"/>
 <xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/news.html"/>
 <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/newsy.html"/>
@@ -328,6 +328,13 @@
 <xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/newsy/2026-11-13.html"/>
 <xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/news/2026-11-13.html"/>
 <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/newsy/2026-11-13.html"/>
+</url>
+<url>
+<loc>https://www.gpwradar.pl/en/news/2026-11-16.html</loc>
+<lastmod>2026-11-16</lastmod>
+<xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/newsy/2026-11-16.html"/>
+<xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/news/2026-11-16.html"/>
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/newsy/2026-11-16.html"/>
 </url>
 <url>
 <loc>https://www.gpwradar.pl/en/portfolio-compass.html</loc>
@@ -492,7 +499,7 @@
 </url>
 <url>
 <loc>https://www.gpwradar.pl/newsy.html</loc>
-<lastmod>2026-11-13</lastmod>
+<lastmod>2026-11-16</lastmod>
 <xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/newsy.html"/>
 <xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/news.html"/>
 <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/newsy.html"/>
@@ -524,6 +531,13 @@
 <xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/newsy/2026-11-13.html"/>
 <xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/news/2026-11-13.html"/>
 <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/newsy/2026-11-13.html"/>
+</url>
+<url>
+<loc>https://www.gpwradar.pl/newsy/2026-11-16.html</loc>
+<lastmod>2026-11-16</lastmod>
+<xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/newsy/2026-11-16.html"/>
+<xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/news/2026-11-16.html"/>
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/newsy/2026-11-16.html"/>
 </url>
 <url>
 <loc>https://www.gpwradar.pl/ped-archiwum.html</loc>
