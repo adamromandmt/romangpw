@@ -18,8 +18,8 @@
   "partial_frac": 0.5
  },
  "start_date": "2026-11-06",
- "cash": 81379.02179999999,
- "processed_through": "2026-11-12",
+ "cash": 82693.38779999998,
+ "processed_through": "2026-11-13",
  "orders": [
   {
    "id": 1,
@@ -105,6 +105,23 @@
    "valid_from": "2026-11-12",
    "expires": "2026-11-18",
    "checked_through": null
+  },
+  {
+   "id": 11,
+   "tic": "DNP",
+   "name": "Dino Polska",
+   "shares": 129,
+   "limit": 38.6,
+   "zone_lo": 37.6,
+   "stop": 36.0,
+   "c1": 40.2,
+   "c2": 42.6,
+   "score": 60.0,
+   "cls": "B",
+   "report": "2026-11-16",
+   "valid_from": "2026-11-16",
+   "expires": "2026-11-22",
+   "checked_through": null
   }
  ],
  "positions": [
@@ -123,8 +140,8 @@
    "cost": 4833.648,
    "realized": 0.0,
    "legs": [],
-   "last_close": 268.5,
-   "last_date": "2026-11-12",
+   "last_close": 267.1,
+   "last_date": "2026-11-13",
    "score": 69.0,
    "cls": "B",
    "report": "2026-11-10"
@@ -144,8 +161,8 @@
    "cost": 4902.786,
    "realized": 0.0,
    "legs": [],
-   "last_close": 117.9,
-   "last_date": "2026-11-12",
+   "last_close": 119.9,
+   "last_date": "2026-11-13",
    "score": 67.0,
    "cls": "B",
    "report": "2026-11-10"
@@ -153,20 +170,27 @@
   {
    "tic": "KTY",
    "name": "Grupa Kęty",
-   "shares": 3,
+   "shares": 2,
    "shares0": 3,
    "entry": 1274.0,
    "entry_date": "2026-11-12",
-   "stop": 1235.0,
+   "stop": 1274.0,
    "stop0": 1235.0,
    "c1": 1317.0,
    "c2": 1362.0,
-   "c1_done": false,
+   "c1_done": true,
    "cost": 3829.6440000000002,
-   "realized": 0.0,
-   "legs": [],
-   "last_close": 1317.0,
-   "last_date": "2026-11-12",
+   "realized": 1314.366,
+   "legs": [
+    {
+     "date": "2026-11-13",
+     "qty": 1,
+     "price": 1317.0,
+     "reason": "cel 1"
+    }
+   ],
+   "last_close": 1337.0,
+   "last_date": "2026-11-13",
    "score": 63.0,
    "cls": "B",
    "report": "2026-11-10"
@@ -186,8 +210,8 @@
    "cost": 4997.7756,
    "realized": 0.0,
    "legs": [],
-   "last_close": 49.7,
-   "last_date": "2026-11-12",
+   "last_close": 50.92,
+   "last_date": "2026-11-13",
    "score": 60.0,
    "cls": "B",
    "report": "2026-11-12"
@@ -240,6 +264,12 @@
    "equity": 100184.22,
    "cash": 81379.02,
    "invested": 18805.2
+  },
+  {
+   "date": "2026-11-13",
+   "equity": 100404.83,
+   "cash": 82693.39,
+   "invested": 17711.44
   }
  ],
  "log": [
@@ -306,7 +336,15 @@
   {
    "date": "2026-11-12",
    "text": "Kupno PCO: 102 szt. po 48.9 (limit 48.9, stop 46.4)"
+  },
+  {
+   "date": "2026-11-13",
+   "text": "Sprzedaż KTY: 1 szt. po 1317 (cel 1)"
+  },
+  {
+   "date": "2026-11-16",
+   "text": "Zlecenie kupna DNP: 129 szt., limit 38.6, stop 36, C1 40.2, C2 42.6 (suma 60, klasa B)"
   }
  ],
- "next_id": 11
+ "next_id": 12
 }
