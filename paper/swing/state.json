@@ -18,43 +18,9 @@
   "partial_frac": 0.5
  },
  "start_date": "2026-11-06",
- "cash": 82693.38779999998,
- "processed_through": "2026-11-13",
+ "cash": 78301.77479999998,
+ "processed_through": "2026-11-16",
  "orders": [
-  {
-   "id": 1,
-   "tic": "MBK",
-   "name": "mBank",
-   "shares": 3,
-   "limit": 1575.0,
-   "zone_lo": 1525.0,
-   "stop": 1470.0,
-   "c1": 1700.0,
-   "c2": 1800.0,
-   "score": 69.0,
-   "cls": "B",
-   "report": "2026-11-06",
-   "valid_from": "2026-11-09",
-   "expires": "2026-11-15",
-   "checked_through": null
-  },
-  {
-   "id": 2,
-   "tic": "CDR",
-   "name": "CD Projekt",
-   "shares": 19,
-   "limit": 262.0,
-   "zone_lo": 258.0,
-   "stop": 248.5,
-   "c1": 272.9,
-   "c2": 285.0,
-   "score": 62.0,
-   "cls": "B",
-   "report": "2026-11-06",
-   "valid_from": "2026-11-09",
-   "expires": "2026-11-15",
-   "checked_through": null
-  },
   {
    "id": 6,
    "tic": "PZU",
@@ -88,40 +54,6 @@
    "valid_from": "2026-11-10",
    "expires": "2026-11-16",
    "checked_through": null
-  },
-  {
-   "id": 9,
-   "tic": "BDX",
-   "name": "Budimex",
-   "shares": 6,
-   "limit": 755.0,
-   "zone_lo": 740.0,
-   "stop": 720.0,
-   "c1": 790.0,
-   "c2": 814.0,
-   "score": 62.0,
-   "cls": "B",
-   "report": "2026-11-12",
-   "valid_from": "2026-11-12",
-   "expires": "2026-11-18",
-   "checked_through": null
-  },
-  {
-   "id": 11,
-   "tic": "DNP",
-   "name": "Dino Polska",
-   "shares": 129,
-   "limit": 38.6,
-   "zone_lo": 37.6,
-   "stop": 36.0,
-   "c1": 40.2,
-   "c2": 42.6,
-   "score": 60.0,
-   "cls": "B",
-   "report": "2026-11-16",
-   "valid_from": "2026-11-16",
-   "expires": "2026-11-22",
-   "checked_through": null
   }
  ],
  "positions": [
@@ -140,8 +72,8 @@
    "cost": 4833.648,
    "realized": 0.0,
    "legs": [],
-   "last_close": 267.1,
-   "last_date": "2026-11-13",
+   "last_close": 271.3,
+   "last_date": "2026-11-16",
    "score": 69.0,
    "cls": "B",
    "report": "2026-11-10"
@@ -149,20 +81,27 @@
   {
    "tic": "PKO",
    "name": "PKO BP",
-   "shares": 42,
+   "shares": 21,
    "shares0": 42,
    "entry": 116.5,
    "entry_date": "2026-11-12",
-   "stop": 112.5,
+   "stop": 116.5,
    "stop0": 112.5,
    "c1": 121.0,
    "c2": 125.5,
-   "c1_done": false,
+   "c1_done": true,
    "cost": 4902.786,
-   "realized": 0.0,
-   "legs": [],
-   "last_close": 119.9,
-   "last_date": "2026-11-13",
+   "realized": 2535.918,
+   "legs": [
+    {
+     "date": "2026-11-16",
+     "qty": 21,
+     "price": 121.0,
+     "reason": "cel 1"
+    }
+   ],
+   "last_close": 120.32,
+   "last_date": "2026-11-16",
    "score": 67.0,
    "cls": "B",
    "report": "2026-11-10"
@@ -189,8 +128,8 @@
      "reason": "cel 1"
     }
    ],
-   "last_close": 1337.0,
-   "last_date": "2026-11-13",
+   "last_close": 1316.0,
+   "last_date": "2026-11-16",
    "score": 63.0,
    "cls": "B",
    "report": "2026-11-10"
@@ -198,23 +137,72 @@
   {
    "tic": "PCO",
    "name": "Pepco Group",
-   "shares": 102,
+   "shares": 51,
    "shares0": 102,
    "entry": 48.9,
    "entry_date": "2026-11-12",
-   "stop": 46.4,
+   "stop": 48.9,
    "stop0": 46.4,
    "c1": 51.1,
    "c2": 53.5,
-   "c1_done": false,
+   "c1_done": true,
    "cost": 4997.7756,
-   "realized": 0.0,
-   "legs": [],
-   "last_close": 50.92,
-   "last_date": "2026-11-13",
+   "realized": 2600.8878,
+   "legs": [
+    {
+     "date": "2026-11-16",
+     "qty": 51,
+     "price": 51.1,
+     "reason": "cel 1"
+    }
+   ],
+   "last_close": 51.08,
+   "last_date": "2026-11-16",
    "score": 60.0,
    "cls": "B",
    "report": "2026-11-12"
+  },
+  {
+   "tic": "BDX",
+   "name": "Budimex",
+   "shares": 6,
+   "shares0": 6,
+   "entry": 755.0,
+   "entry_date": "2026-11-16",
+   "stop": 720.0,
+   "stop0": 720.0,
+   "c1": 790.0,
+   "c2": 814.0,
+   "c1_done": false,
+   "cost": 4539.06,
+   "realized": 0.0,
+   "legs": [],
+   "last_close": 766.4,
+   "last_date": "2026-11-16",
+   "score": 62.0,
+   "cls": "B",
+   "report": "2026-11-12"
+  },
+  {
+   "tic": "DNP",
+   "name": "Dino Polska",
+   "shares": 129,
+   "shares0": 129,
+   "entry": 38.6,
+   "entry_date": "2026-11-16",
+   "stop": 36.0,
+   "stop0": 36.0,
+   "c1": 40.2,
+   "c2": 42.6,
+   "c1_done": false,
+   "cost": 4989.358800000001,
+   "realized": 0.0,
+   "legs": [],
+   "last_close": 38.61,
+   "last_date": "2026-11-16",
+   "score": 60.0,
+   "cls": "B",
+   "report": "2026-11-16"
   }
  ],
  "closed": [
@@ -270,6 +258,12 @@
    "equity": 100404.83,
    "cash": 82693.39,
    "invested": 17711.44
+  },
+  {
+   "date": "2026-11-16",
+   "equity": 100528.06,
+   "cash": 78301.77,
+   "invested": 22226.29
   }
  ],
  "log": [
@@ -344,6 +338,30 @@
   {
    "date": "2026-11-16",
    "text": "Zlecenie kupna DNP: 129 szt., limit 38.6, stop 36, C1 40.2, C2 42.6 (suma 60, klasa B)"
+  },
+  {
+   "date": "2026-11-16",
+   "text": "Sprzedaż PKO: 21 szt. po 121 (cel 1)"
+  },
+  {
+   "date": "2026-11-16",
+   "text": "Sprzedaż PCO: 51 szt. po 51.1 (cel 1)"
+  },
+  {
+   "date": "2026-11-16",
+   "text": "Kupno BDX: 6 szt. po 755 (limit 755, stop 720)"
+  },
+  {
+   "date": "2026-11-16",
+   "text": "Kupno DNP: 129 szt. po 38.6 (limit 38.6, stop 36)"
+  },
+  {
+   "date": "2026-11-16",
+   "text": "Zlecenie MBK wygasło bez realizacji (limit 1575)"
+  },
+  {
+   "date": "2026-11-16",
+   "text": "Zlecenie CDR wygasło bez realizacji (limit 262)"
   }
  ],
  "next_id": 12
