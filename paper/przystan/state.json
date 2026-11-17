@@ -11,7 +11,7 @@
  },
  "start_date": "2026-11-06",
  "cash": 652.802199999991,
- "processed_through": "2026-11-13",
+ "processed_through": "2026-11-16",
  "pending": null,
  "orders": [],
  "positions": [
@@ -22,8 +22,8 @@
    "entry": 60.9,
    "entry_date": "2026-11-09",
    "cost": 9031.2264,
-   "last_close": 61.0,
-   "last_date": "2026-11-13",
+   "last_close": 60.7,
+   "last_date": "2026-11-16",
    "divs": 0.0,
    "stop": null,
    "sector": "deweloperzy"
@@ -35,8 +35,8 @@
    "entry": 73.0,
    "entry_date": "2026-11-09",
    "cost": 9070.104,
-   "last_close": 75.6,
-   "last_date": "2026-11-13",
+   "last_close": 75.96,
+   "last_date": "2026-11-16",
    "divs": 0.0,
    "stop": null,
    "sector": "fin"
@@ -48,8 +48,8 @@
    "entry": 123.0,
    "entry_date": "2026-11-09",
    "cost": 8996.958,
-   "last_close": 126.4,
-   "last_date": "2026-11-13",
+   "last_close": 128.6,
+   "last_date": "2026-11-16",
    "divs": 0.0,
    "stop": null,
    "sector": "banki"
@@ -61,8 +61,8 @@
    "entry": 411.0,
    "entry_date": "2026-11-09",
    "cost": 9060.084,
-   "last_close": 430.0,
-   "last_date": "2026-11-13",
+   "last_close": 423.0,
+   "last_date": "2026-11-16",
    "divs": 0.0,
    "stop": null,
    "sector": "budownictwo"
@@ -74,8 +74,8 @@
    "entry": 28.0,
    "entry_date": "2026-11-09",
    "cost": 9090.144,
-   "last_close": 28.8,
-   "last_date": "2026-11-13",
+   "last_close": 29.2,
+   "last_date": "2026-11-16",
    "divs": 0.0,
    "stop": null,
    "sector": "przemysl"
@@ -87,8 +87,8 @@
    "entry": 253.0,
    "entry_date": "2026-11-09",
    "cost": 8872.71,
-   "last_close": 246.0,
-   "last_date": "2026-11-13",
+   "last_close": 241.0,
+   "last_date": "2026-11-16",
    "divs": 0.0,
    "stop": null,
    "sector": "gry"
@@ -100,8 +100,8 @@
    "entry": 242.0,
    "entry_date": "2026-11-09",
    "cost": 8971.908,
-   "last_close": 250.0,
-   "last_date": "2026-11-13",
+   "last_close": 250.5,
+   "last_date": "2026-11-16",
    "divs": 0.0,
    "stop": null,
    "sector": "deweloperzy"
@@ -113,8 +113,8 @@
    "entry": 63.2,
    "entry_date": "2026-11-09",
    "cost": 9055.6752,
-   "last_close": 62.0,
-   "last_date": "2026-11-13",
+   "last_close": 61.8,
+   "last_date": "2026-11-16",
    "divs": 0.0,
    "stop": null,
    "sector": "chemia"
@@ -126,8 +126,8 @@
    "entry": 38.5,
    "entry_date": "2026-11-09",
    "cost": 9065.595,
-   "last_close": 39.3,
-   "last_date": "2026-11-13",
+   "last_close": 38.95,
+   "last_date": "2026-11-16",
    "divs": 0.0,
    "stop": null,
    "sector": "fin"
@@ -139,8 +139,8 @@
    "entry": 101.4,
    "entry_date": "2026-11-09",
    "cost": 9042.6492,
-   "last_close": 103.4,
-   "last_date": "2026-11-13",
+   "last_close": 102.2,
+   "last_date": "2026-11-16",
    "divs": 0.0,
    "stop": null,
    "sector": "handel"
@@ -152,8 +152,8 @@
    "entry": 8.0,
    "entry_date": "2026-11-09",
    "cost": 9090.144,
-   "last_close": 8.4,
-   "last_date": "2026-11-13",
+   "last_close": 8.25,
+   "last_date": "2026-11-16",
    "divs": 0.0,
    "stop": null,
    "sector": "deweloperzy"
@@ -195,6 +195,13 @@
    "cash": 652.8,
    "invested": 101110.5,
    "bench": 4298.46
+  },
+  {
+   "date": "2026-11-16",
+   "equity": 101355.49,
+   "cash": 652.8,
+   "invested": 100702.69,
+   "bench": 4302.04
   }
  ],
  "log": [
