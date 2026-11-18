@@ -19,43 +19,8 @@
  },
  "start_date": "2026-11-06",
  "cash": 78301.77479999998,
- "processed_through": "2026-11-16",
- "orders": [
-  {
-   "id": 6,
-   "tic": "PZU",
-   "name": "PZU",
-   "shares": 67,
-   "limit": 74.2,
-   "zone_lo": 73.2,
-   "stop": 72.3,
-   "c1": 77.2,
-   "c2": 79.5,
-   "score": 65.0,
-   "cls": "B",
-   "report": "2026-11-10",
-   "valid_from": "2026-11-10",
-   "expires": "2026-11-16",
-   "checked_through": null
-  },
-  {
-   "id": 8,
-   "tic": "ING",
-   "name": "ING Bank Śląski",
-   "shares": 10,
-   "limit": 472.0,
-   "zone_lo": 462.0,
-   "stop": 452.0,
-   "c1": 490.8,
-   "c2": 510.0,
-   "score": 62.0,
-   "cls": "B",
-   "report": "2026-11-10",
-   "valid_from": "2026-11-10",
-   "expires": "2026-11-16",
-   "checked_through": null
-  }
- ],
+ "processed_through": "2026-11-17",
+ "orders": [],
  "positions": [
   {
    "tic": "PEO",
@@ -72,8 +37,8 @@
    "cost": 4833.648,
    "realized": 0.0,
    "legs": [],
-   "last_close": 271.3,
-   "last_date": "2026-11-16",
+   "last_close": 266.7,
+   "last_date": "2026-11-17",
    "score": 69.0,
    "cls": "B",
    "report": "2026-11-10"
@@ -100,8 +65,8 @@
      "reason": "cel 1"
     }
    ],
-   "last_close": 120.32,
-   "last_date": "2026-11-16",
+   "last_close": 119.0,
+   "last_date": "2026-11-17",
    "score": 67.0,
    "cls": "B",
    "report": "2026-11-10"
@@ -128,8 +93,8 @@
      "reason": "cel 1"
     }
    ],
-   "last_close": 1316.0,
-   "last_date": "2026-11-16",
+   "last_close": 1298.0,
+   "last_date": "2026-11-17",
    "score": 63.0,
    "cls": "B",
    "report": "2026-11-10"
@@ -157,7 +122,7 @@
     }
    ],
    "last_close": 51.08,
-   "last_date": "2026-11-16",
+   "last_date": "2026-11-17",
    "score": 60.0,
    "cls": "B",
    "report": "2026-11-12"
@@ -177,8 +142,8 @@
    "cost": 4539.06,
    "realized": 0.0,
    "legs": [],
-   "last_close": 766.4,
-   "last_date": "2026-11-16",
+   "last_close": 768.0,
+   "last_date": "2026-11-17",
    "score": 62.0,
    "cls": "B",
    "report": "2026-11-12"
@@ -198,8 +163,8 @@
    "cost": 4989.358800000001,
    "realized": 0.0,
    "legs": [],
-   "last_close": 38.61,
-   "last_date": "2026-11-16",
+   "last_close": 37.1,
+   "last_date": "2026-11-17",
    "score": 60.0,
    "cls": "B",
    "report": "2026-11-16"
@@ -264,6 +229,12 @@
    "equity": 100528.06,
    "cash": 78301.77,
    "invested": 22226.29
+  },
+  {
+   "date": "2026-11-17",
+   "equity": 100196.35,
+   "cash": 78301.77,
+   "invested": 21894.58
   }
  ],
  "log": [
@@ -362,6 +333,14 @@
   {
    "date": "2026-11-16",
    "text": "Zlecenie CDR wygasło bez realizacji (limit 262)"
+  },
+  {
+   "date": "2026-11-17",
+   "text": "Zlecenie PZU wygasło bez realizacji (limit 74.2)"
+  },
+  {
+   "date": "2026-11-17",
+   "text": "Zlecenie ING wygasło bez realizacji (limit 472)"
   }
  ],
  "next_id": 12
