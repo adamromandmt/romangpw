@@ -11,7 +11,7 @@
  },
  "start_date": "2026-11-06",
  "cash": 0.3600191979930969,
- "processed_through": "2026-11-17",
+ "processed_through": "2026-11-18",
  "pending": null,
  "orders": [],
  "positions": [
@@ -22,8 +22,8 @@
    "entry": 4140.17,
    "entry_date": "2026-11-09",
    "cost": 99999.639980802,
-   "last_close": 4252.28,
-   "last_date": "2026-11-17",
+   "last_close": 4226.28,
+   "last_date": "2026-11-18",
    "divs": 0.0,
    "stop": null,
    "sector": null
@@ -79,6 +79,13 @@
    "cash": 0.36,
    "invested": 102502.49,
    "bench": 4252.28
+  },
+  {
+   "date": "2026-11-18",
+   "equity": 101876.11,
+   "cash": 0.36,
+   "invested": 101875.75,
+   "bench": 4226.28
   }
  ],
  "log": [
