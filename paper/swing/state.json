@@ -18,8 +18,8 @@
   "partial_frac": 0.5
  },
  "start_date": "2026-11-06",
- "cash": 78301.77479999998,
- "processed_through": "2026-11-17",
+ "cash": 80844.67879999998,
+ "processed_through": "2026-11-18",
  "orders": [],
  "positions": [
   {
@@ -37,8 +37,8 @@
    "cost": 4833.648,
    "realized": 0.0,
    "legs": [],
-   "last_close": 266.7,
-   "last_date": "2026-11-17",
+   "last_close": 263.3,
+   "last_date": "2026-11-18",
    "score": 69.0,
    "cls": "B",
    "report": "2026-11-10"
@@ -65,37 +65,9 @@
      "reason": "cel 1"
     }
    ],
-   "last_close": 119.0,
-   "last_date": "2026-11-17",
+   "last_close": 117.96,
+   "last_date": "2026-11-18",
    "score": 67.0,
-   "cls": "B",
-   "report": "2026-11-10"
-  },
-  {
-   "tic": "KTY",
-   "name": "Grupa Kęty",
-   "shares": 2,
-   "shares0": 3,
-   "entry": 1274.0,
-   "entry_date": "2026-11-12",
-   "stop": 1274.0,
-   "stop0": 1235.0,
-   "c1": 1317.0,
-   "c2": 1362.0,
-   "c1_done": true,
-   "cost": 3829.6440000000002,
-   "realized": 1314.366,
-   "legs": [
-    {
-     "date": "2026-11-13",
-     "qty": 1,
-     "price": 1317.0,
-     "reason": "cel 1"
-    }
-   ],
-   "last_close": 1298.0,
-   "last_date": "2026-11-17",
-   "score": 63.0,
    "cls": "B",
    "report": "2026-11-10"
   },
@@ -121,8 +93,8 @@
      "reason": "cel 1"
     }
    ],
-   "last_close": 51.08,
-   "last_date": "2026-11-17",
+   "last_close": 51.0,
+   "last_date": "2026-11-18",
    "score": 60.0,
    "cls": "B",
    "report": "2026-11-12"
@@ -142,8 +114,8 @@
    "cost": 4539.06,
    "realized": 0.0,
    "legs": [],
-   "last_close": 768.0,
-   "last_date": "2026-11-17",
+   "last_close": 751.0,
+   "last_date": "2026-11-18",
    "score": 62.0,
    "cls": "B",
    "report": "2026-11-12"
@@ -163,8 +135,8 @@
    "cost": 4989.358800000001,
    "realized": 0.0,
    "legs": [],
-   "last_close": 37.1,
-   "last_date": "2026-11-17",
+   "last_close": 37.34,
+   "last_date": "2026-11-18",
    "score": 60.0,
    "cls": "B",
    "report": "2026-11-16"
@@ -197,6 +169,39 @@
    "score": 61.0,
    "cls": "B",
    "report": "2026-11-06"
+  },
+  {
+   "tic": "KTY",
+   "name": "Grupa Kęty",
+   "shares": 3,
+   "entry": 1274.0,
+   "entry_date": "2026-11-12",
+   "exit_date": "2026-11-18",
+   "exit_reason": "stop na wejściu",
+   "stop0": 1235.0,
+   "c1": 1317.0,
+   "c2": 1362.0,
+   "pnl": 27.63,
+   "pnl_pct": 0.72,
+   "r": 0.24,
+   "days": 6,
+   "legs": [
+    {
+     "date": "2026-11-13",
+     "qty": 1,
+     "price": 1317.0,
+     "reason": "cel 1"
+    },
+    {
+     "date": "2026-11-18",
+     "qty": 2,
+     "price": 1274.0,
+     "reason": "stop na wejściu"
+    }
+   ],
+   "score": 63.0,
+   "cls": "B",
+   "report": "2026-11-10"
   }
  ],
  "equity": [
@@ -235,6 +240,12 @@
    "equity": 100196.35,
    "cash": 78301.77,
    "invested": 21894.58
+  },
+  {
+   "date": "2026-11-18",
+   "equity": 99985.1,
+   "cash": 80844.68,
+   "invested": 19140.42
   }
  ],
  "log": [
@@ -341,6 +352,10 @@
   {
    "date": "2026-11-17",
    "text": "Zlecenie ING wygasło bez realizacji (limit 472)"
+  },
+  {
+   "date": "2026-11-18",
+   "text": "Sprzedaż KTY: 2 szt. po 1274 (stop na wejściu)"
   }
  ],
  "next_id": 12

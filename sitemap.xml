@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 <url>
 <loc>https://www.gpwradar.pl/</loc>
-<lastmod>2026-11-18</lastmod>
+<lastmod>2026-11-19</lastmod>
 <xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/"/>
 <xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/"/>
 <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/"/>
 </url>
 <url>
 <loc>https://www.gpwradar.pl/archiwum.html</loc>
-<lastmod>2026-11-18</lastmod>
+<lastmod>2026-11-19</lastmod>
 <xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/archiwum.html"/>
 <xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/archive.html"/>
 <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/archiwum.html"/>
@@ -107,14 +107,14 @@
 </url>
 <url>
 <loc>https://www.gpwradar.pl/en/</loc>
-<lastmod>2026-11-18</lastmod>
+<lastmod>2026-11-19</lastmod>
 <xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/"/>
 <xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/"/>
 <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/"/>
 </url>
 <url>
 <loc>https://www.gpwradar.pl/en/archive.html</loc>
-<lastmod>2026-11-18</lastmod>
+<lastmod>2026-11-19</lastmod>
 <xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/archiwum.html"/>
 <xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/archive.html"/>
 <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/archiwum.html"/>
@@ -429,7 +429,7 @@
 </url>
 <url>
 <loc>https://www.gpwradar.pl/en/portfolio-swing.html</loc>
-<lastmod>2026-11-17</lastmod>
+<lastmod>2026-11-18</lastmod>
 <xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/portfel-swing.html"/>
 <xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/portfolio-swing.html"/>
 <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/portfel-swing.html"/>
@@ -503,6 +503,13 @@
 <xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/reports/2026-11-18.html"/>
 <xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/reports/2026-11-18.html"/>
 <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/reports/2026-11-18.html"/>
+</url>
+<url>
+<loc>https://www.gpwradar.pl/en/reports/2026-11-19.html</loc>
+<lastmod>2026-11-19</lastmod>
+<xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/reports/2026-11-19.html"/>
+<xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/reports/2026-11-19.html"/>
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/reports/2026-11-19.html"/>
 </url>
 <url>
 <loc>https://www.gpwradar.pl/kompas-archiwum.html</loc>
@@ -674,7 +681,7 @@
 </url>
 <url>
 <loc>https://www.gpwradar.pl/portfel-swing.html</loc>
-<lastmod>2026-11-17</lastmod>
+<lastmod>2026-11-18</lastmod>
 <xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/portfel-swing.html"/>
 <xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/portfolio-swing.html"/>
 <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/portfel-swing.html"/>
@@ -776,6 +783,13 @@
 <xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/reports/2026-11-18.html"/>
 <xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/reports/2026-11-18.html"/>
 <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/reports/2026-11-18.html"/>
+</url>
+<url>
+<loc>https://www.gpwradar.pl/reports/2026-11-19.html</loc>
+<lastmod>2026-11-19</lastmod>
+<xhtml:link rel="alternate" hreflang="pl" href="https://www.gpwradar.pl/reports/2026-11-19.html"/>
+<xhtml:link rel="alternate" hreflang="en" href="https://www.gpwradar.pl/en/reports/2026-11-19.html"/>
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.gpwradar.pl/reports/2026-11-19.html"/>
 </url>
 <url>
 <loc>https://www.gpwradar.pl/zloty-srodek-archiwum.html</loc>
