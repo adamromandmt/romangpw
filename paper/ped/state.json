@@ -11,7 +11,7 @@
  },
  "start_date": "2026-11-06",
  "cash": 4581.9699200000105,
- "processed_through": "2026-11-19",
+ "processed_through": "2026-11-20",
  "pending": null,
  "orders": [],
  "positions": [
@@ -22,8 +22,8 @@
    "entry": 155.0,
    "entry_date": "2026-11-09",
    "cost": 8231.43,
-   "last_close": 167.1,
-   "last_date": "2026-11-19",
+   "last_close": 148.6,
+   "last_date": "2026-11-20",
    "divs": 72.61,
    "stop": null,
    "sector": "it"
@@ -35,8 +35,8 @@
    "entry": 296.2,
    "entry_date": "2026-11-09",
    "cost": 8310.1872,
-   "last_close": 284.0,
-   "last_date": "2026-11-19",
+   "last_close": 271.0,
+   "last_date": "2026-11-20",
    "divs": 0.0,
    "stop": null,
    "sector": "uslugi"
@@ -48,8 +48,8 @@
    "entry": 133.8,
    "entry_date": "2026-11-09",
    "cost": 8312.1912,
-   "last_close": 113.66,
-   "last_date": "2026-11-19",
+   "last_close": 109.9,
+   "last_date": "2026-11-20",
    "divs": 0.0,
    "stop": null,
    "sector": "fin"
@@ -61,8 +61,8 @@
    "entry": 6115.0,
    "entry_date": "2026-11-09",
    "cost": 6127.23,
-   "last_close": 5905.0,
-   "last_date": "2026-11-19",
+   "last_close": 6250.0,
+   "last_date": "2026-11-20",
    "divs": 0.0,
    "stop": null,
    "sector": "uslugi"
@@ -74,8 +74,8 @@
    "entry": 28.0,
    "entry_date": "2026-11-09",
    "cost": 8332.632,
-   "last_close": 28.5,
-   "last_date": "2026-11-19",
+   "last_close": 27.6,
+   "last_date": "2026-11-20",
    "divs": 0.0,
    "stop": null,
    "sector": "motoryzacja"
@@ -87,8 +87,8 @@
    "entry": 789.8,
    "entry_date": "2026-11-09",
    "cost": 7913.796,
-   "last_close": 802.4,
-   "last_date": "2026-11-19",
+   "last_close": 768.2,
+   "last_date": "2026-11-20",
    "divs": 0.0,
    "stop": null,
    "sector": "banki"
@@ -100,8 +100,8 @@
    "entry": 1072.0,
    "entry_date": "2026-11-09",
    "cost": 7519.008,
-   "last_close": 1082.0,
-   "last_date": "2026-11-19",
+   "last_close": 1040.0,
+   "last_date": "2026-11-20",
    "divs": 0.0,
    "stop": null,
    "sector": "motoryzacja"
@@ -113,8 +113,8 @@
    "entry": 114.7,
    "entry_date": "2026-11-09",
    "cost": 8274.9168,
-   "last_close": 117.54,
-   "last_date": "2026-11-19",
+   "last_close": 109.48,
+   "last_date": "2026-11-20",
    "divs": 0.0,
    "stop": null,
    "sector": "banki"
@@ -126,8 +126,8 @@
    "entry": 16.5,
    "entry_date": "2026-11-09",
    "cost": 8332.632000000001,
-   "last_close": 16.525,
-   "last_date": "2026-11-19",
+   "last_close": 16.49,
+   "last_date": "2026-11-20",
    "divs": 0.0,
    "stop": null,
    "sector": "media"
@@ -139,8 +139,8 @@
    "entry": 48.27,
    "entry_date": "2026-11-09",
    "cost": 8319.04488,
-   "last_close": 52.06,
-   "last_date": "2026-11-19",
+   "last_close": 51.98,
+   "last_date": "2026-11-20",
    "divs": 0.0,
    "stop": null,
    "sector": "handel"
@@ -152,8 +152,8 @@
    "entry": 60.0,
    "entry_date": "2026-11-09",
    "cost": 8296.56,
-   "last_close": 67.41,
-   "last_date": "2026-11-19",
+   "last_close": 64.58,
+   "last_date": "2026-11-20",
    "divs": 0.0,
    "stop": null,
    "sector": "handel"
@@ -165,8 +165,8 @@
    "entry": 1251.0,
    "entry_date": "2026-11-09",
    "cost": 7521.012,
-   "last_close": 1248.0,
-   "last_date": "2026-11-19",
+   "last_close": 1223.0,
+   "last_date": "2026-11-20",
    "divs": 0.0,
    "stop": null,
    "sector": "przemysl"
@@ -236,6 +236,13 @@
    "cash": 4581.97,
    "invested": 96359.1,
    "bench": 4204.7
+  },
+  {
+   "date": "2026-11-20",
+   "equity": 97652.89,
+   "cash": 4581.97,
+   "invested": 93070.92,
+   "bench": 4016.3
   }
  ],
  "log": [
