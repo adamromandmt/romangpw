@@ -18,59 +18,10 @@
   "partial_frac": 0.5
  },
  "start_date": "2026-11-06",
- "cash": 80844.67879999998,
- "processed_through": "2026-11-19",
+ "cash": 87905.30923999997,
+ "processed_through": "2026-11-20",
  "orders": [],
  "positions": [
-  {
-   "tic": "PEO",
-   "name": "Bank Pekao",
-   "shares": 18,
-   "shares0": 18,
-   "entry": 268.0,
-   "entry_date": "2026-11-12",
-   "stop": 257.5,
-   "stop0": 257.5,
-   "c1": 279.0,
-   "c2": 286.0,
-   "c1_done": false,
-   "cost": 4833.648,
-   "realized": 0.0,
-   "legs": [],
-   "last_close": 263.4,
-   "last_date": "2026-11-19",
-   "score": 69.0,
-   "cls": "B",
-   "report": "2026-11-10"
-  },
-  {
-   "tic": "PKO",
-   "name": "PKO BP",
-   "shares": 21,
-   "shares0": 42,
-   "entry": 116.5,
-   "entry_date": "2026-11-12",
-   "stop": 116.5,
-   "stop0": 112.5,
-   "c1": 121.0,
-   "c2": 125.5,
-   "c1_done": true,
-   "cost": 4902.786,
-   "realized": 2535.918,
-   "legs": [
-    {
-     "date": "2026-11-16",
-     "qty": 21,
-     "price": 121.0,
-     "reason": "cel 1"
-    }
-   ],
-   "last_close": 117.54,
-   "last_date": "2026-11-19",
-   "score": 67.0,
-   "cls": "B",
-   "report": "2026-11-10"
-  },
   {
    "tic": "PCO",
    "name": "Pepco Group",
@@ -93,8 +44,8 @@
      "reason": "cel 1"
     }
    ],
-   "last_close": 52.06,
-   "last_date": "2026-11-19",
+   "last_close": 51.98,
+   "last_date": "2026-11-20",
    "score": 60.0,
    "cls": "B",
    "report": "2026-11-12"
@@ -114,8 +65,8 @@
    "cost": 4539.06,
    "realized": 0.0,
    "legs": [],
-   "last_close": 745.2,
-   "last_date": "2026-11-19",
+   "last_close": 729.8,
+   "last_date": "2026-11-20",
    "score": 62.0,
    "cls": "B",
    "report": "2026-11-12"
@@ -135,8 +86,8 @@
    "cost": 4989.358800000001,
    "realized": 0.0,
    "legs": [],
-   "last_close": 37.45,
-   "last_date": "2026-11-19",
+   "last_close": 36.26,
+   "last_date": "2026-11-20",
    "score": 60.0,
    "cls": "B",
    "report": "2026-11-16"
@@ -202,6 +153,66 @@
    "score": 63.0,
    "cls": "B",
    "report": "2026-11-10"
+  },
+  {
+   "tic": "PEO",
+   "name": "Bank Pekao",
+   "shares": 18,
+   "entry": 268.0,
+   "entry_date": "2026-11-12",
+   "exit_date": "2026-11-20",
+   "exit_reason": "stop",
+   "stop0": 257.5,
+   "c1": 279.0,
+   "c2": 286.0,
+   "pnl": -207.92,
+   "pnl_pct": -4.3,
+   "r": -1.1,
+   "days": 8,
+   "legs": [
+    {
+     "date": "2026-11-20",
+     "qty": 18,
+     "price": 257.5,
+     "reason": "stop"
+    }
+   ],
+   "score": 69.0,
+   "cls": "B",
+   "report": "2026-11-10"
+  },
+  {
+   "tic": "PKO",
+   "name": "PKO BP",
+   "shares": 42,
+   "entry": 116.5,
+   "entry_date": "2026-11-12",
+   "exit_date": "2026-11-20",
+   "exit_reason": "stop na wejściu (luka)",
+   "stop0": 112.5,
+   "c1": 121.0,
+   "c2": 125.5,
+   "pnl": 68.03,
+   "pnl_pct": 1.39,
+   "r": 0.4,
+   "days": 8,
+   "legs": [
+    {
+     "date": "2026-11-16",
+     "qty": 21,
+     "price": 121.0,
+     "reason": "cel 1"
+    },
+    {
+     "date": "2026-11-20",
+     "qty": 21,
+     "price": 116.18,
+     "reason": "stop na wejściu (luka)"
+    }
+   ],
+   "score": 67.0,
+   "cls": "B",
+   "report": "2026-11-10"
   }
  ],
  "equity": [
@@ -252,6 +263,12 @@
    "equity": 100011.53,
    "cash": 80844.68,
    "invested": 19166.85
+  },
+  {
+   "date": "2026-11-20",
+   "equity": 99612.63,
+   "cash": 87905.31,
+   "invested": 11707.32
   }
  ],
  "log": [
@@ -362,6 +379,14 @@
   {
    "date": "2026-11-18",
    "text": "Sprzedaż KTY: 2 szt. po 1274 (stop na wejściu)"
+  },
+  {
+   "date": "2026-11-20",
+   "text": "Sprzedaż PEO: 18 szt. po 257.5 (stop)"
+  },
+  {
+   "date": "2026-11-20",
+   "text": "Sprzedaż PKO: 21 szt. po 116.18 (stop na wejściu (luka))"
   }
  ],
  "next_id": 12
