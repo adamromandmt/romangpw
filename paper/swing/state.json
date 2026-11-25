@@ -19,7 +19,7 @@
  },
  "start_date": "2026-11-06",
  "cash": 87905.30923999997,
- "processed_through": "2026-11-23",
+ "processed_through": "2026-11-24",
  "orders": [],
  "positions": [
   {
@@ -44,8 +44,8 @@
      "reason": "cel 1"
     }
    ],
-   "last_close": 51.78,
-   "last_date": "2026-11-23",
+   "last_close": 50.32,
+   "last_date": "2026-11-24",
    "score": 60.0,
    "cls": "B",
    "report": "2026-11-12"
@@ -65,8 +65,8 @@
    "cost": 4539.06,
    "realized": 0.0,
    "legs": [],
-   "last_close": 752.4,
-   "last_date": "2026-11-23",
+   "last_close": 744.0,
+   "last_date": "2026-11-24",
    "score": 62.0,
    "cls": "B",
    "report": "2026-11-12"
@@ -86,8 +86,8 @@
    "cost": 4989.358800000001,
    "realized": 0.0,
    "legs": [],
-   "last_close": 37.2,
-   "last_date": "2026-11-23",
+   "last_close": 36.52,
+   "last_date": "2026-11-24",
    "score": 60.0,
    "cls": "B",
    "report": "2026-11-16"
@@ -275,6 +275,12 @@
    "equity": 99859.29,
    "cash": 87905.31,
    "invested": 11953.98
+  },
+  {
+   "date": "2026-11-24",
+   "equity": 99646.71,
+   "cash": 87905.31,
+   "invested": 11741.4
   }
  ],
  "log": [
